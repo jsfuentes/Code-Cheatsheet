@@ -14,11 +14,16 @@ Adds support for `enctype="multipart/form-data"`
 ```js
 var multer = require('multer');
 
+var upload = multer({ dest: 'public/uploads/'});
+
+
 router.post('/create', upload.any(), eventsController.event_create);
 
 //in event_create
 var fileInfo = req.files;
 ```
+
+Now the files are in your filesystem, use them as you would static files.
 
 ## Mongoose Object
 var Item = new ItemSchema(

@@ -12,10 +12,13 @@ git clean -fdx //also remove build products and display_errors
 git clean -fdX //only remove thsoe from git
 
 ## Add remote
-git remote add origin  https://github.com/jsfuentes/TixCoin.git
+git remote add origin [github url]
 
 ## Selecting branch to push from and to
 ```bash
 git push origin develop:master
 git push <remote> <local branch name>:<remote branch to push into>
 ```
+
+## Reset to remote branch
+git checkout -B master origin/master //-B resets if it already exists

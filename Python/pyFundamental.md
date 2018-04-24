@@ -8,6 +8,11 @@
 - So, 1 and a or b is basically the trinary operator(unless a is false)
 - (1 and [a] or [b])[0] is the safe way
 
+## Math
+```py
+round(5.0000, 3) #3 is number of decimal points
+```
+
 ## '' vs ""
 They are the same
 
@@ -18,5 +23,9 @@ They are the same
 d.get('key', 'defaultValue')
 d.pop(k, None) #get and pop, allows you to remove without checking for existence
 
-## Strings
-`chr(ord('a')+1)` to add one to 'a' and get 'b'
+## Lists
+- Everything is a ptr, to make copy `copy = original[:]`
+- sum([1,2,0]) => 2, great for checking for a property i.e [1 for c in t if ...]
+
+## Checking Packages
+dir(nltk) - lists all functions in package

@@ -1,4 +1,24 @@
 ## Observables
+
+In service, observable that emits a single value, array of HEROES
+
+```ts
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+
+getHeroes(): Observable<Hero[]> {
+  return of(HEROES);
+}
+```
+
+To use in another component, notice the callback
+```ts
+this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes)
+```
+
+If you neglect to subscribe(), the service will not send the delete request to the server! As a rule, an Observable does nothing until something subscribes!
+
 ```html
 <li *ngFor="let hero of heroes$ | async" >
 ```
@@ -8,10 +28,12 @@ The \*ngFor can't do anything with an Observable. But there's also a pipe charac
 
 The AsyncPipe subscribes to an Observable automatically so you won't have to do so in the component class.
 
-##### Search
-```ts
-<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-```
+## BehaviorSubject vs Observable?
+BehaviorSubject is a type of subject, a subject is a special type of observable so you can subscribe to messages like any other observable. The unique features of BehaviorSubject are:
+- needs initial value
+- returns the last value of the subject upon subscription
+- `getValue()` retrieve the last value of the subject
+
 
 ##### Tap Observables
 The RxJS tap operator, which looks at the observable values, does something with those values, and passes them along. The tap call back doesn't touch the values themselves.
@@ -23,6 +45,10 @@ The RxJS tap operator, which looks at the observable values, does something with
 ```
 
 ##### Search
+```html
+<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+```
+
 ```ts
 import {
    debounceTime, distinctUntilChanged, switchMap
@@ -49,6 +75,7 @@ ngOnInit(): void {
   );
 }
 ```
+
 A Subject is both a source of observable values and an Observable itself. You can subscribe to a Subject as you would any Observable.
 
 You can also push values into that Observable by calling its next(value) method as the search() method does.

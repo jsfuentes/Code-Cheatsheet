@@ -35,11 +35,6 @@ $.get("url", function(data) {
   .....
 });
 ```
-$(document).ready(function(){
-  $("#eventCreation").submit(function( event ) {
-    alert( "Handler for .submit() called." );
-  });
-});
 
 ## Submitting Forms
 ```js

@@ -55,6 +55,9 @@ resp.status_code = 200
 ```
 
 ## TEMPLATING
+### Linking
+`url_for('static', filename='bootstrap/bootstrap.min.css') }}`
+
 ### BLOCKS
 
 ```html
