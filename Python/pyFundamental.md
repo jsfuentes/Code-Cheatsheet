@@ -29,3 +29,11 @@ d.pop(k, None) #get and pop, allows you to remove without checking for existence
 
 ## Checking Packages
 dir(nltk) - lists all functions in package
+
+## Sorting
+sorted()
+list.sort(key={function to call})
+
+## Lambdas
+
+lambda x, y: x[1] + y
