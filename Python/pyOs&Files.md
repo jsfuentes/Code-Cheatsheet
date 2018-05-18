@@ -12,7 +12,7 @@ for root, dirs, files in os.walk(PATH_TO_NOTES):
   for file in files:
     curFile = os.path.join(root, file)
 ```
-dd 
+dd
 # Files
 ```py
 #f is file object
@@ -32,3 +32,18 @@ Automatically close for ya
 with open('workfile', 'r') as f:
   read_data = f.read() #all datadddddd
 ```
+
+## Pickle
+```py
+with open(r"categorizationModel.pickle", "wb") as output_file:
+    cPickle.dump(rf, output_file)
+
+with open(r"categorizationModel.pickle", "r") as model:
+    rfLoaded = cPickle.load(model)
+```
+
+#### CPickle
+- optimized cousin cPickle written in C, 1000x faster
+- just doesn't support subclassing of the Pickler() and Unpickler() classes
+- usually better
+- same interface

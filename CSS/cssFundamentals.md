@@ -34,7 +34,6 @@ Always use least specificity you need, so all li's instead of ids. Makes future 
 - div { color: rgb (20%, 50%,0);}
 
 ## Px vs Em
-he `em` is a scalable unit that is used in web document media.
 em is a unit that is relative to the currently chosen font size.
 % is also a relative unit, in this case relative to either the height or width of a parent element. They are a good alternative to px units for things like the total width of a design, if your design does not rely on specific pixel sizes to set its size.
 

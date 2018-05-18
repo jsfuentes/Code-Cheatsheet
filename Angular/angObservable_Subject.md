@@ -28,7 +28,10 @@ The \*ngFor can't do anything with an Observable. But there's also a pipe charac
 
 The AsyncPipe subscribes to an Observable automatically so you won't have to do so in the component class.
 
-## BehaviorSubject vs Observable?
+## Subject vs Observable?
+Unique features of a subject are:
+- observer & observable so you can also send values to a subject in addition to subscribing to it.
+
 BehaviorSubject is a type of subject, a subject is a special type of observable so you can subscribe to messages like any other observable. The unique features of BehaviorSubject are:
 - needs initial value
 - returns the last value of the subject upon subscription

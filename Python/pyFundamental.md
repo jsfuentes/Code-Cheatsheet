@@ -1,4 +1,17 @@
 # Python
+
+## Only function scoping
+So
+
+```py
+if y > threshold:
+  x = 1
+print(x)
+```
+
+## run if not modules
+`if __name__ == "__main__":`
+
 ## `and` and `or`
 - 0, '', [], (), {}, and None are false
 
@@ -16,24 +29,8 @@ round(5.0000, 3) #3 is number of decimal points
 ## '' vs ""
 They are the same
 
-## Iterables
-`len(iterable)`
-
-## Dictionaries
-d.get('key', 'defaultValue')
-d.pop(k, None) #get and pop, allows you to remove without checking for existence
-
-## Lists
-- Everything is a ptr, to make copy `copy = original[:]`
-- sum([1,2,0]) => 2, great for checking for a property i.e [1 for c in t if ...]
-
 ## Checking Packages
 dir(nltk) - lists all functions in package
 
-## Sorting
-sorted()
-list.sort(key={function to call})
-
 ## Lambdas
-
 lambda x, y: x[1] + y

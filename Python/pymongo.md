@@ -16,6 +16,14 @@ db.student.find({}, {roll:1, _id:0}) #Projection: find all students and return t
 dbClasses.find({"location": { '$regex': '.*' + building + '.*'}, "day": WEEKDAYS[weekday]})
 ```
 
+## Inserting
+```py
+post_id = posts.insert_one(post).inserted_id
+```
+- post is a dict
+- "_id", is automatically added if the document doesn’t already contain an "_id" key
+- use insert_many to insert list of dicts
+-
 ## DELETING
 ```python
 dbClasses.remove({"time": "scheduled"})
