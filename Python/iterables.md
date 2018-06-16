@@ -16,6 +16,18 @@ sorted()
 list.sort(key={function to call}, reverse=False) #ascending is default
 .sort(key=lambda x: x[1], reverse=True)
 
-## Get i/index
+
+
+####  Get i/index
+
 for counter, value in **enumerate**(some_list):
     print(counter, value)
+
+#### Loop Over Two Iteratables
+
+```
+for (f,b) in zip(foo, bar):
+    print "f: ", f ,"; b: ", b
+```
+
+Stops at the shorter of the two and works for an arbitrary number of iterables

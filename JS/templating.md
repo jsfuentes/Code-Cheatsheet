@@ -1,6 +1,6 @@
 # TEMPLATING
 
-## INtro
+## Intro
 
 - combination of data and layout
 - data and presentation are seperate
@@ -170,7 +170,7 @@ To if you can pass anteing that can easily become true of falsey like boolean, a
 Encapsulate functionality
 
 ```js
-  Handlebars.registerHelper("prodQuantity", function (prodData) {
+Handlebars.registerHelper("prodQuantity", function (prodData) {
                 if (prodData.quantity >= 100)
                   return "We currently have a large amount in stock.";
                 else

@@ -2,14 +2,17 @@
 - Mostly from frontend master by estelle.github.com/CSS-Workshop .
 - CSS Level 1, 2, 3 broken in modules like 4
 - Flexbox is Level 1
+- Convention is top, bottom, left, right for ordering
 
 ## Including css
 external is ideal, allows reusability across site
 ```html
 <link href="stylesheet" href="path/file.css" />`
+
 <style>
-  body {}
+  <!--body {}-->
 </style>
+
 <p style="color: black"> Lorem ipsum</p>
 ```
 
@@ -38,3 +41,26 @@ em is a unit that is relative to the currently chosen font size.
 % is also a relative unit, in this case relative to either the height or width of a parent element. They are a good alternative to px units for things like the total width of a design, if your design does not rely on specific pixel sizes to set its size.
 
 Using % units in your design allows your design to adapt to the width of the screen/device, whereas using an absolute unit such as px does not.
+
+## Other Types
+
+Vh /vw(viewport height/width) 100vh is max 
+
+px
+
+em
+
+rem
+
+## Prefixes
+
+Browser add support for CSS features with prefixes like
+
+Webkit-
+
+Max-
+
+## SASS
+
+Got importing and variables with $ and modularity
+

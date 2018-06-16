@@ -4,7 +4,20 @@
 conda create --name myenv [python=verisonnumber] [package names]
 conda create --name myenv python=2.7 scipy
 ```
+## Usage
+
+```bash
+source activate [envname]
+```
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Inspection:
+
 List all packages
 ```bash
 conda list
