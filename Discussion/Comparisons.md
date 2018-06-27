@@ -17,3 +17,20 @@ Yarn:
 - Use deterministic installation, better caches/faster
 - Uses package.json, so super super easy to switch; can use both at once
 - Emojis
+
+# SQL VS NoSQL
+
+SQL
+
+- battle-tested and refined
+- better consistency/ACID
+
+NoSQL
+
+- easier to use
+
+- more scalable(not a real problem until massive)
+
+- faster joins
+
+  

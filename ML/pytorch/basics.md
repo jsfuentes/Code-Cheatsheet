@@ -73,6 +73,10 @@ tensor([ 2.,  2.,  2.,  2.,  2.])
 [2. 2. 2. 2. 2.]
 ```
 
+```python
+a = torch.from_numpy(b)
+```
+
 ## Computation Graphs and Automatic Differentiation
 
 Not fixed like in other things like tensorflow

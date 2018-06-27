@@ -1,7 +1,7 @@
 # Pandas
 
-```py
-import pandas ad pd
+```python
+import pandas as pd
 
 fullCorpus = pd.DataFrame({
   'label': labelList,
@@ -19,3 +19,8 @@ add columns
 
 ## Create New Column
 pdData['clean_text'] = data['body_text'].apply(lambda x: remove_punct(x))
+
+## Indexing
+
+Use `X.iloc[0]` instead of `X[0]`
+
