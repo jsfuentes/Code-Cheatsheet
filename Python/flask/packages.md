@@ -11,6 +11,15 @@
 
 ## LoginManager
 `from flask_login import LoginManager`
+
+Make current_user available in every template
+
+```html
+{% if current_user.is_authenticated %}
+  Hi {{ current_user.name }}!
+{% endif %}
+```
+
 - [Great Docs](https://flask-login.readthedocs.io/en/latest/)
 
 ## Bootstrap
