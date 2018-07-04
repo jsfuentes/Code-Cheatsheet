@@ -4,4 +4,13 @@
 
 Immutable, functions are first class 
 
-Can have simpler rules and take advantage of parallelism better
+Pros
+
+- simpler rules
+- better parallelism because no race conditions
+- more bug free/easier to debug 
+
+Cons
+
+- performance can be bad 
+- harder to logic sometimes

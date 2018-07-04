@@ -1,4 +1,4 @@
-# Fun
+# Scala
 
 Semicolon optional unless multiple statements on same line
 
@@ -16,14 +16,16 @@ object session {
 }
 ```
 
-## Evaluation Rules
+## Basic Defining Blocks 
 
 - Call by value: evaluates the function arguments before calling the function
+
 - Call by name: evaluates the function first, and then evaluates the arguments if need be
 
 ```scala
 def example = 2      // evaluated when called
-val example = 2      // evaluated immediately
+val example = 2      // evaluated immediately and immutable
+var exmaple = 2 //variable and immediate
 lazy val example = 2 // evaluated once when needed
 
 def loop = loop //won't loop forever at this line
@@ -34,44 +36,45 @@ def square(x: => Double) // call by name
 def myFct(bindings: Int*) = { ... } // bindings is a sequence of int, containing a varying # of arguments
 ```
 
-# Functions
+## Expressions
 
-Blocks {....}, expression
+the building block of scala
+
+Blocks {} are an expression that returns the last expression's value. so can be stored in variables returned by functions and be parameters
 
 ```scala
-def abs(x: Double):Double = {
-    def absHelper() = x
-    absHelper()
+var y = 2		//variable	
+val x = 1		//immutable
+```
+
+## Basic Types
+
+"" - strings
+
+'' - chars 
+
+
+
+##  Packages
+
+place at top to declare everything as file
+
+```scala
+package com.twitter.example
+```
+
+Instead of importing `*` import `_` i.e`import scala.collections.JavaConversions._` 
+
+## Try Catch
+
+```scala
+//val result: Int = //an expression so can do this
+try {
+  remoteCalculatorService.add(1, 2)
+} catch {
+  case e: ServerIsDownException => log.error(e, "the remote calculator service is unavailable. should have kept your trusty HP.")
+} finally {
+  remoteCalculatorService.close()
 }
-
-val result = {
-    val x = f(3)
-    x * x
-}
 ```
 
-#### TAIL RECURSION == LOOPS (Reuse stack space)
-
-- Last action of ft consists of calling another ft 
-
-- ft vs ft * 2
-- @tailrec annonation ensures tail recursive
-
-## Lists
-
-```scala
-val fruit: List[String] = List("apples", "oranges", "pears")
-
-fruit.head
-fruit.tail
-fruit.isEmpty
-```
-
-```scala
-4::intList //append to list
-intList1:::intList2 //concentate list
-```
-
-## Conditional Expressions
-
-def example(x: Int) = if x>=0 x else x
