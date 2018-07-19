@@ -11,6 +11,10 @@ class Rational(x: Int, y: Int) {
     private val g = 3
     
     def this(x: Int) = this(x, 1) //constructor overloading
+    
+    private[this] def myF() {
+        //.....
+    }
 }
 ```
 

@@ -34,3 +34,9 @@ NoSQL
 - faster joins
 
   
+
+### Node vs. JS
+
+Node takes the JS complier in chrome browser and adds some server logic and io stuff so you can use it on the backend 
+
+JS is a language 

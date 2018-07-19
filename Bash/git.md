@@ -23,3 +23,6 @@ git push <remote> <local branch name>:<remote branch to push into>
 ## Reset to remote branch
 git checkout -B master origin/master //-B resets if it already exists
 
+## Merge master in your branch before push
+
+git pull --rebase origin master
