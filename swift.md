@@ -11,7 +11,7 @@ print(addTwoNumbers(a: 5, b: 6))
 Notice the **MANDATORY** typing and naming parameters
 
 ## Classes
-```
+```swift
 class Rat {
     var health = 5;
 }
@@ -27,8 +27,6 @@ class Bplate {
     }
 }
 ```
-
-
 
 ## Functions as parameters...
 func exterminateRat(rat: Rat) {
