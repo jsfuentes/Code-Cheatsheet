@@ -1,9 +1,6 @@
 ## Python3
-Must specify you want a relative path, cuz was confusing before
-```py
-from .user import User
-from ..model import model
-```
+
+Similar to python2 except you don't need an init.py
 
 ## Python2
 #### Importing from Same Dir
@@ -21,7 +18,26 @@ bin/
         user.py
         dir.py
 So if the directory was named "classes", then you'd do this:
-```py
+```python
 from classes.user import User
 from classes.dir import Dir
 ```
+
+## Relative Path Importing
+
+Are you trying to open a file in a package that you then import? Well that means you are getting an error because the path will be different if you run the script and import the script
+
+```python
+__location__ = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__)))
+```
+
+- `join()` prepends current working directory, but the documentation says that if some path is absolute, all other paths left of it are dropped. Therefore, getcwd() is dropped when dirname(__file__) returns an absolute path. Also, the `realpath` call resolves symbolic links if any are found
+
+Then 
+
+```python
+f = open(os.path.join(__location__, 'bundled-resource.jpg'))
+
+```
+

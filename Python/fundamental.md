@@ -34,3 +34,20 @@ dir(nltk) - lists all functions in package
 
 ## Lambdas
 lambda x, y: x[1] + y
+
+## Input
+
+- PYTHON 2: `input("Enter number")` interprets user input so if int, int will be returned
+- `raw_input("Enter Your Name: ")` takes exactly what user typed 
+- PYTHON 3: `input` is `raw_input`
+
+## Exceptions
+
+```python
+try:
+    x = int(input("Please enter a number: "))
+    break
+except ValueError:
+    print("Oops!  That was no valid number.  Try again...")
+```
+

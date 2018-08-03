@@ -14,3 +14,4 @@ Cons
 
 - performance can be bad 
 - harder to logic sometimes
+- harder to hire for 
