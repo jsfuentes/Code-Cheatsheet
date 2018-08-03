@@ -1,6 +1,6 @@
 # Strings
 
-Prepending `s` to any string literal allows the usage of variables directly in the string. You’ve already seen an example here:
+Prepending `s` to any string literal allows the usage of variables directly in the string
 
 ```
 val name = "James"

@@ -37,6 +37,7 @@ NoSQL
 
 ### Node vs. JS
 
-Node takes the JS complier in chrome browser and adds some server logic and io stuff so you can use it on the backend 
+Node takes the JS complier in chrome browser and adds some server logic and io stuff so you can use it on the backend. So `node filename` lets you run arbitrary js logic where console.log is std.out
 
-JS is a language 
+JS is a language
+

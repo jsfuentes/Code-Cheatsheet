@@ -3,7 +3,10 @@
 ## Exporting
 module.exports = app;
 
-## Requiring Libs
+Unlike js browser loading, must export not globally available
+
+## Requiring Files
+
 ```js
 var express = require('express')
 var schema = require('./schema.js')
