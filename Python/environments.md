@@ -27,6 +27,8 @@ Disadvantages
 
 `pipenv install requests` instead of `pip install`
 
+`pipenv install pymongo==3.4.0` for specific version
+
 `pipenv run` to run stuff in virtual env
 
 `pipenv run python` instead of `python`
