@@ -8,8 +8,8 @@ j+ matches 1+ chars
 ```import re```
 
 # Splitting String to List
-Re.split('reExpression', string)
-OR Re.findall('reExpression', string)
+Re.split([reExpression], [string])
+OR Re.findall([reExpression], [string])
 - '\s' #single white space
 - '\s+' #split on one or more whitespace
 - '\S+' #one or more non whitespace character
