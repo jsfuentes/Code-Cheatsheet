@@ -1,4 +1,7 @@
 # HTML Basics
+
+**HARD REFRESH TO ACTUALLY SEE CHANGES CUZ CACHE**
+
 ```html
 <parent>
    <child1>

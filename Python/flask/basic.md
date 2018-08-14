@@ -11,8 +11,6 @@ def hello_world():
     return 'Hello, World!'
 ```
 
-
-
 ## FLASH
 ```python
 From flask import flash

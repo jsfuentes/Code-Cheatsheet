@@ -6,3 +6,4 @@ Just run `flask` for a good overview of the commands
 
 Default gets app.py or wsgi.py
 
+`export FLASK_ENV=development`

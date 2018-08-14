@@ -2,8 +2,8 @@
 
 #### Form tag
 
-- Get sends data in URL: processform.php?fullname=.....
-- Post gets data in backgournd and use for longer forms/secure
+- GET sends data in URL: processform.php?fullname=.....
+- POST gets data in backgournd and use for longer forms/secure
 ```html
 <form action="wher to send data"
   enctype="how to encode data" //default
@@ -12,21 +12,20 @@
   </form>
 ```
 #### Enc Types
-- 'multipart/form-data' needed to get files
+- `multipart/form-data` needed to get files
+- `application/x-www-form-urlencoded` standard
 
 ## INPUT
 ```html
-<input>
-name="firstName"
-value="Your Name" //default
-</input>
-<label> Text: [input html] </label> //if you click on label you activate field
+<label for="name">Name:</label>
+<input name="user_name" id="name">
 ```
 
 #### Basic Attributes
-- name, id for identification in JS/CSS
+
+- name for form identification
 - value is initial field value
-- label's for contains id
+- id is for js/`label for`
 
 #### Input Types
 
@@ -52,7 +51,16 @@ Multiple lets you select multiple, sends csv
 </select>
 ```
 
+## Submit
+
+```html
+<div class="button">
+  <button type="submit">Send your message</button>
+</div>
+```
+
 ## Events
+
 ```js
 document.theform.myname.onfocus = () => {
   //do stuff when you on thing

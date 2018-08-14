@@ -8,3 +8,11 @@
 
 ## r"..." 
 The r doesn't change the type at all, it just changes how the string literal is interpreted. Without the  r, backslashes are treated as escape characters. With the r, backslashes are treated as literal.
+
+## Check proper
+
+```python
+'a'.isalpha()
+'1'.isdigit()
+```
+
