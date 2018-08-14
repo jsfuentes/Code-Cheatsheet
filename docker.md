@@ -4,7 +4,7 @@
 Get the same environment everywhere.
 
 ## Tech Words
-A **container** is launched by running an image. An image is an executable package that includes everything needed to run an application--the code, a runtime, libraries, environment variables, and configuration files.
+A **container** is launched by running an image. An **image** is an executable package that includes everything needed to run an application--the code, a runtime, libraries, environment variables, and configuration files.
 
 A **container** is a runtime instance of an image--what the image becomes in memory when executed
 
