@@ -11,7 +11,7 @@ function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 
-//has state and other stuff
+//has constructor, state&lifecycle stuff
 class Welcome extends React.Component {
   render() {
     return <h1>Hello, {this.props.name}</h1>;
@@ -25,14 +25,27 @@ If you have user defined component(capitalized) in JSX, passes in props
 
 ```react
 const element = <Welcome name="Sara" />;
+//OR
+const x = "Sara";
+const element = <Welcome name={x} />
 //renders as: Hello, Sara
 ```
 
-## Functional Components
+### Passing in props to children 
+
+```react
+<Component {...this.props} more="values" />
+```
+
+
+
+## Advanced
+
+### Functional Components
 
 Good style to just use a function when you don't need the state and other stuff
 
-## Containment
+### Containment
 
 Some components don't know who their children are like a border/sidebar
 

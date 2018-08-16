@@ -37,7 +37,7 @@ class TemperatureInput extends React.Component {
 }
 ```
 
-##### Calculator
+##### Temp Calculator
 
 ```react
 class Calculator extends React.Component {

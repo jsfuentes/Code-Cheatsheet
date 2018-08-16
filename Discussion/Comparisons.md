@@ -41,3 +41,17 @@ Node takes the JS complier in chrome browser and adds some server logic and io s
 
 JS is a language
 
+### Vi vs emacs
+
+Emacs 
+
+- common shortcuts on terminal, google docs, Typora, etc 
+- more powerful editor 
+
+Vi
+
+- more ergonamic shortcuts and easier navigation cuz modes
+- stronger for masters
+- Faster/more commonly on machines
+- commands not beautiful, more acronyms
+

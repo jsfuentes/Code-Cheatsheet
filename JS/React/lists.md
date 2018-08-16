@@ -1,6 +1,6 @@
 # Lists
 
-- Can just render a array of jsx 
+- Can just render an array of jsx 
 - But you should have a **key**  that is  *permanent* and *unique*(in the array) which identifies which items have changed/added/removed
 
 ```react

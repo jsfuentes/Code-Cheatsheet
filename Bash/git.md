@@ -2,7 +2,18 @@
 
 Git is literally just a directory, rm -rf .git to delete the git project
 
-### Rebase
+### Rebase(rewrite history with new base)
+
+- only rebase commits you have locally 
+- could also rebase all your branch commits to occur at end of current master to avoid a merge commit
+
+`git rebase master`, rebases current branch to master one 
+
+### Merge master in your branch before push
+
+git pull --rebase origin master
+
+### Squash many commits to one
 
 `git rebase -i <COMMIT_TO_IGNORE>`
 1. Squash all but top
@@ -33,6 +44,3 @@ git push <remote> <local branch name>:<remote branch to push into>
 
 `git checkout -B master origin/master` //-B resets if it already exists
 
-### Merge master in your branch before push
-
-`git pull --rebase origin master`

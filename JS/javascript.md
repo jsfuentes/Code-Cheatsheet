@@ -8,13 +8,15 @@ for (var pId in players) {
    if (players.hasOwnProperty(pId)) {
 ```
 
-## errors
+## Errors
+```javascript
 try {
-    Block of code to try
+   // Block of code to try
 }
 catch(err) {
-    Block of code to handle errors
+    // Block of code to handle errors
 }
+```
 
 
 ## Date

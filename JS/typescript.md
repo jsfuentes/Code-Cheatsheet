@@ -107,10 +107,3 @@ export class Point {
 import { Point } from ./point
 ```
 
-## Arrow functions
-Preserves this function
-```js
-e => {
-
-}
-```
