@@ -53,28 +53,16 @@ val x = 1		//immutable
 
 '' - chars 
 
+Any is base type of all types and defines:
 
+- == - calls Java `equals`
+- hashCode 
+- toString
 
-##  Packages
+`AnyRef` is basetype of all reference types and `AnyVal` is base type of all primitative types
 
-place at top to declare everything as file
+`Nothing` is subtype of every type(so it can be passed/returned), yet no value has type nothing. Used when fts fail to return anything by ending abnormally(errs) or element type of empty collections(Set[Nothing]). 
 
-```scala
-package com.twitter.example
-```
+The type of `null` is Null i.e `val x = null`. `null` is subtype of `AnyVal`
 
-Instead of importing `*` import `_` i.e`import scala.collections.JavaConversions._` 
-
-## Try Catch
-
-```scala
-//val result: Int = //an expression so can do this
-try {
-  remoteCalculatorService.add(1, 2)
-} catch {
-  case e: ServerIsDownException => log.error(e, "the remote calculator service is unavailable. should have kept your trusty HP.")
-} finally {
-  remoteCalculatorService.close()
-}
-```
-
+Useful b/c can write ft like `if x 1 else false` which will be type `ddddddAnyVal`

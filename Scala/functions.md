@@ -111,3 +111,13 @@ sumCube(1, 10)
 
 sum(cube)(1, 10)
 ```
+
+## Generics
+
+```scala
+def singleton[T](e: T) = new Cons[T](e, new Nil[T])
+
+singleton(1) //complier infers type
+singleton(true)
+```
+

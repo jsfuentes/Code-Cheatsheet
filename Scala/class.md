@@ -1,5 +1,7 @@
 # Class 
 
+All Scala classes are derived from Object(from Java)
+
 ## Declaration
 
 ```scala
@@ -12,6 +14,7 @@ class Rational(x: Int, y: Int) {
     
     def this(x: Int) = this(x, 1) //constructor overloading
     
+    override def toString = "X: " + x + " Y: " + y
     private[this] def myF() {
         //.....
     }
@@ -24,14 +27,6 @@ class Rational(x: Int, y: Int) {
 val x = new Rational(1, 2)
 x.numer
 x.denom
-```
-
-### abstract
-
-```scala
-abstract class Shape {
-    def getArea():Int// subclass should define this
-}		
 ```
 
 ## Case Classes
@@ -49,44 +44,21 @@ val hp20b = Calculator("HP", "20b") //without new keyword
 - generates hashcode, toStr, and equals
 - ez copying `hp20b.copy(brand = "Texas")`
 
-## Traits
+## Class Modifiers
 
-Interface like `traits` are fields and behaviors that you add to classes
+### abstract
 
-```scala
-trait Car {
-  val brand: String
-}
-
-trait Shiny {
-  val shineRefraction: Int
-}
-```
+cant be instated with new and can have unimplemented its
 
 ```scala
-class BMW extends Car {
-  val brand = "BMW"
-}
+abstract class Shape {
+    def getArea():Int// subclass should define this
+}		
 ```
 
-One class can extend several traits using the `with` keyword:
+### Sealed & Final
 
-```scala
-class BMW extends Car with Shiny {
-  val brand = "BMW"
-  val shineRefraction = 12
-}
-```
-
--better than abstract classes cuz can extend multiple traits 
-
-- can't have abstract class constructors, or import in Java as easily
-
-## Objects
-
-- Basially singleton class(can have object and class with same name; often for factories)
-
-- Define with `object` instead of `class` and be able to use instantly
+`final` can't be extended anywhere and `sealed` can only be extended in the same Scala file
 
 ## Generics
 
@@ -122,3 +94,4 @@ precedence defined as first character so ez i.e a+b*c == a+(b\*c) regardless of 
 Basically allows you to answer question if B is subclass of A is Container[B] a subclass of Container[A]
 
 Look up more if you need this
+

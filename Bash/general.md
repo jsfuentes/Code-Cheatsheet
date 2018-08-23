@@ -15,4 +15,3 @@ find . -type f -print0 | xargs -0 grep "some string"
 ## Pbcopy
 
  `pbcopy < atom.sh`
-
