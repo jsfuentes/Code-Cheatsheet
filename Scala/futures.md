@@ -1,6 +1,39 @@
 # Futures
 
-Placeholder object for value that may not yet exist, revolve around `ExecutionContext` which has access to a thread pool similar to Executor design pattern
+Placeholder object for value that may not yet exist, revolve around `ExecutionContext` which has access to a thread pool similar to Executor design pattern, commonly you map over it
+
+```scala
+val futureHttpResult = WS.url(“http://catpictures.dev/top10”).get()
+val webPage = futureHttpResult.map { catPicturesHttpBody =>
+  val parsed = parse(catPicturesHttpBody)
+  val firstPictureUrl = parsed.get(0)
+  Ok(myWebPageTemplate(firstPictureUrl))
+}
+webPage
+```
+
+**Nonblocking** Looks sequential, but when it does load inner map block runs
+
+Promises like syntax
+
+```scala
+val fut1: Future[Assignment] = Future(nextAssignmentStore.get(classId1))
+val fut2: Future[Assignment] = Future(nextAssignmentStore.get(classId2))
+val fut3: Future[Assignment] = Future(nextAssignmentStore.get(classId3))
+val allFutures: List[Future[Assignment]] = List(fut1, fut2, fut3)
+```
+
+Need Future[List[_]] instead of List[Future[_]]
+
+then runs when all complete
+
+```scala
+val allResults: Future[List[Assignment]] = Future.sequence(allFutures)
+allResults.map { results =>
+  Result(results, paging = None)
+}
+
+```
 
 ## Defining
 
@@ -144,15 +177,15 @@ val purchase = usdQuote flatMap {
 
 future.flatMap(x =>
 
-​	x
+	x
 
-​	...
+	...
 
-​	y.flatMap( t =>
+	y.flatMap( t =>
 
-​		t
+		t
 
-​	)
+	)
 
 )
 

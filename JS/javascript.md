@@ -8,13 +8,15 @@ for (var pId in players) {
    if (players.hasOwnProperty(pId)) {
 ```
 
-## errors
+## Errors
+```javascript
 try {
-    Block of code to try
+   // Block of code to try
 }
 catch(err) {
-    Block of code to handle errors
+    // Block of code to handle errors
 }
+```
 
 
 ## Date
@@ -30,3 +32,10 @@ if(era === "PM") {
   }
 }
 ```
+
+## Other
+
+```javascript
+console.log( { x }); //{ } prints it as a dict so you get the variable name
+```
+

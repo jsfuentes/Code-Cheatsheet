@@ -31,3 +31,13 @@ To repush
 ## Bugs
 Website error after eb open
   Port 80 for the web
+
+## Codebuild
+
+Input: Github Link or zipped file in S3
+
+Output: Build artifacts or upload Docker image to ECR
+
+Very versatile with the phases running arbitrary bash scripts
+
+To build Docker images, you need to allow privileged access or use the AWS Ubuntu Docker runtime which lets u use the Docker daemon for building
