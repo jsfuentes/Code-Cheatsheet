@@ -89,4 +89,4 @@ public class BillingModule extends AbstractModule {
 }		
 ```
 
-add `@Ingect` to constructor and directs Guice to use it by looking up values for each parameter
+add `@Inject` to constructor and directs Guice to use it by looking up values for each parameter

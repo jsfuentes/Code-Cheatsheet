@@ -54,5 +54,13 @@ git push <remote> <local branch name>:<remote branch to push into>
 `git clean -fdx` //remove all untracked files including those ignored by .gitignore
 `git clean -fdX` //only remove files ignored by git
 
+## Git grep
 
+`git grep [string]` find all lines tracked by the git repo with the given string
 
+`git grep -n -C 3 TeachApp` 
+
+Modifiers:
+
+- `-n` : show line numbers
+- `-C 5`: show 5 context lines before and after 

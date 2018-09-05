@@ -32,3 +32,10 @@ if(era === "PM") {
   }
 }
 ```
+
+## Other
+
+```javascript
+console.log( { x }); //{ } prints it as a dict so you get the variable name
+```
+
