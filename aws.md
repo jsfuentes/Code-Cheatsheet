@@ -1,7 +1,5 @@
 # AWS
 
-Elastic Beanstalk is a fancy wrapper for EC2 instance with like load-balancing and shit
-
 ## EC2 Instance
 Create one online at Amazon
 Get your key
@@ -11,7 +9,10 @@ git clone your repo
 Make sure your server is running on port 80 and go wild
 
 ## Shitty Elastic Beanstalk
+Elastic Beanstalk is a fancy wrapper for EC2 instance with like load-balancing and shit
+
 ## Installing
+
 brew installing eb cli was ez
 make amazon account
 

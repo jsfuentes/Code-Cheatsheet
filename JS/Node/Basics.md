@@ -23,9 +23,9 @@ app.use('/', index);
 
 ## Most Basic Code
 ```js
-var express = require('express')
+const express = require('express')
 
-var app = express()
+const app = express()
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
@@ -35,3 +35,5 @@ app.listen(8000, function () {
   console.log('Example app listening on port 8000!')
 })
 ```
+
+Can run with `node [filename]`

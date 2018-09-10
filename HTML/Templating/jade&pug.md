@@ -50,7 +50,7 @@ div
 
 - ()
 
-```pug
+```jade
 div(class="movie-card", id="oceans-11")
   h1(class="movie-title") Ocean's 11
   img(src="/img/oceans-11.png", class="movie-poster")
@@ -58,10 +58,17 @@ div(class="movie-card", id="oceans-11")
 
 class shorthand
 
-```pug
+```jade
 div.movie-card#oceans-11
   h1.movie-title Ocean's 11
   img.movie-poster(src="/img/oceans-11.png")
+```
+
+### Inline Style
+
+```jade
+div(style='padding: 5px 10px 5px 10px; color: #00FF00;')
+	| hi
 ```
 
 ## JS
@@ -81,7 +88,7 @@ div
 
 #### Jade also has loops
 
-```pug
+```jade
 - var droids = ["R2D2", "C3PO", "BB8"];
 div
   h1 Famous Droids from Star Wars
@@ -92,7 +99,7 @@ div
 
 ### Interpolation
 
-```
+```jade
 - var profileName = "Danny Ocean";
 div
   p Hi there, #{profileName}. How are you doing?
@@ -100,7 +107,7 @@ div
 
 ## Mixins
 
-```
+```jade
 mixin thumbnail(imageName, caption)
   div.thumbnail
     img(src="/img/#{imageName}.jpg")
@@ -109,7 +116,7 @@ mixin thumbnail(imageName, caption)
 
  Then call it with +
 
-```pug
+```jade
 +thumbnail("oceans-eleven", "Danny Ocean makes an elevator pitch.")
 ```
 

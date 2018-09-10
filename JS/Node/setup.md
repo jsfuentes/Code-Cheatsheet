@@ -15,7 +15,7 @@ express [project name] --ejs
 ## Running
 with nodemon
 `npm install -g nodemon`
-`nodemon ./server.js localhost 8080`
+`nodemon ./server.js`
 
 ## Morgan
 it is for automated logging of requests, responses and related data
