@@ -1,9 +1,18 @@
 # MatplotLib
 
+## Simplest 
+
+```python
+import matplotlib.pyplot as plt
+plt.plot([1,4,9,16]) # y with x = [0, 1,2,3]
+plt.plot([1,2,3,4], [1,4,9,16], 'ro') # x y color
+plt.axis([0, 6, 0, 20]) #xmin xmax ymin ymax
+plt.show()
+```
+
 ## Simple Example
 
 ```python
-import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 

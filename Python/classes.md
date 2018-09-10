@@ -15,3 +15,8 @@ class Person:
 
 No private variables, `self._x` just indicates private not enforced
 
+## Usage
+
+```python
+me = Person('Jorge', 'Fuentes')
+```

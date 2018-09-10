@@ -17,8 +17,20 @@ time.replace(hour, minute, second, microsecond, tzinfo, fold)
 
 # Time
 
+#### Sleep
+
 ```python
 import time
 time.sleep(5)  	# 5 seconds
 ```
 
+#### Time Elapsed
+
+```python
+import time
+
+start = time.time()
+print("hello")
+end = time.time()
+print(end - start)
+```
