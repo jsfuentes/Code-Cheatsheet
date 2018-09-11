@@ -2,9 +2,11 @@
 
 `.bash_profile` is run on start up of terminal
 
-## Refresh it
+## Basics
 
-`source .bash_profile` -  **load**s given functions file into the current shell 
+- In ~
+- Make your own commands with `alias ll='ls -lAG'`
+- Load in current shell with `source ~/.bash_profile`
 
 ## My Bash_Profile
 

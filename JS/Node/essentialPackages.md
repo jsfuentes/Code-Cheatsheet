@@ -7,3 +7,10 @@
 
 ## fs
 - Read relative to `process.cwd()`
+
+```javascript
+fs.readFile(filePath, (err, content) => {
+	//.....
+});
+```
+

@@ -39,6 +39,41 @@ Input: Github Link or zipped file in S3
 
 Output: Build artifacts or upload Docker image to ECR
 
-Very versatile with the phases running arbitrary bash scripts
+- Very versatile and simple basically running bash commands with some sugar for uploading and downloading and sdks for kicking off in different languages
 
-To build Docker images, you need to allow privileged access or use the AWS Ubuntu Docker runtime which lets u use the Docker daemon for building
+#### Notes
+
+- To build Docker images, you need to allow privileged access or use the AWS Ubuntu Docker runtime which lets u use the Docker daemon for building
+
+- Automagically unzips the file if your source is a zip
+
+- Artifacts are searched for based on the base dir
+
+#### Buildspec
+
+```
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Building image
+      - ls 
+      - cd GraderFiles
+  build:
+    commands:
+      - pwd
+      - echo START PUBLIC LOG
+      - docker build -t test .
+      - echo END PUBLIC LOG
+  post_build:
+    commands:
+      - docker image ls
+      - docker save test -o test.tar
+      - echo $CODEBUILD_SRC_DIR
+artifacts:
+  files:
+    - test.tar
+
+```
+

@@ -1,9 +1,3 @@
-# Bash_profile
-
-- In ~
-- Make your own commands with `alias ll='ls -lAG'`
-- Reload with `source ~/.bash_profile`
-
 # Find
 
 #### Find some string in all files in cur dir
