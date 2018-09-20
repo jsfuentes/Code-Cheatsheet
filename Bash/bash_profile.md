@@ -8,9 +8,12 @@
 - Make your own commands with `alias ll='ls -lAG'`
 - Load in current shell with `source ~/.bash_profile`
 
+
+
 ## My Bash_Profile
 
-alias ard='arc diff origin/master'
+```bash
+alias ngrok='~/MyTools/ngrok'
 alias fin='find . -iname'
 alias gs='git status'
 alias gc='git commit'
@@ -24,32 +27,55 @@ LSCOLORS='GxFxcxdxxxegedaxagacad'
 export LSCOLORS
 
 function parse_git_branch () {
-git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+git branch 2> /dev/null | sed -e '/^*/d' -e 's/* (.*)/ (\1)/'
 }
 
-export PATH=${PATH}:${HOME}/base/phacility/arcanist/bin
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/Users/jfuentes/Library/Python/2.7/bin:$PATH"
+GREEN="[\033[0;32m]"
+NO_COLOUR="[\033[0m]"
+PURPLE="[\033[0;35m]"
+CYAN="[\033[0;96m]"
+SKY_BLUE="[\033[3;94m]"
+YELLOW="[\033[0;93m]"
+PS1="SKY_BLUE[ \u@\h \W/ YELLOW$(parse_git_branch)SKY_BLUE ]NO_COLOUR ~ "
 
-GREEN="\[\033[0;32m\]"
-NO_COLOUR="\[\033[0m\]"
-PURPLE="\[\033[0;35m\]"
-CYAN="\[\033[0;96m\]"
-SKY_BLUE="\[\033[3;94m\]"
-YELLOW="\[\033[0;93m\]"
-PS1="$SKY_BLUE[ \u@\h \W/ $YELLOW\$(parse_git_branch)$SKY_BLUE ]$NO_COLOUR ~ "
+export PIPENV_VENV_IN_PROJECT=1 
 
-export NVM_DIR="/Users/jfuentes/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+download_gitignore () {
+    name=$1
+    CapName="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}".gitignore
+    gitUrl=https://raw.githubusercontent.com/github/gitignore/master/"$CapName"
+    echo [1/2] Fetching .gitignore for $name from $gitUrl
+    curl $gitUrl > .gitignore
+    echo [2/2] COMPLETE!  Your new .gitignore is outputted below:
+    echo $(cat .gitignore)
+}
+
+```
+
+## Project Specific
+
+```bash
+alias mapb='cd ~/Projects/Mappening-Backend'
+alias mapf='cd ~/Projects/Mappening-Frontend'
+alias mapd='cd ~/Projects/Mappening-Deployment'
+alias note='cd ~/Documents/CodeCheatsheet'
+```
+
+## Pro
+
+```bash
+alias ard='arc diff origin/master'
 
 function sbtp() {
- if [ -n "$1" ]
+ if [ -n "1" ]
  then
-     sbt -Dprojects="$1" "project $1" shell
+     sbt -Dprojects="1" "project 1" shell
  else
     sbt
  fi
 }
-export GPG_TTY=$(tty)
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+```
+
+
+

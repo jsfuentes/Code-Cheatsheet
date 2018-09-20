@@ -74,6 +74,9 @@ asyncio.ensure_future(my_ft())
 
 ```python
 await asyncio.sleep(5) #to sleep
+
+page.waitForSelector('h3 a', { timeout: 5000 }) # default timeout 30 seconds
+
 ```
 
 ## Tasks

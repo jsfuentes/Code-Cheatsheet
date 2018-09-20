@@ -1,4 +1,4 @@
 ## Fun Useless Tags
 
 <hr /> //horizontal line
-<marquee> </marquee> //scrolling line 
+<marquee> hi</marquee> //scrolling line 

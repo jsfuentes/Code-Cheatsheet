@@ -74,6 +74,5 @@ phases:
 artifacts:
   files:
     - test.tar
-
 ```
 
