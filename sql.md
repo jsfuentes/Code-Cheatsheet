@@ -1,5 +1,7 @@
 # SQL
 
+stick to single quotes
+
 ```sql
 SELECT column1, column2, ...
 FROM table_name
@@ -17,6 +19,14 @@ SELECT COUNT(*) FROM orders;
 OR
 SELECT COUNT(1) FROM orders
 ```
+
+### ORDER BY
+
+```sql
+ORDER BY ds DESC 
+```
+
+
 
 ## CREATE
 

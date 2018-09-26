@@ -97,7 +97,6 @@ Everything after the first optional parameter should be optional too
 ### Modules
 Export keyword make this a module that can be imported
 
-not point.ts
 ```ts
 //In point.ts
 export class Point {

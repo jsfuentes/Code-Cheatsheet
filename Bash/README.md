@@ -18,6 +18,12 @@ echo $var1 # => global 1
 echo var1 # => var1
 ```
 
+Make var avaliable to all subprocesses
+
+```bash
+export name=value 
+```
+
 #### String Interpolation
 
 ```bash

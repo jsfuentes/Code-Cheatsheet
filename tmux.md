@@ -9,5 +9,13 @@ tmux is a terminal multiplexer that keeps your sesison running even when your co
 
 ### In tmux
 
-- open new window	     => Ctrl-b c
+`Ctrl-b` base command 
+
+c  create window
+w  list windows
+n  next window
+p  previous window
+f  find window
+,  name window
+&  kill window
 
