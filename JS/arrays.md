@@ -21,6 +21,8 @@ var last = fruits[fruits.length - 1];
 
 ## Advanced
 
+Beware array loops with async stuff
+
 ### Subarr
 
 -`.slice` for subarrs 
@@ -40,6 +42,8 @@ var fruitCopy = fruits.slice();
 ### For each
 
 Executes a callback ft for each ele, returns undefined
+
+**array.forEach(callback[, thisArg])**
 
 ```js
 array1.forEach(function(element) {

@@ -14,6 +14,7 @@
 
 ```bash
 alias ngrok='~/MyTools/ngrok'
+alias note='cd ~/Documents/CodeCheatsheet'
 alias fin='find . -iname'
 alias gs='git status'
 alias gc='git commit'
@@ -58,7 +59,6 @@ download_gitignore () {
 alias mapb='cd ~/Projects/Mappening-Backend'
 alias mapf='cd ~/Projects/Mappening-Frontend'
 alias mapd='cd ~/Projects/Mappening-Deployment'
-alias note='cd ~/Documents/CodeCheatsheet'
 ```
 
 ## Pro

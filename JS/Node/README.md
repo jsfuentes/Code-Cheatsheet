@@ -1,16 +1,6 @@
-# Basics
+# Node
 
-## Exporting
-module.exports = app;
-
-Unlike js browser loading, must export not globally available
-
-## Requiring Files
-
-```js
-var express = require('express')
-var schema = require('./schema.js')
-```
+JS server yay
 
 ## Using middleware
 `app.use(bodyParser.json());`

@@ -50,6 +50,19 @@ fi
 
 `man test` for a shit ton more 
 
+## Print
+
+printf has more standard behavior doing stuff like newlines
+
+```bash
+echo "Hello"
+printf "Hello\n"
+```
+
+
+
+
+
 ## Evaluate
 
 ```bash

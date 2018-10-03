@@ -1,5 +1,25 @@
 # Javascript
 
+## Control
+
+```js
+var i;
+for (i = 0; i < cars.length; i++) { 
+    text += cars[i] + "<br>";
+}
+
+switch(expression) {
+    case x:
+        code block
+        break;
+    case y:
+        code block
+        break;
+    default:
+        code block
+}
+```
+
 ## Objects
 Everything is an object `{}`, dictionaries are objects.
 To iterate over object:
@@ -9,17 +29,23 @@ for (var pId in players) {
 ```
 
 ## Errors
+
 ```javascript
 try {
    // Block of code to try
+   throw "Parameter is not a number!";
 }
 catch(err) {
     // Block of code to handle errors
 }
 ```
 
+```js
+
+```
 
 ## Date
+
 Really untested
 ```js
 if(era === "PM") {
