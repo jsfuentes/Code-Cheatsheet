@@ -1,6 +1,7 @@
 # TypeScript
 A superscript of javascript that is transpiled into javascript. Even if an error, will compile to javascript. I.e using the wrong type for a variable will produce compile error, but produce working js
 New:
+
 * Strong Typing
 * Object oriented
 * Compile time errors
@@ -96,7 +97,6 @@ Everything after the first optional parameter should be optional too
 ### Modules
 Export keyword make this a module that can be imported
 
-not point.ts
 ```ts
 //In point.ts
 export class Point {

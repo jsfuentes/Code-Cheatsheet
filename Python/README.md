@@ -32,7 +32,16 @@ They are the same
 ## Checking Packages
 dir(nltk) - lists all functions in package
 
-## Lambdas
+## Functions
+
+### KArgs & Args
+
+he `*args` will give you all function parameters as a tuple
+
+`**kwargs` will give you all **keyword arguments** as a dictionary expect acutal args
+
+### Lambdas
+
 lambda x, y: x[1] + y
 
 ## Input
@@ -50,4 +59,3 @@ try:
 except ValueError:
     print("Oops!  That was no valid number.  Try again...")
 ```
-

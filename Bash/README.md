@@ -18,6 +18,12 @@ echo $var1 # => global 1
 echo var1 # => var1
 ```
 
+Make var avaliable to all subprocesses
+
+```bash
+export name=value 
+```
+
 #### String Interpolation
 
 ```bash
@@ -58,10 +64,6 @@ printf has more standard behavior doing stuff like newlines
 echo "Hello"
 printf "Hello\n"
 ```
-
-
-
-
 
 ## Evaluate
 

@@ -2,6 +2,22 @@
 
 `.bash_profile` is run on start up of terminal
 
+`.bash_rc` is run on terminal startup
+
+http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
+
+tldr: 
+
+add 
+
+```
+if [ -f ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+```
+
+to bashprofile and then use .bash_rc and don't worry about it
+
 ## Basics
 
 - In ~
@@ -16,6 +32,8 @@
 alias ngrok='~/MyTools/ngrok'
 alias note='cd ~/Documents/CodeCheatsheet'
 alias fin='find . -iname'
+alias ll='ls -lGa'
+
 alias gs='git status'
 alias gc='git commit'
 alias ga='git add .'
@@ -23,7 +41,7 @@ alias gl='git log'
 alias gb='git branch'
 alias gd='git diff'
 alias gss='git show --stat --oneline'
-alias ll='ls -lGa'
+
 LSCOLORS='GxFxcxdxxxegedaxagacad'
 export LSCOLORS
 
