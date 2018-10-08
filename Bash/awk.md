@@ -32,6 +32,14 @@ Splits on colon for \$1, \$2, \$3
 awk '{print $2}' logs.txt | awk 'BEGIN{FS=":"}{print $1}' | sed 's/\[//'
 ```
 
+##### Get Text between two text
+
+```bash
+awk -v FS="(<a>|</a>)" '{print $2}'
+```
+
+
+
 ## If
 
 ```bash

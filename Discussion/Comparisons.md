@@ -23,7 +23,7 @@ Yarn:
 SQL
 
 - battle-tested and refined
-- better consistency/ACID
+- better consistency/ACID(Atomic Consisent Isolation Durability)
 
 NoSQL
 
@@ -33,7 +33,8 @@ NoSQL
 
 - faster joins
 
-  
+- BASE(Basically Available Soft-state Eventual Consistency) trades C and I for availability, graceful degradation, and performance
+
 
 ### Node vs. JS
 

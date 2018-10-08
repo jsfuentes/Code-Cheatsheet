@@ -1,6 +1,6 @@
 # Cron
 
-Apparently you can schedule a file to run with cron strings natively in bash :0 
+Apparently you can schedule a file to run with `cron`  command natively in bash :0 
 
 0 * * * * wget -O - -q -t 1 http://CRON_URL
 

@@ -1,5 +1,7 @@
 ## Bash
 
+GNU Bourne-Again SHell, an POSIX(file system thingy) compliant shell thingy. `sh` is a earlier verison 
+
 ## Defining a Bash Script
 
 ```bash
@@ -7,15 +9,18 @@
 echo Hello World, arg $1
 ```
 
-Call with `./scriptname.sh test`
+Call with `./scriptname.sh test` as that uses the shebang
+
+*Can just run in bash without permission with `bash scriptname.sh` or `. scriptname.sh`*
 
 ## Variables
 
 ```bash
 var1='global 1' #no spaces
 
-echo $var1 # => global 1
-echo var1 # => var1
+echo $var1 		# => global 1
+echo ${var1}	# => global 1
+echo var1 		# => var1
 ```
 
 Make var avaliable to all subprocesses
@@ -27,7 +32,7 @@ export name=value
 #### String Interpolation
 
 ```bash
-"$var1"_template.txt
+"$var1".txt #basically $(echo $var1).txt
 ```
 
 ## Functions
@@ -46,6 +51,8 @@ echo The previous function has a return value of $? #$? is last return value
 
 ## Conditionals
 
+`man test` for info about conditionals
+
 ```bash
 if [ $1 -gt 100 ]
 then
@@ -56,9 +63,16 @@ fi
 
 `man test` for a shit ton more 
 
-## Evaluate
+## Evaluate In Place
+
+Two ways: 
 
 ```bash
-$( echo $1 )
+$( echo $1 ) 
 ```
 
+^generally better(newer and ez nesting without esacpes\)
+
+```bash
+echo `echo 1`  # => 1
+```

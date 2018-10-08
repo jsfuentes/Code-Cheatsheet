@@ -15,7 +15,7 @@ Abstraction on top of array, resizable and sortable
 Can use base array stuff 
 
 ```go
-var colors = []string{"Red", "Green", "Blue"} //w/out # its a slice
+var colors = []string{"Red", "Green", "Blue"} //w/out number its a slice
 
 colors = append(colors, "Purple") 
 colors = append(colors[:len(colors) - 1])//python slicinggg

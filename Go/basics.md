@@ -5,13 +5,16 @@ Lexer puts semicolon if complete statement i.e must put { on same line as if and
 Must explicitly change types for everything
 
 ```go
-package main 
+package main
 
-import "fmt"
+import(
+  "fmt"
+  "strings"
+)
 
 func main() {
-    var s string
-    fmt.Scanln(%s)
+  fmt.Println("Hello from Go!")
+  fmt.Println(strings.ToUpper("Hello really loud"))
 }
 ```
 
@@ -26,6 +29,8 @@ func main() {
 - arrays, slices, maps, structs
 
 Explicit or implicit typing
+
+*Same logical operators as C/C++)*
 
 ### Explicit =
 

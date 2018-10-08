@@ -5,7 +5,7 @@ If you end with a complete statement, lexer puts `;`  so `{`/`else` must be on s
 ## If
 
 ```go
-if x < 0 {
+if x < 0 && err == nil{
 	result = "Greater"
 } else if x == 0 {
     result = "Equal"

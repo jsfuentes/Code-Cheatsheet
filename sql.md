@@ -12,21 +12,29 @@ WHERE CustomerID=1
 LIMIT 100;
 ```
 
-## Count
+## Basic Query
+
+#### Count
 
 ```sql
-SELECT COUNT(*) FROM orders;
-OR
-SELECT COUNT(1) FROM orders
+SELECT COUNT(*) FROM orders GROUP BY ds;
+/* OR */
+SELECT COUNT(1) FROM orders GROUP BY ds;
 ```
 
-### ORDER BY
+#### ORDER BY
 
 ```sql
 ORDER BY ds DESC 
 ```
 
+#### MULTI TABLE
 
+```sql
+SELECT o.OrderID, o.OrderDate, c.CustomerName
+FROM Customers AS c, Orders AS o
+WHERE c.CustomerName="Around the Horn";
+```
 
 ## CREATE
 
@@ -40,7 +48,67 @@ CREATE TABLE Persons (
 );
 ```
 
+#### INSERT
+
+```sql
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
+```
+
+## ADVANCED
+
+#### JOINS
+
+- **(INNER) JOIN**: Returns records that have matching values in both tables
+- **LEFT (OUTER) JOIN**: Return all records from the left table, and the matched records from the right table
+- **RIGHT (OUTER) JOIN**: Return all records from the right table, and the matched records from the left table
+- **FULL (OUTER) JOIN**: Return all records when there is a match in either left or right table
+
+```sql
+SELECT *
+FROM Orders
+LEFT JOIN Customers
+ON Orders.CustomerID = Customers.CustomerID;
+```
+
+#### CASE
+
+```sql
+SELECT player_name,
+       weight,
+       CASE WHEN weight > 250 THEN 'over 250'
+            WHEN weight > 200 THEN '201-250'
+            WHEN weight > 175 THEN '176-200'
+            ELSE '175 or under' END AS weight_group
+  FROM benn.college_football_players
+```
+
+Executed in order as shown 
+
 ### ADVANCED HIVE?
+
+95% SQL syntax, but can query Hadoop turning HiveQL into Map Reduce Jobs 
+
+#### Explode
+
+```sql
+SELECT pageid, adid
+FROM pageAds LATERAL VIEW explode(adid_list) adTable AS adid;
+```
+
+adid_list is an Array of ints 
+
+pageid	|	adid_list			becomes=>	pageid	|	adid
+
+1		|	[1,2]						1		|	1
+
+​										1		|	2	
+
+
+
+#### HIVE COMMAND LINE
 
 ```sql
 DESCRIBE table_name; -- see the column names of the table

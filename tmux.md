@@ -1,21 +1,40 @@
-# Tmux
+#  Tmux
 
-tmux is a terminal multiplexer that keeps your sesison running even when your computer loses its connection to the devserver.
+tmux is a terminal multiplexer that keeps your session running even when your computer loses its connection to the devserver.
 
-## Basics
+You can have multiple **sessions** that can hold multiple **windows** 
 
-- new						=>`tmux` - new
-- acces previous			=> `tmux attach`
+Can do multi-screens of tmux and like ide stuff or something idk.... 
 
-### In tmux
+## Sessions
+
+| tmux attach          | access previous session                      |
+| -------------------- | -------------------------------------------- |
+| tmux                 | new session                                  |
+| `tmux ls`            | list all sessions                            |
+| `tmux attach -t [0]` | access specific session given number from ls |
+| `exit`               | exit current session                         |
+
+## Windows
 
 `Ctrl-b` base command 
 
-c  create window
-w  list windows
-n  next window
-p  previous window
-f  find window
-,  name window
-&  kill window
++c  create window
++w  list windows
++n  next window
++p  previous window
++f  find window
++,  name window
++&  kill window
+
+## Panes Within a Window
+
+`Ctrl-b` base command 
+
+| %    | horizontal split  |
+| ---- | ----------------- |
+| ""   | vertical split    |
+| o    | swap panes        |
+| q    | show pane numbers |
+| x    | kill pane         |
 

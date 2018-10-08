@@ -33,6 +33,7 @@ with open('workfile', 'r') as f:
 ```
 
 ## Pickle
+
 ```python
 with open(r"categorizationModel.pickle", "wb") as output_file:
     cPickle.dump(rf, output_file)

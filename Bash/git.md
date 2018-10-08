@@ -36,7 +36,7 @@ git stash list
 
 ## Rebase
 
-- only rebase commits you have locally 
+- try to only rebase commits you have locally 
 - could also rebase all your branch commits to occur at end of current master to avoid a merge commit
 
 `git rebase master`, rebases current branch to master one 
@@ -65,7 +65,7 @@ git stash list
 
 `git clean -fd` //remove everything that isnt ignored by .gitignore
 `git clean -fdx` //remove all untracked files including those ignored by .gitignore
-`git clean -fdX` //only remove files ignored by git
+`git clean -fdX` //only remove files ignored by .gitignore
 
 ## Git grep
 
