@@ -14,3 +14,12 @@ fs.readFile(filePath, (err, content) => {
 });
 ```
 
+## Utils
+
+Turn a callback style ft with (err, content) into promise returning content
+
+```js
+const read = util.promisify(fs.readFile);
+
+const data = await read('test.txt');
+```

@@ -61,11 +61,22 @@ then
 fi
 ```
 
-`man test` for a shit ton more 
+`man test` for a shit ton more about `[ ]`
 
 ## Evaluate In Place
 
 Two ways: 
+=======
+## Print
+
+printf has more standard behavior doing stuff like newlines
+
+```bash
+echo "Hello"
+printf "Hello\n"
+```
+
+## Evaluate
 
 ```bash
 $( echo $1 ) 
