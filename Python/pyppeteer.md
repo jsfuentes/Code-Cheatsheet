@@ -25,7 +25,7 @@ asyncio.ensure_future(main())
 - .goto('example.com')
 
 - .screenshot({path: 'filename.png'})
-- .type('#searchbox input', 'Headless Chrome');
+- .type('#searchbox input', 'Headless Chrome', {delay: 100});
 - .waitForSelector(*[someSelector]*)
 - .click(*[someSelector]*)
 

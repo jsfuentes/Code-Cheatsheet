@@ -1,5 +1,7 @@
 # Classes
 
+Syntacical sugar actually just doing object prototyping
+
 ```js
 class Rectangle {
   constructor(height, width) {
@@ -28,4 +30,17 @@ const square = new Rectangle(10, 10);
 console.log(square.area); // 100
 ```
 
-Can have 
+## Inheritance
+
+```js
+class Teacher extends Person {
+  constructor(first, last, age, gender, interests, subject, grade) {
+    super(first, last, age, gender, interests);
+
+    // subject and grade are specific to Teacher
+    this.subject = subject;
+    this.grade = grade;
+  }
+}
+```
+

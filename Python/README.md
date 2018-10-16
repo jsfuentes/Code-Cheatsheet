@@ -42,7 +42,7 @@ he `*args` will give you all function parameters as a tuple
 
 ### Lambdas
 
-lambda x, y: x[1] + y
+`lambda x, y: x[1] + y`
 
 ## Input
 

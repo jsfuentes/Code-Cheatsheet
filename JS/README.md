@@ -3,8 +3,7 @@
 ## Control
 
 ```js
-var i;
-for (i = 0; i < cars.length; i++) { 
+for (let i = 0; i < cars.length; i++) { 
     text += cars[i] + "<br>";
 }
 
@@ -20,14 +19,6 @@ switch(expression) {
 }
 ```
 
-## Objects
-Everything is an object `{}`, dictionaries are objects.
-To iterate over object:
-```js
-for (var pId in players) {
-   if (players.hasOwnProperty(pId)) {
-```
-
 ## Errors
 
 ```javascript
@@ -41,21 +32,27 @@ catch(err) {
 ```
 
 ```js
-
+throw new Error("This is an error");
 ```
+
+*Can throw anything actually but don't*
 
 ## Date
 
-Really untested
+Can get and set different aspects and convert to different types
+
 ```js
-if(era === "PM") {
-  if(hour !== 12){
-    hour = parseInt(hour) + 12;
-  }
-} else if (era === "AM") {
-  if(hour === 12) {
-    hour = parseInt(hour) = 0;
-  }
+var x = new Date(); //get current date
+x.toDateString() //=> "Fri Oct 05 2018"
+```
+
+## Functions
+
+Can have default parameters, no named parameters when calling though
+
+```js
+function scrape(company, secrets, headless=false, toScrape=["All"]) {
+	//...
 }
 ```
 

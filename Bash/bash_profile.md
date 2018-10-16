@@ -42,6 +42,8 @@ alias gb='git branch'
 alias gd='git diff'
 alias gss='git show --stat --oneline'
 
+alias pyrun='pipenv run python'
+
 LSCOLORS='GxFxcxdxxxegedaxagacad'
 export LSCOLORS
 

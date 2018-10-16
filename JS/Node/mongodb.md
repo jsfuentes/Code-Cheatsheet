@@ -6,8 +6,6 @@ Use mongoose if you want ORM
 const MongoClient = require('mongodb').MongoClient,
 ```
 
-
-
 ### Basic
 
 ```js
@@ -29,5 +27,15 @@ find returns a cursor, if you want to load data can do toArray()
 
 ```js
 await dbData.find({"company": company}).toArray();
+```
+
+## Iterate over Collection
+
+```js
+let companyDoc = await dbData.find().toArray();
+companyDoc.forEach((d) => {
+    console.log(d['company']);
+    dbSanitizedData.
+});
 ```
 

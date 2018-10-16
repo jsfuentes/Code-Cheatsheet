@@ -31,6 +31,8 @@ Beware array loops with async stuff
 
 ```javascript
 var removedItem = fruits.splice(pos, 1); // this is how to remove a single item at pos
+
+fruits.splice(fruits.indexOf("banana"), 1);
 ```
 
 ### copy
