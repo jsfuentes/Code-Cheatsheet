@@ -1,6 +1,6 @@
 # Workspace
 
-Needed to have multi-files
+Needed to have multi-files and install libs
 
 ## Setup
 
@@ -24,7 +24,11 @@ Startup file has `package main` at top and a `func main`
 
 Now `go install` in the [package name] folder will create stuff in bin
 
+`go install [package name]` will work anywhere and install package
+
 ## Packages
+
+All files in a package must use the same *name*
 
 under src>stringutil>stringutil.go
 

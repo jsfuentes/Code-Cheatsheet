@@ -3,6 +3,7 @@
 Create
 
 ```go
+var states map[string]string
 states := make(map[string][string])
 ```
 
@@ -12,6 +13,8 @@ Get and set
 states["CA"] = "California"
 california := states["CA"]
 ```
+
+- if the key does not exist, then the zero of the value type is returned(0 for int, "" for string)
 
 Delete
 

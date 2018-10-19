@@ -16,6 +16,7 @@ for root, dirs, files in os.walk(PATH_TO_NOTES):
 ```python
 #f is file object
  f = open('workfile', 'w')
+ f.write("Now the file has one more line!")
  f.close()
 ```
 

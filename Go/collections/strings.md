@@ -1,5 +1,9 @@
 ## Strings
 
+`'c'` single quotes for characters
+
+`"str"` double quotes for strings
+
 strings.EqualFold(v1, v2) #incase sensitive comparison
 
 v1 == v2

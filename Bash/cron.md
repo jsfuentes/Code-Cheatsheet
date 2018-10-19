@@ -13,3 +13,7 @@ Apparently you can schedule a file to run with `cron`  command natively in bash 
 # |  |  |  |  |
   *  *  *  *  *  command to be executed
 ```
+
+If you computer is off when it was supposed to be run, doesn't run it 
+
+`anacrontab` apparently can run these jobs after the fact

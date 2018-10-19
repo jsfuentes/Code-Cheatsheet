@@ -32,6 +32,15 @@ Explicit or implicit typing
 
 *Same logical operators as C/C++)*
 
+### Declare
+
+```go
+var aInt int 
+var s string
+```
+
+Unintialized vars are given a default value(0 for int, "" for string)
+
 ### Explicit =
 
 ```go

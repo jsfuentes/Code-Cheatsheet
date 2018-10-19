@@ -2,24 +2,37 @@
 
 Chrome plugin that lets you navigate the browser with your keyboard!
 
-**? is help**	
+## Essential
 
-**f is link follow**
+| Command | What it does                          |
+| ------- | ------------------------------------- |
+| ?       | help                                  |
+| f       | open any link on page                 |
+| o       | open new url/bookmark                 |
+| j/k     | scroll down/up                        |
+| J/K     | switch tabs                           |
+| Esc     | can exit a textbox/`f` open link mode |
 
-- **j/k:** Scroll down/up
-- **h/l:** Scroll right/left
-- **gg (in succession):** Jump back to the top of a page
-- **G (note the capital):** Jump to the bottom of a page
-- **d/u:** Scroll a half page down/up
+## Nice
 
-And you have a few other utilities that work as well. You might not have use for all of these, or prefer your browser's built-in shortcuts, but I find them quite handy, and easier to fit into a reading/searching flow. Especially "yy" for quickly copying a page URL:
+| Command | Does                  |
+| ------- | --------------------- |
+| h/l     | scroll right/left     |
+| d/u     | scroll half page      |
+| O       | open in new tab       |
+| H       | Go back in history    |
+| L       | Go forward in history |
+| x       | close current tab     |
+| X       | restore closed tab    |
 
-- **J/K:** Switch tabs left/right
+## Extra
 
-- **/:** Enter "find" mode (type in search terms to instantly jump to them)
+| Command | Do                                                           |
+| ------- | ------------------------------------------------------------ |
+| h/l     | scroll right/left                                            |
+| gg      | jump to top                                                  |
+| G       | jump to bottom                                               |
+| /       | find mode(type in search terms)                              |
+| n/N     | jump forward/back between occurrences of search terms(after /) |
+| yy      | copy current page url to clipboard                           |
 
-- **n/N:** Jump forward/back between occurrences of search term (after pressing "/")
-
-- **yy:** Copy the current page's URL to your clipboard.
-
-  Use **esc** to exit a text box or not follow a link after f 

@@ -38,8 +38,6 @@ awk '{print $2}' logs.txt | awk 'BEGIN{FS=":"}{print $1}' | sed 's/\[//'
 awk -v FS="(<a>|</a>)" '{print $2}'
 ```
 
-
-
 ## If
 
 ```bash

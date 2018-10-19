@@ -4,6 +4,10 @@ Stdout/in
 
 ## Output
 
+`Println` - print with newline
+
+`Print` - print w/out newline 
+
 ```go
 package main
 import "fmt"

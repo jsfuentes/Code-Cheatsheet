@@ -19,7 +19,7 @@ Playground: [play.golang.org](play.goland.org)
 
 `go build [file]`
 
-`godoc [package]` ie. `godoc fmt`
+`godoc [package]` ie. `godoc fmt` gives you all exported functions and comments
 
 `gofmt -w [file]`  To override and format file
 
