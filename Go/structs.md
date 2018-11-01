@@ -16,6 +16,7 @@ type Cat struct {
 
 ```go
 poodle := Dog{"Poodle", 34}
+poodle := Dog{Breed: "Poodle", Weight: 34}
 jaguar := Cat{}
 ```
 

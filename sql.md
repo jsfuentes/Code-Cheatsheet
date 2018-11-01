@@ -36,6 +36,12 @@ FROM Customers AS c, Orders AS o
 WHERE c.CustomerName="Around the Horn";
 ```
 
+## WHERE
+
+```sql
+WHERE category_id IS NOT NULL
+```
+
 ## CREATE
 
 ```sql

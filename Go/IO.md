@@ -68,3 +68,11 @@ func main() {
 }
 ```
 
+## Advanced Formatin
+
+| Modifer | Description                     |
+| ------- | ------------------------------- |
+| %06d    | Print with width 6, pad with 0s |
+| %s      | Print as string                 |
+| %T      | Type                            |
+

@@ -18,6 +18,14 @@ for (var pId in players) {
        }
 ```
 
+## Combine Objects
+
+```javascript
+Object.assign(x, y, z) //objects on the right override those to the left
+```
+
+
+
 ## Old Classes
 
 ```js

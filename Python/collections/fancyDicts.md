@@ -24,5 +24,6 @@ Counts elements
 ```python
 from collections import Counter
 c = Counter("hell") #Counter({'l': 2, 'h': 1, 'e': 1})
+c.most_common(10) # 10 most common
 ```
 

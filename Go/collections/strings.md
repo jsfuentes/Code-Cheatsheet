@@ -1,14 +1,40 @@
 ## Strings
 
+```go
+import (
+    "strings"
+	"strconv"
+)
+```
+
 `'c'` single quotes for characters
 
 `"str"` double quotes for strings
 
-strings.EqualFold(v1, v2) #incase sensitive comparison
+#### Equality
+
+strings.EqualFold(v1, v2) #case insensitive comparison
 
 v1 == v2
 
+## String Functions
+
+| Function                                | Example                       |
+| --------------------------------------- | ----------------------------- |
+| strings.Contains([toInspect], [substr]) | strings.Contains("aba", "ab") |
+| strings.Split(toSplit, split)           | strings.Split("12.03", ":")   |
+|                                         |                               |
+
 strings.Contains(toInspect, substr)
+
+strings.Split(toSplit, split)
+
+## Conversions
+
+```go
+i, err := strconv.Atoi("-42")
+s := strconv.Itoa(-42)
+```
 
 ## More Complex Objs
 

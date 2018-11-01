@@ -6,11 +6,36 @@ Parsing data from a response
 import (
 	"encoding/json"
     "strings"
-    "math/big"
+    "fmt"
 )
 ```
 
-### Make Your Struct
+### Parsing Into Struct
+
+```go
+type App struct {
+    Id string `json:"id"`
+    Title string `json:"title"`
+}
+
+data := []byte(`
+    {
+        "id": "k34rAT4",
+        "title": "My Awesome App"
+    }
+`)
+
+var app App
+err := json.Unmarshal(data, &app)
+```
+
+#### Struct => Json
+
+```django
+b, err := json.Marshal(m)
+```
+
+### Simpler Parsing Into Struct
 
 will need to be same as JSON keys and vals(not case sensitive)
 
@@ -18,6 +43,12 @@ will need to be same as JSON keys and vals(not case sensitive)
 type Tour struct {
     Name, Price string 
 }
+```
+
+### Printing Byte Array
+
+```go
+fmt.print("%s", byt)
 ```
 
 ### Decoder 

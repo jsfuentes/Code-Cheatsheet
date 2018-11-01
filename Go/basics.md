@@ -60,6 +60,14 @@ i1, i2, i3 := 12, 45, 241
 
 **Future assignment use = **
 
+#### Casting
+
+```go
+i := 42
+f := float64(i)
+u := uint(f)
+```
+
 ## Ptrs
 
 Basically C ptrs

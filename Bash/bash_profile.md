@@ -1,14 +1,14 @@
 # Bash_Profile
 
-`.bash_profile` is run on start up of terminal
+`.bash_profile` is run on start up of login terminal
 
-`.bash_rc` is run on terminal startup
+`.bashrc` is run on terminal nonlogin startup
 
 http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
 
 tldr: 
 
-add 
+equivalent on mac, but add 
 
 ```
 if [ -f ~/.bashrc ]; then
@@ -16,15 +16,13 @@ if [ -f ~/.bashrc ]; then
 fi
 ```
 
-to bashprofile and then use .bash_rc and don't worry about it
+to bashprofile and then use .bashrc and don't worry about it
 
 ## Basics
 
 - In ~
 - Make your own commands with `alias ll='ls -lAG'`
 - Load in current shell with `source ~/.bash_profile`
-
-
 
 ## My Bash_Profile
 

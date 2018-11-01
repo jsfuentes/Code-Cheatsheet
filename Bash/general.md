@@ -2,6 +2,8 @@
 
 recursively descends the directory tree for each path listed, evaluating an expression
 
+*wont follow soft links* 
+
 ### Find file with word in them
 
 ```bash

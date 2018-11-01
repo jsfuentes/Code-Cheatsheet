@@ -4,7 +4,13 @@ Create
 
 ```go
 var states map[string]string
-states := make(map[string][string])
+states := make(map[string]string)
+commits := map[string]int{
+    "rsc": 3711,
+    "r":   2138,
+    "gri": 1908,
+    "adg": 912,
+}
 ```
 
 Get and set
@@ -12,9 +18,10 @@ Get and set
 ```go
 states["CA"] = "California"
 california := states["CA"]
+cal, ok := s["CCCC"] //opt ok 
 ```
 
-- if the key does not exist, then the zero of the value type is returned(0 for int, "" for string)
+- if the key does not exist, then the zero of the value type is returned(0 for int, "" for string) and ok is false
 
 Delete
 

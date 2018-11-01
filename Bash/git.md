@@ -1,6 +1,6 @@
 # Git
 
-Git is literally just a directory, rm -rf .git to delete the git project
+Git stores everything in a directory, `rm -rf .git` to delete the git project
 
 `git --help command`
 
