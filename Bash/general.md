@@ -39,3 +39,17 @@ grep "some string"
 
 reads from the standard input
 ​     and executes utility
+
+## Pipe to File
+
+cat file.txt > output.txt #override
+
+cat file.txt >> output.txt #append
+
+## Top
+
+`top` see mem usage 
+
+`tail ` get end of file, `tail -f` to open buffer and show end of file updating
+
+`head` get start of file

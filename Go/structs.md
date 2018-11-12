@@ -48,33 +48,3 @@ func (d *Dog) doubleDog() {
 }
 ```
 
-## Interfaces
-
-No keyword like extends, if you implement all the methods then you can be that type
-
-- Everything implents at least one interface, interface() is empty interface that obv everything is
-
-### 
-
-```go
-type Animal interface {
-    Speak() string
-}
-```
-
-### Usage
-
-```go
-type Dog struct {
-    //...
-}
-
-func (d Dog) Speak() string {
-    return "Woof"
-}
-
-func main() {
-    poodle:= Animal(Dog()) //cast as Animal
-}
-```
-

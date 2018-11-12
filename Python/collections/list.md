@@ -14,8 +14,9 @@ l.pop() #remove and return
 
 ```python
 for v in l:
+for reverseV in reversed(l): #reversed returns iterator  
 for i in range(len(l)):
-for reverseI in range(len(l)-1, -1, -1):
+for reverseI in reversed(range(len(l))): 
 for i, v in enumerate(l):
 ```
 
@@ -23,6 +24,7 @@ for i, v in enumerate(l):
 
 ```python
 l.reverse()
+reversed(l) #returns an iterator over 
 copyOfL = l[:]
 ```
 

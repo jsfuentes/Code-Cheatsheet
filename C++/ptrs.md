@@ -1,5 +1,7 @@
 # Ptrs
 
+### Advanced
+
 Smart ptrs are meant to solve many ptr problems like leaky mem and dangling ptrs by introducing the concept of ownership
 
 Unique_ptrs are ptrs that can't be copied and delete the underlying mem when the ptr itself is deleted
