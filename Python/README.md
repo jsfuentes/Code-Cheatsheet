@@ -1,5 +1,19 @@
 # Python
 
+## Running
+
+```bash
+python [-bBdEhiIOqsSuvVWx?] [-c command | -m module-name | script | - ] [args]
+```
+
+## Access Args
+
+```python
+import sys
+
+sys.argv #the list of command-line arguments with [0] being the file name
+```
+
 ## Only function scoping
 So
 
@@ -28,6 +42,12 @@ round(5.0000, 3) #3 is number of decimal points
 
 ## '' vs ""
 They are the same
+
+### == vs is
+
+` is` checks they point to the same thing i.e [1,2,3] is not [1,2,3] but [1,2,3] == [1,2,3]
+
+Use `is None` because a class could define == to be different and is is faster
 
 ## Checking Packages
 dir(nltk) - lists all functions in package

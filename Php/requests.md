@@ -8,7 +8,7 @@
 - `POST` will link to page and pass in request body
 
 ### Superglobals
-- Variables $\_GET $\_POST, $\_REQUEST, $\_COOKIE
+- Variables \$\_GET \$\_POST, \$\_REQUEST, $\_COOKIE
 - Request is a combo superglobal and gets get and post
 - Test with `var_dump($_GET)`
 - These are associative arrays so just use ['key'] to access

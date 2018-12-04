@@ -40,6 +40,7 @@ WHERE c.CustomerName="Around the Horn";
 
 ```sql
 WHERE category_id IS NOT NULL
+AND ds = '2018-01-10'
 ```
 
 ## CREATE
@@ -93,16 +94,21 @@ SELECT player_name,
 
 Executed in order as shown 
 
+##### DELETE
+
+Permanently deletion, be careeefullll
+
+```sql
+DROP TABLE Shippers;
+```
+
 ### ADVANCED HIVE?
 
 95% SQL syntax, but can query Hadoop turning HiveQL into Map Reduce Jobs 
 
 #### Explode
 
-```sql
-SELECT pageid, adid
-FROM pageAds LATERAL VIEW explode(adid_list) adTable AS adid;
-```
+Make a new row for each list entry
 
 adid_list is an Array of ints 
 
@@ -112,7 +118,10 @@ pageid	|	adid_list			becomes=>	pageid	|	adid
 
 ​										1		|	2	
 
-
+```sql
+SELECT pageid, adid
+FROM pageAds LATERAL VIEW explode(adid_list) adTable AS adid;
+```
 
 #### HIVE COMMAND LINE
 

@@ -18,3 +18,9 @@ f1=open("test.txt", 'w')
 json.dump(someJson, f1)
 ```
 
+## Loads
+
+json.loads(str)
+
+json.load(file)
+

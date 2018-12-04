@@ -28,14 +28,14 @@ Can use base array stuff
 
 #### Initialization
 
-**Make** ([type], [initial size], [capacity or inital size]): allocate & initialize
+**Make** ([type], [initial size], [capacity or inital size]): allocate & initialize to null value for the type(int=0)
 
 **New**: allocates but !initialize mem, if you try to set val you fail 
 
 W/out number its a slice
 
 - `var x []float64` //length 0
-- `numbers := make([]int, 5, 5)`
+- `numbers := make([]int, 5, 5)` 
 - `var colors = []string{"Red", "Green", "Blue"} `
 
 #### Usage

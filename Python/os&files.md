@@ -23,10 +23,22 @@ for root, dirs, files in os.walk(PATH_TO_NOTES):
 Modes
 - `'r'` read; DEFAULT
 - `'w'` writing(erase existing file)
+- `'w+'` writing(create new file if it doesn't exist)
 - `'a'` appending to the end
+- `'a+'` appending to the end(create new file if needed)
 - `'r+'` both reading and writing
 
+## Reading Data
+
+```python
+for line in f:
+    print(line)
+    
+f.readline()#leaves \n and '' when done
+```
+
 ## With
+
 Automatically close for ya
 ```python
 with open('workfile', 'r') as f:

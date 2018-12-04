@@ -46,10 +46,13 @@ cat file.txt > output.txt #override
 
 cat file.txt >> output.txt #append
 
-## Top
+## Understand Machine
 
 `top` see mem usage 
+
+`du -sh` to see size of dir
 
 `tail ` get end of file, `tail -f` to open buffer and show end of file updating
 
 `head` get start of file
+

@@ -2,9 +2,7 @@
 
 No keyword like extends, if you implement all the methods then you can be that type
 
-- Everything implents at least one interface, interface() is empty interface that obv everything is
-
-###  
+So everything is the empty `interface{}`
 
 ```go
 type Animal interface {
@@ -31,7 +29,7 @@ func main() {
 ## The empty interface
 
 - Specifies no methods
-- May hold values of any type like fmt.Prin
+- May hold values of any type like fmt.Println
 
 ```
 interface{}
