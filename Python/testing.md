@@ -24,8 +24,6 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-
-
 ## Pre&Post Work
 ```python
 Class widget:

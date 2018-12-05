@@ -27,7 +27,7 @@ Beware array loops with async stuff
 
 -`.slice` for subarrs 
 
-`.splice([start index], [number beyond start]) for removing&saving section
+`.splice([start index], [number beyond start])` for removing&saving section
 
 ```javascript
 var removedItem = fruits.splice(pos, 1); // this is how to remove a single item at pos

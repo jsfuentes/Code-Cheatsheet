@@ -37,7 +37,7 @@ git stash list
 ## Rebase
 
 - try to only rebase commits you have locally 
-- could also rebase all your branch commits to occur at end of current master to avoid a merge commit
+- could also rebase all your branch commits to occur at end of current master to **avoid a merge commit**
 
 `git rebase master`, rebases current branch to master one 
 

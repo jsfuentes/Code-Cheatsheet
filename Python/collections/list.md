@@ -10,6 +10,8 @@ del l[0]
 l.pop() #remove and return
 ```
 
+*Unhashable so can't be keys/in set, but tuples can be...*
+
 ## Iterate
 
 ```python

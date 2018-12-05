@@ -5,7 +5,7 @@ It’s a set of operations which can be registered on an application allowing:
 - Split up app
 
 ## Creation
-```py
+```python
 simple_page = Blueprint('simple_page', __name__,
                         template_folder='templates')
 
@@ -15,7 +15,7 @@ def index():
 ```
 
 ## Registering
-```py
+```python
 from yourapplication.simple_page import simple_page
 
 app = Flask(__name__)

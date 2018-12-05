@@ -56,6 +56,22 @@ function scrape(company, secrets, headless=false, toScrape=["All"]) {
 }
 ```
 
+## Equality
+
+`===` is strict equality with type and strict
+
+```javascript
+77 === '77'
+// false (Number v. String)
+```
+
+`==`  uses type coercion 
+
+```javascript
+77 == '77'
+// true
+```
+
 ## Other
 
 ```javascript

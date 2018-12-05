@@ -1,5 +1,9 @@
 # Pymongo
 
+Python package to manage interaction with mongoldb
+
+Three levels: client, db, and collection
+
 ```python
 from pymongo import MongoClient
 client = MongoClient('mongodb://localhost:27017/')

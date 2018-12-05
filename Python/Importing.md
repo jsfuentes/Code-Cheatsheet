@@ -10,20 +10,41 @@ from user import User
 from dir import Dir
 ```
 
+#### Importing from Subdirectory
+
 The same holds true if the files are in a subdirectory - put an __init__.py in the subdirectory as well.
 
+```
 bin/
     main.py
     classes/
         user.py
         dir.py
-So if the directory was named "classes", then you'd do this:
+```
+
+
+main.py
+
 ```python
 from classes.user import User
 from classes.dir import Dir
 ```
 
-## Relative Path Importing
+#### Importing from Sister Directory
+
+```python
+bin/
+    mary/
+        walk.py
+	kate/
+		run.py
+```
+
+Yea.., you need to add the root directory to `PYTHON_PATH` 
+
+could also pip install -e 
+
+## File IO In Imported Files
 
 Are you trying to open a file in a package that you then import? Well that means you are getting an error because the path will be different if you run the script and import the script
 

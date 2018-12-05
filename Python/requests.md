@@ -12,15 +12,50 @@ r = requests.head(
 r = requests.options(
 ```
 
+#### Setting Headers
+
+```python
+headers = {'user-agent': 'my-app/0.0.1'}
+r = requests.get(url, headers=headers)
+```
+
+#### Using URL Parametes
+
 ```python
 payload = {'key1': 'value1', 'key2': 'value2'}
 r = requests.get('http://httpbin.org/get', params=payload)
-#You can see that the URL has been correctly encoded by printing the URL:
+
 print(r.url)
 http://httpbin.org/get?key2=value2&key1=value1
 ```
 
+#### Post Payloads
+
+Form-encoded
+
+```python
+payload = {'key1': 'value1', 'key2': 'value2'}
+
+r = requests.post("https://httpbin.org/post", data=payload) #form-encoded
+r = requests.post(url, data=json.dumps(payload))#raw string
+```
+
+#### Cookies
+
+```python
+cookies = {"hi": 'there'}
+r = requests.get(url, cookies=cookies)
+```
+
 ### Responses
+
+```python
+r.text #u'[{"repository":{"open_issues":0,"url":"https://github.com/...
+r.encoding #'utf-8'
+r.status_code == requests.codes.ok
+r.headers
+```
+
 Builtin json decoder `r.json()`
 To get bit representation(turn into Image) `i = Image.open(BytesIO(r.content))`
 

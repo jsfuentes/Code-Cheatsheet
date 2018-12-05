@@ -18,7 +18,7 @@ div > div {
 
 ## Components
 
-1. Creation - displa
+1. Creation - display
 2. Direction: flex-flow(row/column & wrapping) (flex-direction, flex-wrap)
 3. Alignment: justify-content, align-items, align-self, align-content
 4. Ordering: order

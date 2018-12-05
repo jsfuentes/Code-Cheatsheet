@@ -12,7 +12,14 @@ for root, dirs, files in os.walk(PATH_TO_NOTES):
   for file in files:
     curFile = os.path.join(root, file)
 ```
+### Get Environment
+
+```python
+os.environ.get('SECRET_KEY')
+```
+
 # Files
+
 ```python
 #f is file object
  f = open('workfile', 'w')

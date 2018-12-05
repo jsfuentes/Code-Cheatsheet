@@ -13,9 +13,15 @@ var person1 = new Object();
 for (var pId in players) {
    if (players.hasOwnProperty(pId)) {
        
-       for (let key in Object.keys(players)) {
-           ...
-       }
+for (..... ) {
+	Object.keys(players)[0]
+}
+```
+
+## Check in
+
+```javascript
+'x' in {'x': 1} //true
 ```
 
 ## Combine Objects
