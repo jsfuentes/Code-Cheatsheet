@@ -20,6 +20,8 @@ os.environ.get('SECRET_KEY')
 
 # Files
 
+Underlying open is from `io` library
+
 ```python
 #f is file object
  f = open('workfile', 'w')

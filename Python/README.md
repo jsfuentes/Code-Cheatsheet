@@ -75,7 +75,7 @@ he `*args` will give you all function parameters as a tuple
 ```python
 try:
     x = int(input("Please enter a number: "))
-    break
+    raise ValueError("Hello")
 except ValueError:
     print("Oops!  That was no valid number.  Try again...")
 ```

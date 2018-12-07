@@ -1,5 +1,7 @@
 # Datetime
 
+Higher precision then time maybe
+
 ## GETTING NOW
 ```python
 import datetime
