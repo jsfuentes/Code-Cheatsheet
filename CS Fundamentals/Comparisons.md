@@ -18,30 +18,6 @@ Yarn:
 - Uses package.json, so super super easy to switch; can use both at once
 - Emojis
 
-# SQL VS NoSQL
-
-SQL
-
-- battle-tested and refined
-- better consistency/ACID(Atomic Consisent Isolation Durability)
-
-NoSQL
-
-- easier to use
-
-- more scalable(not a real problem until massive)
-
-- faster joins
-
-- BASE(Basically Available Soft-state Eventual Consistency) trades C and I for availability, graceful degradation, and performance
-
-
-### Node vs. JS
-
-Node takes the JS complier in chrome browser and adds some server logic and io stuff so you can use it on the backend. So `node filename` lets you run arbitrary js logic where console.log is std.out
-
-JS is a language
-
 ### Vi vs emacs
 
 Emacs 

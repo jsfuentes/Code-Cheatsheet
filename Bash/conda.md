@@ -1,4 +1,4 @@
-# Conda
+# emaConda
 ## Creation:
 ```bash
 conda create --name myenv [python=verisonnumber] [package names]
@@ -38,10 +38,11 @@ conda env export > environment.yml
 ### More:
 ```bash
 conda env --help
-Conda create --help
+conda create --help
 ```
 
 ### And Jupyter notebook
 ```bash
 conda install ipykernel
 ```
+

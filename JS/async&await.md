@@ -1,6 +1,6 @@
 # Async and Await
 
-Builds off of promises and very similar to python's asyncio
+ES6, builds off of promises and very similar to python's asyncio
 
 ```javascript
 async function catFetch(userId) {
@@ -28,5 +28,15 @@ async function ... {
 }
 ```
 
+## Async Ft == Promise
 
+```javascript
+async function main () {
+    //....
+}
+
+main()
+  .then(() => console.log("COMPLETE"))
+  .catch(console.error);
+```
 

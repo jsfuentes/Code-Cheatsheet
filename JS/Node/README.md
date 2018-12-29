@@ -1,6 +1,15 @@
 # Node
 
-JS server yay
+Node takes the JS complier in chrome browser and adds some server logic and io stuff so you can use it on the backend. So `node filename` lets you run arbitrary js logic where console.log is std.out
+
+JS is a language
+
+### Assert
+
+```js
+var assert = require('assert');
+assert(5 > 7);
+```
 
 ## Using middleware
 `app.use(bodyParser.json());`
@@ -27,3 +36,12 @@ app.listen(8000, function () {
 ```
 
 Can run with `node [filename]`
+
+# Package-lock.json
+
+You SHOULD commit your package-lock to source control
+
+Package-lock.json ensures the version of modules used is the same
+
+i.e npm install express would change with updates over time, but not anymore
+

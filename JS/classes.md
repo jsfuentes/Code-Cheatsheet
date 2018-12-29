@@ -1,6 +1,6 @@
 # Classes
 
-Syntacical sugar actually just doing object prototyping
+ES6, Syntacical sugar actually just doing object prototyping
 
 ```js
 class Rectangle {
@@ -44,3 +44,8 @@ class Teacher extends Person {
 }
 ```
 
+## Interfaces
+
+Hhahahha, did you think this was a good language?!? 
+
+Just use class 

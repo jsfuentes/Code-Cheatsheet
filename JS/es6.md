@@ -32,6 +32,15 @@ var mergedObj = { ...obj1, ...obj2 };
 // Object { foo: "baz", x: 42, y: 13 }
 ```
 
+## Destructuring
+
+```javascript
+var [first, second, third] = someArray;
+const [head, ...tail] = someArray;
+
+const {name, color} = animalObj;
+```
+
 ## Computed Property Names
 
 ```js
@@ -67,5 +76,11 @@ Preserves this function
 e => {
 
 }
+```
+
+## Template Literals
+
+```javascript
+bio = `${name} is ${emotion}`
 ```
 

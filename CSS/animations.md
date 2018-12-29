@@ -1,4 +1,4 @@
-# \Animations
+# Animations
 
 Instead of one transition with transitions, can have up to an infinite number of iterations, grandular control
 

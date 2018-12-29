@@ -6,8 +6,8 @@ Similar to python2 except you don't need an init.py
 #### Importing from Same Dir
 Make an empty file called __init__.py in the same directory as the files. That will signify to Python that it's "ok to import from this directory". Then just:
 ```py
-from user import User
-from dir import Dir
+from .user import User
+from .dir import Dir
 ```
 
 #### Importing from Subdirectory

@@ -25,7 +25,7 @@ Beware array loops with async stuff
 
 ### Subarr
 
--`.slice` for subarrs 
+-`.slice` for subarrs (start, end not included)
 
 `.splice([start index], [number beyond start])` for removing&saving section
 

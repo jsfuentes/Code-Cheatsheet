@@ -29,3 +29,8 @@ still string, but treats backslashes as literals instead of escape characters
 '1'.isdigit()
 ```
 
+## Get lists
+
+```
+string.ascii_uppercase
+```

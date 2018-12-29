@@ -4,6 +4,10 @@
 
 `ngrok http [THE PORT YOU WANT]`
 
+## EC2
+
+**never do this**: `sudo pipenv run flask run -h 0.0.0.0 -p 80` 
+
 ## Gunicorn
 
 WSGI(python web server) recommended version

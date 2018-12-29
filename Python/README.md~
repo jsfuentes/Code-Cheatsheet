@@ -78,6 +78,7 @@ Use `is None` because a class could define == to be different and is is faster
 - `raw_input("Enter Your Name: ")` takes exactly what user typed 
 - PYTHON 3: `input` is `raw_input`
 
+<<<<<<< HEAD
 ## Exceptions
 
 ```python
@@ -87,10 +88,8 @@ try:
 except ValueError:
     print("Oops!  That was no valid number.  Try again...")
 ```
-
-## Other
-
+=======
 ```py
 value_when_true if condition else value_when_false
 ```
-
+>>>>>>> Reorg with packages folder,  AWS, and some JS

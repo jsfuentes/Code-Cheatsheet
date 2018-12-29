@@ -72,9 +72,3 @@ function scrape(company, secrets, headless=false, toScrape=["All"]) {
 // true
 ```
 
-## Other
-
-```javascript
-console.log( { x }); //{ } prints it as a dict so you get the variable name
-```
-
