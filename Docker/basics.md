@@ -23,7 +23,9 @@ A **container** is an Linux instance launched by running an image. An **image** 
 
 ## Build and Run 
 
-1) Build Image
+Create Dockerfile and .dockerignore
+
+1) Build Image with Dockerfile
 
 `docker build -t hi .` #-t names image
 

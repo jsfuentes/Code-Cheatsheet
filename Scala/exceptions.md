@@ -7,8 +7,6 @@ throw Exc
 
 ```
 
-
-
 ## Try Catch
 
 ```scala
@@ -21,4 +19,3 @@ try {
   remoteCalculatorService.close()
 }
 ```
-

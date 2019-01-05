@@ -43,7 +43,8 @@ Can get and set different aspects and convert to different types
 
 ```js
 var x = new Date(); //get current date
-x.toDateString() //=> "Fri Oct 05 2018"
+x.toDateString(); //=> "Fri Oct 05 2018"
+x.toISOString(); //=> "2018-12-31T03:21:15.934Z"
 ```
 
 ## Functions

@@ -8,10 +8,10 @@ https://openai.gitbook.io/
 
 ### My Guidelines
 
-- Not to learn concepts, but to remember syntax and usage
+- Purpose is not to learn concepts, but to remember syntax and usage
 - README's in each folder give needed background for entire folder or basics
 - packages folders will have packages used for specific purposes, general packages often used can be left in the main folder? 
 - This isn't not meant to be everything, just things used often
 - The more often used ideas should be near the top of docs
 - Incomplete ideas will be put down
-- Precision of coding is essential 
+- Precision of information is essential 

@@ -1,8 +1,10 @@
 # Dockerfile
 
+Check out https://hub.docker.com/search/?type=image for bases 
+
 ## Dockerfile
 
-A Docker image consists of read-only layers each of which represents a Dockerfile instruction.
+A Docker image consists of read-only layers each of which represents a Dockerfile instruction
 
 ```dockerfile
 # Use an official Python runtime as a parent image
@@ -82,3 +84,13 @@ ADD test /absoluteDir/         # adds "test" to /absoluteDir/
 #### COPY
 
 Like ADD, but without urls and tar handling, should be used when you dont need ADD
+
+## Dockerignore
+
+Add things to `.dockerignore` file to prevent copying 
+
+```
+node_modules
+npm-debug.log
+```
+
