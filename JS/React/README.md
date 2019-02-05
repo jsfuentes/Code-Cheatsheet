@@ -29,8 +29,9 @@ Given design:
 
 2) Build Static version in react(no state, state for interactivity)
 
-3) Identify The Minimal (but complete) Representation Of UI State(calculate computed terms on render and remember if its passed in props then its the parent's job to change)
+3) Identify The Minimal (but complete) Representation Of UI State(calculate computed terms on render and remember if its passed in as props then its the parent's job to change it)
 
 4) Identify where state should live
 
 5) Add Inverse Data Flow, pass update fts to lower components
+

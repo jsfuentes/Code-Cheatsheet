@@ -4,6 +4,10 @@ A single layer neural network is capable of representing any function
 
 Most basix is like perception, feed forward neural network
 
+### GANS(Generative Adversarial Networks)
+
+Generator creates images and Discriminator decides whether the images are real or fake. 
+
 ## CCN(Convontional Neural Net)
 
 Use a convontial matrix/filter on images instead of using raw pixels as input

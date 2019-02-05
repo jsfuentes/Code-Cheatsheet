@@ -55,6 +55,7 @@ Tag for identification
 
 `docker tag test jjfuentes/test:part1`
 
-Docker push jjfuentes/test:part1
+`docker push jjfuentes/test:part1`
 
 Convention is reponame = username/reponame 
+

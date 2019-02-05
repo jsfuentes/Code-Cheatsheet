@@ -37,7 +37,8 @@ Make sure your server is running on port 80 and go wild
 
 Use public ip address to access in browser: 18.223.158.210
 
-##### Python3
+##### Installing Other Deps
 
 `sudo yum install python3`
 
+`sudo apt-get install tmux`

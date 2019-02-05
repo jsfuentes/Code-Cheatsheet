@@ -16,8 +16,6 @@
 
   *auto esapes values in JSX to prevent XSS*
 
-  
-
 ## Syntax
 
 - Can close empty tags with /> i.e `<img src=... />`
@@ -108,4 +106,3 @@ function WarningBanner(props) {
   );
 }
 ```
-
