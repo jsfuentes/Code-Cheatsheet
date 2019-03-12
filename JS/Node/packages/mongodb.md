@@ -11,11 +11,9 @@ const ObjectID = require('mongodb').ObjectID,
 
 ```js
 async function connectToCollection(db_uri) {
-  console.log(db_uri);
   const db = await MongoClient.connect(db_uri);
-
-  const dbo = db.db("companies");
-  return dbo.collection("data");
+  const dbo = db.db("companies"); //database
+  return dbo.collection("data"); //collection
 }
 
 const dbData = await connectToCollection(secrets['db_uri']);
@@ -31,6 +29,7 @@ await dbData.find({"company": company}).toArray();
 companyDoc.forEach((d) => {
     console.log(d['company']);
 });
+await dbData.findOne({_id: cls.id});
 ```
 
 #### Cursor

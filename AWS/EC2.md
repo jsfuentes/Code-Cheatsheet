@@ -1,4 +1,4 @@
-## EC2(Elastic Compute)
+##   EC2(Elastic Compute)
 
 ### Creation
 

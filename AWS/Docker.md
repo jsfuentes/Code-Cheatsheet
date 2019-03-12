@@ -16,3 +16,4 @@ sudo service docker start
 sudo usermod -a -G docker ec2-user
 ```
 
+Make sure to expose port 80 and then you can access it through the IP address

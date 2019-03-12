@@ -23,7 +23,20 @@ app.use('/wiki', wiki);
 #### Callback
 Must respond or call next
 
+### Post
+
+To access post data as json you need `app.use(express.json())`
+
+To access post data you need `app.use(express.urlencoded())`
+
+```javascript
+app.post('/form', (req, res) => {
+  const name = req.body.name
+})
+```
+
 ## Response
+
 - res.json()
 - res.sendFile()
 - res.send()

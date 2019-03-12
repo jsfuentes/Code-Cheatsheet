@@ -73,3 +73,12 @@ function scrape(company, secrets, headless=false, toScrape=["All"]) {
 // true
 ```
 
+## Type Conversion
+
+```js
+1.toString() //='1'
+parseInt('42', 10) //42
+parseInt('42px', 10) //42
+parseInt('10a,a22') //10
+```
+

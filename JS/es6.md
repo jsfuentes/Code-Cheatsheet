@@ -1,5 +1,13 @@
 # ES6 Specific Features
 
+## For
+
+```js
+for (variable of iterable) {
+  statement
+}
+```
+
 ## Spread
 
 expand an array to serve as args/eles for another ft 

@@ -12,6 +12,7 @@ var last = fruits[fruits.length - 1];
 - `.pop()`
 - `.shift()` - popleft returning first ale
 - `.indexOf(e)` - return index of ele or -1
+- `.sort()`
 
 ## Functional Stuff
 

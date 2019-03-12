@@ -1,5 +1,7 @@
 # Pymongo
 
+`pip install pymongo`
+
 Python package to manage interaction with mongoldb
 
 Three levels: client, db, and collection

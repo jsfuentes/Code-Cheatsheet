@@ -18,19 +18,31 @@ for (..... ) {
 }
 ```
 
-## Check in
+## General 
+
+#### Check in
 
 ```javascript
 'x' in {'x': 1} //true
 ```
 
-## Combine Objects
+#### Combine Objects
 
 ```javascript
 Object.assign(x, y, z) //objects on the right override those to the left
 ```
 
+#### Copy
 
+```js
+Object.assign({}, x)
+```
+
+#### Delete
+
+```js
+delete myObject.prop;
+```
 
 ## Old Classes
 

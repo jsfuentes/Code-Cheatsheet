@@ -12,6 +12,9 @@ assert(5 > 7);
 ```
 
 ## Using middleware
+
+Express v4 requies extra middle ware to handle POST requests
+
 `app.use(bodyParser.json());`
 
 ## Adding routes

@@ -26,5 +26,5 @@ Encryption offered, security policies, with enough encryption we can't touch you
 
 Trused Advisor Dashboard, Cost Explorer, Pricing Calculator, AWS Budgets
 
-;;;;;Create reports, budgets for thresholds, notifications 
+Create reports, budgets for thresholds, notifications 
 
