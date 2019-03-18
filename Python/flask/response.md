@@ -19,3 +19,8 @@ def hello(name=None):
 ```
 
 Default is template folder
+
+## End Early Status Code
+
+from flask import abort
+abort(404)

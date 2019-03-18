@@ -27,7 +27,7 @@
 - value is initial field value
 - id is for js/`label for`
 
-#### Input Types
+#### Input Types (text default)
 
 - type = "password"
 - type = "file"
@@ -37,6 +37,7 @@
 - type="submit"
 - type="reset"
 - type="image" //will submit, to make submit button image
+- type="number"
 
 
 #### Advanced Forms

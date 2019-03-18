@@ -13,6 +13,9 @@ Python 3 handles {} others need {0}
 '{:02d}'.format(i) #print with 2 places
 
 "My quest is {name}".format(name="jorge")             # References keyword argument 'name'
+
+# 3.6
+f"Hello, {name}. You are {age}."
 ```
 
 - Returns a single string with {} replaced

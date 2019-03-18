@@ -1,27 +1,5 @@
 ## Notable Packages
 
-### MongoEngine
-`from flask_mongoengine import MongoEngine`
-- app.config['MONGODB_DB'] = 'project1'
-- app.config['MONGODB_HOST'] = '192.168.1.35'
-- app.config['MONGODB_PORT'] = 12345
-- app.config['MONGODB_USERNAME'] = 'webapp'
-- app.config['MONGODB_PASSWORD'] = 'pwd123'
-
-
-## LoginManager
-`from flask_login import LoginManager`
-
-Make current_user available in every template
-
-```html
-{% if current_user.is_authenticated %}
-  Hi {{ current_user.name }}!
-{% endif %}
-```
-
-- [Great Docs](https://flask-login.readthedocs.io/en/latest/)
-
 ## Bootstrap
 Basically provides macros, I would just use regular bootstrap as fun as abstracting away form creation is 
 ```py

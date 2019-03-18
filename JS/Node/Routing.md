@@ -35,14 +35,6 @@ app.post('/form', (req, res) => {
 })
 ```
 
-## Response
-
-- res.json()
-- res.sendFile()
-- res.send()
-- res.redirect('/events');
-- res.render('index');
-
 ## Routes
 Can use regex
 

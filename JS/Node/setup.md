@@ -10,8 +10,6 @@ express [project name] --ejs
 - --view=ejs adds ejs engine support
 - --git adds a gitignore  
 
-
-
 ## Running
 with nodemon
 `npm install -g nodemon`

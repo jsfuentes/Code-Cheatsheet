@@ -58,6 +58,14 @@ partial modifications to a resource
 
 - Informational `1XX`
 - Successful `2XX`
+  - 200 Ok
+  - 201 Created
+  - 204 No Content
 - Redirection `3XX`
 - Client Error `4XX`
+  - 400 Bad Input
+  - 401 Unauthorizaed
+  - 402 Payment required. 
+  - 404 Not found
+  - 422 Unprocessable Entity
 - Server Error `5XX`

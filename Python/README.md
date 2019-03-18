@@ -68,6 +68,8 @@ Use `is None` because a class could define == to be different and is is faster
 
 `**kwargs` will give you all **keyword arguments** as a dictionary expect acutal args
 
+Pass in dict like `f(**dict)` to act as **kwargs
+
 ### Lambdas
 
 `lambda x, y: x[1] + y`

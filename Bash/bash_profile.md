@@ -28,34 +28,49 @@ to bashprofile and then use .bashrc and don't worry about it
 
 ```bash
 alias ngrok='~/MyTools/ngrok'
-alias note='cd ~/Documents/CodeCheatsheet'
 alias fin='find . -iname'
-alias ll='ls -lGa'
-
+alias ga='git add'
 alias gs='git status'
-alias gc='git commit'
-alias ga='git add .'
 alias gl='git log'
 alias gb='git branch'
+alias gbv='git branch -v -a'
 alias gd='git diff'
-alias gss='git show --stat --oneline'
+alias gc='git commit'
+alias gshowstat='git show --stat --oneline'
+alias ll='ls -lAG'
 
+alias note='cd ~/Documents/CodeCheatsheet'
 alias pyrun='pipenv run python'
 
 LSCOLORS='GxFxcxdxxxegedaxagacad'
 export LSCOLORS
-
 function parse_git_branch () {
-git branch 2> /dev/null | sed -e '/^*/d' -e 's/* (.*)/ (\1)/'
+git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+export -f parse_git_branch
 
-GREEN="[\033[0;32m]"
-NO_COLOUR="[\033[0m]"
-PURPLE="[\033[0;35m]"
-CYAN="[\033[0;96m]"
-SKY_BLUE="[\033[3;94m]"
-YELLOW="[\033[0;93m]"
-PS1="SKY_BLUE[ \u@\h \W/ YELLOW$(parse_git_branch)SKY_BLUE ]NO_COLOUR ~ "
+GREEN="\[\033[0;32m\]"
+NO_COLOUR="\[\033[0m\]"
+PURPLE="\[\033[0;35m\]"
+CYAN="\[\033[0;96m\]"
+SKY_BLUE="\[\033[3;94m\]"
+YELLOW="\[\033[0;93m\]"
+PS1="$SKY_BLUE[ \u@\h \W/ $YELLOW\$(parse_git_branch)$SKY_BLUE ]$NO_COLOUR ~ "
+
+# added by Anaconda2 5.0.0 installer
+export PATH="/anaconda2/bin:$PATH"
+
+#terraform
+export PATH="/Users/jfuentes/MyTools/:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Setting PATH for Python 3.7
+# The original version is saved in .bash_profile.pysave
+export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 
 export PIPENV_VENV_IN_PROJECT=1 
 
@@ -65,9 +80,12 @@ download_gitignore () {
     gitUrl=https://raw.githubusercontent.com/github/gitignore/master/"$CapName"
     echo [1/2] Fetching .gitignore for $name from $gitUrl
     curl $gitUrl > .gitignore
+    printf "\n# My Additions\n.DS_STORE\n*~*" >> .gitignore
     echo [2/2] COMPLETE!  Your new .gitignore is outputted below:
     echo $(cat .gitignore)
 }
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 ```
 

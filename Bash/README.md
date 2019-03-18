@@ -69,7 +69,7 @@ echo ${#test} 	# => 8 (b/c its length 8)
 
 ## Functions
 
-. We supply the arguments directly after the function name. Within the function they are accessible as **$1, $2, etc**. 
+We supply the arguments directly after the function name. Within the function they are accessible as **$1, $2, etc**. 
 
 ```bash
 print_something () { #create ft
@@ -87,6 +87,8 @@ print_something Mars # call ft
 print_something Jupiter
 echo The previous function has a return value of $? #$? is last return value 
 ```
+
+*Export with ` export -f myfun` so usable by subshells*
 
 #### Special Parameters
 

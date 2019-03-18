@@ -14,7 +14,17 @@ posts = db.test_collection
 post_id = posts.insert_one(post).inserted_id
 ```
 
+#### Connecting to Mongo Atlas
+
+To make up for their shitty documentation, their stupid `mongodb+srv://`... requires pymongo 3.5+ and `openssl version` must return 1.1 or more. And you must use the following extra code
+
+```python
+import ssl
+client = pymongo.MongoClient('[atlas...uri]', ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
+```
+
 ## QUERYING
+
 Returns a cursor which is iterable, use .count to get the number in the cursor for empty checking
 
 ```python

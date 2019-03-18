@@ -13,6 +13,8 @@ POST is for data to be processed
 
 ##SIMPLE GET ROUTES
 
+Default methods is just get
+
 ```python
 @app.route('/users/<userid>', methods = ['GET'])
 def api_users(userid):
@@ -53,7 +55,5 @@ def api_message():
         return "Binary message written!"
 
     else:
-        return "415 Unsupported Media Type ;)"
+        return "415 Unsupported Media Type ;)" 
 ```
-
-## 

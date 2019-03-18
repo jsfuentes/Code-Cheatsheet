@@ -16,3 +16,4 @@ def hello_world():
 Flask run finds trys to find right file to run and loads .env too 
 
 `flask run -h 0.0.0.0 -p 80`
+
