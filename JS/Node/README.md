@@ -11,19 +11,10 @@ var assert = require('assert');
 assert(5 > 7);
 ```
 
-## Using middleware
+# Express
 
-Express v4 requies extra middle ware to handle POST requests
+### Most Basic Code
 
-`app.use(bodyParser.json());`
-
-## Adding routes
-```js
-var index = require('./routes/index');
-app.use('/', index);
-```
-
-## Most Basic Code
 ```js
 const express = require('express')
 
@@ -40,11 +31,6 @@ app.listen(8000, function () {
 
 Can run with `node [filename]`
 
-# Package-lock.json
+### Overview
 
-You SHOULD commit your package-lock to source control
-
-Package-lock.json ensures the version of modules used is the same
-
-i.e npm install express would change with updates over time, but not anymore
-
+Middleware have access to request object (req), response object (res), and the next middleware ft(next). If you don't respond with res, call `next()`

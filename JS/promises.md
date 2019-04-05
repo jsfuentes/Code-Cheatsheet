@@ -20,31 +20,16 @@ promiseToCleanTheRoom.then((fromResolve) => {
 ## PROMISE ALL
 
 ```ts
-let cleanRoom = function() {
-  return new Promise(function(resolve, reject) {
-    resolve('Cleaned The Room');
-  });
-};
+var promise1 = Promise.resolve(3);
+var promise2 = 42;
+var promise3 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 100, 'foo');
+});
 
-let removeGarbage = function(message) {
-  return new Promise(function(resolve, reject) {
-    resolve(message + ' remove Garbage');
-  });
-};
-
-let winIcecream = function(message) {
-  return new Promise(function(resolve, reject) {
-    resolve( message + ' won Icecream');
-  });
-};
-
-Promise.all([cleanRoom(), removeGarbage(), winIcecream()]).then( () => {
-  console.log("all of them finished");
-})
-Promise.race([cleanRoom(), removeGarbage(), winIcecream()]).then( () => {
-  console.log("some of them finished");
-})
-
+Promise.all([promise1, promise2, promise3]).then(function(values) {
+  console.log(values);
+});
+// expected output: Array [3, 42, "foo"]
 ```
 
 ### RETURNING IN then

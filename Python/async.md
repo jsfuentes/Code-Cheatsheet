@@ -22,7 +22,7 @@ else:
 
 Well, Global Interpreter Lock aka GIL was introduced to make CPython’s memory handling easier and to allow better integrations with C (for example the extensions). The GIL is a locking mechanism that the Python interpreter runs **only one thread at a time.** Multiple process work, but are expensive. 
 
-The revolution is the *event loop*. An event loop basically waits for something to happen and then acts on the event. The event loop tracks different I/O events and switches to tasks which are ready and pauses the ones which are waiting on I/O. Thus we don’t waste time on tasks which are not ready to run right now.
+The revolution is the *event loop*. An event loop basically waits for something to happen and then acts on the event. The event loop tracks different I/O events and switches to tasks which are ready and pauses the ones which are waiting on I/O. Thus we don’t waste time on tasks which are not ready to run right now. Single threaded, but gives apperance of parallelism through waiting on I/O.
 
 ### Background
 
@@ -60,6 +60,7 @@ async def ping_local():
 
 ```python
 asyncio.get_event_loop().run_until_complete(my_ft()) #run ft is blocking
+
 ```
 
 To add something to event loop
@@ -68,7 +69,10 @@ To add something to event loop
 asyncio.ensure_future(my_ft())
 ```
 
-`loop.run_forever()` #run forever
+```python
+asyncio.run(main()) #open, run, and close event loop
+loop.run_forever() #run forever
+```
 
 ## Important Fts
 
@@ -76,8 +80,22 @@ asyncio.ensure_future(my_ft())
 await asyncio.sleep(5) #to sleep
 
 page.waitForSelector('h3 a', { timeout: 5000 }) # default timeout 30 seconds
-
 ```
+
+### Async For/With
+
+Async for 
+
+```python
+async def main():
+	g = [i async for i in mygen()]
+	f = [j async for j in mygen() if not (j // 3 % 5)]
+	return g, f
+
+g, f = asyncio.run(main())
+```
+
+Allows other coroutines to take turns inbetween loops
 
 ## Tasks
 
@@ -88,11 +106,7 @@ import asyncio
  
  
 async def my_task(seconds):
-    """
-    A task to do for a number of seconds
-    """
-    print('This task is taking {} seconds to complete'.format(
-        seconds))
+    print('This task is taking {} seconds to complete'.format(seconds))
     await asyncio.sleep(seconds)
     return 'task finished'
  

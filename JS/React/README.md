@@ -4,17 +4,6 @@
 
 `create-react-app my-app`
 
-### Simplest Example
-
-```js
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
-```
-
-react-scripts creates the root html page
-
 ## Thinking about React
 
 - Data flows down from parent to child
@@ -34,4 +23,50 @@ Given design:
 4) Identify where state should live
 
 5) Add Inverse Data Flow, pass update fts to lower components
+
+## Installation
+
+`npm i react-dom`
+
+`npm i react`
+
+Include html file with a root.js
+
+Add these script
+
+```html
+   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+   <script type="text/babel">
+   ReactDOM.render(
+       <div>Hello World</div>,
+       document.getElementById("root")
+   )
+   </script>
+```
+
+react-scripts creates the root html page
+
+## Setup With Node
+
+```bash
+mkdir fullstack_app && cd fullstack_app
+npm i -g create-react-app
+create-react-app client && cd client
+cd ..
+express backend --no-view
+cd backend && npm install
+```
+
+Change port of express server in /bin to 3001
+
+Add `  "proxy": "http://localhost:3001",` to npm start in the client 
+
+Now in the main folder fullstack_app:
+
+```bash
+npm init -y 
+npm i concurrently
+```
 

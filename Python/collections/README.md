@@ -10,3 +10,25 @@ for (f,b) in zip(foo, bar):
 ```
 
 Stops at the shorter of the two and works for an arbitrary number of iterables
+
+## Functional 
+
+Map
+
+```python
+outputs = map(function_to_apply, inputs)
+```
+
+Filter
+
+```python
+number_list = range(-5, 5)
+less_than_zero = list(filter(lambda x: x < 0, number_list))
+```
+
+Reduce
+
+```python
+from functools import reduce
+product = reduce((lambda x, y: x * y), [1, 2, 3, 4])
+```
