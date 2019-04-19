@@ -14,5 +14,5 @@ https://openai.gitbook.io/
 - This isn't not meant to be everything, just things used often
 - The more often used ideas should be near the top of docs
 - Incomplete ideas will be put down
-- Precision of information is essential 
+- Accuracy of information is essential 
 - If two folder concepts overlap, it will be in the more general, more foundational folder(still pretty vague gl) e.g Docker in AWS will be in AWS folder

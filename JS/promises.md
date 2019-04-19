@@ -1,4 +1,5 @@
 # Promises
+
 ```ts
 let promiseToClean = new Promise(function(resolve, reject) {
     let isClean = true;
@@ -15,6 +16,20 @@ promiseToCleanTheRoom.then((fromResolve) => {
 }).catch( (fromReject) => {
   console.log('the room is' + fromReject);
 }));
+```
+
+## Promisify
+
+```javascript
+function screenshotPromise(windowId) {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.captureVisibleTab(windowId, {quality: 10},
+      (screenshotData) => {
+        console.log("Screenshot", screenshotData);
+        resolve(screenshotData);
+      });
+  });
+}
 ```
 
 ## PROMISE ALL

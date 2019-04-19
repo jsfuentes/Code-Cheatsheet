@@ -32,31 +32,62 @@ config[config_name].init_app(app)
 
 ## Making Models
 
+[Potential Field](<http://docs.mongoengine.org/guide/defining-documents.html#fields>)
+
 ### Schema
 
 ```python
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, FileField, EmbeddedDocumentField, ListField, BooleanField, SortedListField, DateTimeField, ReferenceField
 
-class Image(Document):
-    img = FileField() #GridGS
-
-class User(UserMixin, Document): # UserMixin for flask_login
-    email = EmailField(required=True)
-    password_hash = StringField()
-    username = StringField()
-    imgs = ListField(EmbeddedDocumentField(Image))
-    friends = ListField(ReferenceField(User))
+class Profile(EmbeddedDocument):
+    first = StringField(max_length=50)
+    last = StringField(max_length=50)
+    gender = StringField(max_length=1, choices=GENDERS)
+    age = IntField()
+    photo = FileField() #GridGS
+    bio = StringField()
+    location = StringField()
 ```
+
+### Connecting Models
 
 EmbeddedDocumentField includes the object in the model
 
 ReferenceField can be used to include reference ids that are lazily dereferenced on access
 
+```python
+class User(UserMixin, Document):
+    cid = ReferenceField('Connection')
+    profile = EmbeddedDocumentField(Profile, required=True)
+    #...
+```
+
+### Images Add Photo
+
+```python
+file = request.files['profile_image']
+profile.photo.new_file()
+profile.photo.write(file)
+profile.photo.close()
+profile.photo = current_user.profile.photo
+current_user.profile = profile
+
+#Save to DB
+current_user.save()
+```
+
+#### Retrieve Img
+
+img = Image.objects()[0].img.read()
+
 ### Creation
 
 ```python
 profile = Profile(first=form['first'], last=form['last'], gender=form['gender'][0], age=form['age'], bio=form['bio'], location=form['location']) 
+profile.save()
 ```
+
+An id is created automatically on save: `profile.id` , convert to string with `str(profile.id)`
 
 ## Access
 
@@ -77,21 +108,5 @@ for user in User.objects(username='jfuentes'):
 	print(user.email)
 ```
 
-### Images Add Photo
 
-```python
-file = request.files['profile_image']
-profile.photo.new_file()
-profile.photo.write(file)
-profile.photo.close()
-profile.photo = current_user.profile.photo
-current_user.profile = profile
-
-#Save to DB
-current_user.save()
-```
-
-####Retrieve Img
-
-img = Image.objects()[0].img.read()
 

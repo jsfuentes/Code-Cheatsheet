@@ -1,4 +1,4 @@
-# emaConda
+# Conda
 ## Creation:
 ```bash
 conda create --name myenv [python=verisonnumber] [package names]

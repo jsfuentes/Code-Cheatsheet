@@ -3,8 +3,9 @@
 ```python
 import torch #similar to numpy
 import torch.autograd #differntiation lib
-import torch.nn # neural networks lib with autograd integration
-import torch.optim # standard op methods like gradient descent
+import torch.nn as nn# neural networks lib with autograd integration
+import torch.nn.functional as F #functional implementation of nn(lower level, not trainable)
+import torch.optim as optim # standard op methods like gradient descent
 
 torch.manual_seed(123)
 ```

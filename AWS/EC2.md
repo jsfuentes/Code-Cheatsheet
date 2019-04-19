@@ -22,11 +22,19 @@ Key must be 400 permission `chmod 400 [keypath].pem`
 
 [More info here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
 
-`ssh -i [key file] [default AMI username]@[public DNS address or IPv6]`
+```bash
+ssh -i [key file] [default AMI username]@[public DNS address or IPv6]
+```
 
-e.g `ssh -i "~/Desktop/virgil.pem" ec2-user@ec2-13-59-254-214.us-east-2.compute.amazonaws.com`
+e.g
 
-### Usage
+```bash
+ssh -i "~/Desktop/virgil.pem" ec2-user@ec2-13-59-254-214.us-east-2.compute.amazonaws.com
+```
+
+Default AMI username for Ubuntu is `ubuntu` and for linux ami is `ec2-user`
+
+### Usage Default Linux Image
 
 For default Linux image: `sudo yum install git`
 git clone your repo
@@ -37,8 +45,17 @@ Make sure your server is running on port 80 and go wild
 
 Use public ip address to access in browser: 18.223.158.210
 
+See Docker README.md for how to use Docker
+
 ##### Installing Other Deps
 
 `sudo yum install python3`
+
+### Ubuntu
+
+```
+sudo apt-get update
+sudo apt-get install python-pip
+```
 
 `sudo apt-get install tmux`

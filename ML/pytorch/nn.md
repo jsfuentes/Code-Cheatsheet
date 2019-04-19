@@ -25,8 +25,6 @@ model.zero_grad() #zero grad on all hidden layers(self attrs)
 model.parameters() #can iterate over inner layers
 ```
 
-
-
 ## Loss & Optimizer
 
 ```python

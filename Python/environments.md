@@ -21,6 +21,8 @@ Disadvantages
 
 `pip install pipenv`
 
+`pip install --user pipenv`
+
 `pipenv install`create env if one doesn't exist or install everything
 
 `pipenv --python 3` to specify version

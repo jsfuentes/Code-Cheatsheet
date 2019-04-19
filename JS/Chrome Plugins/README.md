@@ -17,7 +17,10 @@ Just need a folder with a manifest.json
         "http://www.linkedin.com"
       ]
     }
-  ]
+  ],
+  "background": {
+  "scripts": ["background.js"]
+  }
 }
 ```
 

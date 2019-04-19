@@ -1,5 +1,10 @@
 # Essential Packages
-- body-parser: This parses the body portion of an incoming HTTP request and makes it easier to extract different parts of the contained information. For example, you can use this to read POST parameters.
+
+[Common Express Middleware](<https://expressjs.com/en/resources/middleware.html>)
+
+- body-parser: parses request bodies for POST parameters.
+
+  - `app.use(bodyParser.json())` 
 
 - cookie-parser: Used to parse the cookie header and populate req.cookies (essentially provides a convenient method for accessing cookie information).
 

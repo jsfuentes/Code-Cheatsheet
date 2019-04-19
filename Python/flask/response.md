@@ -1,10 +1,20 @@
 # RESPONSES
 
 ```python
+def index():
+	return 'hi'
+```
+
+### JSON Response
+
+```python
 resp = Response(js, status=200, mimetype='application/json')
-## ORRRR
+```
+
+ORRRRRRR
+
+```python
 resp = jsonify(data)
-resp.status_code = 200
 ```
 
 ## Render Template
@@ -20,7 +30,16 @@ def hello(name=None):
 
 Default is template folder
 
+#### Send File
+
+```python
+	return send_file('/var/www/PythonProgramming/PythonProgramming/static/images/python.jpg', attachment_filename='python.jpg')
+
+```
+
 ## End Early Status Code
 
+```python
 from flask import abort
 abort(404)
+```

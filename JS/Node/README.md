@@ -34,3 +34,27 @@ Can run with `node [filename]`
 ### Overview
 
 Middleware have access to request object (req), response object (res), and the next middleware ft(next). If you don't respond with res, call `next()`
+
+##### Run for every request
+
+```javascript
+app.use(function (req, res, next) {
+  console.log('Time:', Date.now())
+  next()
+})
+```
+
+##### Run for specific urls
+
+```javascript
+app.use('/user/:id', function (req, res, next) {
+  console.log('Request Type:', req.method)
+  next()
+})
+```
+
+##### Types
+
+- `app.use(...)` => for any HTTP request
+- `app.get(...)` => for get request
+

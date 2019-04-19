@@ -6,5 +6,5 @@ Are you sure the project will work? Is there a better way to do it?
 
 ## My common errors
 
-- get the opposite boolean expression then I want
+- Getting the opposite boolean expression from what I want
 - 

@@ -23,7 +23,15 @@ var knex = require('knex')({
 
 ## Usage
 
+### Insert
+
+```javascript
+await knex('_plugin_logs').insert(req.body);
 ```
+
+### Query
+
+```javascript
 knex({ a: 'table', b: 'table' })
   .select({
     aTitle: 'a.title',

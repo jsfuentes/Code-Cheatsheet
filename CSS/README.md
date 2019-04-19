@@ -7,7 +7,7 @@
 ## Including css
 external is ideal, allows reusability across site
 ```html
-<link href="stylesheet" href="path/file.css" />`
+<link rel="stylesheet" href="path/file.css" />`
 
 <style>
   <!--body {}-->

@@ -69,3 +69,10 @@ with open(r"categorizationModel.pickle", "r") as model:
 - just doesn't support subclassing of the Pickler() and Unpickler() classes
 - usually better
 - same interface
+
+## Play Audio Files
+
+```python
+os.system("afplay Endgame.mp3")
+```
+

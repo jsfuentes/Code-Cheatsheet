@@ -130,8 +130,6 @@ until [  $COUNTER -lt 10 ]; do
 done
 ```
 
-
-
 ## Exit
 
 `exit [n]` will close shell with exit status of `[n]`
