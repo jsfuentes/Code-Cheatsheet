@@ -6,19 +6,39 @@ There exists a React Store for Chrome Plugin made by Go Guardian to foster this 
 
 The code is the same on both sides of the payload
 
+### Send Message
+
 ```javascript
 chrome.runtime.sendMessage(payload); //send message
 
-chrome.runtime.onMessage.addListener( // 
-    function(request, sender, sendResponse) {
-            if (request.type === "photo") {
-        console.log("Photo Request: ", request);
-        chrome.tabs.captureVisibleTab(sender.tab.windowId, {quality: 10},
-          function(screenshotData) {
-          	...
-        });
-    }
+//send message and interact with response
+chrome.runtime.sendMessage({type: "gid"}, function(response) {
+  var id_encrypted = CryptoJS.SHA3(response.id+secret).toString(CryptoJS.enc.Hex);
+  that.setState({
+    google_id: id_encrypted
+  })
 });
+```
+
+### Listener
+
+```javascript
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if (request.type === "gid") {
+        chrome.identity.getProfileUserInfo(function(userInfo){
+            // console.log('Student ID: ', userInfo.id)
+            sendResponse(userInfo);
+        });
+        return true; //must return true to sendResponse async
+      }
+});
+```
+
+#### Sender Info
+
+```javascript
+ let windowId = sender.tab.windowId;
 ```
 
 

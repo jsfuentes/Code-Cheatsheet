@@ -31,7 +31,7 @@ CMD ["python", "app.py"]
 
 ## Commands
 
-```
+```dockerfile
 ADD
 COPY
 ENV
@@ -53,7 +53,7 @@ RUN has 2 forms:
 - `RUN <command>` (*shell* form, the command is run in a shell, which by default is `/bin/sh -c` on Linux or `cmd /S /C` on Windows)
 - `RUN ["executable", "param1", "param2"]` (*exec* form)
 
-```
+```dockerfile
 RUN mkdir -p /usr/src/things \ #multiple line syntax
   && curl -SL http://example.com/big.tar.gz
 ```
@@ -70,13 +70,13 @@ There can only be one `CMD` instruction in a `Dockerfile`. If you list more than
 
 #### ENV
 
-```
+```dockerfile
 ENV myName="John Doe"
 ```
 
 ##### ADD
 
-```
+```dockerfile
 ADD test relativeDir/          # adds "test" to `WORKDIR`/relativeDir/
 ADD test /absoluteDir/         # adds "test" to /absoluteDir/
 ```

@@ -28,3 +28,6 @@ Then go to `chrome://extensions` and click load unpacked extensions and click th
 
 Boom, chrome extension. Click reload on changes.
 
+### Use React/Import/ES6 in Plugins
+
+Use a bundler like webpack or parcel and output a single js file that you include as the script in some build folder

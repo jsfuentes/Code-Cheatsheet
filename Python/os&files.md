@@ -4,6 +4,7 @@
 import os
 
 os.chdir(path) #cd
+cwd = os.getcwd() #pwd
 ```
 
 ## Get all files in subdirs

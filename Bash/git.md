@@ -25,6 +25,8 @@ git push <remote> <local branch name>:<remote branch to push into>
 
 `git stash` - Takes dirty changes and saves them without committing
 
+`git stash pop` - Reapply last saved changes
+
 ```bash
 git stash list
 > stash@{0}: WIP on master: 049d078 added the index file

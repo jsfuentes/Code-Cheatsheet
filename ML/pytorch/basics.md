@@ -118,8 +118,9 @@ print(y.grad)
 
 ### CUDA
 
-Checks whether GPU accelaration with CUDA available
-add .cuda function to get it
+Check whether GPU accelaration with CUDA available
+
+Simply add .cuda function to add parallelization and speed, ez
 
 ```python
 if torch.cuda.is_available():

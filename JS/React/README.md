@@ -1,8 +1,6 @@
 # Basics
 
-`npm install -g create-react-app`
-
-`create-react-app my-app`
+`npx create-react-app my-app`
 
 ## Thinking about React
 
@@ -68,5 +66,10 @@ Now in the main folder fullstack_app:
 ```bash
 npm init -y 
 npm i concurrently
+concurrently \"cd backend && npm start\" \"cd client && npm start\"
+
 ```
 
+#### Docker
+
+Use docker-compose to get two containers up, use `"proxy": "http://[service-name]:[port-number]"` instead

@@ -9,7 +9,9 @@
 - 1 AMI(Amazon Machine Instance): machine configuration like hardware and software
 - 3 Instance Details: VPC and subnets, roles(ocmmunication between services), user data under advanced(define scripts to run on startup)
 - 5 Tags: add some details 
-- 6: Security Group: who can access instance, 80 port, 0.0.0.0 means anyone can access rather then specific IP's 
+- **6: Security Group**: who can access instance
+  - To allow http traffic, need to allow TCP on port 80 with 0.0.0.0/0 represents anyone on ipv4 and ::/0 represents anyone on ipv6
+  - To allow ssh traffic, port range 22
 - Final: Choose key pair to access instance(Virgil.pem for you Jorge)
 
 Get your key
@@ -29,33 +31,47 @@ ssh -i [key file] [default AMI username]@[public DNS address or IPv6]
 e.g
 
 ```bash
-ssh -i "~/Desktop/virgil.pem" ec2-user@ec2-13-59-254-214.us-east-2.compute.amazonaws.com
+ssh -i "~/Desktop/main.pem" ubuntu@ec2-18-222-213-113.us-east-2.compute.amazonaws.com
 ```
 
 Default AMI username for Ubuntu is `ubuntu` and for linux ami is `ec2-user`
-
-### Usage Default Linux Image
-
-For default Linux image: `sudo yum install git`
-git clone your repo
-
-Install dependencies with yum find name with` sudo yum list | grep python` seems anything after dash is dep idk
-
-Make sure your server is running on port 80 and go wild
-
-Use public ip address to access in browser: 18.223.158.210
-
-See Docker README.md for how to use Docker
-
-##### Installing Other Deps
-
-`sudo yum install python3`
 
 ### Ubuntu
 
 ```
 sudo apt-get update
+sudo apt-get install nginx
+sudo service nginx start
+sudo apt-get install tmux
 sudo apt-get install python-pip
 ```
 
-`sudo apt-get install tmux`
+### Nginx
+
+```bash
+sudo vi /etc/nginx/nginx.conf
+sudo /etc/init.d/nginx start
+```
+
+### Usage Default Linux Image
+
+```bash
+sudo yum update -y
+sudo yum install -y docker
+sudo yum install -y git
+sudo service docker start
+sudo usermod -a -G docker ec2-user #need to relog, to use docker without sudo
+```
+
+Install dependencies with yum find name with` sudo yum list | grep python` seems anything after dash is dep idk
+
+Make sure your server is running on port 80 and go wild with Docker or whatever
+
+Use public ip address to access in browser: 18.223.158.210
+
+##### Installing Other Common Deps
+
+```bash
+sudo yum install python3
+sudo yum install nginx
+```
