@@ -32,6 +32,10 @@ await knex('_plugin_logs').insert(req.body);
 ### Query
 
 ```javascript
+knex('users').where('id', 1)
+```
+
+```javascript
 knex({ a: 'table', b: 'table' })
   .select({
     aTitle: 'a.title',

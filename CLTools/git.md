@@ -38,7 +38,7 @@ git stash list
 
 ## Rebase
 
-- try to only rebase commits you have locally 
+- rewrites history, if commits not local can mess things up
 - could also rebase all your branch commits to occur at end of current master to **avoid a merge commit**
 
 `git rebase master`, rebases current branch to master one 
@@ -62,6 +62,10 @@ git stash list
 #### Checkout specific file
 
 `git checkout <branch_name> -- <paths>`
+
+#### Stop tracking file
+
+`git rm --cached <file>`
 
 #### Remove all Untracked files and build products
 

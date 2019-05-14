@@ -58,8 +58,6 @@ To if you can pass anteing that can easily become true of falsey like boolean, a
 </script>
 ```
 
-
-
 ### Helpers
 
 Encapsulate functionality

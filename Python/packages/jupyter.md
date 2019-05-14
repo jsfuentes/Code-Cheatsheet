@@ -2,6 +2,8 @@
 
 `pip install ipython`
 
+`pip3 install jupyter`
+
 ## Magic Functions
 
 `%matplotlib inline` [sets the backend of matplotlib to the 'inline' backend](http://ipython.readthedocs.io/en/stable/interactive/plotting.html):

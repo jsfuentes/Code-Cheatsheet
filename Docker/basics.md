@@ -2,23 +2,26 @@
 
 Create Dockerfile and .dockerignore
 
+```bash
+docker build -t [name] .
+docker run -it -p [your port]:[container port] [name]
+```
+
 1) Build Image with Dockerfile
 
-`docker build -t hi .` #-t names image
+- `-t` names build, `.` says which files to use
+
+- `-f [DOCKERFILE PATH]` lets you specify Dockerfile
 
 2) Run It
 
-`docker run -p [your port]:[container port] [name]`
-
-`docker run -p 4000:80 mytest`
-
-If server running on port 80 in container, access at localhost:4000 and print console. Must map ports
+- it allows `Ctrl-C` to stop it
+- `-p 80:4000` means in container runs on port 4000, but you can access at localhost:80
+- `-d` runs in detached mode
 
 *Its possible to use a -v to mount your filesystem to the contianer auto updating on changessss*
 
-#### Run in background
-
-Add `-d` to `docker run` to run in detached mode
+`docker exec -it <container name> <command>` => Execute command in running docker container
 
  Kill Docker Container
 
@@ -28,10 +31,10 @@ Add `-d` to `docker run` to run in detached mode
 
 Tag for identification
 
-`docker tag [image] [reponame]:[tag]`
-
-`docker tag test jjfuentes/test:part1`
-
-`docker push jjfuentes/test:part1`
+```bash
+docker tag [image] [reponame]:[tag]
+docker tag test jjfuentes/test:part1
+docker push jjfuentes/test:part1
+```
 
 Convention is reponame = username/reponame 

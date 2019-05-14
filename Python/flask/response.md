@@ -42,4 +42,8 @@ Default is template folder
 ```python
 from flask import abort
 abort(404)
+
+response = jsonify({'message': message})
+response.status_code = 400
+return response
 ```

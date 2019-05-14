@@ -2,7 +2,9 @@
 
 There are two main parts of the backend:
 
-The server that serves the 
+1) The api server that loads data for the frontend
+
+2) The event scrapper that adds events to the database
 
 ## To edit ML
 

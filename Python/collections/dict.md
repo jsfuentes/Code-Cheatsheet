@@ -18,5 +18,7 @@ for key, value in d.iteritems():
 for k, v in d.items():
 for v in d.values():
 for k in d.keys():
+ 
+lambda x: x.values()[0]
 ```
 

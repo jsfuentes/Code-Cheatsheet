@@ -9,7 +9,6 @@ Benefits of pipenv
 - Using new commands mean you dont have to remember to pip freeze 
 - can have dev and prod envs 
 - Easy way to enforce others use the best practice of environments 
-- 
 
 Disadvantages
 

@@ -34,7 +34,9 @@ config[config_name].init_app(app)
 
 [Potential Field](<http://docs.mongoengine.org/guide/defining-documents.html#fields>)
 
-### Schema
+#### Schema
+
+Derive from EmbeddedDocument(embed in other docs), Document, or DynamicDocument(any fields will be saved)
 
 ```python
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, FileField, EmbeddedDocumentField, ListField, BooleanField, SortedListField, DateTimeField, ReferenceField
@@ -49,7 +51,7 @@ class Profile(EmbeddedDocument):
     location = StringField()
 ```
 
-### Connecting Models
+#### Connecting Models
 
 EmbeddedDocumentField includes the object in the model
 
@@ -62,7 +64,18 @@ class User(UserMixin, Document):
     #...
 ```
 
-### Images Add Photo
+## Creation
+
+```python
+profile = Profile(first=form['first'], last=form['last'], gender=form['gender'][0], age=form['age'], bio=form['bio'], location=form['location']) 
+profile.save()
+```
+
+An id is created automatically on save: `profile.id` , convert to string with `str(profile.id)`
+
+Set id by adding `primary_key=True` to Field and it will be aliased to id
+
+#### Images Add Photo
 
 ```python
 file = request.files['profile_image']
@@ -76,36 +89,49 @@ current_user.profile = profile
 current_user.save()
 ```
 
-#### Retrieve Img
+##### Retrieve Img
 
 img = Image.objects()[0].img.read()
 
-### Creation
-
-```python
-profile = Profile(first=form['first'], last=form['last'], gender=form['gender'][0], age=form['age'], bio=form['bio'], location=form['location']) 
-profile.save()
-```
-
-An id is created automatically on save: `profile.id` , convert to string with `str(profile.id)`
-
-## Access
+## Query
 
 You need to define and import the model
 
-`User.objects` => return all objects 
-
-`Page.objects(author__country='uk')` => Query in embedded docs
-
-` Users.objects(age__lte=18)`=>  Query users with age less or equal
-
-`User.objects[:5]` => only first 5 people(??throw error if not exist??)
-
-`User.objects.first()` => retrieve first result or None if it doesnt exist
-
 ```python
+#return all objects 
+User.objects 
+#Query in embedded docs
+Page.objects(author__country='uk') 
+#only first 5 people(??throw error if not exist??)
+User.objects[:5] 
+# retrieve first result or None if it doesnt exist
+User.objects.first()
 for user in User.objects(username='jfuentes'):
 	print(user.email)
+```
+
+#### Operators
+
+Double underscore after field to do operator
+
+- `in` – value is in list (a list of values should be provided)
+
+```python
+#Query users with age less or equal
+Users.objects(age__lte=18)
+```
+
+#### Advanced
+
+```python
+Page.objects(__raw__={'tags': 'coding'})
+```
+
+```python
+class Page(Document):
+    tags = ListField(StringField())
+# This will match all pages that have the word 'coding' as an item in the 'tags' list
+Page.objects(tags='coding')
 ```
 
 

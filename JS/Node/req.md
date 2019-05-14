@@ -8,7 +8,11 @@ Express in 4.16 again has `express.json()`
 
 ## Access
 
-req.query
+```js
+req.query //query parameters
+req.body //post body
 
-req.body
+```
+
+
 

@@ -13,6 +13,8 @@ Stops at the shorter of the two and works for an arbitrary number of iterables
 
 ## Functional 
 
+In python3, map makes an generator object. Wrap with list() to make a list again
+
 Map
 
 ```python

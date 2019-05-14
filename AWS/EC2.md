@@ -12,7 +12,7 @@
 - **6: Security Group**: who can access instance
   - To allow http traffic, need to allow TCP on port 80 with 0.0.0.0/0 represents anyone on ipv4 and ::/0 represents anyone on ipv6
   - To allow ssh traffic, port range 22
-- Final: Choose key pair to access instance(Virgil.pem for you Jorge)
+- Final: Choose key pair to access instance(main.pem for you Jorge)
 
 Get your key
 
@@ -43,14 +43,27 @@ sudo apt-get update
 sudo apt-get install nginx
 sudo service nginx start
 sudo apt-get install tmux
+
 sudo apt-get install python-pip
 ```
 
-### Nginx
+#### Docker
+
+```bash
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker ${USER} #restart so it takes effect
+docker swarm init
+```
+
+#### Nginx
 
 ```bash
 sudo vi /etc/nginx/nginx.conf
 sudo /etc/init.d/nginx start
+
+sudo nginx -s reload
 ```
 
 ### Usage Default Linux Image
