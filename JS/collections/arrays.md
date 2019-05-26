@@ -8,6 +8,7 @@ var fruits = ['Apple', 'Banana'];
 var last = fruits[fruits.length - 1];
 ```
 
+- `.length`
 - `.push(e)` 
 - `.pop()`
 - `.shift()` - popleft returning first ale
@@ -19,6 +20,11 @@ var last = fruits[fruits.length - 1];
 - `.map(ft)` - return new array with ft applied to each
 - `.reduce(ft)` - return single ele..
 - `.some(ft)` - true if one ele satisfies ft given
+- `.filter(ft)`-  return  new array with elements where ft true
+
+```js
+words.filter(word => word.length > 6);
+```
 
 ## Advanced
 
@@ -26,7 +32,7 @@ Beware array loops with async stuff
 
 ### Subarr
 
--`.slice` for subarrs (start, end not included)
+`.slice` for subarrs (start, end not included)
 
 `.splice([start index], [number beyond start])` for removing&saving section
 

@@ -19,6 +19,16 @@ Can install with brew `brew install postgresql`
 
 `psql` to enter cml
 
+## Types
+
+| **Character Types**                  | **Description**            |
+| ------------------------------------ | -------------------------- |
+| character varying(*n*), varchar(*n*) | variable-length with limit |
+| character(*n*), char(*n*)            | fixed-length, blank padded |
+| text, varchar                        | variable unlimited length  |
+
+If you do not specify the n integer for the `varchar` data type, it behaves like the `text` data type. The performance of the `varchar` (without n) and `text` are the same.
+
 ## Psql
 
 - `\du` to see users installed 

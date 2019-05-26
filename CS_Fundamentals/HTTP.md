@@ -20,12 +20,6 @@ POST
 
 accept the entity enclosed in the request as a new subordinate of the [web resource](https://en.wikipedia.org/wiki/Web_resource) identified by the URI
 
-## Headers
-
-
-
-
-
 ## Status Codes
 
 - Informational `1XX`

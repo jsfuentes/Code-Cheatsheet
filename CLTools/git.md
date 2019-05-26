@@ -4,6 +4,14 @@ Git stores everything in a directory, `rm -rf .git` to delete the git project
 
 `git --help command`
 
+## Reflog
+
+Save every instance of head changes
+
+```bash
+git checkout -b after-commit HEAD@{1}
+```
+
 ## Remotes
 
 #### Add remote

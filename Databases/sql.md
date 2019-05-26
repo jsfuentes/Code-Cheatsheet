@@ -22,7 +22,7 @@ SELECT COUNT(*) FROM orders GROUP BY ds;
 SELECT COUNT(1) FROM orders GROUP BY ds;
 ```
 
-#### ORDER BY
+#### ORDER BY / SORT
 
 ```sql
 ORDER BY ds DESC 
@@ -41,6 +41,7 @@ WHERE c.CustomerName="Around the Horn";
 ```sql
 WHERE category_id IS NOT NULL
 AND ds = '2018-01-10'
+AND timestamp >= 9413215908
 ```
 
 ## CREATE

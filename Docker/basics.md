@@ -18,10 +18,11 @@ docker run -it -p [your port]:[container port] [name]
 - it allows `Ctrl-C` to stop it
 - `-p 80:4000` means in container runs on port 4000, but you can access at localhost:80
 - `-d` runs in detached mode
+- `-i` runs in interactive mode so you can kill
 
 *Its possible to use a -v to mount your filesystem to the contianer auto updating on changessss*
 
-`docker exec -it <container name> <command>` => Execute command in running docker container
+`docker exec -it <container id> <command>` => Execute command in running docker container
 
  Kill Docker Container
 

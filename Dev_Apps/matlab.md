@@ -9,8 +9,27 @@ You need to add folders to the load path in octave, type `path` into console to 
 Arrays index from 1
 
 ```matlab
-S[:] #pretty sure this turns matrix into vector
+S[:] #pretty sure this turns matrix into vector?
 S' #transpose matrix
+size(S) #row, column
+fprintf('size(A) is %s\n', mat2str(size(A)))
+```
+
+## Operations
+
+```matlab
+Z ./ 100 # elementwise 100?
+```
+
+## For loops
+
+Very slow avoid at all costs
+
+```matlab
+for n=1:10
+    experiment()
+    fprintf('%d-Experiment Complete', n);
+end
 ```
 
 ### Octave

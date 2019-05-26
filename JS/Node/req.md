@@ -11,7 +11,7 @@ Express in 4.16 again has `express.json()`
 ```js
 req.query //query parameters
 req.body //post body
-
+req.params //url variables like /user/:userid
 ```
 
 

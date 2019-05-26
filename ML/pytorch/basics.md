@@ -32,7 +32,7 @@ v_tensor = torch.Tensor(v)
 ### size
 
 - .size()
-- .shape()
+- .shape
 
 ### Operations
 
@@ -69,9 +69,8 @@ print(b)
 
 Out:
 
-```
+```python
 tensor([ 2.,  2.,  2.,  2.,  2.])
-[2. 2. 2. 2. 2.]
 ```
 
 ```python
@@ -116,13 +115,3 @@ print(x.grad) #value if we differentiate
 print(y.grad)
 ```
 
-### CUDA
-
-Check whether GPU accelaration with CUDA available
-
-Simply add .cuda function to add parallelization and speed, ez
-
-```python
-if torch.cuda.is_available():
-    a = torch.LongTensor(10).fill_(3).cuda()
-```

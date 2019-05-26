@@ -30,6 +30,12 @@ test_loader = torch.utils.data.DataLoader(
   torchvision.datasets.MNIST('./MNIST', train=False, download=True,           transform=torchvision.transforms.Compose([           torchvision.transforms.ToTensor(),                         torchvision.transforms.Normalize((0.1307,), (0.3081,))])), batch_size=batch_size_test, shuffle=True)
 ```
 
+## Create Dataset
+
+```python
+dataset = torch.utils.data.TensorDataset(Z, y)
+```
+
 ## Usage
 
 ```python

@@ -7,7 +7,6 @@ SQL query builder
 ## Initialization
 
 Initializing the Library
-The knex module is itself a function which takes a configuration object for Knex, accepting a few parameters. The client parameter is required and determines which client adapter will be used with the library.
 
 ```js
 var knex = require('knex')({
@@ -33,6 +32,11 @@ await knex('_plugin_logs').insert(req.body);
 
 ```javascript
 knex('users').where('id', 1)
+const results = await knex.select()
+												.from('_plugin_logs');
+knex('accounts')
+  .where('activated', false)
+  .del()
 ```
 
 ```javascript
@@ -42,5 +46,22 @@ knex({ a: 'table', b: 'table' })
     bTitle: 'b.title'
   })
   .whereRaw('?? = ??', ['a.column_1', 'b.column_2'])
+```
+
+## Where
+
+```js
+knex('users').where({
+  first_name: 'Test',
+  last_name:  'User'
+}).select('id')
+knex('users').where('id', 1)
+```
+
+## Order
+
+```js
+knex('users').orderBy('email')
+knex('users').orderBy('name', 'desc')
 ```
 

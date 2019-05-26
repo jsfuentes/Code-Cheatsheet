@@ -1,6 +1,6 @@
 # Javascript
 
-`"use strict";` at the top of files will prompt new compliers to throw more errors like for using undefined variables 
+`"use strict";` at the top of files will prompt new compliers to throw more errors like for using undefined variables
 
 ## Control
 
@@ -25,11 +25,12 @@ switch(expression) {
 
 ```javascript
 try {
-   // Block of code to try
-   throw "Parameter is not a number!";
+  // Block of code to try
+  throw "Parameter is not a number!";
+  //throw new Error([message[, fileName[, lineNumber]]])
 }
 catch(err) {
-    // Block of code to handle errors
+  // Block of code to handle errors
 }
 ```
 
@@ -84,3 +85,4 @@ parseInt('42px', 10) //42
 parseInt('10a,a22') //10
 ```
 
+Find type with `typeof(var)`

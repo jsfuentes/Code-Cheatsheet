@@ -39,7 +39,7 @@ Middleware have access to request object (req), response object (res), and the n
 
 ```javascript
 app.use(function (req, res, next) {
-  console.log('Time:', Date.now())
+  console.log('Request Type:', req.method)
   next()
 })
 ```
@@ -47,9 +47,9 @@ app.use(function (req, res, next) {
 ##### Run for specific urls
 
 ```javascript
-app.use('/user/:id', function (req, res, next) {
-  console.log('Request Type:', req.method)
-  next()
+app.get('/users/:userId/books/:bookId', function (req, res) {
+  res.send(req.params) 
+  // => { "userId": "34", "bookId": "8989" }
 })
 ```
 
