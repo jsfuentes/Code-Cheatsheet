@@ -18,7 +18,8 @@ docker run -it -p [your port]:[container port] [name]
 - it allows `Ctrl-C` to stop it
 - `-p 80:4000` means in container runs on port 4000, but you can access at localhost:80
 - `-d` runs in detached mode
-- `-i` runs in interactive mode so you can kill
+- `-it` runs in interactive mode so you can kill
+- `-v "$(pwd)"/backend:/app` mounts the files at /backend to the docker containers /app allowing instant changes!
 
 *Its possible to use a -v to mount your filesystem to the contianer auto updating on changessss*
 

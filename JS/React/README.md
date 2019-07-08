@@ -67,7 +67,6 @@ Now in the main folder fullstack_app:
 npm init -y 
 npm i concurrently
 concurrently \"cd backend && npm start\" \"cd client && npm start\"
-
 ```
 
 #### Docker

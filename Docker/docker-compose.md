@@ -26,8 +26,6 @@ services:
       - ./client:/app
 ```
 
-This `docker-compose.yml` file tells Docker to do the following:
-
 ## Commands
 
 | Cmd                                   | Effect              |

@@ -24,6 +24,7 @@ var last = fruits[fruits.length - 1];
 
 ```js
 words.filter(word => word.length > 6);
+words.map((element, index) => element+index);
 ```
 
 ## Advanced

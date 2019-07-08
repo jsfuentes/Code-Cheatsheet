@@ -39,6 +39,10 @@ WHERE c.CustomerName="Around the Horn";
 ## WHERE
 
 ```sql
+ WHERE Country IN ('USA', 'UK', 'Japan')
+```
+
+```sql
 WHERE category_id IS NOT NULL
 AND ds = '2018-01-10'
 AND timestamp >= 9413215908

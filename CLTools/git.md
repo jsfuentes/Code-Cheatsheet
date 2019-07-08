@@ -63,6 +63,10 @@ git stash list
 
 ## Other
 
+#### Undo Last Commit
+
+`git reset HEAD~1`
+
 #### Delete branch locally
 
 `git branch -d <branchname>` 

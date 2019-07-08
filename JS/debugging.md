@@ -6,6 +6,7 @@ Great playground in chrome console
 
 1. Thinking the value is invalid when it is actually undefined
 2. Not awaiting for a promise
+3. Can't do await in map/filter ft
 
 ## Console
 
@@ -20,6 +21,7 @@ console.time("looper");
 console.timeEnd("looper"); //=> looper: 4.3ms
 ```
 
-## Silent Failures
+### Is something you are requiring undefined?
 
 - Circular dependency, module.exports will just return null
+

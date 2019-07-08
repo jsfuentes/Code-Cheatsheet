@@ -1,4 +1,4 @@
-# Makefile
+Makefile
 
 Makefile name
 
@@ -13,4 +13,17 @@ DEPS = hellomake.h
 hellomake: hellomake.o hellofunc.o 
 	$(CC) -o hellomake hellomake.o hellofunc.o
 ```
+
+## Differences From Bash
+
+- It seems \$PWD works instead of ​\$(pwd) within a command
+- To do command after a cd, use semicolon
+
+```makefile
+cd ./client; yarn build;
+```
+
+
+
+ 
 

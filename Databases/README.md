@@ -16,7 +16,6 @@ NoSQL
 - easier to use
 - more scalable(not a real problem until massive)
 - faster joins
-- 
 
 ## SQL
 
@@ -36,9 +35,7 @@ NoSQL
 #### Types of SQL
 
 - Key value store i.e Memcached, Redis
-
 - Tabular i.e BigTable(Google)
-
 - Document Oriented i.e Mongodb
 
 ### Data Warehousing

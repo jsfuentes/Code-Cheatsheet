@@ -1,4 +1,4 @@
-## Bash
+# Bash
 
 GNU Bourne-Again SHell, an POSIX(file system standard) compliant shell thingy. `sh` is a earlier verison 
 

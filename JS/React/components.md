@@ -37,13 +37,17 @@ const element = <Welcome name={x} />
 <Component {...this.props} more="values" />
 ```
 
-
-
 ## Advanced
 
 ### Functional Components
 
 Good style to just use a function when you don't need the state and other stuff
+
+```bash
+import React from "react"
+
+export default () => <h1>This is a headers.</h1>
+```
 
 ### Containment
 

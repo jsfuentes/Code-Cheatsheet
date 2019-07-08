@@ -3,10 +3,24 @@
 With nothing special, you use Ajax 
 
 ```javascript
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = handleStateChange; // Implemented elsewhere.
-xhr.open("GET", chrome.extension.getURL('/config_resources/config.json'), true);
-xhr.send();
+fetch(chrome.extension.getURL('./config.json'))
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      // Examine the text in the response
+      response.json().then(function(data) {
+        console.log(data);
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
 ```
 
 Or you can just use a bundler that uses imports

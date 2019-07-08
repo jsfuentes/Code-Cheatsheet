@@ -1,6 +1,7 @@
-# PHP Fundamentals
+# PHP
 
 ## Running
+
 See setup and AMP notes
 
 ## Basics

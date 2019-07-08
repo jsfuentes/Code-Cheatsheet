@@ -6,6 +6,8 @@ There exists a React Store for Chrome Plugin made by Go Guardian to foster this 
 
 The code is the same on both sides of the payload
 
+## Between Background and Content
+
 ### Send Message
 
 ```javascript
@@ -41,7 +43,40 @@ chrome.runtime.onMessage.addListener(
  let windowId = sender.tab.windowId;
 ```
 
+## Message Passing Between Extensions
 
+Lets you make a "public api" that other chrome extensions can use
 
+Similar interface to regular Messages except need chrome id which you can find [here](https://stackoverflow.com/questions/8946325/chrome-extension-id-how-to-find-it)
 
+#### Send Message
+
+```js
+// The ID of the extension we want to talk to.
+var laserExtensionId = "abcdefghijklmnoabcdefhijklmnoabc";
+
+// Make a simple request:
+chrome.runtime.sendMessage(laserExtensionId, {getTargetData: true},
+  function(response) {
+    if (targetInRange(response.targetData))
+      chrome.runtime.sendMessage(laserExtensionId, {activateLasers: true});
+  });
+```
+
+#### Listener
+
+```js
+// For simple requests:
+chrome.runtime.onMessageExternal.addListener(
+  function(request, sender, sendResponse) {
+    if (sender.id == blocklistedExtension)
+      return;  // don't allow this extension access
+    else if (request.getTargetData)
+      sendResponse({targetData: targetData});
+    else if (request.activateLasers) {
+      var success = activateLasers();
+      sendResponse({activateLasers: success});
+    }
+  });
+```
 

@@ -1,27 +1,35 @@
 ## Shitty Elastic Beanstalk
 
-Elastic Beanstalk is a fancy wrapper for EC2 instance with like load-balancing and shit
+Elastic Beanstalk is a fancy wrapper for EC2 instance with like load-balancing and shit. States it 
 
-#### EB Command Line
+Doesn't cost more to use this service then the underlying resources:
 
-brew installing eb cli was ez
-make amazon account
+- security group
+- load balancer
+- auto scaling configuration & group
+- Ec2 
+- S3
+- Cloudwatch
 
-In the directory these are the relevant Commands, they got a nice step by step creation
+## Initialize on the Command Line
 
-`eb init`
-`eb create`
+In the coding directory, run these commands for nice step by step creation
 
-To see
-`eb open`
+```bash
+brew installing eb cli 
+eb init
+eb create
+```
 
-To repush
-`eb deploy`
+### Usage
+
+```bash
+eb open # to see
+eb deploy # to repush
+```
 
 ##### Bugs
 
 ##### Website error after eb open
 
   Port 80 for the web
-
-## 

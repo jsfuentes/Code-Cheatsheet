@@ -22,6 +22,14 @@ var knex = require('knex')({
 
 ## Usage
 
+### Select
+
+```javascript
+await knex.select('title', 'author').from('books')
+#Only first record
+await knex.first('title', 'author').from('books') 
+```
+
 ### Insert
 
 ```javascript
@@ -55,6 +63,7 @@ knex('users').where({
   first_name: 'Test',
   last_name:  'User'
 }).select('id')
+
 knex('users').where('id', 1)
 ```
 

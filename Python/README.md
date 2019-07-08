@@ -76,7 +76,7 @@ Pass in dict like `f(**dict)` to act as **kwargs
 
 ## Input
 
-- PYTHON 2: `input("Enter number")` interprets user input so if int, int will be returned
+- PYTHON 2: `input("Enter number")` interprets user input so if int, int will be returned(Security bug, runs arbitrary code use raw_input)
 - `raw_input("Enter Your Name: ")` takes exactly what user typed 
 - PYTHON 3: `input` is `raw_input`
 
