@@ -14,8 +14,6 @@ div > div {
 }
 ```
 
-
-
 ## Components
 
 1. Creation - display

@@ -28,3 +28,9 @@ chrome.storage.sync.get(['key'], function(result) {
 });
 ```
 
+## Other
+
+```js
+chrome.storage.sync.clear();//to empty storage
+```
+

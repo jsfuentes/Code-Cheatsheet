@@ -36,7 +36,7 @@ FROM Customers AS c, Orders AS o
 WHERE c.CustomerName="Around the Horn";
 ```
 
-## WHERE
+#### WHERE
 
 ```sql
  WHERE Country IN ('USA', 'UK', 'Japan')
@@ -48,18 +48,6 @@ AND ds = '2018-01-10'
 AND timestamp >= 9413215908
 ```
 
-## CREATE
-
-```sql
-CREATE TABLE Persons (
-    PersonID int,
-    LastName varchar(255),
-    FirstName varchar(255),
-    Address varchar(255),
-    City varchar(255) 
-);
-```
-
 #### INSERT
 
 ```sql
@@ -69,7 +57,19 @@ FROM table1
 WHERE condition;
 ```
 
-## ADVANCED
+#### Update
+
+The where clause will determine how many to update, omitted means all
+
+```sql
+UPDATE Customers
+SET ContactName='Juan'
+WHERE Country='Mexico';
+```
+
+### ADVANCED
+
+Limit and Offset to do pagination
 
 #### JOINS
 
@@ -99,13 +99,34 @@ SELECT player_name,
 
 Executed in order as shown 
 
-##### DELETE
+## Table Structure
+
+#### CREATE
+
+```sql
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255) 
+);
+```
+
+#### DELETE
 
 Permanently deletion, be careeefullll
 
 ```sql
 DROP TABLE Shippers;
 ```
+
+```sql
+ALTER TABLE "public"."_students" ADD COLUMN "race" int4
+
+```
+
+
 
 ### ADVANCED HIVE?
 

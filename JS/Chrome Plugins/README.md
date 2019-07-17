@@ -1,5 +1,7 @@
 # Chrome Plugins
 
+https://github.com/mozilla/webextension-polyfill for promise based chrome APIs
+
 Just need a folder with a manifest.json
 
 ```json

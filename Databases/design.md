@@ -57,8 +57,8 @@ FK constraints refers to what happens to parents referenced by children:
 
 For each action can:
 
-- restrict(can't update it)
-- cascade(delete children as well)
+- restrict(stops action)
+- cascade(update/delete children as well)
 - set null(remove foreign key reference)
 
 ## Normalization
@@ -68,3 +68,37 @@ For each action can:
 **2nd Normal Form:** Keep attributes in correct table
 
 **3rd Normal Form:** Column depends on column which depends on pk. Transitive dependency: an attribute depends on anthoer attribute in the row i.e star, star meaning which depends on type. Should create new table for stars
+
+## Other
+
+#### Enums
+
+Lets say you use gender across tables like as a requirement of group membership or person
+
+Would you make a table with 
+
+| id   | title  |
+| ---- | ------ |
+| 1    | male   |
+| 2    | female |
+
+And then reference it with foreign keys
+
+Compared to just storing `male` everywhere db level enums are  better b/c:
+
+- foreign key database level assurance (not for lists)
+- easy cross platform changes as not typed to code 
+- Removes constants in code and puts in db
+
+Worse b/c:
+
+- support weird/difficult seeing gender = 1
+
+##### Naming
+
+`User` or `Users` => [survey](https://stackoverflow.com/questions/338156/table-naming-dilemma-singular-vs-plural-names) says singular cuz 
+
+- slightly clearer on JOINs like join on user, though worse on slect from user, but you can consider it the user table 
+- Consistency: Plural forms vary word to word(status, news), what if each entry is plural like studentfacts facts
+- In alphabetical order, order then orderdetails better than orderdetails then orders
+- less letters :)

@@ -58,3 +58,6 @@ app.get('/users/:userId/books/:bookId', function (req, res) {
 - `app.use(...)` => for any HTTP request
 - `app.get(...)` => for get request
 
+### Globals
+
+- `__dirname` => full from root name of the directory that the executing script resides from

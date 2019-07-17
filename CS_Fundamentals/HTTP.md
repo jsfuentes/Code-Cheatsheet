@@ -4,6 +4,8 @@ The application layer protocol of the internet, port 80 or 8080
 
 ## Methods
 
+The reason `POST` is so common is that, historically at least, web browsers only supported `GET` and `POST`. Since `GET` is defined to be safe and idempotent (even though many applications don't adhere to that), the only *safe* way to modify data was to send a `POST`. 
+
 | HTTP method | RFC                                                          | Request has Body | Response has Body | Safe | Idempotent | Cacheable |
 | ----------- | ------------------------------------------------------------ | ---------------- | ----------------- | ---- | ---------- | --------- |
 | GET         | [RFC](https://en.wikipedia.org/wiki/Request_for_Comments_(identifier)) [7231](https://tools.ietf.org/html/rfc7231) | Optional         | Yes               | Yes  | Yes        | Y         |

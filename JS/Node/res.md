@@ -3,7 +3,7 @@
 - res.json()
 - res.sendFile()
 - res.send("Hello");
-- res.redirect('/events');
+- res.redirect('/events'); //doesn't work well with react router
 - res.render('index');
 
 ### Respond with Error

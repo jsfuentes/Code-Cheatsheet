@@ -9,15 +9,6 @@ npm install jest --global
 
 ## Most Basic
 
- sum.js
-
-```javascript
-function sum(a, b) {
-  return a + b;
-}
-module.exports = sum;
-```
-
 sum.test.js
 
 ```javascript
@@ -37,6 +28,8 @@ package.json
 ```
 
 `npm run test`
+
+Will find any tests in subdirectories
 
 ### Matchers
 
@@ -59,9 +52,28 @@ package.json
 - `.toContain('beer')` => check array for in 
 - `.toThrow()` => throws errors
 
+#### Blocks
+
+toplevel before each done first and after each done last compared to blocks
+
+inside describes blocks run first, then tests
+
+```js
+describe('matching cities to foods', () => {
+  // Applies only to tests in this describe block
+  beforeEach(() => {
+    return initializeFoodDatabase();
+  });
+  
+  test(
+  //...
+```
+
 ### Async
 
 Can't just expect in callback because test will finish, instead add done argument and test will wait until called or timeout and fail
+
+The ways for using async also work for setup and teardown
 
 ##### Callback
 
@@ -85,6 +97,36 @@ test('the data is peanut butter', () => {
   return fetchData().then(data => {
     expect(data).toBe('peanut butter');
   });
+//return fetchData().catch(e=>expect(e).toMatch('error'));
+});
+```
+
+##### Async/Await
+
+```js
+test('the data is peanut butter', async () => {
+  const data = await fetchData();
+  expect(data).toBe('peanut butter');
+});
+```
+
+### Setup
+
+```js
+beforeEach(() => {
+  initializeCityDatabase();
+});
+
+afterEach(() => {
+  clearCityDatabase();
+});
+
+beforeAll(() => {
+  return initializeCityDatabase(); //return for promise
+}); 
+
+afterAll(() => {
+  return clearCityDatabase();
 });
 ```
 
@@ -95,3 +137,36 @@ jest my-test --notify --config=config.json
 ```
 
 files matching `my-test`, native OS notification on completion, and config.json as config
+
+### Other
+
+##### To only run one test
+
+change `test(` to `test.only(`
+
+```js
+test.only('this will be the only test that runs', () => {
+  expect(true).toBe(false);
+});
+```
+
+#### Mock
+
+Pretty cool, always you to specify different returns per time called, check arguments and call count
+
+##### More Plugins
+
+#### API Routes
+
+```js
+const request = require('supertest');
+const server = require('../app.js');
+
+describe('basic route tests', () => {
+ test('get home route GET /', async () => {
+ const response = await request(server).get('/');
+ expect(response.status).toEqual(200);
+ expect(response.text).toContain('Hello World!');
+ });
+});
+```

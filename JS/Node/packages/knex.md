@@ -25,16 +25,24 @@ var knex = require('knex')({
 ### Select
 
 ```javascript
-await knex.select('title', 'author').from('books')
+await knex.select('title', 'author').from('books') 
 #Only first record
 await knex.first('title', 'author').from('books') 
 ```
+
+select returns a list of json
+
+first returns a single json
+
+if no entry, returns undefined or empty list
 
 ### Insert
 
 ```javascript
 await knex('_plugin_logs').insert(req.body);
 ```
+
+Add `.returning('*')` to return data 
 
 ### Query
 
@@ -56,7 +64,7 @@ knex({ a: 'table', b: 'table' })
   .whereRaw('?? = ??', ['a.column_1', 'b.column_2'])
 ```
 
-## Where
+### Where
 
 ```js
 knex('users').where({
@@ -64,13 +72,44 @@ knex('users').where({
   last_name:  'User'
 }).select('id')
 
-knex('users').where('id', 1)
+knex('users')
+  .where('votes', '>', 100)
+  .andWhere('status', 'active')
 ```
 
-## Order
+### Order
 
 ```js
 knex('users').orderBy('email')
 knex('users').orderBy('name', 'desc')
+```
+
+### Update
+
+```js
+knex('books')
+  .where('published_date', '<', 2000)
+  .update({
+    status: 'archived',
+    thisKeyIsSkipped: undefined
+  })
+```
+
+returns true on success confirmed, idk else
+
+Add `.returning('*')` to return data 
+
+```js
+knex('moderator').update({...moderator}).where({id}).returning('*')
+```
+
+### Count
+
+```js
+const greetingCount = await knex('phrase')
+	.count()
+	.where('intent', GREETING);
+
+//[ { count: '1' } ]
 ```
 

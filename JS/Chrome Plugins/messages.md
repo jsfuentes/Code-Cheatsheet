@@ -14,11 +14,8 @@ The code is the same on both sides of the payload
 chrome.runtime.sendMessage(payload); //send message
 
 //send message and interact with response
-chrome.runtime.sendMessage({type: "gid"}, function(response) {
-  var id_encrypted = CryptoJS.SHA3(response.id+secret).toString(CryptoJS.enc.Hex);
-  that.setState({
-    google_id: id_encrypted
-  })
+chrome.runtime.sendMessage({type: "gid", "data": {....}}, (resp) => {
+  debug(resp);
 });
 ```
 
@@ -28,11 +25,14 @@ chrome.runtime.sendMessage({type: "gid"}, function(response) {
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
       if (request.type === "gid") {
-        chrome.identity.getProfileUserInfo(function(userInfo){
+        console.log(request.data);
+        chrome.identity.getProfileUserInfo(
+          (userInfo) => {
             // console.log('Student ID: ', userInfo.id)
             sendResponse(userInfo);
-        });
-        return true; //must return true to sendResponse async
+        	}
+        );
+        return true; //needed if sendResponse async
       }
 });
 ```
@@ -78,5 +78,36 @@ chrome.runtime.onMessageExternal.addListener(
       sendResponse({activateLasers: success});
     }
   });
+```
+
+### Long lived Connections
+
+Background
+
+```js
+var port = chrome.runtime.connect({name: "knockknock"});
+port.postMessage({joke: "Knock knock"});
+port.onMessage.addListener(function(msg) {
+  if (msg.question == "Who's there?")
+    port.postMessage({answer: "Madame"});
+  else if (msg.question == "Madame who?")
+    port.postMessage({answer: "Madame... Bovary"});
+});
+```
+
+content
+
+```js
+chrome.runtime.onConnect.addListener(function(port) {
+  console.assert(port.name == "knockknock");
+  port.onMessage.addListener(function(msg) {
+    if (msg.joke == "Knock knock")
+      port.postMessage({question: "Who's there?"});
+    else if (msg.answer == "Madame")
+      port.postMessage({question: "Madame who?"});
+    else if (msg.answer == "Madame... Bovary")
+      port.postMessage({question: "I don't get it."});
+  });
+});
 ```
 

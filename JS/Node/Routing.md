@@ -46,3 +46,20 @@ app.get('/users/:userId/books/:bookId', function (req, res) {
   res.send(req.params);
 })
 ```
+
+## Static
+
+```javascript
+app.use(express.static('public')); 
+app.use(express.static('files'));
+```
+
+Now `http://localhost:3000/images/kitten.jpg` will go to directory of `public/images/kitten.jpg`
+
+Will search through folders in order declared returning first match
+
+directory from where you launch your `node`process. If you run the express app from another directory, it’s safer to use the absolute path of the directory that you want to serve:
+
+```javascript
+app.use('/static', express.static(path.join(__dirname, 'public')))
+```

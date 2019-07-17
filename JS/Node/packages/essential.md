@@ -11,7 +11,7 @@
   - => `GET / 200 17.199 ms - -`
 - serve-favicon: Node middleware for serving a favicon (this is the icon used to represent the site inside the browser tab, bookmarks, etc.).
 
-# Debug
+## Debug
 
 Create decorated/filterable log statements
 
@@ -21,7 +21,9 @@ const debug = require('debug')('http');
 debug("booting %o", name);
 ```
 
-To see http, `export DEBUG=http` environment variable with space/comma-delimited names
+To see http, `export DEBUG=http` environment variable with space/comma-delimited names, or `export DEBUG=*`
+
+Can also use in browers then set `localStorage.debug = 'worker:*'`
 
 ## fs
 

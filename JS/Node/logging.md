@@ -13,6 +13,6 @@ node index.js > regular.log 2> error.log
 - [`roarr`](https://www.npmjs.com/package/roarr)
 - `log4js`
 
-allow for log levels, easy toggling logs on and off based on environmen
+allow for log levels, easy toggling logs on and off based on environment
 
 Logging frameworks will also (generally) support writing to more than just `stdout/stderr`. Winston calls these “transports” while Bunyan calls them “streams”. For example, you can configure writing to stdout, a file, and a database all at once.

@@ -66,10 +66,6 @@ export default () => (
 )
 ```
 
-
-
-
-
 ## Framework Agnostic
 
 ```bash

@@ -5,6 +5,11 @@
 ## Control
 
 ```js
+isMember ? "$2.00" : "$10.00"
+if (c) {s} else if (c) {s} else {s}
+```
+
+```js
 for (let i = 0; i < cars.length; i++) { 
     text += cars[i] + "<br>";
 }
