@@ -113,3 +113,11 @@ const greetingCount = await knex('phrase')
 //[ { count: '1' } ]
 ```
 
+### Join
+
+```js
+knex('users')
+  .join('contacts', 'users.id', '=', 'contacts.user_id')
+  .select('users.id', 'contacts.phone')
+```
+

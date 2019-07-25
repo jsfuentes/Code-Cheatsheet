@@ -40,3 +40,15 @@ main()
   .catch(console.error);
 ```
 
+### Can just use async functions in a promise
+
+```js
+configPromise.then(async (econfig) => {
+  debug("Econfig", econfig);
+  const test = await updateStorage(econfig);
+});
+```
+
+
+
+*Look at babel runtime to get in the browser*

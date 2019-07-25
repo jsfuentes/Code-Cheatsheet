@@ -2,6 +2,8 @@
 
 `"use strict";` at the top of files will prompt new compliers to throw more errors like for using undefined variables
 
+Objects and arrays passed by reference
+
 ## Control
 
 ```js

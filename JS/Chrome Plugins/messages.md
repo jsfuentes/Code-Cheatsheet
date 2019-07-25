@@ -111,3 +111,40 @@ chrome.runtime.onConnect.addListener(function(port) {
 });
 ```
 
+## Promise based
+
+From webextension-polyfill
+
+Send
+
+```js
+browser.tabs.sendMessage(tabId, "get-ids").then(results => {
+  processResults(results);
+});
+```
+
+Receive
+
+```js
+browser.runtime.onMessage.addListener(msg => {
+  if (msg == "get-ids") {
+    return browser.storage.local.get("idPattern").then(({idPattern}) => {
+      return Array.from(document.querySelectorAll(idPattern),
+                        elem => elem.textContent);
+    });
+  }
+});
+```
+
+Return Promise or make async and just return
+
+```js
+browser.runtime.onMessage.addListener(async (msg) => {
+  if (msg == "get-ids") {
+    let {idPattern} = await browser.storage.local.get("idPattern");
+
+    return idPattern;
+  }
+});
+```
+

@@ -8,7 +8,8 @@ Benefits of pipenv
 - Manages environment and pip simuletously
 - Using new commands mean you dont have to remember to pip freeze 
 - can have dev and prod envs 
-- Easy way to enforce others use the best practice of environments 
+- Easy way to enforce others use the best practice of environments, environments allow different global versions of packages
+- Actually better syntax then virtual environments and pip freeze 
 
 Disadvantages
 
@@ -35,6 +36,10 @@ Disadvantages
 `pipenv run` to run stuff in virtual env
 
 `pipenv run python` instead of `python`
+
+##### Deploying
+
+`pipenv install --deploy —system`
 
 ## Jupyter Notebook
 

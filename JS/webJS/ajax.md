@@ -49,6 +49,14 @@ fetch(url, {
     .then(response => response.json());
 ```
 
+#### Async await
+
+```js
+const response = await fetch('https://api.com/values/1');
+const json = await response.json();
+console.log(json);
+```
+
 ## Fundamentals
 
 ```js

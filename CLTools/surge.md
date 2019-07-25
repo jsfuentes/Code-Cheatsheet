@@ -9,5 +9,8 @@ npm install --global surge
 surge 
 
 surge --help
+
+surge <project> <domain> #need domain to relaunch in domain
+
 ```
 

@@ -21,7 +21,7 @@ app.listen(9000);
 ## To use react router type
 
 ```js
-+app.get('/*', function (req, res) {
+app.get('/*', function (req, res) {
    res.sendFile(path.join(__dirname, 'build', 'index.html'));
  });
 ```

@@ -2,7 +2,7 @@
 
 Data flows down from parent to child, so if multiple components have a shared state put it in the closest common ancestor
 
-Notice if we rerender a parent component with setState() all the children get rerender() (if needed?)
+Notice if we rerender a parent component with setState() all the children get rerendered (if needed?)
 
 If something can be derived from either props or state, it probably shouldn’t be in the state.
 

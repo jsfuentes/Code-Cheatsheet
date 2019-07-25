@@ -34,3 +34,11 @@ chrome.storage.sync.get(['key'], function(result) {
 chrome.storage.sync.clear();//to empty storage
 ```
 
+## Promises
+
+From` webextension-polyfill`
+
+```js
+await browser.storage.sync.set({iframeType: "onboard"});
+let storage = await browser.storage.sync.get(['iframeType', 'questions', 'lastQuestionDate']);
+```

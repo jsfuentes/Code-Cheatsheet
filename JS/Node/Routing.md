@@ -63,3 +63,4 @@ directory from where you launch your `node`process. If you run the express app f
 ```javascript
 app.use('/static', express.static(path.join(__dirname, 'public')))
 ```
+

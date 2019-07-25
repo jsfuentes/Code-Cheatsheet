@@ -1,4 +1,4 @@
-# Build and Run 
+# z Build and Run 
 
 Create Dockerfile and .dockerignore
 
@@ -24,6 +24,8 @@ docker run -it -p [your port]:[container port] [name]
 *Its possible to use a -v to mount your filesystem to the contianer auto updating on changessss*
 
 `docker exec -it <container id> <command>` => Execute command in running docker container
+
+`docker exec -it <container id> /bin/sh` => Get bash
 
  Kill Docker Container
 

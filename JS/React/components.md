@@ -46,7 +46,9 @@ Good style to just use a function when you don't need the state and other stuff
 ```bash
 import React from "react"
 
-export default () => <h1>This is a headers.</h1>
+export default (props) => {
+   return <div>Hello {props.name}</div>
+}
 ```
 
 ### Containment

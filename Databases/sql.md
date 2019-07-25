@@ -16,10 +16,11 @@ LIMIT 100;
 
 #### Count
 
+- `COUNT(*)` /`COUNT(1)`counts all rows
+- `COUNT(column)` counts non-NULLs only
+
 ```sql
 SELECT COUNT(*) FROM orders GROUP BY ds;
-/* OR */
-SELECT COUNT(1) FROM orders GROUP BY ds;
 ```
 
 #### ORDER BY / SORT
@@ -47,6 +48,8 @@ WHERE category_id IS NOT NULL
 AND ds = '2018-01-10'
 AND timestamp >= 9413215908
 ```
+
+AND has precedence over OR
 
 #### INSERT
 
@@ -123,10 +126,7 @@ DROP TABLE Shippers;
 
 ```sql
 ALTER TABLE "public"."_students" ADD COLUMN "race" int4
-
 ```
-
-
 
 ### ADVANCED HIVE?
 
