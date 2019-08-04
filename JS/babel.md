@@ -8,6 +8,8 @@ you install individual plugins to get any features and set `.babelrc` or `babel.
 
 Webpack or browserify will do this auto
 
+**Watch out, all the babel 6 guides have all the plugins/extensions use something like `babel-preset-env` while babel 7 changed everything to `@babel/preset-env`**
+
 ## Super Basic
 
 ### Babel Standalone 
@@ -55,7 +57,7 @@ You just add npm install the plugin and add it to this list
 ##### Async/Await Runtime
 
 ```bash
-npm install --save babel-runtime
+npm install --save @babel/runtime
 ```
 
 ```sh

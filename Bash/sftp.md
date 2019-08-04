@@ -16,8 +16,6 @@ Use regular bash cmds to move around(`ls`, `cd`)
 get remoteFile localFile
 ```
 
-
-
 ## Local interaction
 
 preface commands with l to run them locally i.e

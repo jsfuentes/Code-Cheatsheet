@@ -4,23 +4,16 @@ The application layer protocol of the internet, port 80 or 8080
 
 ## Methods
 
-The reason `POST` is so common is that, historically at least, web browsers only supported `GET` and `POST`. Since `GET` is defined to be safe and idempotent (even though many applications don't adhere to that), the only *safe* way to modify data was to send a `POST`. 
+GET is supposed to be sae and idempotent
 
-| HTTP method | RFC                                                          | Request has Body | Response has Body | Safe | Idempotent | Cacheable |
-| ----------- | ------------------------------------------------------------ | ---------------- | ----------------- | ---- | ---------- | --------- |
-| GET         | [RFC](https://en.wikipedia.org/wiki/Request_for_Comments_(identifier)) [7231](https://tools.ietf.org/html/rfc7231) | Optional         | Yes               | Yes  | Yes        | Y         |
-|             |                                                              |                  |                   |      |            |           |
-| POST        | [RFC](https://en.wikipedia.org/wiki/Request_for_Comments_(identifier)) [7231](https://tools.ietf.org/html/rfc7231) | Yes              | Yes               | No   | No         | Yes       |
+POST is to modify data
 
-## Overview
+So common b/c in past browsers just supported these two and in the past browsers 
 
-GET
-
-Retrieve data of resource 
-
-POST
-
-accept the entity enclosed in the request as a new subordinate of the [web resource](https://en.wikipedia.org/wiki/Web_resource) identified by the URI
+| HTTP method | RFC                                                          | Request has Body | Response has Body | Safe | Idempotent |
+| ----------- | ------------------------------------------------------------ | ---------------- | ----------------- | ---- | ---------- |
+| GET         | [RFC](https://en.wikipedia.org/wiki/Request_for_Comments_(identifier)) [7231](https://tools.ietf.org/html/rfc7231) | Optional         | Yes               | Yes  | Yes        |
+| POST        | [RFC](https://en.wikipedia.org/wiki/Request_for_Comments_(identifier)) [7231](https://tools.ietf.org/html/rfc7231) | Yes              | Yes               | No   | No         |
 
 ## Status Codes
 
@@ -37,3 +30,23 @@ accept the entity enclosed in the request as a new subordinate of the [web resou
   - 404 Not found
   - 422 Unprocessable Entity
 - Server Error `5XX`
+
+## Headers
+
+### Request
+
+**Accept** request HTTP header advertises which content types, expressed as [MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types), the client is able to understand.
+
+```
+Accept: <MIME_type>/<MIME_subtype>
+Accept: <MIME_type>/*
+Accept: */*
+```
+
+### Response
+
+## Design
+
+REST and all the verbs
+
+Using id/1 is kinda a pain if you wanna do id/question in the future, but you can just make all these kinda /3241 be preceded by an id/

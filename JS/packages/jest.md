@@ -37,6 +37,7 @@ Will find any tests in subdirectories
 
 - `.toBe(4)` => Object.is
 - `.toEqual(4)` => recursively checks fields of object or array, `toBe` for numbers
+- `.toMatchObject(obj)` => Check all fields in obj are in 
 - `.not.toBe(0)` => negate matcher
 - `.toBeNull` => null
 - `.toBeUndefined` => undefined
@@ -56,8 +57,6 @@ Will find any tests in subdirectories
 
 toplevel before each done first and after each done last compared to blocks
 
-inside describes blocks run first, then tests
-
 ```js
 describe('matching cities to foods', () => {
   // Applies only to tests in this describe block
@@ -69,7 +68,13 @@ describe('matching cities to foods', () => {
   //...
 ```
 
-### Async
+#### Execution Order
+
+1) Runs down page running code not in test and in describe blocks
+
+2) runs down page again running tests in order found
+
+## Async
 
 Can't just expect in callback because test will finish, instead add done argument and test will wait until called or timeout and fail
 
@@ -110,7 +115,7 @@ test('the data is peanut butter', async () => {
 });
 ```
 
-### Setup
+## Setup
 
 ```js
 beforeEach(() => {
@@ -152,7 +157,7 @@ test.only('this will be the only test that runs', () => {
 
 #### Mock
 
-Pretty cool, always you to specify different returns per time called, check arguments and call count
+Pretty cool, allows you to specify different returns per time called, check arguments and call count
 
 ##### More Plugins
 
@@ -168,5 +173,20 @@ describe('basic route tests', () => {
  expect(response.status).toEqual(200);
  expect(response.text).toContain('Hello World!');
  });
+});
+
+describe('POST /users', function() {
+  it('responds with json', function(done) {
+    request(app)
+      .post('/users')
+      .send({name: 'john'})
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function(err, res) {
+        if (err) return done(err);
+        done();
+      });
+  });
 });
 ```

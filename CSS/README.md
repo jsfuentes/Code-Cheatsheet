@@ -36,21 +36,19 @@ Always use least specificity you need, so all li's instead of ids. Makes future 
 - h1 { color: rgb(100,100,100);}
 - div { color: rgb (20%, 50%,0);}
 
-## Px vs Em
-em is a unit that is relative to the currently chosen font size.
-% is also a relative unit, in this case relative to either the height or width of a parent element. They are a good alternative to px units for things like the total width of a design, if your design does not rely on specific pixel sizes to set its size.
+## Measurements
 
-Using % units in your design allows your design to adapt to the width of the screen/device, whereas using an absolute unit such as px does not.
+`1em` - Relative to parent's font-size(16px font-size => 1em) 
 
-## Other Types
+`1rem` - Relative to root html's font-size
 
-Vh /vw(viewport height/width) 100vh is max 
+`50%` - Relative to parent container
 
-px
+`50vh` - Relative to viewport height (100vh is max)
 
-em
+`50vw` - Relative to viewport width
 
-rem
+`100px`  - Never really use, it doesn't adapt to screen size at all
 
 ## Prefixes
 

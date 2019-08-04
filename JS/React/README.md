@@ -46,6 +46,14 @@ Add these script
 
 react-scripts creates the root html page
 
+## Create-react-app
+
+```bash
+npx create-react-app client
+```
+
+
+
 ## Setup With Node
 
 ```bash

@@ -1,4 +1,4 @@
-# rendering
+# Rendering
 
 ```react
 import React from 'react';

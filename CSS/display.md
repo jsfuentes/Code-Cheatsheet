@@ -1,12 +1,11 @@
 ## Old
 
-### Block
-
-Start on new line and fill width of parent container
-
-###  Inline
-
-Remain in line and only take up width of content
+| Value        | Effect                                                       |
+| ------------ | ------------------------------------------------------------ |
+| block        | Starts on new line, fill width of parent container           |
+| inline       | Remain in line and only take up width of content(height/width have no effect) |
+| inline-block | Remain in line, can apply height and width                   |
+|              |                                                              |
 
 ## HTML 5
 

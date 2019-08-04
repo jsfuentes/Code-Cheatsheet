@@ -40,7 +40,8 @@ chrome.runtime.onMessage.addListener(
 #### Sender Info
 
 ```javascript
- let windowId = sender.tab.windowId;
+let windowId = sender.tab.windowId; //window with multiple tabs
+let tabId = sender.tab.id;
 ```
 
 ## Message Passing Between Extensions
@@ -65,8 +66,9 @@ chrome.runtime.sendMessage(laserExtensionId, {getTargetData: true},
 
 #### Listener
 
+Only in background script
+
 ```js
-// For simple requests:
 chrome.runtime.onMessageExternal.addListener(
   function(request, sender, sendResponse) {
     if (sender.id == blocklistedExtension)
@@ -78,6 +80,18 @@ chrome.runtime.onMessageExternal.addListener(
       sendResponse({activateLasers: success});
     }
   });
+```
+
+## From Webpages
+
+Can't do ports, can do messages
+
+Must add 
+
+```json
+"externally_connectable": {
+  "matches": ["*://*.example.com/*"]
+}
 ```
 
 ### Long lived Connections

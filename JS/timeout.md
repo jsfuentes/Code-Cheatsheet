@@ -7,3 +7,9 @@ if(this.timerID !== undefined) {
 this.timerID = setTimeout(this.sendPayload, 4000);
 ```
 
+## Interval
+
+```js
+setInterval(function(){ alert("Hello"); }, 3000);
+```
+

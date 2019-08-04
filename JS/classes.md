@@ -32,6 +32,8 @@ console.log(square.area); // 100
 
 ## Inheritance
 
+Subclasses must `super()`
+
 ```js
 class Teacher extends Person {
   constructor(first, last, age, gender, interests, subject, grade) {

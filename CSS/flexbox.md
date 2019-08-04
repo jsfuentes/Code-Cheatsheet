@@ -32,9 +32,13 @@ div > div {
 
 flex: (can it grow) (can it shrink)
 
-## What is a Flex Item?
+## Definitions
 
-All none-absolute child of display: flex
+**Flex-Item** is all none-absolute child of display: flex
+
+**main axis** is like along one row is direciton is row
+
+**cross axis** is perpedential to main axis
 
 #### Impacted CSS Properties
 
@@ -71,10 +75,6 @@ Special Cases:
 
 SO, have flex column of nav bar, main page, and footer, then in main page have flex row, in each flex row have flex columns etc etc...
 
-**main axis** is like along one row is direciton is row
-
-**cross axis** is perpedential to main axis
-
 ### Flex-wrap
 
 - nowrap(default)
@@ -89,7 +89,7 @@ shorthand for warp&dir
 flex-flow: column-reverse wrap-reverse;
 ```
 
-## Flex Item from Container
+## Styles on Parent
 
 ### Justify-content
 
@@ -116,7 +116,7 @@ align flex items along cross axis within line
 - baseline(header bottom all perfectly aligned)
 - stretch(every item stretchs to max)
 
-## Flex-Items Individual Properities
+## Styles on Flex Items
 
 ### Align-self
 

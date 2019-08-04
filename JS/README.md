@@ -72,15 +72,15 @@ function scrape(company, secrets, headless=false, toScrape=["All"]) {
 `===` is strict equality with type and strict
 
 ```javascript
-77 === '77'
-// false (Number v. String)
+77 === '77' // false (Number v. String)
+undefined === null //false
 ```
 
 `==`  uses type coercion 
 
 ```javascript
-77 == '77'
-// true
+77 == '77' // true
+undefined == null //true
 ```
 
 ## Type Conversion

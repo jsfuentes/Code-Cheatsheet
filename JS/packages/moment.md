@@ -26,6 +26,7 @@ moment().format('YYYY [escaped] YYYY');
 ```javascript
 let today = moment();
 today.add(config.add_days, 'days');
+today.subtract(1, "days");
 ```
 
 ##### Get And Setters

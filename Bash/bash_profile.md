@@ -27,7 +27,6 @@ to bashprofile and then use .bashrc and don't worry about it
 ## My Bash_Profile
 
 ```bash
-alias ngrok='~/MyTools/ngrok'
 alias fin='find . -iname'
 alias ga='git add'
 alias gs='git status'
@@ -36,7 +35,7 @@ alias gb='git branch'
 alias gbv='git branch -v -a'
 alias gd='git diff'
 alias gc='git commit'
-alias gshowstat='git show --stat --oneline'
+alias gss='git show --stat --oneline'
 alias ll='ls -lAG'
 
 alias note='cd ~/Documents/CodeCheatsheet'
@@ -60,7 +59,7 @@ PS1="$SKY_BLUE[ \u@\h \W/ $YELLOW\$(parse_git_branch)$SKY_BLUE ]$NO_COLOUR ~ "
 # added by Anaconda2 5.0.0 installer
 export PATH="/anaconda2/bin:$PATH"
 
-#terraform
+#terraform and ngrok
 export PATH="/Users/jfuentes/MyTools/:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
@@ -72,6 +71,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # The original version is saved in .bash_profile.pysave
 export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 
+# Have pipenv store the venv in the project like node_modules
 export PIPENV_VENV_IN_PROJECT=1 
 
 download_gitignore () {
@@ -95,6 +95,8 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 alias mapb='cd ~/Projects/Mappening-Backend'
 alias mapf='cd ~/Projects/Mappening-Frontend'
 alias mapd='cd ~/Projects/Mappening-Deployment'
+alias est='cd ~/Projects/ecstatic'
+alias estb='cd ~/Projects/ecstatic-botpress'
 ```
 
 ## Pro

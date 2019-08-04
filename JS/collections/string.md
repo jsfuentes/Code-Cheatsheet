@@ -11,5 +11,5 @@
 - `.slice(start, end not included)`
 - `.split(" ")`
 - `.trim()` //remove whitespace
-- `.contains("seq")`  -  true if "seq" in string
+- `.includes("seq")`  -  true if "seq" in string
 

@@ -6,6 +6,10 @@
 
 ## EC2
 
+To access over docker or AWS, must run flask development server **which should never be used** like this:
+
+`    app.run(debug=True, host='0.0.0.0')`
+
 **never do this**: `sudo pipenv run flask run -h 0.0.0.0 -p 80` 
 
 ## Gunicorn

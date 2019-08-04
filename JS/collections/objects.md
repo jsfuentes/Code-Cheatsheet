@@ -10,11 +10,14 @@ var person1 = new Object();
 ## Iterate Over
 
 ```js
-for (var pId in players) {
+for (let pId in players) {
    if (players.hasOwnProperty(pId)) {
-       
-for (..... ) {
-	Object.keys(players)[0]
+     //......
+   }
+}
+
+for (let key of Object.keys(players)) {
+	//.......
 }
 ```
 

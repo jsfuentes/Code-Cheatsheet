@@ -35,8 +35,6 @@ Can do async fts in map and then wrap it in a promise.all
 
 ## Advanced
 
-Beware array loops with async stuff
-
 ### Subarr
 
 `.slice` for subarrs (start, end not included)
@@ -59,6 +57,8 @@ var fruitCopy = fruits.slice();
 
 Executes a callback ft for each ele, returns undefined
 
+Beware async stuff
+
 **array.forEach(callback[, thisArg])**
 
 ```js
@@ -67,3 +67,10 @@ array1.forEach(function(element) {
 });
 ```
 
+### Queue
+
+- `.push(e)`
+
+- `.pop()`
+- `.shift(e)` => pop from beginning
+- `.unshift()` => add to beginning

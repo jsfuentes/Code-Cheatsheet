@@ -1,3 +1,5 @@
+
+
 # Style
 
 ## CSS Modules
@@ -40,6 +42,16 @@ Learn about it [here](https://medium.com/@pioul/modular-css-with-react-61638ae9e
 
 ```bash
 import './DottedBox.css';
+```
+
+#### SCSS
+
+```bash
+npm install node-sass -S
+```
+
+```js
+import './DottedBox.scss';
 ```
 
 ## CSS-in-JS(inline)

@@ -34,6 +34,26 @@ chrome.storage.sync.get(['key'], function(result) {
 chrome.storage.sync.clear();//to empty storage
 ```
 
+##### Detect Changes
+
+```js
+function logStorageChange(changes, area) {
+  console.log("Change in storage area: " + area);
+ 
+  var changedItems = Object.keys(changes);
+ 
+  for (var item of changedItems) {
+    console.log(item + " has changed:");
+    console.log("Old value: ");
+    console.log(changes[item].oldValue);
+    console.log("New value: ");
+    console.log(changes[item].newValue);
+  }
+}
+
+browser.storage.onChanged.addListener(logStorageChange);
+```
+
 ## Promises
 
 From` webextension-polyfill`

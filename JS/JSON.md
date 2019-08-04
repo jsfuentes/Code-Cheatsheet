@@ -17,3 +17,12 @@ COmments not supported
 }
 ```
 
+## Parsing
+
+```js
+var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
+let myJSON = JSON.stringify(obj);
+```
+
+
+

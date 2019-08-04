@@ -4,14 +4,14 @@ Each open file gets assigned a file descriptor.	[[2\]](https://www.tldp.org/LDP/
 
 ## Basics
 
-| Command                         | do                                              |                                |
-| ------------------------------- | ----------------------------------------------- | ------------------------------ |
-| [cmd] > [filename]              | redirect stdout to file creating or overwriting | echo "hi" > test.txt           |
-| [cmd] >> [filename]             | appends to file if it exists, or creates        | echo "Thank you" >> test.txt   |
-| 1>[filename]                    | redirect stdout to file                         | echo "Dream better" 1>$LOGFILE |
-| 2>[filename]                    | redirect stdeer                                 | bad_command1 2>$ERRORFILE      |
-| &>[filename]  ORR  >&[filename] | redirect both stdout and stderr                 |                                |
-| 0< FILENAME                     | accept input from a file                        |                                |
+| Command                         | do                                               |                                |
+| ------------------------------- | ------------------------------------------------ | ------------------------------ |
+| [cmd] > [filename]              | Redirects stdout to file creating or overwriting | echo "hi" > test.txt           |
+| [cmd] >> [filename]             | Appends stdout to file if it exists, or creates  | echo "Thank you" >> test.txt   |
+| 1>[filename]                    | redirect stdout to file                          | echo "Dream better" 1>$LOGFILE |
+| 2>[filename]                    | redirect stdeer                                  | bad_command1 2>$ERRORFILE      |
+| &>[filename]  ORR  >&[filename] | redirect both stdout and stderr                  |                                |
+| 0< FILENAME                     | accept input from a file                         |                                |
 
 ### Pipes
 

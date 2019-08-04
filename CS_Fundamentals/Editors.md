@@ -20,4 +20,6 @@ Packages can be unmaintained
 
 ##  Visual Studio Code
 
-Rapidly gaining market share, professional packages
+Rapidly gaining market share
+
+Professional packages

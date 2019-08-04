@@ -50,10 +50,7 @@ if you scroll within section, what happens
 background-position: 90% 90%;
 background-position: bottom 90% right 90%; 
 /*can do px too; 90% from bottom and right*/
-
 ```
-
-
 
 puts 90%, 90% of image in 90% of 90% of entire background
 
@@ -86,3 +83,10 @@ cover: grows to min size that cover 100% of height&width maintaining ratio
 
 Don't use it has too many properties and changes defaults
 
+## Extra
+
+### Opacity
+
+Can set `opacity: .03` to parent div, but the children text also inherit it and makes text hard to read
+
+Can just use rgba background: rgba(76, 175, 80, 0.3)

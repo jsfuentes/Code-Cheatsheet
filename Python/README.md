@@ -74,6 +74,18 @@ Pass in dict like `f(**dict)` to act as **kwargs
 
 `lambda x, y: x[1] + y`
 
+### Generators
+
+```python
+def simpleGeneratorFun(): 
+    yield 1
+    yield 2
+    yield 3
+  
+for value in simpleGeneratorFun():  
+    print(value)
+```
+
 ## Input
 
 - PYTHON 2: `input("Enter number")` interprets user input so if int, int will be returned(Security bug, runs arbitrary code use raw_input)
@@ -92,7 +104,7 @@ except ValueError:
 
 ## Other
 
-```py
+```python
 value_when_true if condition else value_when_false
 ```
 

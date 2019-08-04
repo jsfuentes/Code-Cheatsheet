@@ -1,32 +1,3 @@
-
-
-# Find
-
-recursively descends the directory tree for each path listed, evaluating an expression
-
-*wont follow soft links* 
-
-### Find file with word in them
-
-```bash
-find . -iname [word]
-find . -iname local # => ./Projects/local
-```
-
-#### Find some string in all files in cur dir
-
-```bash
-find . -type f -print0 | xargs -0 
-# OR
-grep "some string"
-```
-
-## Pipe to File
-
-cat file.txt > output.txt #override
-
-cat file.txt >> output.txt #append
-
 ## Understand Machine
 
 `top` see mem usage 
@@ -53,7 +24,7 @@ cat file.txt >> output.txt #append
 
 `cat [filename] | xargs wc -l` => `wc -l [filename]` 
 
-`xargs [utility] \[utility args]`
+`xargs [utility] [utility args]`
 
 reads from the standard input
 ​     and executes utility
