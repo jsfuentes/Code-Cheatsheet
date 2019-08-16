@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
 app.listen(9000);
 ```
 
-## To use react router type
+## Express Server
 
 ```js
 app.get('/*', function (req, res) {
@@ -26,3 +26,16 @@ app.get('/*', function (req, res) {
  });
 ```
 
+When developing, inside client/package.json for the create-react-app web pack
+
+```
+"proxy": "http://localhost:3001/",
+```
+
+Then you can simply
+
+```js
+fetch(`/api/food`....
+```
+
+Then although the react app is running on 3000, api request like above will be sent to 3001. And in production, this will appriorately just hit the main domain :)

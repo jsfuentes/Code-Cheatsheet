@@ -1,17 +1,23 @@
 # Response
 
 - res.json()
-- res.sendFile()
+- res.sendFile(path.join(__dirname, 'index')); 
+  - works best with absolue path
 - res.send("Hello");
-- res.redirect('/events'); //doesn't work well with react router
+- res.redirect('/events'); 
+  - doesn't work well with react router
 - res.render('index');
 
 ## Render
 
-To render template files, set view folder
+To render template files, set view folder and static folder.
+
+Relative to dir you launch node process from
 
 ```js
 app.set('views', './views'); //this is the default 
+app.use(express.static('public'))
+app.use('/static', express.static('public'))
 ```
 
 Examples
@@ -19,6 +25,8 @@ Examples
 ```javascript
 res.render('index', { title: 'Hey', msg: 'Hello!' })
 ```
+
+
 
 ### Respond with Error
 

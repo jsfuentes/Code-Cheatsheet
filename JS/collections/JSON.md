@@ -2,6 +2,8 @@
 
 COmments not supported
 
+Must be double quotes
+
 ```json
 { 
   "telephone": {

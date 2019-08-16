@@ -49,6 +49,4 @@ configPromise.then(async (econfig) => {
 });
 ```
 
-
-
 *Look at babel runtime to get in the browser*

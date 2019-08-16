@@ -1,4 +1,14 @@
-# Basics
+# README
+
+Gatsby is a static site generator with plugins and makes adding pages easy
+
+- Gatsby dictates how you should handle data in your app.
+
+[Next](https://nextjs.org/) seems even better allowing easy page adding, mainly server side rendered pages, also supports static site generation
+
+- Managing data up to you 
+
+## Basics
 
 `npx create-react-app my-app`
 
@@ -58,25 +68,35 @@ npx create-react-app client
 
 ```bash
 mkdir fullstack_app && cd fullstack_app
-npm i -g create-react-app
-create-react-app client && cd client
-cd ..
-express backend --no-view
+npx create-react-app client
+npx express backend --no-view
 cd backend && npm install
+
 ```
 
-Change port of express server in /bin to 3001
+In `backend/bin/www`,  change the default port number to 3001
 
-Add `  "proxy": "http://localhost:3001",` to npm start in the client 
+In `client/package.json` add `  "proxy": "http://localhost:3001"` to the json
 
 Now in the main folder fullstack_app:
 
 ```bash
 npm init -y 
 npm i concurrently
-concurrently \"cd backend && npm start\" \"cd client && npm start\"
 ```
+
+In `package.json`, add `"start": "concurrently \"cd backend && npm run start\" \"cd client && yarn start\""`  under scripts
+
+Now just `npm run start` in the main folder
 
 #### Docker
 
 Use docker-compose to get two containers up, use `"proxy": "http://[service-name]:[port-number]"` instead
+
+### Gotchas
+
+Express generator doesn't come with json bodyparsering need to manually add that
+
+Nodemon needs to be added
+
+React-generator uses yarn and has a yarn.lock, it became a problem

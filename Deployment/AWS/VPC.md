@@ -6,8 +6,6 @@ You control all resources inside VPC, can create subnets that isolate parts
 
 Makes this the total VPC
 
-
-
 10.10.1.0/24 means first 24 bits are frozen
 
 ## IGW

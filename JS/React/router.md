@@ -4,14 +4,22 @@ React doesn't come with changing component rendered based on url out of the box,
 
 `npm install react-router-dom`
 
+```js
 import { BrowserRouter, Route, Link } from react-router-dom
+```
 
 ## Routers
 
-- Component that allows other router components to work 
-- `children` always renders the child
-- regex match from path to url i.e within url path found somewhere 
-- Will render multiple paths if they match, unless in a `<Switch>`  which will only render one and offers default
+If the path regex matches, will render that component
+
+**If multiple paths match, will render multiple components**(basically this is conditional rendering based on path)
+
+Need BrowserRouter outer component to creat history and allow other router components to work
+
+#### 3 Render Options
+
+- `render={props => <About {...props} extra={someVariable} />}` for inline declaration
+- `component={Home}` for premade component
 
 ```react
 <BrowserRouter>
@@ -23,9 +31,22 @@ import { BrowserRouter, Route, Link } from react-router-dom
 </BrowserRouter>
 ```
 
-### Passes some props down
+### Switch
 
-- match is objc with path(select by route), url(actual), isExact bool, params obj 
+`<Switch>`  groups Route components, and will choose the first to match if any
+
+```js
+  <Route exact path="/" component={Home} />
+  <Route path="/about" component={About} />
+  <Route path="/contact" component={Contact} />
+  {/* when none of the above match, <NoMatch> will be rendered */}
+  <Route component={NoMatch} />
+</Switch>
+```
+
+### Passes history&match down in props 
+
+- match is obj with path(select by route), url(actual), isExact bool, params obj
   - /users/:id is path, /users/abc would be url with {id: 'abc'} in params
 
 ### attrs path
@@ -38,7 +59,7 @@ import { BrowserRouter, Route, Link } from react-router-dom
 - exact doesnt do regex matching, but exact matching
 - strict means the ending / mattersss 
 
-## LInk
+## Link
 
 ```react
 <Link to="/">HOME</Link>
@@ -51,7 +72,7 @@ Navlinks add style when active, classes, and on actived event
 ### Redirect
 
 ```react
-<Redirect to '/error'/>
+<Redirect to='/error'/>
 //Inside switches
 <Redirect path="/home" to "/" />
 ```

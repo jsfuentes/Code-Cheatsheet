@@ -1,4 +1,4 @@
-# Flexbox
+# [Flexbox](https://yoksel.github.io/flex-cheatsheet/)
 
 Flexbox can do stuff like same size box and pop things up and down and navigation changes position. Flexbox default has next line be longer and can have empty boxes, if you dont want that then grid
 
@@ -14,6 +14,11 @@ div > div {
 }
 ```
 
+## Basic Steps
+
+1. Add `display: flex;` to the parent of elements
+2. Set `flex-direction` to horizontal or vertical
+
 ## Components
 
 1. Creation - display
@@ -21,12 +26,6 @@ div > div {
 3. Alignment: justify-content, align-items, align-self, align-content
 4. Ordering: order
 5. Flexibility: flex(flex-grow, flex-shrink, flex-basis) change proportional to other shit
-
-## Steps
-
-1. Add `display: flex;` to the parent of elements
-2. Set `flex-direction`to horizontal or vertical
-3. Set `flex-wrap` to control wrap direction
 
 ## Display
 
@@ -83,7 +82,7 @@ SO, have flex column of nav bar, main page, and footer, then in main page have f
 
 ### Flex-flow 
 
-shorthand for warp&dir
+shorthand for wrap&dir
 
 ```css
 flex-flow: column-reverse wrap-reverse;

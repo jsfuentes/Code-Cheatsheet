@@ -70,6 +70,8 @@ Some text to show that the reference links can follow later.
 ## Images<a name="images"></a>
 Here's our logo (hover to see the title text):
 
+
+
 Inline-style:
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
@@ -114,7 +116,6 @@ Quote break.
 <dl>
   <dt>Definition list</dt>
   <dd>Is something people use sometimes.</dd>
-
   <dt>Markdown in HTML</dt>
   <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>

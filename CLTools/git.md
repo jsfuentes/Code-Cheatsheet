@@ -4,13 +4,55 @@ Git stores everything in a directory, `rm -rf .git` to delete the git project
 
 `git --help command`
 
-## Reflog
+## Changing History
 
-Save every instance of head changes
+### Reflog
+
+Saves every instance of head changes
 
 ```bash
+git reflog
 git checkout -b after-commit HEAD@{1}
 ```
+
+### Rebase
+
+- rewrites history, if commits not local can mess things up
+- could also rebase all your branch commits to occur at end of current master to **avoid a merge commit**
+
+`git rebase master`, rebases current branch to master one 
+
+#### Merge master in your branch before push
+
+`git pull --rebase origin master`
+
+#### Squash many commits to one
+
+`git rebase -i <COMMIT_TO_IGNORE>`
+
+1. Squash all but top
+2. quit-save to rebase
+
+### Stash
+
+`git stash` - Takes dirty changes and saves them without committing
+
+`git stash pop` - Reapply last saved changes
+
+```bash
+git stash list
+> stash@{0}: WIP on master: 049d078 added the index file
+> stash@{1}: WIP on master: c264051 Revert "added file_size"
+> stash@{2}: WIP on master: 21d80a5 added number to log
+```
+
+`git stash apply stash@{2}` 
+
+#### Undoing Last Commit
+
+`git reset --hard HEAD~1`
+
+`git revert <commit to undo>` =>Commit a commit undoing last commit
 
 ## Remotes
 
@@ -29,47 +71,7 @@ git push <remote> <local branch name>:<remote branch to push into>
 
 `git checkout -B master origin/master` //-B resets if it already exists
 
-## Stash
-
-`git stash` - Takes dirty changes and saves them without committing
-
-`git stash pop` - Reapply last saved changes
-
-```bash
-git stash list
-> stash@{0}: WIP on master: 049d078 added the index file
-> stash@{1}: WIP on master: c264051 Revert "added file_size"
-> stash@{2}: WIP on master: 21d80a5 added number to log
-```
-
-`git stash apply stash@{2}` 
-
-## Rebase
-
-- rewrites history, if commits not local can mess things up
-- could also rebase all your branch commits to occur at end of current master to **avoid a merge commit**
-
-`git rebase master`, rebases current branch to master one 
-
-#### Merge master in your branch before push
-
-`git pull --rebase origin master`
-
-#### Squash many commits to one
-
-`git rebase -i <COMMIT_TO_IGNORE>`
-1. Squash all but top
-2. quit-save to rebase
-
 ## Other
-
-#### Undo Last Commit
-
-`git reset HEAD~1`
-
-#### Commit a commit undoing last commit
-
-`git revert <commit to undo>`
 
 #### Delete branch locally
 

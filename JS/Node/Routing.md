@@ -1,5 +1,7 @@
 # Routing
 
+The app will search for the first matching route in the order you define
+
 ```js
 // wiki.js - Wiki route module.
 var express = require('express');

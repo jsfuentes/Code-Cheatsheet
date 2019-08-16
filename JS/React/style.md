@@ -1,6 +1,10 @@
-
-
 # Style
+
+## Inline
+
+```js
+<p style={{transform: 'scale(0.5, 0.5)'}}> ... </p>
+```
 
 ## CSS Modules
 

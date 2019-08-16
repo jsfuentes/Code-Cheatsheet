@@ -4,6 +4,8 @@
 
 Objects and arrays passed by reference
 
+There are packages that work just in the browser, just in react, just for gatsby, or just for node
+
 ## Control
 
 ```js
@@ -46,16 +48,6 @@ throw new Error("This is an error");
 ```
 
 *Can throw anything actually but don't*
-
-## Date
-
-Can get and set different aspects and convert to different types
-
-```js
-var x = new Date(); //get current date
-x.toDateString(); //=> "Fri Oct 05 2018"
-x.toISOString(); //=> "2018-12-31T03:21:15.934Z"
-```
 
 ## Functions
 

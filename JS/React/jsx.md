@@ -1,5 +1,7 @@
 ## JSX
 
+Need to import react to use
+
 - Combines logic with display
 
 - Can put **any** js expression within braces in JSX

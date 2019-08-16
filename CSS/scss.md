@@ -1,8 +1,12 @@
-# Sass
+# Scss
 
 A superset of css that compiles to css
 
-Adds variables and groups
+- importing
+- Variables with $ 
+- Groups/modularity
+
+Can use node-sass to compile withs css
 
 ```scss
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap');
@@ -15,7 +19,9 @@ $input-font: calc(2.1vh);
 .button-container{
 	margin-top: 2em;
 	text-align: center;
-
+	
+  //I think equivalent to 
+  //.button-container input[type="submit"] {....}
 	input[type="submit"]{
 		text-align: center;
 		background-color: $primary;
@@ -24,3 +30,11 @@ $input-font: calc(2.1vh);
 }
 ```
 
+## Extra
+
+To use variables in calc
+
+```
+body
+    height: calc(100% - #{$body_padding})
+```

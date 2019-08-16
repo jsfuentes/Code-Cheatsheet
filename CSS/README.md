@@ -16,26 +16,6 @@ external is ideal, allows reusability across site
 <p style="color: black"> Lorem ipsum</p>
 ```
 
-## Basic Selectors
-Always use least specificity you need, so all li's instead of ids. Makes future use better
-
-
-- #myID `<li id="myID">`
-- .myClass `<li class="myClass">`
-- li //element selector
-- ul li //descendant selector
-- ol > li //direct child selector
-- li.myClass + li //adjacent sibling(closest/immediately after)
-- li.myClass ~ li //matches all later siblings
-- \* //all
-
-## COLORS
-3 ways
-
-- p { color: #CCCCCC;}
-- h1 { color: rgb(100,100,100);}
-- div { color: rgb (20%, 50%,0);}
-
 ## Measurements
 
 `1em` - Relative to parent's font-size(16px font-size => 1em) 
@@ -50,15 +30,12 @@ Always use least specificity you need, so all li's instead of ids. Makes future 
 
 `100px`  - Never really use, it doesn't adapt to screen size at all
 
+`calc(10% - 1em)` - Use calc for simple maths
+
 ## Prefixes
 
-Browser add support for CSS features with prefixes like
+Browser add support for CSS features that are experimental with prefixes, used 
 
-Webkit-
+Webkit- (chrome/safari)
 
 Max-
-
-## SASS
-
-Got importing and variables with $ and modularity
-

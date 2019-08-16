@@ -7,9 +7,10 @@ Encapulsate changes in the compoonent
 
 ## Lifecycle Hooks
 
-- **Mounting** in React with `componentDidMount()`  runs when rendering component to DOM
-
-- **unmounting** with `componentWillUnmount()` runs when 
+- **Mounting** in React with `componentDidMount()`  runs when first rendering component to DOM
+- **unmounting** with `componentWillUnmount()` runs before destroyed
+- **update** with `componentDidUpdate(prevProps, prevState, snapshot)`
+  - not initial render 
 
 ### Create a Ticking Clock
 

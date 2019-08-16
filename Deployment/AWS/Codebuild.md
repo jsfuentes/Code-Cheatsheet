@@ -44,5 +44,3 @@ artifacts:
   files:
     - test.tar
 ```
-
-## 

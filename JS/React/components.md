@@ -2,11 +2,14 @@
 
 Try to get small, reusable components
 
-function that takes Props and returns React component, a description of what to display that React then displays with `render`
+In: Props 
+
+Out: React component displayed by running render
 
 **Cant change props**
 
 ```react
+//Functional component - Good style when no need for advanced stuff
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
@@ -37,21 +40,44 @@ const element = <Welcome name={x} />
 <Component {...this.props} more="values" />
 ```
 
-## Advanced
+## Class Components
 
-### Functional Components
+```js
+export default class Chat extends Component {
+  constructor(props) {
+    super(props); //needed
+    //only place you can just use this.state to set
+    this.state = { 
+      messageHistory: [],
+      nextMessage: null
+    };
 
-Good style to just use a function when you don't need the state and other stuff
+    //binding this ptr
+    this.submitOption= this.submitOption.bind(this);
+    this.getChromeStorage = this.getChromeStorage.bind(this);
+  }
 
-```bash
-import React from "react"
+  componentDidMount() {
+    this.getChromeStorage();
+  }
 
-export default (props) => {
-   return <div>Hello {props.name}</div>
+  componentDidUpdate() {
+    this.msgAnchor.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  render() {
+    //....
+  }
 }
 ```
 
-### Containment
+## Advanced
+
+#### Specialization
+
+Specialized component like welcome dialog render a more general dialog component using props heavily and holding state, maybe general is just functional and reusable
+
+#### Containment
 
 Some components don't know who their children are like a border/sidebar
 

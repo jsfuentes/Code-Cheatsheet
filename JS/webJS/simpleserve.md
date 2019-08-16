@@ -1,4 +1,4 @@
-## Serving a index.html
+## Serving an index.html
 
 `python -m SimpleHTTPServer`
 

@@ -10,6 +10,10 @@ this.timerID = setTimeout(this.sendPayload, 4000);
 ## Interval
 
 ```js
-setInterval(function(){ alert("Hello"); }, 3000);
+if(this.timerID !== undefined) {
+	clearInterval(intervalID);
+}
+const intervalID = setInterval(() => alert("Hello"), 3000);
+
 ```
 

@@ -23,6 +23,7 @@ So common b/c in past browsers just supported these two and in the past browsers
   - 201 Created
   - 204 No Content
 - Redirection `3XX`
+  - 304 Client's copy of a resource is still valid
 - Client Error `4XX`
   - 400 Bad Input
   - 401 Unauthorizaed

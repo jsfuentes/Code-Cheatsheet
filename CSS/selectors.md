@@ -1,6 +1,21 @@
 # Selectors Master Race
 
+## Basic Selectors
+
+Always use least specificity you need, so all li's instead of ids. Makes future use better
+
+- \#myID `<li id="myID">`
+
+- .myClass `<li class="myClass">`
+- li //element selector
+- ul li //descendant selector
+- ol > li //direct child selector
+- li.myClass + li //adjacent sibling(closest/immediately after)
+- li.myClass ~ li //matches all later siblings
+- \* //all
+
 ## Attribute Selectors
+
 *element[attribute]* - select elements containing the named attribute
 - img[alt] {}
 - img:not([alt])
@@ -39,8 +54,3 @@ input[type=checkbox]:checked + label {
 - 0-1-0: Class selector
 - 0-0-1: Element Selector
 - On tie whichever comes later
-
-## Selectors API
-- document.querySelector('#bar') //return first
-- el.querySelectorAll('.foo') //return all
-- Can put any selector in string for jsss

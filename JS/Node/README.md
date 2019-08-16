@@ -61,3 +61,4 @@ app.get('/users/:userId/books/:bookId', function (req, res) {
 ### Globals
 
 - `__dirname` => full from root name of the directory that the executing script resides from
+- `process.env` => environment at start of runtime can use to access PATH and other env variables like `process.env.NODE_ENV`

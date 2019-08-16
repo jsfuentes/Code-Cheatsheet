@@ -13,9 +13,11 @@ $( '.person' ); // select all elements with a class of 'person'
 
 #### Document
 
+- Can put any selector in string for jsss
+
 ```js
 document.getElementById().getElementByTagname("input")
-document.querySelector('.class')
+document.querySelector('.class')//return first
 document.querySelectorAll('.class')
 ```
 
@@ -34,6 +36,8 @@ Can retrieve or set any attribute
 document.getElementById("myname").type="radio"
 document.getElementById("myname").value="Jorge"
 ```
+
+- 
 
 ### Other stuff
 

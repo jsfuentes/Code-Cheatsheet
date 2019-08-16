@@ -4,7 +4,7 @@ recursively descends the directory tree for each path listed, evaluating an expr
 
 *wont follow soft links* 
 
-### Find file with word in them
+### Find file by name
 
 ```bash
 find . -iname [word]
