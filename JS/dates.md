@@ -50,6 +50,15 @@ moment().day();//return 0-6 which is Sun-Sat
 moment().date(); //return 1-31 for day of month
 ```
 
+#### Operations
+
+```js
+moment('2016-10-30').isBetween('2016-10-30', '2016-12-30', null, '()'); //false
+moment('2016-10-30').isBetween('2016-10-30', '2016-12-30', null, '[)'); //true
+```
+
+
+
 ### Plugins
 
 #### [moment-business-days](https://github.com/kalmecak/moment-business-days)

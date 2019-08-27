@@ -60,6 +60,8 @@ import './DottedBox.scss';
 
 ## CSS-in-JS(inline)
 
+No dash allowed so border-left becomes borderLeft
+
 ```js
 import React from 'react';
 

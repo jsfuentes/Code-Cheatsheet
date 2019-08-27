@@ -49,16 +49,6 @@ throw new Error("This is an error");
 
 *Can throw anything actually but don't*
 
-## Functions
-
-Can have default parameters, no named parameters when calling though
-
-```js
-function scrape(company, secrets, headless=false, toScrape=["All"]) {
-	//...
-}
-```
-
 ## Equality
 
 `===` is strict equality with type and strict
@@ -85,3 +75,4 @@ parseInt('10a,a22') //10
 ```
 
 Find type with `typeof(var)`
+

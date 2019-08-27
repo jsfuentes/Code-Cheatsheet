@@ -21,6 +21,7 @@ var last = fruits[fruits.length - 1];
 ## Functional Stuff
 
 - `.map(ft)` - return new array with ft applied to each
+- `flatMap(ft)` - map followed by a depth 1 [`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) , allows modification of number of elements
 - `.reduce(ft)` - return single ele..
 - `.some(ft)` - true if one ele satisfies ft given
 - `.filter(ft)`-  return  new array with elements where ft true

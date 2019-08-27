@@ -2,17 +2,17 @@
 
 M means Alt
 
-| Cmd   | Effect        |
-| ----- | ------------- |
-| C - v | Next Page     |
-| C - p | Previous Line |
-| C - a | Start of Line |
-| C - e | End of Line   |
-| C-x u | Undo          |
-| C - n | Next Line     |
-|       |               |
-|       |               |
-|       |               |
+| Cmd   | Effect                   |
+| ----- | ------------------------ |
+| C - v | Next Page                |
+| C - p | Previous Line            |
+| C - a | Start of Line            |
+| C - e | End of Line              |
+| C-x u | Undo                     |
+| C - n | Next Line                |
+| C - k | Kill(delete? copy?) line |
+|       |                          |
+|       |                          |
 
 ## Selecting Text
 

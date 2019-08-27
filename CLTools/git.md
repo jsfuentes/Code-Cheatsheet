@@ -73,9 +73,11 @@ git push <remote> <local branch name>:<remote branch to push into>
 
 ## Other
 
-#### Delete branch locally
+#### Delete branches
 
 `git branch -d <branchname>` 
+
+`git remote prune origin`  //remove all branches not in origin
 
 #### Checkout specific file
 
@@ -132,3 +134,4 @@ Thats it, just use normal workflow
 3) `git lfs install` to get huge assets
 
 4) `git lfs pull` to get lfs
+

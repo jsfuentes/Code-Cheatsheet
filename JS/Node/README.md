@@ -11,6 +11,18 @@ var assert = require('assert');
 assert(5 > 7);
 ```
 
+## Versions
+
+```flowchart
+Alice->Bob: Hello
+
+```
+
+
+
+- Even numbered releases are LongTerm Support(LTS); they generally receive 30 months of support once they become LTS.
+- Odd numbered releases are current releases and are supported for six months.
+
 # Express
 
 ### Most Basic Code

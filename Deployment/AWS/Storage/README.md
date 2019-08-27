@@ -13,6 +13,8 @@ Object level storage(DB) vs block level storage(S3):
 
 Block Storage
 
+Amazon Elastic Block Store (EBS) is an easy to use, high performance block storage service designed for use with Amazon Elastic Compute Cloud (EC2)
+
 is a general thing like SSD backed for databases form No-SQL to SQL or hard disk backed for throughput intensive
 
 ## EFS (Elastic File System)

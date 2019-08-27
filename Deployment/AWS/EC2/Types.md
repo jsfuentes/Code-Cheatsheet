@@ -1,5 +1,9 @@
 # Types of EC2
 
+## AMI?
+
+Ubuntu or Linux? Stackoverflow and Quora says idk
+
 ## Types
 
 Type, Specialty, Use Cases

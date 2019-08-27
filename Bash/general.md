@@ -4,6 +4,8 @@
 
 `du -sh` to see size of dir
 
+`du -h --max-depth=1 | sort -hr` to see size of dirs/files in folder
+
 `tail ` get end of file, `tail -f` to open buffer and show end of file updating
 
 `head` get start of file

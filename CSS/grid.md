@@ -1,5 +1,63 @@
 # Grid
 
+## Basic
+
+CSS
+
+```css
+.app {
+  display: grid;
+  grid-template-columns: 4.5em 1fr;
+  grid-template-rows: 4em 1fr;
+  grid-template-areas:
+    "sidenav header"
+    "sidenav main";
+  height: 100vh;
+}
+
+/* Give every child element its grid name */
+.header {
+  grid-area: header;
+  background-color: white;
+  box-shadow: 0px 0.5px 2px rgba(0, 0, 0, 0.05);
+}
+
+.sidenav {
+  grid-area: sidenav;
+  background-color: white;
+  box-shadow: 0.5px 0px 2px rgba(0, 0, 0, 0.05);
+}
+
+.main {
+  grid-area: main;
+  background-color: $offWhite;
+  overflow: scroll;
+  padding: $space-2l $space-2l 0em $space-2l;
+}
+```
+
+HTML
+
+```react
+<div className="app">
+  <header className="header">
+    <TopMenu />
+  </header>
+  <aside className="sidenav">
+    <LeftMenu />
+  </aside>
+  <main className="main">
+    <Switch>
+      <Route exact path="/dashboard" component={Overview} />
+      <Route component={NoMatch} />
+    </Switch>
+  </main>
+  <div className="timeline">
+    <div> TBD Timeline </div>
+  </div>
+</div>
+```
+
 ## Comparison to Grid
 
 Flexbox is 2D layout, all the rows are independent, would be hacky if you want all the elements in each row to line up 

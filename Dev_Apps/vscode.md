@@ -1,10 +1,16 @@
 # Featured Shortcuts
 
-| Command     | Result          |
-| ----------- | --------------- |
-| Cmd-Shift-P | Command Palette |
-| Cmd-P       | Open a File     |
-|             |                 |
+| Command     | Result                      |
+| ----------- | --------------------------- |
+| Cmd-Shift-P | Command Palette             |
+| Cmd-P       | Open a File                 |
+| Cmd-T       | Find class, ft, or variable |
+| Cmd-L       | Select Current Line         |
+|             |                             |
+|             |                             |
+|             |                             |
+|             |                             |
+|             |                             |
 
 ## Install Shell
 

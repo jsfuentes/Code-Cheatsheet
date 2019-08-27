@@ -18,12 +18,16 @@ Output: Build artifacts or upload Docker image to ECR
 - Automagically unzips the file if your source is a zip
 - Artifacts are searched for based on the base dir
 
-#### Buildspec
+#### [Buildspec](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)
 
 ```
 version: 0.2
 
 phases:
+	install:
+		runtime-versions:
+			java: openjdk8
+      nodejs: 10
   pre_build:
     commands:
       - echo Building image
@@ -44,3 +48,9 @@ artifacts:
   files:
     - test.tar
 ```
+
+### Artifacts
+
+- `'**/*'` represents all files recursively.
+- `my-subdirectory/*` represents all files in a subdirectory named *my-subdirectory*.
+- `my-subdirectory/**/*` represents all files recursively starting from a subdirectory named *my-subdirectory*.

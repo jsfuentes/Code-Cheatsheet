@@ -7,3 +7,4 @@ Control what happens when content too big either scroll/clip
 - `scroll` - The overflow is clipped, and a scrollbar is added to see the rest of the content
 - `auto` - Similar to `scroll`, but it adds scrollbars only when necessary
 
+Only happens if block display with height

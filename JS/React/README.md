@@ -62,16 +62,13 @@ react-scripts creates the root html page
 npx create-react-app client
 ```
 
-
-
 ## Setup With Node
 
 ```bash
-mkdir fullstack_app && cd fullstack_app
+mkdir node-react-app && cd node-react-app
 npx create-react-app client
-npx express backend --no-view
+npx express-generator backend --no-view
 cd backend && npm install
-
 ```
 
 In `backend/bin/www`,  change the default port number to 3001
@@ -95,7 +92,7 @@ Use docker-compose to get two containers up, use `"proxy": "http://[service-name
 
 ### Gotchas
 
-Express generator doesn't come with json bodyparsering need to manually add that
+Express generator comes with express.json bodyparsering which is a much less lenient form of post request processing then the bodyparser package(must specify application/json header)
 
 Nodemon needs to be added
 

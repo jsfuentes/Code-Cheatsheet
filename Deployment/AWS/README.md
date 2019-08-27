@@ -8,7 +8,9 @@ Different regions offer different costs, latency, and compliance
 
 ## AWS CLI
 
-Any command is using your default configuration IAM 
+Any command is using your default configuration IAM
+
+`aws configure`
 
 ### Setup
 

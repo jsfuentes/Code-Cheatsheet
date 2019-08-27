@@ -152,3 +152,15 @@ Flex is shorthand, but made up of
 
 Will never shrink to less than longest word
 
+## Center Something
+
+```css
+.ecstatic-button {
+	width: 3.75em;
+	height: 3.75em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+```
+
