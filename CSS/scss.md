@@ -27,7 +27,26 @@ $input-font: calc(2.1vh);
 		background-color: $primary;
 		font-size: $input-font;
   }
+  
+  //equivalent to button-container:hover
+  &:hover { 
+        transform: scale(1.01, 1.01);
+  }
 }
+```
+
+#### Importing
+
+Partials have leading underscore and can be used with 
+
+```scss
+@import 'spacing.scss'
+```
+
+_spacing.scss
+
+```
+#stuff
 ```
 
 ## Extra
@@ -38,3 +57,37 @@ To use variables in calc
 body
     height: calc(100% - #{$body_padding})
 ```
+
+#### Math
+
+```scss
+article[role="main"] {
+  float: left;
+  width: 600px / 960px * 100%;
+}
+
+aside[role="complementary"] {
+  float: right;
+  width: 300px / 960px * 100%;
+}
+```
+
+## Installation
+
+```bash
+yarn add node-sass	
+```
+
+In create react app, just install and it will start working on import 
+
+Can also just use node-sass
+
+```json
+{
+	"build:css": "node-sass --omit-source-map-url src/css/style.scss src/css/style.css",
+	"watch:css": "npm run build:css -- --watch",
+}
+```
+
+
+

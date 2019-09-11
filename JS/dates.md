@@ -57,8 +57,6 @@ moment('2016-10-30').isBetween('2016-10-30', '2016-12-30', null, '()'); //false
 moment('2016-10-30').isBetween('2016-10-30', '2016-12-30', null, '[)'); //true
 ```
 
-
-
 ### Plugins
 
 #### [moment-business-days](https://github.com/kalmecak/moment-business-days)

@@ -1,11 +1,11 @@
-# Router
+#  Router
 
 React doesn't come with changing component rendered based on url out of the box, so need `react-router-dom`
 
 `npm install react-router-dom`
 
 ```js
-import { BrowserRouter, Route, Link } from react-router-dom
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 ```
 
 ## Routers

@@ -47,6 +47,10 @@ configPromise.then(async (econfig) => {
   debug("Econfig", econfig);
   const test = await updateStorage(econfig);
 });
+
+new Promise(async (resolve, reject) => {
+  const result = await browser.management.getSelf();
+  //..
 ```
 
 *Look at babel runtime to get in the browser*

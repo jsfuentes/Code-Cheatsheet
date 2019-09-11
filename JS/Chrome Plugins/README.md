@@ -75,3 +75,12 @@ Use a bundler like webpack or parcel and output a single js file that you includ
 Then change manifest.json to have the build scripts
 
 Make sure all the files you want are imported in the one file you build
+
+## Keep constant Chrome-ID
+
+Use the key value in the manifest.json
+
+1. Find the key value by first packing the extension to get a constant(pem stable) id
+2. Look for the key value in  `~/Library/Application Support/Google/ChromeDefault/Extensions/<extensionId>/<versionString>/manifest.json`
+3. Add that key value to your manifest.json
+

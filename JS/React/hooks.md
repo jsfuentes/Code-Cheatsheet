@@ -30,6 +30,8 @@ function Example() {
 }
 ```
 
+Updating *replace*s its value instead of setState which *merges*
+
 ## Effects
 
 For data fetching, subscriptions, or manually changing the DOM because they can affect other components and can’t be done during rendering.
@@ -117,3 +119,58 @@ const value = useContext(MyContext);
 ```
 
 Still need MyContext.Provider above
+
+- [`useReducer`](https://reactjs.org/docs/hooks-reference.html#usereducer)
+
+- [`useCallback`](https://reactjs.org/docs/hooks-reference.html#usecallback)
+
+  - ```react
+    function MeasureExample() {
+      const [height, setHeight] = useState(0);
+    
+      const measuredRef = useCallback(node => {
+        if (node !== null) {
+          setHeight(node.getBoundingClientRect().height);
+        }
+      }, []);
+    
+      return (
+        <>
+          <h1 ref={measuredRef}>Hello, world</h1>
+          <h2>The above header is {Math.round(height)}px tall</h2>
+        </>
+      );
+    }
+    ```
+
+    Unlike useRef, notifies us on change of ref
+
+- [`useMemo`](https://reactjs.org/docs/hooks-reference.html#usememo)
+
+- [`useRef`](https://reactjs.org/docs/hooks-reference.html#useref)
+
+  - ```react
+    function TextInputWithFocusButton() {
+      const inputEl = useRef(null);
+      const onButtonClick = () => {
+        // `current` points to the mounted text input element
+        inputEl.current.focus();
+      };
+      return (
+        <>
+          <input ref={inputEl} type="text" />
+          <button onClick={onButtonClick}>Focus the input</button>
+        </>
+      );
+    }
+    ```
+
+    Can also be equivalent to instance variables in class components. Mutating the `.current` property won’t cause a re-render.
+
+    Updating a ref is a side effect so it should be done only inside an `useEffect` (or `useLayoutEffect`) or inside an event handler.
+
+- [`useImperativeHandle`](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)
+
+- [`useLayoutEffect`](https://reactjs.org/docs/hooks-reference.html#uselayouteffect)
+
+- [`useDebugValue`](https://reactjs.org/docs/hooks-reference.html#usedebugvalue)

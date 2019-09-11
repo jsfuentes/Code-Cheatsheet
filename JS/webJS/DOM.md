@@ -21,7 +21,7 @@ document.querySelector('.class')//return first
 document.querySelectorAll('.class')
 ```
 
-## Get Forms
+#### Get Forms
 
 ```js
 document.forms
@@ -29,17 +29,41 @@ document.forms.myform
 document.theform([name of form])
 ```
 
-## Attributes
+## Modifying Elements
+
+#### Attributes
+
 Can retrieve or set any attribute
 
 ```js
 document.getElementById("myname").type="radio"
 document.getElementById("myname").value="Jorge"
+elem.style.display = 'none';
 ```
 
-- 
+## Creating/Removing Elements
 
-### Other stuff
+#### Creating
+
+```js
+let container = document.createElement('div');
+container.setAttribute("id", containerID);
+let iframe = document.createElement('iframe');
+iframe.setAttribute("id", "ecstatic-iframe");
+iframe.src = iframeUrl;
+container.appendChild(iframe);
+
+document.body.appendChild(container);
+```
+
+#### Deleting
+
+```js
+var elem = document.querySelector('#some-element');
+elem.parentNode.removeChild(elem);
+```
+
+## Other DOM Stuff
 
 #### Scrolling 
 

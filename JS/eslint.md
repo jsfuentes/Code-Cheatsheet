@@ -14,3 +14,9 @@ Generates the .eslintrc.json
 
 Usable uses the eslint recommended 
 
+## Other configs
+
+```bash
+yarn add eslint-plugin-react-hooks@next #react hooks
+```
+

@@ -18,9 +18,11 @@ Output: Build artifacts or upload Docker image to ECR
 - Automagically unzips the file if your source is a zip
 - Artifacts are searched for based on the base dir
 
-#### [Buildspec](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)
+### [Buildspec](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)
 
-```
+buildspec.yml
+
+```yaml
 version: 0.2
 
 phases:
@@ -54,3 +56,37 @@ artifacts:
 - `'**/*'` represents all files recursively.
 - `my-subdirectory/*` represents all files in a subdirectory named *my-subdirectory*.
 - `my-subdirectory/**/*` represents all files recursively starting from a subdirectory named *my-subdirectory*.
+
+## Example 2 Running AWSCLI
+
+Need to allow access for the codebuild machine with IAM
+
+- add policy S3FullAccess for S3
+
+```yaml
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - npm i npm@latest -g
+      - pip install --upgrade pip
+      - pip install --upgrade awscli
+  pre_build:
+    commands:
+      - echo Building iframe question
+      - ls
+      - cd plugin/src/iframe_question
+      - npm install
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      - echo $CODEBUILD_SRC_DIR
+      - pwd
+      - aws s3 sync build s3://ecstatic-iframe-plugin
+```
+

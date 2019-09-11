@@ -38,3 +38,5 @@ const content = posts.map((post) =>
     title={post.title} />
 );
 ```
+
+You should add a key to each child **as well as each element inside children **.[Stackoverflow on issue](https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js).

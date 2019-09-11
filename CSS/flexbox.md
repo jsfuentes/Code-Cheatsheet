@@ -17,7 +17,7 @@ div > div {
 ## Basic Steps
 
 1. Add `display: flex;` to the parent of elements
-2. Set `flex-direction` to horizontal or vertical
+2. Set `flex-direction` to `column` or `row`
 
 ## Components
 

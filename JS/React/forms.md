@@ -1,40 +1,5 @@
 # Forms
 
-Simple Example, see below for more complex handling of multiple changes
-
-```react
-class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-}
-```
-
 ## Controlled Components
 
 Normally form elements such as `<input> `maintain their own state and update based on input. To combine with React state, let React state be the “single source of truth” by updating it on change
@@ -89,6 +54,36 @@ class Reservation extends React.Component {
   }
 }
 ```
+
+## Custom Hooks
+
+```js
+const useSearch = (callback) => {
+    const [inputs, setInputs] = useState({});
+
+    const handleSubmit = (event) => {
+        if (event) {
+        event.preventDefault();
+        }
+        callback(event);
+    }
+
+    const handleInputChange = (event) => {
+        event.persist();
+        setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
+    }
+
+    return {
+        handleSubmit,
+        handleInputChange,
+        inputs
+    };
+}
+```
+
+Then
+
+
 
 ## Specific Tags
 

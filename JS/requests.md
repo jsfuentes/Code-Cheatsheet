@@ -16,6 +16,7 @@ Promise based HTTP client, best
 const axios = require('axios');
 import axios from 'axios';
 
+//GET
 axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
   .then(response => {
     console.log(response.data.url);
@@ -24,7 +25,23 @@ axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
   .catch(error => {
     console.log(error);
   });
+
+//POST
+axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 ```
+
+**axios.get(url[, config])**
+
+**axios.post(url[, data[, config]])**
 
 Multiple Requests
 
