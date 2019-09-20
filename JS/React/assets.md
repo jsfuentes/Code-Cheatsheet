@@ -26,13 +26,28 @@ Or css
 
 ### Can import SVG as component
 
+All props are just dumped into the svg outer tag
+
 ```js
 import { ReactComponent as Logo } from './logo.svg';
 const App = () => (
   <div>
     {/* Logo is an actual React component */}
-    <Logo />
+    <Logo width="40px" height="40px" className="checksvg" />
   </div>
 );
+```
+
+*Included in create-react-app, but under the hood is [svgr](https://github.com/smooth-code/svgr)*
+
+```scss
+.checksvg {
+  margin-right: $space-2s;
+
+  path {
+    stroke: $green;
+    stroke-width: 2px;
+  }
+}
 ```
 

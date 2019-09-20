@@ -15,23 +15,25 @@ class Reservation extends React.Component {
       isGoing: true,
       numberOfGuests: 2
     };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleInputChange(event) { 
+  handleInputChange = (event) =>  { 
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
+    
     this.setState({
-      [name]: value //es6 computed property syntax
+      [target.name]: value //es6 computed property syntax
     });
+  }
+  
+  handleSubmit(event) {
+    event.preventDefault();
+    //.. process submission with state
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <label>
           Is going:
           <input

@@ -103,6 +103,7 @@ Modifiers:
 
 - `-n` : show line numbers
 - `-C 5`: show 5 context lines before and after 
+- `-i`: ignore case
 
 ## Git LFS(Large File Store)
 

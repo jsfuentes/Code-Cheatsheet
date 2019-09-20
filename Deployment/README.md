@@ -31,7 +31,6 @@ Costs for Heroku can be about 3x, but as easy as a git push and many additional 
   - Service
   - Capacity
   - Backups
-  - 
 - Server Running
   - Frontend Serving ?
   - Nginx, load balancing?

@@ -4,6 +4,8 @@ Ondemand, online, pay as you go IT services
 
 [Products](https://aws.amazon.com/products/)
 
+[Explained Products](https://expeditedsecurity.com/aws-in-plain-english/)
+
 Different regions offer different costs, latency, and compliance
 
 ## AWS CLI

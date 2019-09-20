@@ -1,5 +1,7 @@
 # Tags
 
+https://html.spec.whatwg.org/multipage/sections.html#the-section-element
+
 ## Div / P / Span
 
 Could only use divs and then style as needed

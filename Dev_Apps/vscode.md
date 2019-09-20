@@ -1,16 +1,28 @@
 # Featured Shortcuts
 
+## VSCode Navigation
+
 | Command     | Result                      |
 | ----------- | --------------------------- |
 | Cmd-Shift-P | Command Palette             |
 | Cmd-P       | Open a File                 |
 | Cmd-T       | Find class, ft, or variable |
-| Cmd-L       | Select Current Line         |
 | Cmd-Shift-E | Explorer Open               |
 | Cmd-K Cmd-W | Close all open files        |
 |             |                             |
 |             |                             |
 |             |                             |
+|             |                             |
+
+## Editor Navigation
+
+| Cmd         | Result              |
+| ----------- | ------------------- |
+| Cmd-L       | Select Current Line |
+| Cmd-Shift-K | Delete Current Line |
+|             |                     |
+
+
 
 ## Install Shell
 

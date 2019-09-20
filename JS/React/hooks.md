@@ -124,6 +124,8 @@ Still need MyContext.Provider above
 
 - [`useCallback`](https://reactjs.org/docs/hooks-reference.html#usecallback)
 
+  ​	Used when you need a function to be conditionally remade, avoid the work and if you need it to be a dep of another hook
+
   - ```react
     function MeasureExample() {
       const [height, setHeight] = useState(0);

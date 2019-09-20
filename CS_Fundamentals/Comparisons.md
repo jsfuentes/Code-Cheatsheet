@@ -18,17 +18,3 @@ Yarn:
 - Uses package.json, so super super easy to switch; can use both at once
 - Emojis
 
-### Vi vs emacs
-
-Emacs 
-
-- common shortcuts on terminal, google docs, Typora, etc 
-- more powerful editor 
-
-Vi
-
-- more ergonamic shortcuts and easier navigation cuz modes
-- stronger for masters
-- Faster/more commonly on machines
-- commands not beautiful, more acronyms
-

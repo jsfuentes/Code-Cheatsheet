@@ -70,3 +70,5 @@ Can use and, not, and ',' which is or
 }
 ```
 
+Something about how some mobile browser actually render sights are largely virtual viewports and then render it down, but this means if you are web optimized it might be fucked up. So this mitigates that or [something](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html)
+

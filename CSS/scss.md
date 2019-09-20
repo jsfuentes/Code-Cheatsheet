@@ -32,6 +32,13 @@ $input-font: calc(2.1vh);
   &:hover { 
         transform: scale(1.01, 1.01);
   }
+
+  //can place media queries inside too
+  @media screen and (max-width: 768px) {
+    margin-top: $space;
+    padding-left: $mobile-padding;
+    padding-right: $mobile-padding;
+  }
 }
 ```
 
@@ -45,17 +52,16 @@ Partials have leading underscore and can be used with
 
 _spacing.scss
 
-```
-#stuff
+```scss
+$spacing: 1em;
 ```
 
 ## Extra
 
 To use variables in calc
 
-```
-body
-    height: calc(100% - #{$body_padding})
+```scss
+height: calc(100% - #{$body_padding})
 ```
 
 #### Math

@@ -25,3 +25,4 @@ XML language, style through CSS, images, scriptable(animatable)
 </svg>
 ```
 
+Can then add classes and styles to the svg 

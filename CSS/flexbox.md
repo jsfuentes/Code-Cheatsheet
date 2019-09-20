@@ -156,8 +156,8 @@ Will never shrink to less than longest word
 
 ```css
 .ecstatic-button {
-	width: 3.75em;
-	height: 3.75em;
+	width: 3.75rem;
+	height: 3.75rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;

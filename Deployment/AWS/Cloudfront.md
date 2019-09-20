@@ -24,3 +24,8 @@ Features
 Easy enough to do, select the bucket
 
 Make sure to set **Default Root Object** to the index.html or whatever
+
+## Using your own domain
+
+Must have certificate validating you own the domain, ACM offers something, but must be us-east-1
+

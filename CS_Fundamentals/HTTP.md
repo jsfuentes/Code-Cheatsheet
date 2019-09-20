@@ -4,11 +4,11 @@ The application layer protocol of the internet, port 80 or 8080
 
 ## Methods
 
-GET is supposed to be sae and idempotent
+GET is supposed to be safe and idempotent
 
 POST is to modify data
 
-So common b/c in past browsers just supported these two and in the past browsers 
+So common b/c in past browsers just supported these two
 
 | HTTP method | RFC                                                          | Request has Body | Response has Body | Safe | Idempotent |
 | ----------- | ------------------------------------------------------------ | ---------------- | ----------------- | ---- | ---------- |

@@ -47,6 +47,12 @@ Object.assign({}, x)
 delete myObject.prop;
 ```
 
+#### Equality
+
+=== will do ptr equality
+
+Use lodash .isEqual for deep equality
+
 ## Old Classes
 
 ```js

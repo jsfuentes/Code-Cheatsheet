@@ -136,7 +136,7 @@ Default is one cell on each row, all children of display grid are grid elements
 ```css
 div {
     display: grid | inline-grid; 
-    //inline-grid just how long it needs to be, basically width: auto according to content
+    // inline-grid just how long it needs to be, basically width: auto according to content
 }
 ```
 

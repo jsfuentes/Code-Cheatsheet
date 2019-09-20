@@ -8,3 +8,5 @@ Control what happens when content too big either scroll/clip
 - `auto` - Similar to `scroll`, but it adds scrollbars only when necessary
 
 Only happens if block display with height
+
+The scrollbar actually takes up space in the div

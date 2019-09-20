@@ -2,11 +2,23 @@
 
 ## Vim/Emacs
 
-Highly configurable and timeless
+### Vi vs emacs
 
-Available on every server basically since in the cmd prompt, devops speciality
+Emacs 
 
-The potential speed is extremely high
+- common shortcuts on terminal, google docs, Typora, etc 
+- more powerful editor 
+- Highly configurable and timeless
+- masters have extremely high speed
+
+Vi
+
+- more ergonamic shortcuts and easier navigation cuz modes
+- masters have extremely high speed
+- Faster/more commonly on machines
+- commands not beautiful, more acronyms
+- Highly configurable and timeless
+- Available on every server basically since in the cmd prompt, devops speciality
 
 ## Atom
 
@@ -23,3 +35,6 @@ Packages can be unmaintained
 Rapidly gaining market share
 
 Professional packages
+
+Great package management, snippets, configurability
+
