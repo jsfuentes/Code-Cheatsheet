@@ -89,7 +89,7 @@ git push <remote> <local branch name>:<remote branch to push into>
 
 #### Remove all Untracked files and build products
 
-`git clean -fd` //remove everything that isnt ignored by .gitignore
+`git clean -fd` //remove everything untracked besides what is  ignored by .gitignore
 `git clean -fdx` //remove all untracked files including those ignored by .gitignore
 `git clean -fdX` //only remove files ignored by .gitignore
 
@@ -104,6 +104,14 @@ Modifiers:
 - `-n` : show line numbers
 - `-C 5`: show 5 context lines before and after 
 - `-i`: ignore case
+
+## Git Ignore
+
+```
+node_modules/ #any node_modules anywhere
+/node_modules #only at route
+*/node_modules #in any subdir
+```
 
 ## Git LFS(Large File Store)
 

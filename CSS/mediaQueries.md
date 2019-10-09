@@ -1,5 +1,26 @@
 # Media Queries
 
+## Usage
+
+Prob a better way to do it 
+
+```scss
+.main {
+  @media screen and (max-width: 767px) {
+        display: none !important;
+    }
+}
+
+.mobile-main {
+    // background-color: $blue-1;
+
+    @media screen and (min-width: 768px) {
+        display: none !important;
+    }
+```
+
+## General
+
 Originally had 10 types of browsers that you can ask what is displaying this shit
 
 Problem: Different Sizes
@@ -11,7 +32,7 @@ Don't think about devices, think about sizes that make sense for your design
 ###  Specifying Media Queries
 
 ```css
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) { // <= 600px
     selector {
         
     }

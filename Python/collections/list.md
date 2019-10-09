@@ -18,6 +18,7 @@ l.pop() #remove and return
 for v in l:
 for reverseV in reversed(l): #reversed returns iterator  
 for i in range(len(l)):
+for x in range(len(s) - 1, -1, -1): #reversed is more clear
 for reverseI in reversed(range(len(l))): 
 for i, v in enumerate(l):
 ```

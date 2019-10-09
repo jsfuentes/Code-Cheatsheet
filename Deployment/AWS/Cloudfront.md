@@ -1,6 +1,8 @@
 # Cloudfront
 
-CDN allowing faster responses with global distribution
+CDN allowing faster responses with global distribution for static content
+
+Also can be used for EC2 with some sort of API speed up
 
 Pretty easy to setup with good tool tips
 

@@ -7,6 +7,7 @@
 - res.redirect('/events'); 
   - doesn't work well with react router
 - res.render('index');
+- res.sendStatus(200);
 
 ## Render
 
@@ -25,8 +26,6 @@ Examples
 ```javascript
 res.render('index', { title: 'Hey', msg: 'Hello!' })
 ```
-
-
 
 ### Respond with Error
 

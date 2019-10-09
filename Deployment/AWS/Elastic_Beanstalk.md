@@ -25,7 +25,7 @@ eb create
 
 ```bash
 eb open # to see
-eb deploy # to repush
+eb deploy # to deploy last commit
 ```
 
 ## Internal Usage

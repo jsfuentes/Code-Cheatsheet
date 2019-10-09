@@ -1,51 +1,50 @@
 # Mongoose
 
+## Usage
+
+1. Connect mongoose as in setup
+2. Create a model in ./models/somemodel.js
+3. Import model in routes and use model fts
+
 
 ## Setup
 ```js
-//Import the mongoose module
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //Set up default mongoose connection
 var mongoDB = 'mongodb://127.0.0.1/my_database';
 mongoose.connect(mongoDB);
-// Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
+
 //Get the default connection
 var db = mongoose.connection;
-
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 ```
 
-## Layout
-In ./models/somemodel.js
-`module.exports = mongoose.model('SomeModel', SomeModelSchema );``
- Then,
- `var SomeModel = require('../models/somemodel')`
-
-
 ## Models
+
 Models are defined using the Schema interface.
+
 ```js
-//Require Mongoose
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-//Define a schema
-var Schema = mongoose.Schema;
-
-var SomeModelSchema = new Schema({
+const Schema = mongoose.Schema;
+const SomeModelSchema = new Schema({
     a_string: String,
     a_date: Date
 });
 
 // Compile model from schema
-var SomeModel = mongoose.model('SomeModel', SomeModelSchema );
+const SomeModel = mongoose.model('SomeModel', SomeModelSchema );
+
+module.exporst = SomeModel;
 ```
 
 In mongoose.model, 'SomeModel' will be the collection created for the schema
 
-## Schema [Types](http://mongoosejs.com/docs/schematypes.html)
+### Schema [Types](http://mongoosejs.com/docs/schematypes.html)
+
 ```js
 var schema = new Schema(
 {
@@ -76,7 +75,10 @@ AuthorSchema
 ```
 Can now do Author.name
 
-## Creating
+## Model Functions
+
+#### Creating
+
 ```js
 // Create an instance of model SomeModel
 var awesome_instance = new SomeModel({ name: 'awesome' });
@@ -88,10 +90,12 @@ awesome_instance.save(function (err) {
 });
 ```
 
-## Updating
+#### Updating
+
 `save()` or `date()` to store modified values
 
-## Querying
+#### Querying
+
 ```js
 // find all athletes who play tennis, selecting the 'name' and 'age' fields
 User.find({}, function(err, users) {});
@@ -119,12 +123,13 @@ Athlete.
 - findOneAndRemove()
 - findOneAndUpdate()
 
-## References
+### References
+
 ```js
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
   , Schema = mongoose.Schema
 
-var authorSchema = Schema({
+const authorSchema = Schema({
   name    : String,
   stories : [{ type: Schema.Types.ObjectId, ref: 'Story' }] //model saved as
 });
@@ -135,7 +140,8 @@ Story
 .find({ author : bob._id })...
 ```
 
-## Using references
+Can also fill in the field with the right model
+
 ```js
 Story
 .findOne({ title: 'Bob goes sledding' })

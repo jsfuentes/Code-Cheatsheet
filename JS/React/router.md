@@ -36,7 +36,8 @@ Need BrowserRouter outer component to creat history and allow other router compo
 `<Switch>`  groups Route components, and will choose the first to match if any
 
 ```js
-  <Route exact path="/" component={Home} />
+<Switch>
+	<Route exact path="/" component={Home} />
   <Route path="/about" component={About} />
   <Route path="/contact" component={Contact} />
   {/* when none of the above match, <NoMatch> will be rendered */}
@@ -44,10 +45,23 @@ Need BrowserRouter outer component to creat history and allow other router compo
 </Switch>
 ```
 
-### Passes history&match down in props 
+### Access History and Match in props
 
-- match is obj with path(select by route), url(actual), isExact bool, params obj
-  - /users/:id is path, /users/abc would be url with {id: 'abc'} in params
+- Passes down from Router object to components these objs:
+
+```js
+	history: {length: 8, action: "POP", location: {…}, createHref: ƒ, push: ƒ, …}
+  location: {pathname: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", search: "", hash: "", state: undefined, key: "pmanoj"}
+  match: {path: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", url: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", isExact: true, params: {…}}
+  staticContext: undefined
+```
+
+To access these router objs from anywhere, use higher order component
+
+```js
+import { withRouter } from 'react-router-dom';
+export default withRouter(SomeComponent);
+```
 
 ### attrs path
 
@@ -73,6 +87,7 @@ Navlinks add style when active, classes, and on actived event
 
 ```react
 <Redirect to='/error'/>
+
 //Inside switches
 <Redirect path="/home" to "/" />
 ```

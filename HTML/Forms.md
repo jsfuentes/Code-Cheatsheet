@@ -1,4 +1,4 @@
-# Forms
+#  Forms
 
 #### Form tag
 
@@ -63,14 +63,14 @@ Multiple lets you select multiple, sends csv
 ## Events
 
 ```js
-document.theform.myname.onfocus = () => {
+document.forms.theactualformid.myname.onfocus = () => {
   //do stuff when you on thing
 }
-document.theform.myname.onblur = () => {
+document.forms.theactualformid.onblur = () => {
   //do stuff when you leave thing: hints?, fill me out
 }
 
-document.theform.myurl.onchange=() => {
+document.forms.theactualformid.onchange=() => {
   var theURL = document.theform.myurl.value;
   // do validation
 }
@@ -79,7 +79,7 @@ document.theform.myurl.onchange=() => {
 * onsubmit *
 Good way to do validation is have dictionary with key being name and having required, placeholder, and pattern that you can check dynamically
 ```js
-document.theform.onsubmit = () => {
+document.forms.theactualformid.onsubmit = () => {
   //do validation
   //do ajax
   return false; //prevent form from submitting

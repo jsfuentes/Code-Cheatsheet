@@ -17,7 +17,7 @@ sudo service nginx start
 sudo vi /etc/nginx/nginx.conf
 sudo /etc/init.d/nginx start
 
-sudo nginx -s reload #reload on change
+sudo nginx -s reload #reload on after change
 ```
 
 ##### Misc

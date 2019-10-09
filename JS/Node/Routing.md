@@ -1,6 +1,6 @@
 # Routing
 
-The app will search for the first matching route in the order you define
+The app will search for the first matching route in the order you define, so define error routes last
 
 ```js
 // wiki.js - Wiki route module.
@@ -64,5 +64,30 @@ directory from where you launch your `node`process. If you run the express app f
 
 ```javascript
 app.use('/static', express.static(path.join(__dirname, 'public')))
+```
+
+## Error Handling
+
+Just copied from templates
+
+```js
+const createError = require("http-errors");
+
+//........
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.send("error");
+});
 ```
 

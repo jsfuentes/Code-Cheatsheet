@@ -4,6 +4,10 @@
 - `chr(ord('a')+1)` to add one to 'a' and get 'b'
 - Python 3 has strings be unicode, 2 byte character
 
+```python
+" ".join(["jorge", "sucks"]) #=> "jorge sucks"
+```
+
 ## Formatting
 
 Python 3 handles {} others need {0}

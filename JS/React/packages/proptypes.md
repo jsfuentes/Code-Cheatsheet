@@ -54,6 +54,7 @@ MyComponent.propTypes = {
   optionalNumber: PropTypes.number,
   optionalObject: PropTypes.object,
   optionalString: PropTypes.string,
+  optionalEnum: PropTypes.oneOf(['News', 'Photos']),
   optionalSymbol: PropTypes.symbol,
   // Add `isRequired` to any
   requiredFunc: PropTypes.func.isRequired,
@@ -65,8 +66,6 @@ MyComponent.propTypes = {
   optionalNode: PropTypes.node,
   // declare prop is an instance of a class using instanceof 
   optionalMessage: PropTypes.instanceOf(Message),
-  // Limit to specific values with enum
-  optionalEnum: PropTypes.oneOf(['News', 'Photos']),
   // An object that could be one of many types
   optionalUnion: PropTypes.oneOfType([
     PropTypes.string,

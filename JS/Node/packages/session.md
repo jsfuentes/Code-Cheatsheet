@@ -2,10 +2,14 @@
 
 Stores session in cookie
 
+```bash
+npm install express-session
+```
+
 ### Initialize
 
 ```js
-var session = require('express-session');
+const session = require('express-session');
 
 app.use(session({
     name: 'e_c',
@@ -36,4 +40,31 @@ app.get('/', function(req, res, next) {
   }
 })
 ```
+
+## Backing Session with Knex
+
+```bash
+npm install connect-session-knex
+```
+
+```js
+const session = require('express-session')
+const KnexSessionStore = require('connect-session-knex')(session);
+
+//.....
+
+app.use(session({
+  name: 'ecstatic_cookie',
+  secret: 'ecstatic secret',
+  saveUninitialized: true,
+  secure: false,
+  resave: true,
+  store: new KnexSessionStore({
+    knex: AppUtils.getKnex(),
+    tablename: 'sessions' //default
+  })
+}));
+```
+
+
 

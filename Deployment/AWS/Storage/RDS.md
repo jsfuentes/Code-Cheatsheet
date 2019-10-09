@@ -10,6 +10,8 @@ Use an EBS Volume as Storage
 
 See Aurora for AWS managed
 
+Can host multiple databases and such on one instance
+
 ## Connection
 
 Need host, port, and username and password to connect with some dbtool like tableplus and pgadmin
@@ -20,7 +22,7 @@ Code connects also need database name
 
 Set admin user and password
 
-1) Select Enginer(aurora, mysql, postgres)
+1) Select Engine(aurora, mysql, postgres)
 
 2) use case: high availbility or cheaper
 

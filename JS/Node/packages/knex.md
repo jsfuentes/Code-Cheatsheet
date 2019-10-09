@@ -1,6 +1,6 @@
 # Knex
 
-SQL query builder 
+SQL query builder, install plugins like pg lib separately
 
 `npm install knex`
 

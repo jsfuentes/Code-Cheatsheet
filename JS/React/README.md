@@ -62,6 +62,8 @@ react-scripts creates the root html page
 npx create-react-app client
 ```
 
+Check  `process.env.NODE_ENV`  for the current environment either "production" when built or "development"
+
 ## Setup With Node
 
 ```bash
