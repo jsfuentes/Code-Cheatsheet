@@ -1,6 +1,8 @@
 # Mongoose
 
-## Usage
+```bash
+npm install mongoose
+```
 
 1. Connect mongoose as in setup
 2. Create a model in ./models/somemodel.js
@@ -11,42 +13,42 @@
 ```js
 const mongoose = require('mongoose');
 
-//Set up default mongoose connection
-var mongoDB = 'mongodb://127.0.0.1/my_database';
+const mongoDB = 'mongodb://127.0.0.1/my_database';
 mongoose.connect(mongoDB);
+//usually mongoose uses pseudo promises, this tells it to use real ones
 mongoose.Promise = global.Promise;
 
 //Get the default connection
-var db = mongoose.connection;
+const db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 ```
 
-## Models
+## Defining Models
 
 Models are defined using the Schema interface.
 
 ```js
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
-const SomeModelSchema = new Schema({
-    a_string: String,
-    a_date: Date
+
+//1. Define a schema
+const TestSchema = new Schema({
+  name: String,
+  date: Date
 });
 
-// Compile model from schema
-const SomeModel = mongoose.model('SomeModel', SomeModelSchema );
+//2. Compile model from schema
+const Test = mongoose.model("Test", TestSchema);
+//will use collection called Tests adding the s
 
-module.exporst = SomeModel;
+module.exports = Test;
 ```
 
-In mongoose.model, 'SomeModel' will be the collection created for the schema
-
-### Schema [Types](http://mongoosejs.com/docs/schematypes.html)
+#### Schema [Types](http://mongoosejs.com/docs/schematypes.html)
 
 ```js
-var schema = new Schema(
+const schema = new Schema(
 {
   name: String,
   binary: Buffer,
@@ -61,11 +63,14 @@ var schema = new Schema(
 })
 ```
 
-- ObjectId: reference to unique db instance. Use populate() method to get info
+- ObjectId: reference to unique db instance. Use `populate()` method to get info
 - Mixed: An arbitrary schema type.
 - []: Can perform JavaScript array operations on these models
-- Can also have isntance methods, static methods, and speciality queries
-#### Virtual
+- Can also have instance methods, static methods, and speciality queries
+##### Virtual
+
+Fields that dont exist in db
+
 ```js
 AuthorSchema
 .virtual('url')
@@ -75,19 +80,17 @@ AuthorSchema
 ```
 Can now do Author.name
 
-## Model Functions
+## Using Models
 
 #### Creating
 
 ```js
-// Create an instance of model SomeModel
-var awesome_instance = new SomeModel({ name: 'awesome' });
+const SomeModel = require("../models/SomeModel.js");
 
-// Save the new model instance, passing a callback
-awesome_instance.save(function (err) {
-  if (err) return handleError(err);
-  // saved!
-});
+// Create an instance of model SomeModel
+const awesome_instance = new SomeModel({ name: 'awesome' });
+
+const newInstance = await awesome_instance.save();
 ```
 
 #### Updating
@@ -96,38 +99,49 @@ awesome_instance.save(function (err) {
 
 #### Querying
 
-```js
-// find all athletes who play tennis, selecting the 'name' and 'age' fields
-User.find({}, function(err, users) {});
-Athlete.find({ 'sport': 'Tennis' }, 'name age', function (err, athletes) {
-  if (err) return handleError(err);
-  // 'athletes' contains the list of athletes that match the criteria.
-})
-```
-- `.exec()` gives you a fully-fledged promise
+Use `.exec()` to give you a promise, make sure to have set `mongoose.Promise` in setup
 
 ```js
-Athlete.
+const allTests = await Test.find().exec();
+const users = await User.find({ 'sport': 'Tennis' }, 'name age').exec();
+const athletes = await Athlete.
   find().
   where('sport').equals('Tennis').
   where('age').gt(17).lt(50).  //Additional where query
   limit(5).
   sort({ age: -1 }).
   select('name age').
-  exec(callback);
+  exec();
 ```
-
 - findById()
 - findByIdAndRemove()
 - findByIdAndUpdate()
 - findOneAndRemove()
 - findOneAndUpdate()
 
+#### Callback Style
+
+Callback Style
+
+```js
+awesome_instance.save(function (err) {
+  if (err) return handleError(err);
+  // saved!
+});
+
+User.find({}, function(err, users) {});
+// find all athletes who play tennis, selecting the 'name' and 'age' fields
+Athlete.find({ 'sport': 'Tennis' }, 'name age', function (err, athletes) {
+  if (err) return handleError(err);
+  // 'athletes' contains the list of athletes that match the criteria.
+})
+```
+
 ### References
 
 ```js
-const mongoose = require('mongoose')
-  , Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const authorSchema = Schema({
   name    : String,

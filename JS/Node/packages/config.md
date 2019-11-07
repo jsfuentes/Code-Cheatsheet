@@ -13,7 +13,7 @@ emacs config/default.json
 
 default.json
 
-```
+```json
 {
   // Customer module configs
   "Customer": {
@@ -50,7 +50,7 @@ default.json
 
 **Use configs in your code:**
 
-```
+```js
 const config = require('config');
 //...
 const dbConfig = config.get('Customer.dbConfig');

@@ -40,7 +40,7 @@ chrome.runtime.onMessage.addListener(
 #### Sender Info
 
 ```javascript
-let windowId = sender.tab.windowId; //window with multiple tabs
+let windowId = sender.tab.windowId; //windowId is instance of chrome, so multiple tabs in the same window have the same windowId
 let tabId = sender.tab.id;
 ```
 

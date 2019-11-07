@@ -18,7 +18,7 @@ https://www.namecheap.com/support/knowledgebase/article.aspx/434/2237/how-do-i-s
 | [A (Address)](https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain) | associate host with IPv4 address                             |
 | [AAAA (IPv6)](https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain) | associate host with IPv4 address                             |
 | ALIAS                                                        | record maps a name to another name, but can coexist with other records on that name. |
-|                                                              |                                                              |
+| URL Redirect Record                                          | Redirect to URL, masked means to keep the original url in the bar, unmasked means to change url |
 
 Common to create: 
 
@@ -49,3 +49,12 @@ example's.com => aws.frontend.s3.com
 | URL Redirect Record | @     | http://www.modulo.blog/        |
 
 See AWS/cloudfront to see how to set that shit up
+
+### Testing
+
+Perform a DNS query
+
+```bash
+host www.modulo.blog
+```
+

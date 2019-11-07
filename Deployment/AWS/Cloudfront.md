@@ -23,9 +23,10 @@ Features
 
 ## Add To S3 Static Site
 
-Easy enough to do, select the bucket
+AWS WHY?
 
-Make sure to set **Default Root Object** to the index.html or whatever
+- DONT SELECT THE SUGGESTED BUCKET
+- DO NOT SET *Default Root Object* PROPERTY!
 
 ## Using your own domain
 

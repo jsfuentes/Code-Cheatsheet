@@ -46,6 +46,24 @@ Accept: */*
 
 ### Response
 
+## Cookies
+
+If you want to support **most** browsers, then don't exceed **50 cookies per domain**, and don't exceed **4093 total bytes per domain** 
+
+Often used to store sessions, just store session/user id in a cookie
+
+A cookie with no expiration date specified will expire when the browser is closed. 
+
+When a server responds to a browser request, it can send down a `Set-Cookie` header with one or many cookies:
+
+To send a cookie back to the server, the browser uses the `Cookie` header
+
+Cookies have a few other interesting attributes that are used to restrict or permit them from certain locations:
+
+- `Secure`: This will ensure that cookies can only be sent to HTTPS servers.
+- `Domain`: A list of hosts that a cookie can be sent to.
+- `Path`: Similar to `Domain` but restricts the cookie from being sent to URLs that do not include the `Path`.
+
 ## Design
 
 REST and all the verbs

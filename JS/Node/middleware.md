@@ -1,6 +1,6 @@
 # Middleware
 
-Can add as much middlewaer as you want to a route
+Can add as much middleware as you want to a route
 
 ```js
 router.post('/moderator', [Auth.adminOfPostedId, Auth.canInvite], postModerator);
@@ -24,3 +24,6 @@ function logged_in(req, res, next) {
 }
 ```
 
+### Next
+
+`next('route')` will go to next route handler that matches, if you pass anything else into `next()` it will be considered an error

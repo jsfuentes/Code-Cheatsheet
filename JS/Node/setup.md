@@ -12,21 +12,16 @@ express [project name] --view=ejs
 - `--git` adds a gitignore
 
 ## Running
-with nodemon
-`npm install -g nodemon`
-`nodemon ./server.js`
 
-## Morgan
-it is for automated logging of requests, responses and related data
+Add the following to package.json
 
-
-#### Running Other Commands
-Other command add the following script block to our package.json file (assuming that our application source is in a folder /src/js):
-
+```json
+  "scripts": {
+    "start": "export NODE_ENV=production && node ./bin/www",
+    "dev": "export NODE_ENV=development && export DEBUG=app* && nodemon ./bin/www"
+  }
 ```
-"scripts": {
-  ...
-  "lint": "eslint src/js"
-  ...
-}
-```
+
+Debug is for debug library
+
+Export works for config library

@@ -62,7 +62,7 @@ import './DottedBox.scss';
 
 No dash allowed so border-left becomes borderLeft
 
-```js
+```jsx
 import React from 'react';
 
 const divStyle = {

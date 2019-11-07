@@ -8,6 +8,8 @@ Need to import react to use
 
 - React elements are immutable js objects
 
+- its elements are just JavaScript objects, you could potentially look at and clone with changes
+
 - ```react
   const name = 'Josh Perez';
   const element = <h1>Hello, {name}</h1>;
@@ -24,7 +26,7 @@ Need to import react to use
 - Camel case: 
   - class => className 
   - tabindex => tabIndex
-- Can have nested divs, but must have a single outermost div
+- Can have nested divs, but must have a single outermost div or fragments
 - Can be multiple lines
 
 #### JSX transform
@@ -108,3 +110,20 @@ function WarningBanner(props) {
   );
 }
 ```
+
+## Fragments
+
+```js
+class Columns extends React.Component {
+  render() {
+    return (
+      <>
+        <td>Hello</td>
+        <td>World</td>
+      </>
+    );
+  }
+}
+```
+
+## 

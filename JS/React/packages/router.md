@@ -66,7 +66,7 @@ export default withRouter(SomeComponent);
 ### attrs path
 
 ```react
- <Route exact path="/" component={Home} />
+<Route exact path="/" component={Home} />
 <Route strict path="/about/" ...
 ```
 

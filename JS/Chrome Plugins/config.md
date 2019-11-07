@@ -25,4 +25,5 @@ fetch(chrome.extension.getURL('./config.json'))
 
 Or you can just use a bundler that uses imports
 
-Or you could make a promise then await it at the start of the page, but you need ES6 for that so still a bundler
+Or you could make a promise, then use ran all your code in the callback
+

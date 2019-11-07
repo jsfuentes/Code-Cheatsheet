@@ -1,4 +1,4 @@
-# Node
+# Node 
 
 Node takes the JS complier in chrome browser and adds some server logic and io stuff so you can use it on the backend. So `node filename` lets you run arbitrary js logic where console.log is std.out
 
@@ -16,7 +16,7 @@ assert(5 > 7);
 - Even numbered releases are LongTerm Support(LTS); they generally receive 30 months of support once they become LTS.
 - Odd numbered releases are current releases and are supported for six months.
 
-# Express
+# Express(4.16)
 
 ### Most Basic Code
 
@@ -67,3 +67,5 @@ app.get('/users/:userId/books/:bookId', function (req, res) {
 
 - `__dirname` => full from root name of the directory that the executing script resides from
 - `process.env` => environment at start of runtime can use to access PATH and other env variables like `process.env.NODE_ENV`
+
+`export NODE_ENV=production` while running to run in production mode, many libs check for it including express which will not print out stack traces and config

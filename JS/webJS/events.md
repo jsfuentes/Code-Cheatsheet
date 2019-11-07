@@ -40,3 +40,13 @@ e.onclick = () => alert('bye');
 <button onclick="return handleClick(event);">
 ```
 
+### [Mouse Events](https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_event_mouseenter_mouseover)
+
+mouseover => enters the div or any of its child(div then child is twice triggered)
+
+mouseenter => only when div first entered
+
+ mouseleave => only when div left
+
+onmousemove  => any movement over the div element.
+
