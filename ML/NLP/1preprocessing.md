@@ -1,7 +1,7 @@
 # Pre-processing text
 
 ## Remove punctuation
-```py
+```python
 import string
 string.punctuation
 def remove_punct(text):

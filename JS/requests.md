@@ -17,7 +17,7 @@ const axios = require('axios');
 import axios from 'axios';
 
 //GET
-axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
+axios.get("/event", { params: { api_key })
   .then(response => {
     console.log(response.data.url);
     console.log(response.data.explanation);

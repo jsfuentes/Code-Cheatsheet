@@ -35,7 +35,15 @@ const Schema = mongoose.Schema;
 //1. Define a schema
 const TestSchema = new Schema({
   name: String,
-  date: Date
+  binary: Buffer,
+  living: Boolean,
+  updated: { type: Date, default: Date.now },
+  age: { type: Number, min: 18, max: 65, required: true },
+  mixed: Schema.Types.Mixed,
+  _someId: Schema.Types.ObjectId,
+  array: [],
+  ofString: [String], // You can also have an array of each of the other types too.
+  nested: { stuff: { type: String, lowercase: true, trim: true } }
 });
 
 //2. Compile model from schema
@@ -46,22 +54,6 @@ module.exports = Test;
 ```
 
 #### Schema [Types](http://mongoosejs.com/docs/schematypes.html)
-
-```js
-const schema = new Schema(
-{
-  name: String,
-  binary: Buffer,
-  living: Boolean,
-  updated: { type: Date, default: Date.now },
-  age: { type: Number, min: 18, max: 65, required: true },
-  mixed: Schema.Types.Mixed,
-  _someId: Schema.Types.ObjectId,
-  array: [],
-  ofString: [String], // You can also have an array of each of the other types too.
-  nested: { stuff: { type: String, lowercase: true, trim: true } }
-})
-```
 
 - ObjectId: reference to unique db instance. Use `populate()` method to get info
 - Mixed: An arbitrary schema type.
@@ -87,19 +79,15 @@ Can now do Author.name
 ```js
 const SomeModel = require("../models/SomeModel.js");
 
-// Create an instance of model SomeModel
 const awesome_instance = new SomeModel({ name: 'awesome' });
-
 const newInstance = await awesome_instance.save();
 ```
-
-#### Updating
-
-`save()` or `date()` to store modified values
 
 #### Querying
 
 Use `.exec()` to give you a promise, make sure to have set `mongoose.Promise` in setup
+
+Returns `null` if not found
 
 ```js
 const allTests = await Test.find().exec();
@@ -109,15 +97,34 @@ const athletes = await Athlete.
   where('sport').equals('Tennis').
   where('age').gt(17).lt(50).  //Additional where query
   limit(5).
-  sort({ age: -1 }).
+  sort({ age: -1 }). //1 asc
   select('name age').
   exec();
 ```
-- findById()
-- findByIdAndRemove()
-- findByIdAndUpdate()
-- findOneAndRemove()
-- findOneAndUpdate()
+- [`Model.deleteMany()`](https://mongoosejs.com/docs/api.html#model_Model.deleteMany)
+- [`Model.deleteOne()`](https://mongoosejs.com/docs/api.html#model_Model.deleteOne)
+- [`Model.find()`](https://mongoosejs.com/docs/api.html#model_Model.find)
+- [`Model.findById()`](https://mongoosejs.com/docs/api.html#model_Model.findById)
+- [`Model.findByIdAndDelete()`](https://mongoosejs.com/docs/api.html#model_Model.findByIdAndDelete)
+- [`Model.findByIdAndRemove()`](https://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove)
+- [`Model.findByIdAndUpdate()`](https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate)
+- [`Model.findOne()`](https://mongoosejs.com/docs/api.html#model_Model.findOne)
+- [`Model.findOneAndDelete()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndDelete)
+- [`Model.findOneAndRemove()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove)
+- [`Model.findOneAndReplace()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndReplace)
+- [`Model.findOneAndUpdate()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate)
+- [`Model.replaceOne()`](https://mongoosejs.com/docs/api.html#model_Model.replaceOne)
+- [`Model.updateMany()`](https://mongoosejs.com/docs/api.html#model_Model.updateMany)
+- [`Model.updateOne()`](https://mongoosejs.com/docs/api.html#model_Model.updateOne)
+
+#### Count
+
+returns number >= 0
+
+```js
+const showCount = await Show.countDocuments({ _id: show_id });
+const showExists = (await Show.countDocuments({ _id: show_id })) > 0;
+```
 
 #### Callback Style
 

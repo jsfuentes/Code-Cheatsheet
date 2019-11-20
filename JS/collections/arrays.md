@@ -11,7 +11,7 @@ var last = fruits[fruits.length - 1];
 - `.length`
 - `.push(e)` 
 - `.pop()`
-- `.shift()` - popleft returning first ale
+- `.shift()` - popleft returning first ele
 - `.indexOf(e)` - return index of ele or -1
 - `.includes(e)` - return true/false
 - `.sort()` - Takes ft `(a,b) => `

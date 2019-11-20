@@ -29,6 +29,12 @@ document.forms.myform
 document.theform([name of form])
 ```
 
+#### Doc Info
+
+```js
+window.location.href //full url
+```
+
 ## Modifying Elements
 
 #### Attributes
@@ -46,21 +52,17 @@ elem.style.display = 'none';
 #### Creating
 
 ```js
-let container = document.createElement('div');
-container.setAttribute("id", containerID);
-let iframe = document.createElement('iframe');
-iframe.setAttribute("id", "ecstatic-iframe");
-iframe.src = iframeUrl;
-container.appendChild(iframe);
-
+const container = document.createElement("div");
+container.setAttribute("id", containerId);
 document.body.appendChild(container);
 ```
 
 #### Deleting
 
 ```js
-var elem = document.querySelector('#some-element');
-elem.parentNode.removeChild(elem);
+const container = document.getElementById(containerId);
+if (container === null) return;
+container.parentNode.removeChild(container);
 ```
 
 ## Other DOM Stuff

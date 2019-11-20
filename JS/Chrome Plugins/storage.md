@@ -1,5 +1,16 @@
 # Chrome Storage
 
+## Promises
+
+From ` webextension-polyfill`
+
+```js
+await browser.storage.sync.set({iframeType: "onboard"});
+let storage = await browser.storage.sync.get(['iframeType', 'questions', 'lastQuestionDate']);
+```
+
+## Chrome
+
 ### Local
 
 their chrome local
@@ -54,11 +65,3 @@ function logStorageChange(changes, area) {
 browser.storage.onChanged.addListener(logStorageChange);
 ```
 
-## Promises
-
-From` webextension-polyfill`
-
-```js
-await browser.storage.sync.set({iframeType: "onboard"});
-let storage = await browser.storage.sync.get(['iframeType', 'questions', 'lastQuestionDate']);
-```

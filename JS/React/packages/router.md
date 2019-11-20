@@ -1,5 +1,7 @@
 #  Router
 
+#### Setup
+
 React doesn't come with changing component rendered based on url out of the box, so need `react-router-dom`
 
 `npm install react-router-dom`
@@ -10,44 +12,44 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 ## Routers
 
-If the path regex matches, will render that component
+- If multiple paths regex match, will render multiple components (basically this is conditional rendering based on path)
 
-**If multiple paths match, will render multiple components**(basically this is conditional rendering based on path)
+- Use switch to only render one
 
-Need BrowserRouter outer component to creat history and allow other router components to work
-
-#### 3 Render Options
-
-- `render={props => <About {...props} extra={someVariable} />}` for inline declaration
-- `component={Home}` for premade component
-
-```react
-<BrowserRouter>
-	<div>
-    	<Route path="/home" component={Home} />
-        <Route path="/about" render{ () =>  <div> About </div> } />
-            <Route children={() => <div> Always Rendered </div>} /> 
-    </div>
-</BrowserRouter>
-```
+- Need BrowserRouter outer component
 
 ### Switch
 
 `<Switch>`  groups Route components, and will choose the first to match if any
 
-```js
-<Switch>
-	<Route exact path="/" component={Home} />
-  <Route path="/about" component={About} />
-  <Route path="/contact" component={Contact} />
-  {/* when none of the above match, <NoMatch> will be rendered */}
-  <Route component={NoMatch} />
-</Switch>
+```jsx
+return (<BrowserRouter>
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route path="/about" component={About} />
+    <Route path="/contact" component={Contact} />
+    {/* when none of the above match, <NoMatch> will be rendered */}
+    <Route component={NoMatch} />
+  </Switch>
+</BrowserRouter>);
+```
+
+- exact doesnt do regex matching, but exact matching
+- strict means the ending / mattersss 
+
+#### 3 Render Options
+
+```react
+<BrowserRouter>
+  <Route path="/home" component={Home} />
+  <Route path="/about" render{ () =>  <About {...props} extra={someVariable} /> } />
+  <Route children={() => <div> Always Renders </div>} /> 
+</BrowserRouter>
 ```
 
 ### Access History and Match in props
 
-- Passes down from Router object to components these objs:
+- These objs are passed down from Router to children comp
 
 ```js
 	history: {length: 8, action: "POP", location: {…}, createHref: ƒ, push: ƒ, …}
@@ -60,18 +62,35 @@ To access these router objs from anywhere, use higher order component
 
 ```js
 import { withRouter } from 'react-router-dom';
+
 export default withRouter(SomeComponent);
 ```
 
-### attrs path
+### URL Path
 
-```react
-<Route exact path="/" component={Home} />
-<Route strict path="/about/" ...
+App.js
+
+```jsx
+<Route path="/:handle" component={Editor} />
 ```
 
-- exact doesnt do regex matching, but exact matching
-- strict means the ending / mattersss 
+Editor.js
+
+```jsx
+const { handle } = props.match.params;
+```
+
+### Query Parameters
+
+```jsx
+import queryString from 'query-string'
+//....
+componentDidMount() {
+  const values = queryString.parse(this.props.location.search); // "?filter=top&origin=im"
+  console.log(values.filter) // "top"
+  console.log(values.origin) // "im"
+}
+```
 
 ## Link
 
@@ -94,4 +113,4 @@ Navlinks add style when active, classes, and on actived event
 
 ### Advanced
 
-`Prompt` will alert when you navigate away from page like for form, 
+`Prompt` will alert when you navigate away from page like for form

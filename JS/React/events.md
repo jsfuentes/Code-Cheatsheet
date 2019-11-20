@@ -54,7 +54,9 @@ e is a synthetic event handling cross-browser compat
 
 ## Usage
 
-a common pattern is for an event handler to be a method on the class
+Pass functions into event handlers
+
+- use `event.persist();` if you access async because react event objects are recycled so could be different
 
 ```react
 class Toggle extends React.Component {

@@ -28,6 +28,7 @@ So common b/c in past browsers just supported these two
   - 400 Bad Input
   - 401 Unauthorizaed
   - 402 Payment required. 
+  - 403  Forbidden
   - 404 Not found
   - 422 Unprocessable Entity
 - Server Error `5XX`

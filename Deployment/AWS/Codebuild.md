@@ -57,11 +57,9 @@ artifacts:
 - `my-subdirectory/*` represents all files in a subdirectory named *my-subdirectory*.
 - `my-subdirectory/**/*` represents all files recursively starting from a subdirectory named *my-subdirectory*.
 
-## Example 2 Running AWSCLI
+## Example 2 Running AWSCLI and Server Artifact
 
-Need to allow access for the codebuild machine with IAM
-
-- add policy S3FullAccess for S3
+The IAM role for the codebuild needs access policy S3FullAccess
 
 ```yaml
 version: 0.2
@@ -76,9 +74,8 @@ phases:
       - pip install --upgrade awscli
   pre_build:
     commands:
-      - echo Building iframe question
       - ls
-      - cd plugin/src/iframe_question
+      - cd client
       - npm install
   build:
     commands:
@@ -87,6 +84,10 @@ phases:
     commands:
       - echo $CODEBUILD_SRC_DIR
       - pwd
-      - aws s3 sync build s3://ecstatic-iframe-plugin
+      - aws s3 sync build s3://nibble-main
+artifacts:
+  files:
+    - "**/*"
+  base-directory: server
 ```
 

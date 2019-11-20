@@ -64,6 +64,23 @@ npx create-react-app client
 
 Check  `process.env.NODE_ENV`  for the current environment either "production" when built or "development"
 
+To set all imports to be absolute "components/CTA.js" instead of "../components/CTA.js", add the following file to the root(package.json level) dir
+
+jsconfig.json
+
+```json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES6",
+    "jsx": "preserve",
+    "checkJs": true,
+    "baseUrl": "./src"
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}
+```
+
 ## Setup With Node
 
 ```bash

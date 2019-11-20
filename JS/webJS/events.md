@@ -50,3 +50,19 @@ mouseenter => only when div first entered
 
 onmousemove  => any movement over the div element.
 
+## Custom Events
+
+Use detail to hold extra information 
+
+```js
+//some event/async ft
+{
+  dispatchEvent(
+    new CustomEvent("dance_party", {
+      detail: { curId }
+    });
+}
+
+addEventListener("dance_party", e => debug("Listening to ", e.detail.curId));
+```
+

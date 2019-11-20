@@ -9,6 +9,7 @@ Out: React component displayed by running render
 **Cant change props**
 
 ```react
+import React from "react"; //jsx support
 //Functional component - Good style when no need for advanced stuff
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;

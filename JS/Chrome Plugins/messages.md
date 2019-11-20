@@ -1,17 +1,17 @@
-# Messages
+# [Messages](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage)
 
-To communicate between the content script and the background script, you need to send Messages
+To communicate between the content script and the background script, you need to send Messages(or use local storage)
 
 There exists a React Store for Chrome Plugin made by Go Guardian to foster this communication
-
-The code is the same on both sides of the payload
 
 ## Between Background and Content
 
 ### Send Message
 
+##### Content
+
 ```javascript
-chrome.runtime.sendMessage(payload); //send message
+browser.runtime.sendMessage(payload); //send message
 
 //send message and interact with response
 chrome.runtime.sendMessage({type: "gid", "data": {....}}, (resp) => {
@@ -19,11 +19,22 @@ chrome.runtime.sendMessage({type: "gid", "data": {....}}, (resp) => {
 });
 ```
 
+##### Background
+
+Same except specify tab id and tabs sendMessage
+
+```js
+browser.tabs
+  .query({ active: true, currentWindow: true })
+  .then(tabs => browser.tabs.sendMessage(tabs[0].id, { type: C.toast }))
+  .then(resp => debug("Got response", resp));
+```
+
 ### Listener
 
 ```javascript
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
+browser.runtime.onMessage.addListener(
+    (request, sender, sendResponse) => {
       if (request.type === "gid") {
         console.log(request.data);
         chrome.identity.getProfileUserInfo(
@@ -37,12 +48,26 @@ chrome.runtime.onMessage.addListener(
 });
 ```
 
+**Return a promise instead of sendResponse for new W3C spec**
+
+```js
+browser.runtime.onMessage.addListener(request => {
+  if (request.type === C.is_development) {
+    return new Promise(resolve => resolve({ e: "d"}));
+  }
+});
+```
+
 #### Sender Info
 
 ```javascript
 let windowId = sender.tab.windowId; //windowId is instance of chrome, so multiple tabs in the same window have the same windowId
 let tabId = sender.tab.id;
 ```
+
+##### Gotchas
+
+- Do not add an async listener `browser.runtime.addListener(async (req) => ....)` as it will consume all the messages blocking other listeners, instead use promises inside ft
 
 ## Message Passing Between Extensions
 
@@ -69,17 +94,14 @@ chrome.runtime.sendMessage(laserExtensionId, {getTargetData: true},
 Only in background script
 
 ```js
-chrome.runtime.onMessageExternal.addListener(
-  function(request, sender, sendResponse) {
-    if (sender.id == blocklistedExtension)
-      return;  // don't allow this extension access
-    else if (request.getTargetData)
-      sendResponse({targetData: targetData});
-    else if (request.activateLasers) {
-      var success = activateLasers();
-      sendResponse({activateLasers: success});
-    }
-  });
+browser.runtime.onMessage.addListener(msg => {
+  if (msg == "get-ids") {
+    return browser.storage.sync.get("idPattern").then(({idPattern}) => {
+      return Array.from(document.querySelectorAll(idPattern),
+                        elem => elem.textContent);
+    });
+  }
+});
 ```
 
 ## From Webpages
@@ -124,41 +146,3 @@ chrome.runtime.onConnect.addListener(function(port) {
   });
 });
 ```
-
-## Promise based
-
-From webextension-polyfill
-
-Send
-
-```js
-browser.tabs.sendMessage(tabId, "get-ids").then(results => {
-  processResults(results);
-});
-```
-
-Receive
-
-```js
-browser.runtime.onMessage.addListener(msg => {
-  if (msg == "get-ids") {
-    return browser.storage.local.get("idPattern").then(({idPattern}) => {
-      return Array.from(document.querySelectorAll(idPattern),
-                        elem => elem.textContent);
-    });
-  }
-});
-```
-
-Return Promise or make async and just return
-
-```js
-browser.runtime.onMessage.addListener(async (msg) => {
-  if (msg == "get-ids") {
-    let {idPattern} = await browser.storage.local.get("idPattern");
-
-    return idPattern;
-  }
-});
-```
-

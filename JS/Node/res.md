@@ -29,6 +29,8 @@ res.render('index', { title: 'Hey', msg: 'Hello!' })
 
 ### Respond with Error
 
+See http-errors
+
 ```js
 res.status(400).send({
    message: 'This is an error!'

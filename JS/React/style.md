@@ -8,9 +8,9 @@
 
 ## CSS Modules
 
-Keep all styles scoped to that component
+Keep all styles scoped to that component through build process generating unique classNames
 
-```js
+```jsx
 import React from 'react';
 import styles from './DashedBox.css';
 

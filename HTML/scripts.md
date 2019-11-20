@@ -1,5 +1,6 @@
-## Script onload attribute
-defer
+# Scripts
+
+### defer
 
 wait to load script until DOM finishes loading, only for external scripts
 
@@ -7,4 +8,4 @@ wait to load script until DOM finishes loading, only for external scripts
 <script src="demo_defer.js" defer></script>
 ```
 
-You should defer load all CSS files that are blocking the rendering of your page.
+You should defer loading all CSS files that are blocking the rendering of your page.

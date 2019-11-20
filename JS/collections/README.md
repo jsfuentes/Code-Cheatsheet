@@ -1,5 +1,7 @@
 # General Collections
 
+The implementation of such data structures depends on the browser
+
 ## ES6 Iterables
 
  [`for...in`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) iterates over the [enumerable properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) of an object, in an arbitrary order.

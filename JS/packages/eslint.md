@@ -4,7 +4,7 @@
 
 Without running code, find errors and potential errors
 
-
+Vscode has an eslint plugin that allows you see potential errors
 
 ## Setup In Project
 
@@ -12,8 +12,6 @@ Without running code, find errors and potential errors
 npm install --save-dev
 ./node_modules/.bin/eslint --init
 ```
-
-
 
 ## Setup In Project With Prettier
 

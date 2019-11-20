@@ -6,35 +6,52 @@ Already need to understand CSS
 
 Mobile is the default
 
-### Installation
+## Installation
+
+Can use `npx tailwind build styles.css -o output.css`, but builtin cli doesn't include watch ability need posts
 
 ```bash
-npm install tailwindcss
-npm install postcss-cli
-
-tailwind build src/style.css -o dist/style.css
-po
-watch:style": "postcss src/styles/index.css -o src/styles/tailwind.css -w #add postcss.config.js with tailwind plugin
+npm install tailwindcss --save-dev
+npx tailwind init tailwind.config.js --full
+npm install postcss-cli autoprefixer --save-dev
 ```
 
 postcss.config.js
 
 ```js
-const tailwindcss = require("tailwindcss");
-module.exports = {
-  plugins: [tailwindcss("./tailwind.config.js"), require("autoprefixer")]
-};
+ const tailwindcss = require('tailwindcss');
+ module.exports = {
+     plugins: [
+         tailwindcss('./tailwind.config.js'),
+         require('autoprefixer'),
+     ],
+ };
 ```
 
-Can do a `tailwind init` that will give you the ability to edit many things
+Autoprefixer is not required, but automatically tracks caniuse.com and properly prefixes(or unprefixes) css props
+
+Tailwind replaces @tailwind directives with css
+
+package.json
+
+```json
+"scripts": {
+  "build:css": "postcss src/styles/index.css -o src/index.css",
+  "watch:css": "postcss src/styles/index.css -o src/index.css -w",
+  "start": "npm run watch:css & react-scripts start",
+  "build": "npm run build:css && react-scripts build",
+}
+```
+
+#### Usage
 
 Can put it right in HTML or use custom classes
 
-```js
-.btn {
-	@apply font-bold py-2 px-4 rounded;
-}
+```html
+<div className="text-4xl block font-bold pb-2">Hello to React</div>
+```
 
+```css
 .btn-blue {
 	@apply bg-blue-500 text-white;
 }

@@ -4,7 +4,7 @@ How do you do stuff like realtime updates, push changes from server to clients?
 
 ## Websockets
 
-Sockets.io
+[Sockets.io](https://socket.io/)
 
 Create a sustained connection that both sides listen to, remove work of constantly doing a handshake and creating a connection
 

@@ -1,7 +1,7 @@
 # Swift
 
 ## Functions
-```
+```swift
 func addTwoNumbers(a:Int, b:Int) -> Int {
     return a+b;
 }
@@ -74,7 +74,7 @@ guard let data = response.result.value as? [String : Any] else {
 aString.replacingOccurrences("\n", "")
 
 #### PYTHON SPLIT
-```
+```swift
 import Foundation
 
 var str: String = "First Last"

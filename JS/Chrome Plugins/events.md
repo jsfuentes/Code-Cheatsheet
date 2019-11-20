@@ -1,28 +1,31 @@
 # Events
 
-### One time Intialization
+#### When Installed
 
-```
-  chrome.runtime.onInstalled.addListener(function() {
-```
-
-
-
-```
-  // This will run when a bookmark is created.
-  chrome.bookmarks.onCreated.addListener(function() {
-    // do something
+```javascript
+  chrome.runtime.onInstalled.addListener(() => {
+    //......
   });
 ```
 
-## Tab changes
+#### Bookmarks Created
+
+```javascript
+  chrome.bookmarks.onCreated.addListener(function() {
+    //......
+  });
+```
+
+#### Tab changes
 
 [tabs.onUpdated](https://developer.chrome.com/extensions/extensions/tabs#event-onUpdated)
 
+#### Navigation to Page
+
 webNavigation supports filters
 
-```
-  chrome.webNavigation.onCompleted.addListener(function() {
+```javascript
+ chrome.webNavigation.onCompleted.addListener(() => {
       alert("This is my favorite website!");
   }, {url: [{urlMatches : 'https://www.google.com/'}]});
 ```

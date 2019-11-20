@@ -1,4 +1,4 @@
-## Shitty Elastic Beanstalk
+## Elastic Beanstalk(EB)
 
 Elastic Beanstalk is a fancy wrapper for EC2 instance with like load-balancing and shit
 

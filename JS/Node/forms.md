@@ -26,11 +26,18 @@ var fileInfo = req.files;
 Now the files are in your filesystem, use them as you would static files.
 
 ## Mongoose Object
+
+```js
 var Item = new ItemSchema(
   { img:
       { data: Buffer, contentType: String }
   }
 );
+```
+
+
+
+
 
 ## Access Data
 newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
