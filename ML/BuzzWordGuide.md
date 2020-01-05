@@ -1,4 +1,4 @@
-# Review of ML
+# ML BuzzWords Guide
 
 A single layer neural network is capable of representing any function
 
@@ -31,6 +31,14 @@ Like Principal component analysis (PCA) in reduce dimensions of data, but neural
 Grid search, monte carlo, gradient descent, adadelta(change gradient according to sample)
 
 Regularization penalizes complexity
+
+#### Batch Gradient Descent
+
+Batch of 1(stochastic gradient) doesn't use vectorization well and so can be slower than larger batches
+
+Batch of m is too slow for large m. If less than say 2k, just do batch. 
+
+Else your minibatch should fit in Cpu/gpu mem and often good as a power of 2 like 128, 256, or 512.
 
 ## Activation Function
 

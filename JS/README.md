@@ -10,6 +10,7 @@ There are packages that work just in the browser, just in react, just for gatsby
 
 ```js
 isMember ? "$2.00" : "$10.00"
+
 if (c) {s} else if (c) {s} else {s}
 ```
 
@@ -29,25 +30,6 @@ switch(expression) {
         code block
 }
 ```
-
-## Errors
-
-```javascript
-try {
-  // Block of code to try
-  throw "Parameter is not a number!";
-  //throw new Error([message[, fileName[, lineNumber]]])
-}
-catch(err) {
-  // Block of code to handle errors
-}
-```
-
-```js
-throw new Error("This is an error");
-```
-
-*Can throw anything actually but don't*
 
 ## Equality
 

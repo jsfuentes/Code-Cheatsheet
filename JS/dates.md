@@ -1,10 +1,12 @@
 # Dates
 
 ```javascript
-Date() //create Date string
+Date() // => "Tue Jan 21 2020 23:50:09 GMT-0800 (Pacific Standard Time)"
 let x = new Date() //create Date object
-x.toDateString(); //=> "Fri Oct 05 2018"
+x.toDateString(); //=> "Tue Jan 21 2020"
 x.toISOString(); //=> "2018-12-31T03:21:15.934Z"
+x.toGMTString(); //=> "Wed, 22 Jan 2020 07:48:33 GMT"
+x.toLocaleDateString(); //=> "1/21/2020"
 ```
 
 ## Moment.js

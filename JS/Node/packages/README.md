@@ -2,7 +2,41 @@
 
 npm packages particularly for the server
 
-## Essential
+## Default Node Packages
+
+### fs
+
+- Read relative to `process.cwd()`
+
+```javascript
+const fs = require("fs");
+
+fs.readFile(filePath, (err, content) => {
+	//.....
+});
+```
+
+Has promise version
+
+```js
+const fs = require('fs').promises;
+```
+
+
+
+### Utils
+
+Turn a callback style ft with (err, content) into promise returning content
+
+```js
+const util = require('util');
+
+const read = util.promisify(fs.readFile);
+
+const data = await read('test.txt');
+```
+
+## Extra
 
 ### Debug
 
@@ -29,29 +63,7 @@ app.use(function (req, res, next) {
 })
 ```
 
-### fs
-
-- Read relative to `process.cwd()`
-
-```javascript
-fs.readFile(filePath, (err, content) => {
-	//.....
-});
-```
-
-### Utils
-
-Turn a callback style ft with (err, content) into promise returning content
-
-```js
-const read = util.promisify(fs.readFile);
-
-const data = await read('test.txt');
-```
-
-## Extra
-
-#### cheerio 
+### cheerio 
 
 Fast, flexible & lean implementation of core jQuery designed specifically for the server.
 

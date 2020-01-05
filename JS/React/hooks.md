@@ -12,7 +12,7 @@
 - Only call Hooks **at the top level**. Don’t call Hooks inside loops, conditions, or nested functions.
 - Only call Hooks **from React function components**.
 
-## State
+## useState
 
 ```js
 function Example() {
@@ -32,21 +32,21 @@ function Example() {
 
 Updating *replace*s its value instead of setState which *merges*
 
-## Effects
+`setCount(prevState => return ....)`
+
+## useEffect
 
 For data fetching, subscriptions, or manually changing the DOM because they can affect other components and can’t be done during rendering.
 
 `useEffect` Hook runs after every render and offers clean up so === to  `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` combined.
 
-```js
+```jsx
 import React, { useState, useEffect } from 'react';
 
 function Example() {
   const [count, setCount] = useState(0);
 
-  // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
-    // Update the document title using the browser API
     document.title = `You clicked ${count} times`;
   });
 
@@ -85,40 +85,16 @@ Add as return
   });
 ```
 
-## Custom Hooks
+## Other Hooks
 
-```js
-function useWindowWidth() {
-  const [width, setWidth] = useState(window.innerWidth);
-  
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  });
-  
-  return width;
-}
-```
+- useContext
 
-```js
-function MyResponsiveComponent() {
-  const width = useWindowWidth(); // Our custom Hook
-  return (
-    <p>Window width is {width}</p>
-  );
-}
-```
+  - Still need MyContext.Provider above
+    - 
 
-### Other
-
-```js
-const value = useContext(MyContext);
-```
-
-Still need MyContext.Provider above
+  ```js
+  const value = useContext(MyContext);
+  ```
 
 - [`useReducer`](https://reactjs.org/docs/hooks-reference.html#usereducer)
 
@@ -178,3 +154,52 @@ Still need MyContext.Provider above
 - [`useLayoutEffect`](https://reactjs.org/docs/hooks-reference.html#uselayouteffect)
 
 - [`useDebugValue`](https://reactjs.org/docs/hooks-reference.html#usedebugvalue)
+
+## Custom Hooks
+
+##### useWindowWidth
+
+```js
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+  
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  });
+  
+  return width;
+}
+```
+
+```js
+function MyResponsiveComponent() {
+  const width = useWindowWidth(); // Our custom Hook
+  return (
+    <p>Window width is {width}</p>
+  );
+}
+```
+
+##### useDebounce
+
+```jsx
+import { useEffect, useState } from "react";
+
+function useDebounce(value, delay = 500) {
+  const [debouncedVal, setDebouncedVal] = useState(value);
+
+  useEffect(() => {
+    const timeoutID = setTimeout(() => setDebouncedVal(value), delay);
+    return () => clearTimeout(timeoutID);
+  }, [value, delay]);
+
+  return debouncedVal;
+}
+
+export default useDebounce;
+```
+

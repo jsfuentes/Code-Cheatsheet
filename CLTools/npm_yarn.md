@@ -29,8 +29,9 @@ npx cmatrix
 # Yarn
 
 ```bash
-yarn install #install dependencies
+yarn #install dependencies
 yarn add
+yarn add -D #add as dev dependecies
 yarn [script]
 ```
 

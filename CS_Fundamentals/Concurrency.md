@@ -1,4 +1,4 @@
-# Semaphore
+## Semaphore
 
 tracks only *how many* resources are free; not *which* of the resources are free.To select can use more semaphores or something else
 

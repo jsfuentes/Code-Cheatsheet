@@ -4,8 +4,6 @@ These are my notes for me that I use while I program and add to as I learn new t
 
 https://openai.gitbook.io/
 
-
-
 ### My Guidelines
 
 - Purpose is not to learn concepts, but to remember syntax and usage

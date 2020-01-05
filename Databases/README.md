@@ -4,6 +4,8 @@ Can have a master slave distrubuting reads
 
 Can have sharding handle different parts of requests
 
+*See AWS Storage*
+
 # SQL VS NoSQL
 
 SQL

@@ -56,6 +56,8 @@ git stash list
 
 ## Remotes
 
+`git remote -v`  => List origins
+
 #### Add remote
 
 `git remote add origin [github url]`

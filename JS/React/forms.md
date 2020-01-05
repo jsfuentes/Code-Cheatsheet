@@ -1,5 +1,38 @@
 # Forms
 
+## [react-hook-form](https://react-hook-form.com/get-started)
+
+Inputs must have unique name
+
+```react
+import React from 'react'
+import { useForm } from 'react-hook-form'
+
+export default function App() {
+  const { register, handleSubmit, errors } = useForm()
+  const onSubmit = data => { console.log(data) }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input name="example" defaultValue="test" ref={register} />
+      <input name="exampleRequired" ref={register({ required: true })} />
+      {errors.exampleRequired && <span>This field is required</span>}
+      <input type="submit" />
+    </form>
+  )
+}
+```
+
+List of validation rules supported by:
+
+- required
+- min
+- max
+- minLength
+- maxLength
+- pattern
+- validate
+
 ## Controlled Components
 
 Normally form elements such as `<input> `maintain their own state and update based on input. To combine with React state, let React state be the “single source of truth” by updating it on change
@@ -82,10 +115,6 @@ const useSearch = (callback) => {
     };
 }
 ```
-
-Then
-
-
 
 ## Specific Tags
 

@@ -1,4 +1,4 @@
-# README
+# React
 
 Gatsby is a static site generator with plugins and makes adding pages easy
 

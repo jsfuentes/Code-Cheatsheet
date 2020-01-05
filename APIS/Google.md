@@ -1,8 +1,18 @@
 # Google APIS
 
-Credientials determined automatically if you set the environment variable GOOGLE_APPLICATION_CREDENTIALS to the file path of the Google JSON file
+## Auth
+
+#### [On the Web](https://developers.google.com/identity/sign-in/web/sign-in)
+
+#### On the Backend
+
+Get the id_token, request the scopes profile and email
+
+Then you can get profile info at `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=[accesstoken]`
 
 ## Speech to Text
+
+Credientials determined automatically if you set the environment variable GOOGLE_APPLICATION_CREDENTIALS to the file path of the Google JSON file
 
 ```python
 import io

@@ -1,5 +1,7 @@
 # [Errors in Express](https://expressjs.com/en/guide/error-handling.html)
 
+Check out http-errors package
+
 ## Sync
 
 Sync errors will just go to error handler(see below)
@@ -17,7 +19,7 @@ app.get("/", async (req, res) => {
 Send to Error Handler:
 
 ```js
-app.get("/", async (req, res) => {
+app.get("/", async (req, res, next) => {
   next(new Error("non async"));
 }
 ```
@@ -74,7 +76,7 @@ app.get('/', function (req, res, next) {
 
 ## Error Handler
 
-If any route throws an error, it will go to first error handler which has specifically 4 args:
+If any route throws an error, it will go to first error handler which has **specifically 4 args**:
 
 ```js
 app.use(function(error, req, res, next) {

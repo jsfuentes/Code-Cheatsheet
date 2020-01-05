@@ -12,7 +12,7 @@ lighter | bolder => compared to inherited font weight
 
 1) Get the font file
 
-2) You need at least the woff2 and off, [fontsquirrel helps](https://www.fontsquirrel.com/tools/webfont-generator)
+2) You need at least the woff2 and woff, [fontsquirrel helps](https://www.fontsquirrel.com/tools/webfont-generator)
 
 3) Add the font file to your static website folder
 

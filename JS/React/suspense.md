@@ -29,7 +29,7 @@ As of 10/10/19, this is the only use case:
 
 `React.lazy`takes a function that will execute the dynamic import. It returns a component that will run this function during its first rendering.
 
-```js
+```jsx
 import React, { Suspense } from 'react';
 import Loading from './Loading';
 
@@ -47,6 +47,8 @@ function App(props) {
 	);
 }
 ```
+
+*Webpack must be configured to handle dynamic imports, it is in most boilerplates including CRA and Next*
 
 ## Future 
 

@@ -6,7 +6,7 @@ Microsoft supported object real time connection focused on expert developers
 
 ## RTC
 
-Google supported standard for easy p2p communication
+Google supported standard for easy p2p communication that can then scale to use an intermediate server for > 4
 
 Handles everything from stabilization, codecs, etc for ez use and multi platform including many browsers and matching native performance
 

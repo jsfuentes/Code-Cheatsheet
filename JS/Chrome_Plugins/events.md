@@ -3,17 +3,17 @@
 #### When Installed
 
 ```javascript
-  chrome.runtime.onInstalled.addListener(() => {
-    //......
-  });
+chrome.runtime.onInstalled.addListener(() => {
+  //......
+});
 ```
 
 #### Bookmarks Created
 
 ```javascript
-  chrome.bookmarks.onCreated.addListener(function() {
-    //......
-  });
+chrome.bookmarks.onCreated.addListener(function() {
+  //......
+});
 ```
 
 #### Tab changes

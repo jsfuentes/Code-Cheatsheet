@@ -1,8 +1,8 @@
 # Response
 
-- res.json()
+- res.json();
 - res.sendFile(path.join(__dirname, 'index')); 
-  - works best with absolue path
+  - works best with absolute path
 - res.send("Hello");
 - res.redirect('/events'); 
   - doesn't work well with react router

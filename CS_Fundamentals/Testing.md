@@ -8,7 +8,7 @@ Good Tests:
 - doesn't break often
 - easy to understand
 - catches bugs
-- good coverage to effort ratio'
+- good coverage to effort ratio
 
 ### Test Strategy
 

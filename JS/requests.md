@@ -43,7 +43,19 @@ axios.post('/user', {
 
 **axios.post(url[, data[, config]])**
 
-Multiple Requests
+#### Setting up base
+
+```js
+const instance = axios.create({
+  baseURL: 'https://some-domain.com/api/',
+  timeout: 1000,
+  headers: {'X-Custom-Header': 'foobar',  Cookie: "cookie1=value; cookie2=value; cookie3=value;"}
+});
+
+instance.get(...)
+```
+
+#### Multiple Requests
 
 ```js
 axios.all([
@@ -56,6 +68,23 @@ axios.all([
   console.log(error);
 });
 ```
+
+#### Sending Blob
+
+```javascript
+const blob = new Blob(recordedChunks, { type: recordedChunks[0].type });
+const data = new FormData();
+data.append("file", blob);
+const resp = await axios
+  .post("/media", data, {
+    headers: {
+      "Content-Type": `multipart/form-data; boundary=${data._boundary}`
+    },
+    timeout: 30000
+  })
+```
+
+
 
 ## Requests
 

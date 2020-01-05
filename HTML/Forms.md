@@ -111,7 +111,8 @@ Can do multiple in email and files
 
 *Attributes:*
 - multiple
-- autocomplete
+- autocomplete //great for password managers and recommended by Chrome
+  - "username" | "current-password" | "new-password"
 - placeholder="Enter first name"
 - required //will stop if not there
 - pattern //can do regular expression validation

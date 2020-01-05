@@ -1,4 +1,4 @@
-# General Collections
+# Collections
 
 The implementation of such data structures depends on the browser
 

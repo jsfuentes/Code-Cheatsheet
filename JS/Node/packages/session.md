@@ -8,6 +8,8 @@ npm install express-session
 
 ### Initialize
 
+The default MemoryStore is NOT DESIGNED FOR PRODUCTION pleases back it with [compatible session stores](https://www.npmjs.com/package/express-session#compatible-session-stores).
+
 ```js
 const session = require('express-session');
 
@@ -15,11 +17,8 @@ app.use(session({
     name: 'e_c',
     secret: 'super secret not secret',
     saveUninitialized: true,
-    secure: false,
-    resave: true,
-    store: new MemoryStore({
-      checkPeriod: 86400000 // prune expired entries every 24h
-    })
+    secure: false, //only https
+    resave: true
 }));
 ```
 
@@ -41,7 +40,9 @@ app.get('/', function(req, res, next) {
 })
 ```
 
-## Backing Session with Knex
+## Backing Sessions
+
+##### Knex
 
 ```bash
 npm install connect-session-knex
@@ -63,6 +64,26 @@ app.use(session({
     knex: AppUtils.getKnex(),
     tablename: 'sessions' //default
   })
+}));
+```
+
+##### Mongo
+
+```bash
+npm install connect-mongo
+```
+
+```js
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session);
+
+const mongoose = require('mongoose');
+
+// Basic usage
+mongoose.connect(connectionOptions);
+
+app.use(session({
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 ```
 

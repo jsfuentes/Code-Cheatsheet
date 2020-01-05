@@ -14,10 +14,12 @@ var last = fruits[fruits.length - 1];
 - `.shift()` - popleft returning first ele
 - `.indexOf(e)` - return index of ele or -1
 - `.includes(e)` - return true/false
+- `.findIndex(y => y === 1)` - returns the first index which cause ft to return true 
 - `.sort()` - Takes ft `(a,b) => `
   - < 0 — `a` b4 `b`
   - \> 0  — `b` b4 `a`
   - = 0  — `a` and `b` unchanged
+- `.reverse()` - return new???
 
 ## Functional Stuff
 

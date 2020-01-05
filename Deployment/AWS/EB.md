@@ -28,11 +28,19 @@ eb open # to see
 eb deploy # to deploy last commit
 ```
 
+## Initialize In Console
+
+Defaults are pretty minor without a load balancer and just a micro
+
+Software - Nodejs default startup is app.js, index.js, then npm start; can set start command thought. 
+
+Security - Can set key to ssh into EC2 here
+
 ## Internal Usage
 
 `/var/app` is where app is deployed
 
-Nodejs will run `npm run start` on build 
+Check the logs in cloudwatch or in the logs tab
 
 ##### Bugs
 

@@ -40,10 +40,14 @@ const TestSchema = new Schema({
   updated: { type: Date, default: Date.now },
   age: { type: Number, min: 18, max: 65, required: true },
   mixed: Schema.Types.Mixed,
-  _someId: Schema.Types.ObjectId,
+  team_id: { type: Schema.Types.ObjectId, ref: "Team" }, //allows use of populate?
   array: [],
   ofString: [String], // You can also have an array of each of the other types too.
-  nested: { stuff: { type: String, lowercase: true, trim: true } }
+  nested: { stuff: { type: String, lowercase: true, trim: true } },
+  drink: { //enum
+    type: String,
+    enum: ['Coffee', 'Tea']
+  }
 });
 
 //2. Compile model from schema
@@ -83,11 +87,11 @@ const awesome_instance = new SomeModel({ name: 'awesome' });
 const newInstance = await awesome_instance.save();
 ```
 
+*Use mongoose.Types.ObjectId(uid) to convert string to objectID*
+
 #### Querying
 
 Use `.exec()` to give you a promise, make sure to have set `mongoose.Promise` in setup
-
-Returns `null` if not found
 
 ```js
 const allTests = await Test.find().exec();
@@ -95,27 +99,29 @@ const users = await User.find({ 'sport': 'Tennis' }, 'name age').exec();
 const athletes = await Athlete.
   find().
   where('sport').equals('Tennis').
-  where('age').gt(17).lt(50).  //Additional where query
+  where('age').gt(17).lt(50).
   limit(5).
   sort({ age: -1 }). //1 asc
   select('name age').
   exec();
+//look at nested {token: id: {...}}
+const user = await User.find({ "token.id": 1 });
 ```
 - [`Model.deleteMany()`](https://mongoosejs.com/docs/api.html#model_Model.deleteMany)
 - [`Model.deleteOne()`](https://mongoosejs.com/docs/api.html#model_Model.deleteOne)
-- [`Model.find()`](https://mongoosejs.com/docs/api.html#model_Model.find)
+- [`Model.find()`](https://mongoosejs.com/docs/api.html#model_Model.find) //Returns `null`  if not found
 - [`Model.findById()`](https://mongoosejs.com/docs/api.html#model_Model.findById)
 - [`Model.findByIdAndDelete()`](https://mongoosejs.com/docs/api.html#model_Model.findByIdAndDelete)
 - [`Model.findByIdAndRemove()`](https://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove)
 - [`Model.findByIdAndUpdate()`](https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate)
-- [`Model.findOne()`](https://mongoosejs.com/docs/api.html#model_Model.findOne)
+- [`Model.findOne()`](https://mongoosejs.com/docs/api.html#model_Model.findOne) //Returns `[]` if not found
 - [`Model.findOneAndDelete()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndDelete)
 - [`Model.findOneAndRemove()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove)
 - [`Model.findOneAndReplace()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndReplace)
-- [`Model.findOneAndUpdate()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate)
+- [`Model.findOneAndUpdate()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate) //returns found documents
 - [`Model.replaceOne()`](https://mongoosejs.com/docs/api.html#model_Model.replaceOne)
 - [`Model.updateMany()`](https://mongoosejs.com/docs/api.html#model_Model.updateMany)
-- [`Model.updateOne()`](https://mongoosejs.com/docs/api.html#model_Model.updateOne)
+- [`Model.updateOne()`](https://mongoosejs.com/docs/api.html#model_Model.updateOne) //returns object with nModified being 0
 
 #### Count
 

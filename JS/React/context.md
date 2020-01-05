@@ -10,26 +10,46 @@ For multiple contexts, just add multiple providers and contexts if needed
 
 1) Create context(seperate file? theme-context.js)
 
-2) Add Provider
-
-3) Now any child component no matter how deep, can access by assigning a contextType
+PizzaContext.js
 
 ```js
+import React from "react";
+
 const ThemeContext = React.createContext('light'); //default value
 
-class App extends React.Component {
-  render() {
-    return (
-      <ThemeContext.Provider value="dark"> //overrides default
-        <Toolbar />
-      </ThemeContext.Provider>
-    );
-  }
-}
+export default ThemeContext;
+```
 
-function Toolbar(props) {
-  return <ThemedButton />;
+2) Add Provider
+
+```jsx
+function App(){
+  return (
+    <ThemeContext.Provider value="dark"> //overrides default
+    <Toolbar />
+    </ThemeContext.Provider>
+  );
 }
+```
+
+3) Now anything in subtree of Provider can access data
+
+- useContext hook can access data
+
+```jsx
+import ThemeContext from "./ThemeContext";
+
+export default function Pizza(props) {
+	const theme = useContext( ThemeContext );
+  
+  return <div>{theme}</div>;
+}
+```
+
+- Contexttypes can access data in classes
+
+```js
+import ThemeContext from "./ThemeContext";
 
 class ThemedButton extends React.Component {
   static contextType = ThemeContext;
@@ -39,8 +59,6 @@ class ThemedButton extends React.Component {
   }
 }
 ```
-
-Can also add Consumer to specific components that use the context
 
 ## Advanced
 
@@ -65,7 +83,7 @@ export const ThemeContext = React.createContext({
 
 **theme-toggler-button.js**
 
-```js
+```jsx
 import {ThemeContext} from './theme-context';
 
 function ThemeTogglerButton() {
@@ -87,7 +105,7 @@ export default ThemeTogglerButton;
 
 **app.js**
 
-```js
+```jsx
 import {ThemeContext, themes} from './theme-context';
 import ThemeTogglerButton from './theme-toggler-button';
 

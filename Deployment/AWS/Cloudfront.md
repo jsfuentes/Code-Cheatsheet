@@ -27,6 +27,7 @@ AWS WHY?
 
 - DONT SELECT THE SUGGESTED BUCKET
 - DO NOT SET *Default Root Object* PROPERTY!
+- Instead use the actual url of the S3 static site
 
 ## Using your own domain
 

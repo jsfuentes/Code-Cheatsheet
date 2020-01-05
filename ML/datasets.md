@@ -1,4 +1,16 @@
-# Train/Dev/Test Sets
+# DataSets
+
+Get more data: can flip images, add random zooms and crops, and add distortion
+
+#### Normalize:
+
+Subtract mean: makes 0 mean
+
+Normalize variance for every input
+
+Normalize same for test and train
+
+## Train/Dev/Test Sets
 
 Train with your training data
 
@@ -10,7 +22,7 @@ With small data go **60/20/20**
 
 With huge data like 1,000,000 can leave 10,000 for dev and 10,000 for test giving a **98/1/1 split**
 
-# Bias Vs. Variance
+## Bias Vs. Variance
 
 High Bias == underfitting
 
@@ -28,7 +40,7 @@ Dev 	11%	|	16%	|	30%
 
 #### High Bias?
 
-- Bigger Netwrok
+- Bigger Network
 - Train Longer
 
 **High Variance?**

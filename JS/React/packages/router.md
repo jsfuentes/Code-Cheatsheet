@@ -1,4 +1,4 @@
-#  Router
+#  React Router
 
 #### Setup
 
@@ -7,20 +7,20 @@ React doesn't come with changing component rendered based on url out of the box,
 `npm install react-router-dom`
 
 ```js
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Redirect } from 'react-router-dom';
 ```
 
-## Routers
+*Use HashRouter for within filesystems(electron)*
 
-- If multiple paths regex match, will render multiple components (basically this is conditional rendering based on path)
-
-- Use switch to only render one
+### Routers
 
 - Need BrowserRouter outer component
+- Will render **any number of regex matches** of child Routes
+  - Basically conditional rendering based on path
 
-### Switch
+#### Switch
 
-`<Switch>`  groups Route components, and will choose the first to match if any
+`<Switch>`  groups Route components, and will **choose the first to match** if any
 
 ```jsx
 return (<BrowserRouter>
@@ -47,18 +47,55 @@ return (<BrowserRouter>
 </BrowserRouter>
 ```
 
-### Access History and Match in props
+### Navigation
 
-- These objs are passed down from Router to children comp
+#### Link
 
-```js
-	history: {length: 8, action: "POP", location: {…}, createHref: ƒ, push: ƒ, …}
-  location: {pathname: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", search: "", hash: "", state: undefined, key: "pmanoj"}
-  match: {path: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", url: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", isExact: true, params: {…}}
-  staticContext: undefined
+```react
+<Link to="/">HOME</Link>
+//build upon prev url
+<Link to="{match.url+"/email"}"> Email </Link>
 ```
 
-To access these router objs from anywhere, use higher order component
+Navlinks add style when active, classes, and on actived event
+
+#### Redirect
+
+1) Return Redirect Object
+
+```react
+<Redirect to='/error'/>
+
+//Inside switches
+<Redirect path="/home" to "/" />
+```
+
+2) 
+
+```js
+const history = useHistory();
+
+history.push("/");
+```
+
+3)  `window.location.replace("www.example.com")` HTML5 way
+
+## Accessing Router Info
+
+Default passed to Route child, but can also access from anywher with 
+
+1) Hooks which are more effective b/c less renders?
+
+```javascript
+import { useParams, useLocation, useHistory, useRouteMatch } from 'react-router-dom';
+  
+const params = useParams();
+const location = useLocation();
+const history = useHistory();
+const match = useRouteMatch();
+```
+
+2) Higher Order Components
 
 ```js
 import { withRouter } from 'react-router-dom';
@@ -66,7 +103,33 @@ import { withRouter } from 'react-router-dom';
 export default withRouter(SomeComponent);
 ```
 
-### URL Path
+#### Info Example
+
+```js
+history: {length: 8, action: "POP", location: {…}, 	createHref: ƒ, push: ƒ, …}
+
+location: {pathname: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", search: "", hash: "", state: undefined, key: "pmanoj"}
+
+match: {path: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", url: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", isExact: true, params: {…}}
+
+staticContext: undefined
+```
+
+#### Query Parameters
+
+```jsx
+import queryString from 'query-string'
+
+//.......(props) {
+const vals = queryString.parse(props.location.search); 
+// "?filter=top&origin=im"
+console.log(vals.filter); // "top"
+console.log(vals.origin); // "im"
+```
+
+## Advanced
+
+#### URL Path
 
 App.js
 
@@ -80,37 +143,6 @@ Editor.js
 const { handle } = props.match.params;
 ```
 
-### Query Parameters
-
-```jsx
-import queryString from 'query-string'
-//....
-componentDidMount() {
-  const values = queryString.parse(this.props.location.search); // "?filter=top&origin=im"
-  console.log(values.filter) // "top"
-  console.log(values.origin) // "im"
-}
-```
-
-## Link
-
-```react
-<Link to="/">HOME</Link>
-//build upon prev url
-<Link to="{match.url+"/email"}"> Email </Link>
-```
-
-Navlinks add style when active, classes, and on actived event
-
-### Redirect
-
-```react
-<Redirect to='/error'/>
-
-//Inside switches
-<Redirect path="/home" to "/" />
-```
-
-### Advanced
+#### Other
 
 `Prompt` will alert when you navigate away from page like for form

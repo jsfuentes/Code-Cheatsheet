@@ -37,6 +37,15 @@ So common b/c in past browsers just supported these two
 
 ### Request
 
+##### Content-Type
+
+```javascript
+'content-type': 'multipart/form-data; boundary=...'
+Content-Type: text/html; charset=UTF-8
+```
+
+`multipart/*`  requires the `boundary` parameter so server can parse payload
+
 **Accept** request HTTP header advertises which content types, expressed as [MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types), the client is able to understand.
 
 ```
@@ -53,13 +62,13 @@ If you want to support **most** browsers, then don't exceed **50 cookies per dom
 
 Often used to store sessions, just store session/user id in a cookie
 
-A cookie with no expiration date specified will expire when the browser is closed. 
+A cookie with no expiration date specified will expire when the browser is closed i.e `session` key set to true. 
 
 When a server responds to a browser request, it can send down a `Set-Cookie` header with one or many cookies:
 
 To send a cookie back to the server, the browser uses the `Cookie` header
 
-Cookies have a few other interesting attributes that are used to restrict or permit them from certain locations:
+Cookie properties to control domains sent to:
 
 - `Secure`: This will ensure that cookies can only be sent to HTTPS servers.
 - `Domain`: A list of hosts that a cookie can be sent to.
