@@ -19,3 +19,6 @@ const App = () => {
 export default App;
 ```
 
+### Favorite Icons
+
+Camera | Check | X

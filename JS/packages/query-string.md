@@ -9,6 +9,6 @@ const vals = queryString.parse(props.location.search);
 console.log(vals.filter); // "top"
 console.log(vals.origin); // "im"
 
-const stringified = queryString.stringify(parsed);
+const stringified = queryString.stringify(vals);
 ```
 

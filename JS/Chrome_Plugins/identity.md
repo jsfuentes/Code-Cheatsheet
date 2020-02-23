@@ -15,3 +15,11 @@ chrome.runtime.onMessage.addListener(
 });
 ```
 
+## Oauth
+
+Creating oauth flow - https://developer.chrome.com/extensions/tut_oauth
+
+On `identity.getAuthToken`  which does the whole google login popup-https://developer.chrome.com/apps/app_identity#update_manifest - 
+
+See possible Oauth scropes - https://developers.google.com/identity/protocols/googlescopes
+

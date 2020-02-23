@@ -39,7 +39,7 @@ const TestSchema = new Schema({
   living: Boolean,
   updated: { type: Date, default: Date.now },
   age: { type: Number, min: 18, max: 65, required: true },
-  mixed: Schema.Types.Mixed,
+  mixed: Schema.Types.Mixed, //any type
   team_id: { type: Schema.Types.ObjectId, ref: "Team" }, //allows use of populate?
   array: [],
   ofString: [String], // You can also have an array of each of the other types too.
@@ -59,9 +59,6 @@ module.exports = Test;
 
 #### Schema [Types](http://mongoosejs.com/docs/schematypes.html)
 
-- ObjectId: reference to unique db instance. Use `populate()` method to get info
-- Mixed: An arbitrary schema type.
-- []: Can perform JavaScript array operations on these models
 - Can also have instance methods, static methods, and speciality queries
 ##### Virtual
 
@@ -132,22 +129,17 @@ const showCount = await Show.countDocuments({ _id: show_id });
 const showExists = (await Show.countDocuments({ _id: show_id })) > 0;
 ```
 
-#### Callback Style
+## Advanced
 
-Callback Style
+### Upsert
 
 ```js
-awesome_instance.save(function (err) {
-  if (err) return handleError(err);
-  // saved!
-});
-
-User.find({}, function(err, users) {});
-// find all athletes who play tennis, selecting the 'name' and 'age' fields
-Athlete.find({ 'sport': 'Tennis' }, 'name age', function (err, athletes) {
-  if (err) return handleError(err);
-  // 'athletes' contains the list of athletes that match the criteria.
-})
+//create if doesn't exist yet too
+const user = await User.findOneAndUpdate({ email: profile.email }, payload, {
+  upsert: true,
+  new: true, //return new user not old one
+  setDefaultsOnInsert: true
+}).exec();
 ```
 
 ### References
@@ -176,3 +168,23 @@ Story
 
 story.author.name;
 ```
+
+#### Callback Style
+
+Callback Style
+
+```js
+awesome_instance.save(function (err) {
+  if (err) return handleError(err);
+  // saved!
+});
+
+User.find({}, function(err, users) {});
+// find all athletes who play tennis, selecting the 'name' and 'age' fields
+Athlete.find({ 'sport': 'Tennis' }, 'name age', function (err, athletes) {
+  if (err) return handleError(err);
+  // 'athletes' contains the list of athletes that match the criteria.
+})
+```
+
+### 

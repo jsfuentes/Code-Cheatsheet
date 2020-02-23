@@ -98,6 +98,8 @@ Add as return
 
 - [`useReducer`](https://reactjs.org/docs/hooks-reference.html#usereducer)
 
+  - **If your one element of your state relies on the value of another element of your state, then it's almost always best to use `useReducer`**
+
 - [`useCallback`](https://reactjs.org/docs/hooks-reference.html#usecallback)
 
   ​	Used when you need a function to be conditionally remade, avoid the work and if you need it to be a dep of another hook
@@ -125,7 +127,11 @@ Add as return
 
 - [`useMemo`](https://reactjs.org/docs/hooks-reference.html#usememo)
 
-  ass a “create” function and an array of dependencies. `useMemo` will only recompute the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive calculations on every render.
+  - ```js
+  const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+    ```
+
+  - Only reruns op when array of dependencies changes, optimization 
 
 - [`useRef`](https://reactjs.org/docs/hooks-reference.html#useref)
 

@@ -6,7 +6,17 @@
 
 #### On the Backend
 
-Get the id_token, request the scopes profile and email
+#### Setup
+
+1) Go to https://console.developers.google.com/
+
+2) Create/Select a Project
+
+3) In Credientals tab, create an OAuth 
+
+#### Usage
+
+Get the id_token, request the scopes `profile` and `email`
 
 Then you can get profile info at `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=[accesstoken]`
 

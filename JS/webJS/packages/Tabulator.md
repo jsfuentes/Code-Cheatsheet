@@ -9,7 +9,6 @@ A frontend library for tables with out of the box features like sorting, clickin
 <script type="text/javascript" src="dist/js/tabulator.min.js"></script>
 
 <div id="example-table"></div>
-
 ```
 
 Script

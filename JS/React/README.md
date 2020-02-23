@@ -1,17 +1,5 @@
 # React
 
-Gatsby is a static site generator with plugins and makes adding pages easy
-
-- Gatsby dictates how you should handle data in your app.
-
-[Next](https://nextjs.org/) seems even better allowing easy page adding, mainly server side rendered pages, also supports static site generation
-
-- Managing data up to you 
-
-## Basics
-
-`npx create-react-app my-app`
-
 ## Thinking about React
 
 - Data flows down from parent to child
@@ -34,11 +22,12 @@ Given design:
 
 ## Installation
 
-`npm i react-dom`
+```bash
+npm i react-dom
+npm i react
+```
 
-`npm i react`
-
-Include html file with a root.js
+Include html file with a root div
 
 Add these script
 

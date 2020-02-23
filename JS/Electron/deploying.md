@@ -77,6 +77,7 @@ const { autoUpdater } = require("electron-updater")
 
 export default class AppUpdater {
   constructor() {
+    const log = require("electron-log");
     log.transports.file.level = "info";
     autoUpdater.logger = log;
     autoUpdater.checkForUpdatesAndNotify();
@@ -110,4 +111,4 @@ Electron team maintains free [update.electronjs.org](https://github.com/electron
 
 **On Mac:** App must be [signed](https://www.electron.build/code-signing) for auto updates, based on  [Squirrel.Mac](https://github.com/Squirrel/Squirrel.Mac)
 
-**On WIndows:** Make sure not to update app the [first time it runs](
+**On WIndows:** Make sure not to update app the [first time it runs](****

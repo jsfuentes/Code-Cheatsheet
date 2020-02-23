@@ -22,3 +22,12 @@ app.on('ready', () => {
   }
 })
 ```
+
+# [Display Object](https://www.electronjs.org/docs/api/structures/display#display-object)
+
+- `id` Number - Unique identifier associated with the display.
+- `bounds` [Rectangle](https://www.electronjs.org/docs/api/structures/rectangle) //x from left and y from top
+- `size` [Size](https://www.electronjs.org/docs/api/structures/size)
+- `workArea` [Rectangle](https://www.electronjs.org/docs/api/structures/rectangle)
+- `workAreaSize` [Size](https://www.electronjs.org/docs/api/structures/size)
+- `internal` Boolean - `true` for an internal display and `false` for an external display

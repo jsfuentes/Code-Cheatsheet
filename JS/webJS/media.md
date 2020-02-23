@@ -5,7 +5,7 @@
 #### Get Camera
 
 ```javascript
-function recordCamera() {
+function startCamera() {
   function getCameraStream(stream) {
     console.log("Starting Camera");
     stream.onended = () => {
@@ -14,16 +14,16 @@ function recordCamera() {
     setCamStream(stream);
   }
 
-  navigator.webkitGetUserMedia(
-    {
-      audio: false,
-      video: {
-        mandatory: { minWidth: 1280, minHeight: 720 }
-      }
-    },
-    getCameraStream,
-    getUserMediaError
-  );
+  navigator.mediaDevices
+    .getUserMedia({
+    audio: false,
+    video: true
+  })
+    .then(getCameraStream)
+    .catch(err => {
+    getUserMediaError(err);
+    setCameraError(err);
+  });
 }
 ```
 
@@ -32,29 +32,50 @@ function recordCamera() {
 Do it seperate then add as a track to your stream, might be able to just say audio true, but mac makes it jank or something idk
 
 ```javascript
-navigator.webkitGetUserMedia(
-  { audio: true, video: false },
-  getAudio,
-  getUserMediaError
-);
+function startAudio() {
+  function getAudio(stream) {
+    console.log("Starting Audio Stream");
+    stream.onended = () => {
+      console.log("Audio Stream ended.");
+    };
+    setAudioStream(stream);
+
+  navigator.mediaDevices
+    .getUserMedia({ audio: true, video: false })
+    .then(getAudio)
+    .catch(getUserMediaError);
+  }
 ```
+
+#### Get Screen
+
+```js
+function startCapture(displayMediaOptions) {
+ let captureStream = null;
+
+ return navigator.mediaDevices.getDisplayMedia(displayMediaOptions)
+    .catch(err => { console.error("Error:" + err); return null; });
+}
+```
+
+
 
 ## Using Stream
 
 #### Play Video of MediaStream
 
 ```jsx
-  const vRef = useRef(null);
-  
-	if (camStream) vRef.current.srcObject = camStream;
+const vRef = useRef(null);
 
-  return (<video
-      className="h-full scale-medium"
-      muted
-      autoPlay
-      data-setup="{}"
-      ref={vRef}
-      />)
+if (camStream) vRef.current.srcObject = camStream;
+
+return (<video
+          className="h-full scale-medium"
+          muted
+          autoPlay
+          data-setup="{}"
+          ref={vRef}
+          />)
 ```
 
 #### Record
@@ -141,5 +162,25 @@ function send() {
   })
     .catch(err => console.error("Transerr", err));
 }
+```
+
+## Advanced
+
+Recording a web video/audio will not have the duration set in the header. To let the file know the duration, you can skip to the end and it will figure it out.
+
+```js
+  useEffect(() => {
+    vRef.current.onloadedmetadata = () => {
+      vRef.current.currentTime = 9999999999;
+      vRef.current.ontimeupdate = function() {
+        vRef.current.ontimeupdate = null;
+        vRef.current.currentTime = 0.1;
+        vRef.current.currentTime = 0;
+        vRef.current.play();
+      };
+      console.log("LOADS");
+      vRef.current.onloadedmetadata = null;
+    };
+  }, []);
 ```
 

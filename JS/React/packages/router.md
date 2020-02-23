@@ -57,7 +57,7 @@ return (<BrowserRouter>
 <Link to="{match.url+"/email"}"> Email </Link>
 ```
 
-Navlinks add style when active, classes, and on actived event
+**Navlinks** add style when active, classes, and on actived event
 
 #### Redirect
 
@@ -90,7 +90,7 @@ Default passed to Route child, but can also access from anywher with
 import { useParams, useLocation, useHistory, useRouteMatch } from 'react-router-dom';
   
 const params = useParams();
-const location = useLocation();
+const location = useLocation(); //query string at search
 const history = useHistory();
 const match = useRouteMatch();
 ```

@@ -7,6 +7,3 @@ To use core nodeJS modules you need some extra bundler configuration
 # Packages to Explore
 
 - dotenv - access env variables
-- socket.io - push to clinet
-
-  

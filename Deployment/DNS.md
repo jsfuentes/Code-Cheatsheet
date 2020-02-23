@@ -58,3 +58,6 @@ Perform a DNS query
 host www.modulo.blog
 ```
 
+Test https
+
+https://decoder.link/sslchecker/modulo.blog/443
