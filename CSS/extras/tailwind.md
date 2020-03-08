@@ -89,6 +89,8 @@ Justify-start | justify-center | justify-end | justify-between | justify-around
 
 #### Text
 
+Text-xs|text-sm|text-base|text-lg|text-2xl ...
+
 | Cls                   | Prop                       |
 | --------------------- | -------------------------- |
 | .text-xl              | font-size: 1.25rem;        |
@@ -138,9 +140,9 @@ Preflight is opinionated and makes things like lists, h1, h2, etc unstyled by de
 Can use `npx tailwind build styles.css -o output.css`, but builtin cli doesn't include watch ability need postcss
 
 ```bash
-npm install tailwindcss --save-dev
+yarn add -D tailwindcss
 npx tailwind init tailwind.config.js --full
-npm install postcss-cli autoprefixer --save-dev
+yarn add -D postcss-cli autoprefixer
 ```
 
 postcss.config.js
@@ -161,7 +163,7 @@ index.css
 
 ```css
 @tailwind base;/* Preflight will be injected here */
-//Put all classes here
+/*Put all classes here*/
 @tailwind components;
 @tailwind utilities;
 ```

@@ -22,7 +22,7 @@ Has promise version
 const fs = require('fs').promises;
 ```
 
-
+*Check out [fs-extra](https://www.npmjs.com/package/fs-extra) promise verison natively* 
 
 ### Utils
 
@@ -51,17 +51,6 @@ debug("booting %o", name);
 To see http, `export DEBUG=http` environment variable with space/comma-delimited names, or `export DEBUG=*`
 
 Can also use in browers then set `localStorage.debug = 'worker:*'`
-
-### http-erros
-
-```js
-const createError = require('http-errors')
- 
-app.use(function (req, res, next) {
-  if (!req.user) return next(createError(401, 'Please login to view this page.'))
-  next()
-})
-```
 
 ### cheerio 
 
@@ -115,6 +104,14 @@ else{
   shell.echo("Database backup complete");
 }
 ```
+
+| Notable Packages                                     | Does                                      |
+| ---------------------------------------------------- | ----------------------------------------- |
+| [Commander](https://www.npmjs.com/package/commander) | Write command line flag parsing like -d 1 |
+|                                                      |                                           |
+|                                                      |                                           |
+
+
 
 #### Nodemailer
 

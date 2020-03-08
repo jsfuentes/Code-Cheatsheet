@@ -12,7 +12,7 @@ document.cookie= "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
 allCookies = document.cookie;
 ```
 
-In the code above `*allCookies*`is a string containing a semicolon-separated list of all cookies (i.e. `key=value`pairs). Note that each keyand valuemay be surrounded by whitespace (space and tab characters): in fact, [RFC 6265](https://tools.ietf.org/html/rfc6265)mandates a single space after each semicolon, but some user agents may not abide by this.
+In the code above `*allCookies*`is a string containing a semicolon-separated list of all cookies (i.e. `key=value`pairs). Note that each keyand value may be surrounded by whitespace (space and tab characters): in fact, [RFC 6265](https://tools.ietf.org/html/rfc6265)mandates a single space after each semicolon, but some user agents may not abide by this.
 
 ### Write a new cookie
 

@@ -31,10 +31,10 @@ axios.post('/user', {
     firstName: 'Fred',
     lastName: 'Flintstone'
   })
-  .then(function (response) {
+  .then((response) => {
     console.log(response);
   })
-  .catch(function (error) {
+  .catch((error) => {
     console.log(error);
   });
 ```
@@ -84,7 +84,31 @@ const resp = await axios
   })
 ```
 
+#### Error Handling
 
+- `err.response.status` if any other server status than 2xx
+- `err.request` if request was made without a response
+- `err.message === "Network Error"` [special network error case]((https://github.com/axios/axios/issues/383#issuecomment-234079506))
+- `err.message` if something while setting up request
+
+```js
+axios.get('/user/12345')
+  .catch(function (error) {
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
+      console.log(error.request);
+    } else if(err.message === "Network Error") {
+      console.log(err.message);
+    } else {
+      console.log('Error', error.message);
+    }
+    console.log(error.config);
+  });
+```
 
 ## Requests
 

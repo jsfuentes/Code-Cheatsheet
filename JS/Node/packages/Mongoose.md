@@ -106,12 +106,12 @@ const user = await User.find({ "token.id": 1 });
 ```
 - [`Model.deleteMany()`](https://mongoosejs.com/docs/api.html#model_Model.deleteMany)
 - [`Model.deleteOne()`](https://mongoosejs.com/docs/api.html#model_Model.deleteOne)
-- [`Model.find()`](https://mongoosejs.com/docs/api.html#model_Model.find) //Returns `null`  if not found
-- [`Model.findById()`](https://mongoosejs.com/docs/api.html#model_Model.findById)
+- [`Model.find()`](https://mongoosejs.com/docs/api.html#model_Model.find) //Returns `[]`  if not found
+- [`Model.findById()`](https://mongoosejs.com/docs/api.html#model_Model.findById) //basically fineOne
 - [`Model.findByIdAndDelete()`](https://mongoosejs.com/docs/api.html#model_Model.findByIdAndDelete)
 - [`Model.findByIdAndRemove()`](https://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove)
 - [`Model.findByIdAndUpdate()`](https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate)
-- [`Model.findOne()`](https://mongoosejs.com/docs/api.html#model_Model.findOne) //Returns `[]` if not found
+- [`Model.findOne()`](https://mongoosejs.com/docs/api.html#model_Model.findOne) //Returns `null` if not found
 - [`Model.findOneAndDelete()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndDelete)
 - [`Model.findOneAndRemove()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove)
 - [`Model.findOneAndReplace()`](https://mongoosejs.com/docs/api.html#model_Model.findOneAndReplace)
@@ -130,6 +130,27 @@ const showExists = (await Show.countDocuments({ _id: show_id })) > 0;
 ```
 
 ## Advanced
+
+### Model Instance Methods
+
+```javascript
+  // define a schema
+  var animalSchema = new Schema({ name: String, type: String });
+
+  // assign a function to the "methods" object of our animalSchema
+  animalSchema.methods.findSimilarTypes = function(cb) {
+    return this.model('Animal').find({ type: this.type }, cb);
+  };
+```
+
+```
+  var Animal = mongoose.model('Animal', animalSchema);
+  var dog = new Animal({ type: 'dog' });
+
+  dog.findSimilarTypes(function(err, dogs) {
+    console.log(dogs); // woof
+  });
+```
 
 ### Upsert
 
@@ -162,10 +183,9 @@ Story
 Can also fill in the field with the right model
 
 ```js
-Story
-.findOne({ title: 'Bob goes sledding' })
-.populate('author');
-
+const story = await Story
+.findOne({ title: 'Bob goes sledding' });;
+await story.populate("author").execPopulate();
 story.author.name;
 ```
 

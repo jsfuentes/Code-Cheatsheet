@@ -39,11 +39,21 @@ app.use(grant({
 }))
 ```
 
-2) Set the redirect url to `[protocol]://[host]/connect/[provider]/callback`
+2) Set the redirect url for the oauth to `[protocol]://[host]/connect/[provider]/callback`
 
 3) Login by navigating user to `/connect/:provider`
 
 4) Will send the user to the defaults + callback *Can just define the full url callback*
 
 5) The data will wither be in `req.session.grant` or `req.query` depending on the transport selected
+
+```javascript
+  if (!req.session.grant || !req.session.grant.response) {
+    console.error(`Login success failed, grant: ${req.session.grant}`);
+    res.redirect("/api/user/login/start");
+    return;
+  }
+  const { access_token, refresh_token } = req.session.grant.response;
+
+```
 

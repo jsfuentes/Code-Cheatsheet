@@ -19,6 +19,8 @@ try {
 }
 catch(err) {
     alert(e.message); // This is an error
+} finally { //can just have the finally if you dont want to catch error?
+  //do something regardless of result
 }
 ```
 

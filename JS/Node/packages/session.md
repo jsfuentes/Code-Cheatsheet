@@ -18,9 +18,12 @@ app.use(session({
     secret: 'super secret not secret',
     saveUninitialized: true,
     secure: false, //only https
-    resave: true
+    resave: true,
+    maxAge: 7 * 24 * 60 * 60 * 1000, // one week
 }));
 ```
+
+Need maxAge or expires or the session will expire immediately
 
 ### Usage
 

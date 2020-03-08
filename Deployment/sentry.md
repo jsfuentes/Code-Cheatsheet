@@ -2,14 +2,20 @@
 
 Add the sdk and it will automatically capture any fatal errors
 
+@sentry/electron | @sentry/browser | @sentry/node
+
 ```js
 import * as Sentry from "@sentry/electron";
 
-Sentry.init({
+if(process.env.NODE_ENV === "production") {
+  Sentry.init({
   dsn: "https://[hi]@sentry.io/2590109",
   release: "slingshow@" + process.env.npm_package_version
 });
+}
 ```
+
+If Sentry.init isn't called, all other Sentry functions are noops
 
 ## Manually Logging
 
@@ -30,7 +36,7 @@ Sentry.captureMessage('Something went wrong');
 Can add id, username, email, or ip_address
 
 ```js
-Sentry.configureScope(function(scope) {
+Sentry.configureScope((scope) => {
   scope.setUser({"email": "john.doe@example.com"});
 });
 ```

@@ -24,9 +24,7 @@ Common to create:
 
 -  `A` record for `example.com` => server IP address
 
-- `CNAME`record for `www.example.com` => `example.com`
-
-  
+-  `CNAME`record for `www.example.com` => `example.com`
 
 ## Advanced
 
@@ -49,6 +47,10 @@ example's.com => aws.frontend.s3.com
 | URL Redirect Record | @     | http://www.modulo.blog/        |
 
 See AWS/cloudfront to see how to set that shit up
+
+#### Http
+
+Need certificate, note *.slingshow.com isnt the same as slingshow.com
 
 ### Testing
 

@@ -78,7 +78,12 @@ const history = useHistory();
 history.push("/");
 ```
 
-3)  `window.location.replace("www.example.com")` HTML5 way
+3)   HTML5 way
+
+```javascript
+window.location.href = "www.example.com";
+window.location.replace("www.example.com"); //replaces current page in history
+```
 
 ## Accessing Router Info
 

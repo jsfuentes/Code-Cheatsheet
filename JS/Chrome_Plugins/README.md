@@ -16,7 +16,8 @@ Just need a folder with a manifest.json
   "permissions": [
     "<all_urls>",
     "identity",
-    "identity.email"
+    "identity.email",
+    "https://www.slingshow.com/"
   ],
   "content_scripts": [
     {

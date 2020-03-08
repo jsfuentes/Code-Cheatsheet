@@ -8,19 +8,23 @@ router.post('/moderator', [Auth.adminOfPostedId, Auth.canInvite], postModerator)
 
 ## Example
 
+middleware/auth.js
+
 ```js
+const createError = require("http-errors");
+const debug = require("debug")("app:middleware:auth");
+
+module.exports = {
+  logged_in
+};
+
 function logged_in(req, res, next) {
-  if (req.session.payload === undefined) {
-    console.error("Logged_in failed to find payload");
-    res.status(401)
-      .json({
-        status: 'failed',
-        message: 'Cannot authorize the user'
-      });
+  if (req.session.uid === undefined) {
+    throw createError().Unauthorized("Need to be logged in"); //handled by error handler
+  } else {
+    // debug(`Session active for ${req.session.uid}`);
+    next();
   }
-  
-  debug(`Session active for ${req.session.payload.email}`);
-  next(); //call next to continue to next middleware/handler ft
 }
 ```
 

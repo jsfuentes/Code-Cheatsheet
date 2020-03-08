@@ -32,24 +32,6 @@ browser.tabs
 
 ### Listener
 
-```javascript
-browser.runtime.onMessage.addListener(
-    (request, sender, sendResponse) => {
-      if (request.type === "gid") {
-        console.log(request.data);
-        chrome.identity.getProfileUserInfo(
-          (userInfo) => {
-            // console.log('Student ID: ', userInfo.id)
-            sendResponse(userInfo);
-        	}
-        );
-        return true; //needed if sendResponse async
-      }
-});
-```
-
-**Return a promise instead of sendResponse for new W3C spec**
-
 ```js
 browser.runtime.onMessage.addListener(request => {
   if (request.type === C.is_development) {
@@ -58,7 +40,7 @@ browser.runtime.onMessage.addListener(request => {
 });
 ```
 
-#### Sender Info
+**Return a promise instead of sendResponse for new W3C specSender Info**
 
 ```javascript
 let windowId = sender.tab.windowId; //windowId is instance of chrome, so multiple tabs in the same window have the same windowId
@@ -108,12 +90,35 @@ browser.runtime.onMessage.addListener(msg => {
 
 Can't do ports, can do messages
 
-Must add 
+Must add to manifest.json
 
 ```json
 "externally_connectable": {
-  "matches": ["*://*.example.com/*"]
+  "matches": ["*://*.slingshow.com/*", "http://localhost:3000/*"]
+},
+```
+
+webpage
+
+```js
+if (chrome) {
+  // Make a simple request:
+  debug("CE", conf.extension_id);
+  chrome.runtime.sendMessage(conf.extension_id, { x: 1 }, response => {
+    debug("M RESPONSE", response);
+  });
 }
+```
+
+Any script in extension
+
+```js
+//returning promise is now sendResponse, so async function means responses with anything returned
+browser.runtime.onMessageExternal.addListener(async (msg, sender) => {
+  debug("External message recieved", msg, sender);
+  debug("From sender", sender.url);
+  return { x: 1 };
+});
 ```
 
 ### Long lived Connections
