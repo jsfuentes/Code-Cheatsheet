@@ -14,6 +14,7 @@ Use messages to access most chrome APIS, but can accessjj:
   - [onConnect](https://developer.chrome.com/extensions/runtime#event-onConnect)
   - [onMessage](https://developer.chrome.com/extensions/runtime#event-onMessage)
   - [sendMessage](https://developer.chrome.com/extensions/runtime#method-sendMessage)
+- [extension](https://developer.chrome.com/extensions/extension) ( [getURL](https://developer.chrome.com/extensions/extension#method-getURL) , [inIncognitoContext](https://developer.chrome.com/extensions/extension#property-inIncognitoContext) , [lastError](https://developer.chrome.com/extensions/extension#property-lastError) , [onRequest](https://developer.chrome.com/extensions/extension#event-onRequest) ,[sendRequest](https://developer.chrome.com/extensions/extension#method-sendRequest) )
 
 ## Settings
 

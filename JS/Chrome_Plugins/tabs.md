@@ -9,7 +9,7 @@ browser.tabs
   .catch(err => console.error("Tab create error: ", err));
 ```
 
-## Get active tab
+### Get active tab
 
 ```js
 const queryInfo = {
@@ -21,3 +21,13 @@ browser.tabs.query(queryInfo).then(tabs => {
 });
 ```
 
+### Send Message to All Tabs
+
+```js
+browser.tabs.query({}, (tabs) => {
+  const msg = 
+  tabs.forEach(tab => {
+	        chrome.tabs.sendMessage(tabs[i].id, message);
+  })
+}); //untested
+```

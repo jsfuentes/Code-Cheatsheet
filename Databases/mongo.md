@@ -18,7 +18,29 @@
 { item: { $not: /^p.*/ } } //find something not starting with p
 ````
 
-## Storing and Querying Ranges
+## Structuring Schema
+
+Embedding documents
+
+- Embedded documents are documents with schemas of their own that are part of other documents
+
+- Lots of unneccessary data could be sent
+- Many to many get messy, great for one to one
+- Memory problem
+
+Referenced documents
+
+- when you populate it requires an individual query for each
+- saves are only atomic at the document level, so all referenced saves not atomic
+- Efficiency problems
+
+
+
+
+
+### Advanced
+
+#####Storing and Querying Ranges 
 
 Store start and end
 

@@ -73,8 +73,8 @@ return (<BrowserRouter>
 2) 
 
 ```js
+import { useHistory } from 'react-router-dom';
 const history = useHistory();
-
 history.push("/");
 ```
 

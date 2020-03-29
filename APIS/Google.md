@@ -1,6 +1,6 @@
 # Google APIS
 
-## Auth
+## User Auth
 
 #### [On the Web](https://developers.google.com/identity/sign-in/web/sign-in)
 
@@ -19,6 +19,12 @@
 Get the id_token, request the scopes `profile` and `email`
 
 Then you can get profile info at `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=[accesstoken]`
+
+## API Auth
+
+Can download their file and do some gcloud command to get token 
+
+Or can create API KEY then attach to urls with `?key=[APIKEY]`
 
 ## Speech to Text
 
@@ -55,5 +61,55 @@ response = client.LongRunningRecognize(config, audio)
 
 for result in response.results:
     print('Transcript: {}'.format(result.alternatives[0].transcript))
+```
+
+## Image to Object Labels
+
+https://cloud.google.com/vision/docs/features-list
+
+```
+body = {
+  "requests": [
+    {
+      "image": {
+        "source": {
+          "imageUri": "https://www.vet.cornell.edu/sites/default/files/Dog%20running%20in%20field.png"
+        }
+      },
+      "features": [
+        {
+          "type": "LABEL_DETECTION",
+          "maxResults": 1
+        },
+        {
+          "type": "FACE_DETECTION",
+          "maxResults": 3
+        }
+      ]
+    }
+  ]
+}
+header = "Content-Type: application/json; charset=utf-8"
+url = https://vision.googleapis.com/v1/images:annotate?key=[API_KEY]
+```
+
+## Text to Speech
+
+```
+body = {
+  "input":{
+    "text":"Android is a mobile operating system developed by Google, based on the Linux kernel and designed primarily for touchscreen mobile devices such as smartphones and tablets."
+  },
+  "voice":{
+    "languageCode":"en-gb",
+    "name":"en-GB-Standard-A",
+    "ssmlGender":"FEMALE"
+  },
+  "audioConfig":{
+    "audioEncoding":"MP3"
+  }
+}
+
+url = https://texttospeech.googleapis.com/v1/text:synthesize?key=[API_KEY]
 ```
 

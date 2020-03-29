@@ -1,7 +1,7 @@
 # Mongoose
 
 ```bash
-npm install mongoose
+yarn add mongoose
 ```
 
 1. Connect mongoose as in setup
@@ -32,6 +32,8 @@ Models are defined using the Schema interface.
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const childSchema = new Schema({ name: 'string' });
+
 //1. Define a schema
 const TestSchema = new Schema({
   name: String,
@@ -47,7 +49,10 @@ const TestSchema = new Schema({
   drink: { //enum
     type: String,
     enum: ['Coffee', 'Tea']
-  }
+  },
+  children: [childSchema], // Array of subdocuments
+  child: childSchema //Caveat: only single nested
+});
 });
 
 //2. Compile model from schema

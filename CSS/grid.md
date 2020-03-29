@@ -7,11 +7,15 @@ CSS
 ```css
 .app {
   display: grid;
-  grid-template-columns: 4.5em 1fr;
-  grid-template-rows: 4em 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 4em 1fr 1fr 1fr 4em;
   grid-template-areas:
-    "sidenav header"
-    "sidenav main";
+    "header header header"
+    ". top ."
+    ". main ."
+    ". bottom ."
+    ". . .";
+  width: 100vw;
   height: 100vh;
 }
 
@@ -22,17 +26,20 @@ CSS
   box-shadow: 0px 0.5px 2px rgba(0, 0, 0, 0.05);
 }
 
-.sidenav {
-  grid-area: sidenav;
-  background-color: white;
-  box-shadow: 0.5px 0px 2px rgba(0, 0, 0, 0.05);
-}
-
 .main {
   grid-area: main;
-  background-color: $offWhite;
-  overflow: scroll;
-  padding: $space-2l $space-2l 0em $space-2l;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top {
+  grid-area: top;
+}
+
+.bottom {
+  grid-area: bottom;
 }
 ```
 
@@ -40,21 +47,14 @@ HTML
 
 ```react
 <div className="app">
-  <header className="header">
-    <TopMenu />
-  </header>
-  <aside className="sidenav">
-    <LeftMenu />
-  </aside>
-  <main className="main">
-    <Switch>
-      <Route exact path="/dashboard" component={Overview} />
-      <Route component={NoMatch} />
-    </Switch>
-  </main>
-  <div className="timeline">
-    <div> TBD Timeline </div>
+  <div className="header">
+    <div> Header </div>
   </div>
+  <div className="top">Top</div>
+  <div className="main">
+    <div> Dashboard </div>
+  </div>
+  <div className="bottom">Bottom</div>
 </div>
 ```
 
@@ -155,7 +155,7 @@ ol {
 ```css
 grid-template-columns: 
 	150px 150px 150px;
-	repeat(3, 150px);
+	repeat(3, 8em);
 	100px repeat(2, 1 fr) 2fr;
 	2fr 125px minmax(300px, 3fr);
 ```

@@ -1,6 +1,6 @@
 # Desktop Capture
 
-Permission
+Permission: `desktopCapture`
 
 Half implemented solution, good luck
 
@@ -47,4 +47,14 @@ function captureDesktop() {
 
 captureDesktop();
 ```
+
+### Getting Audio
+
+GetUserMedia for audio, can't request permissions in background or popup page, must request in the content script. Then send message to background, so that it succeeds.
+
+https://stackoverflow.com/questions/50991321/chrome-extension-getusermedia-throws-notallowederror-failed-due-to-shutdown
+
+*Don't forget to allow="camera, microhpone" as iframe attribute*
+
+No interest in allowing get user media from extension pages(background/popup) => https://bugs.chromium.org/p/chromium/issues/detail?id=1006742
 

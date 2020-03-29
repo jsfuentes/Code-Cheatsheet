@@ -11,6 +11,20 @@ Doesn't cost more to use this service then the underlying resources:
 - S3
 - Cloudwatch
 
+## Deployment Types
+
+All at once - <1 min for one EC2 and just takes down servers and sends update
+
+Rolling – one batch at a time stopping and reverting on failure. Reduced capacity
+
+Rolling with additional batch – Start and deploys on a batch, then rolling so no reduced capacity. But extra time to spin up new instance
+
+Immutable – Deploy to new single instance, starts by deploying your application code to a single  newly created EC2 instance. Once the deployment succeeds on the first  instance, the remaining number of instances required to create a  parallel fleet are created and the application code is deployed to them. After the deployment succeeds on the entire parallel fleet, instances  running the old application version are terminated 25% at a time. This  deployment policy ensures that the impact of a failed deployment is  minimal (i.e.: a single EC2 instance) and enables your application to  serve traffic at full capacity during an ongoing deployment.
+
+
+
+
+
 ## Initialize on the Command Line
 
 In the coding directory, run these commands for nice step by step creation

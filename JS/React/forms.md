@@ -33,6 +33,22 @@ List of validation rules supported by:
 - pattern
 - validate
 
+## Inputs
+
+```js
+  const [title, setTitle] = useState("Enter Title...");
+
+	//........
+
+	<input
+    className="border-none bg-transparent outline-none"
+    value={title}
+    onChange={e => setTitle(e.target.value)}
+  />
+```
+
+
+
 ## Controlled Components
 
 Normally form elements such as `<input> `maintain their own state and update based on input. To combine with React state, let React state be the “single source of truth” by updating it on change
@@ -68,6 +84,14 @@ class Reservation extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
+          Number of guests:
+          <input
+            name="numberOfGuests"
+            type="number"
+            value={this.state.numberOfGuests}
+            onChange={this.handleInputChange} />
+        </label>
+        <label>
           Is going:
           <input
             name="isGoing"
@@ -76,14 +100,6 @@ class Reservation extends React.Component {
             onChange={this.handleInputChange} />
         </label>
         <br />
-        <label>
-          Number of guests:
-          <input
-            name="numberOfGuests"
-            type="number"
-            value={this.state.numberOfGuests}
-            onChange={this.handleInputChange} />
-        </label>
       </form>
     );
   }

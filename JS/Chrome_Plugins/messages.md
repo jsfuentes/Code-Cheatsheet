@@ -88,7 +88,7 @@ browser.runtime.onMessage.addListener(msg => {
 
 ## From Webpages
 
-Can't do ports, can do messages
+Can't do ports, can do messages.
 
 Must add to manifest.json
 
@@ -120,6 +120,8 @@ browser.runtime.onMessageExternal.addListener(async (msg, sender) => {
   return { x: 1 };
 });
 ```
+
+Doesn't work in Firefox, instead you could do postmessage/custom events and listen in the content script
 
 ### Long lived Connections
 

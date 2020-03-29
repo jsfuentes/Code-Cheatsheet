@@ -4,8 +4,8 @@ Several Options:
 
 - axios
 - requests
-- fetch
-- raw XMLhttprequest
+- fetch(HTML5?)
+- raw XMLhttprequest(native)
 - jquery
 
 ## Axios

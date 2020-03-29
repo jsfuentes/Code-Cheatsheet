@@ -4,6 +4,7 @@ Encapulsate changes in the compoonent
 
 - Local **State** is dict like props, but **private** and fully controlled by component and not setup by React
 - Can pass state down to child through props
+- The **order** of updates is always respected.
 
 ## Lifecycle Hooks
 

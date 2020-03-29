@@ -49,7 +49,7 @@ curl https://api.mux.com/video/v1/assets \
   -H "Content-Type: application/json" \
   -X POST \
   -d '{ "input": "http://movietrailers.apple.com/movies/wb/the-lego-ninjago-movie/the-lego-ninjago-movie-trailer-2_h720p.mov", "playback_policy": "public" }' \
-  -u <username>:<password> | json_pp
+  -u {MUX_TOKEN_ID}:{MUX_TOKEN_SECRET} | json_pp
 ```
 
 Response

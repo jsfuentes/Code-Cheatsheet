@@ -14,3 +14,38 @@ if ( window.location !== window.parent.location ) {
 }
 ```
 
+## Communicating Between
+
+Inside iframe
+
+```js
+window.parent.postMessage({ type: "close_spotlight" }, "*");
+```
+
+Inside parent window
+
+```js
+window.onmessage = handlePostedQuestions;
+
+function handlePostedQuestions(packet) {
+  const msg = packet.data;
+  debug("Recieved packet", packet);
+  debug("Recieved msg", msg); //will be {type: ...}
+}
+```
+
+## DOM
+
+https://sites.google.com/a/chromium.org/dev/Home/chromium-security/deprecating-permissions-in-cross-origin-iframes
+
+Deprecated Permission in Iframe unless allowed:
+
+- Geolocation (getCurrentPosition and watchPosition)
+- Midi (requestMIDIAccess)
+- Encrypted media extensions (requestMediaKeySystemAccess)
+- Microphone, Camera (getUserMedia)
+
+```html
+<iframe src="https://example.com" allow="geolocation,  microphone"></iframe>
+```
+

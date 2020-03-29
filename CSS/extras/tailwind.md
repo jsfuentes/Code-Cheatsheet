@@ -80,16 +80,20 @@ Justify-start | justify-center | justify-end | justify-between | justify-around
 
 ## Other
 
-| Cls             | Prop                    |
-| --------------- | ----------------------- |
-| .bg-blue-500    |                         |
-| .font-bold      | font-weight: 700;       |
-| .cursor-pointer | cursor: pointer;        |
-| .rounded-sm     | border-radius: .125rem; |
+| Cls             | Prop              |
+| --------------- | ----------------- |
+| .bg-blue-500    |                   |
+| .font-bold      | font-weight: 700; |
+| .cursor-pointer | cursor: pointer;  |
+|                 |                   |
+
+.shadow-md =>  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
 #### Text
 
-Text-xs|text-sm|text-base|text-lg|text-2xl ...
+Text-xs|text-sm|text-base|text-lg|text-2xl | text-3xl | text-4xl
+
+.75rem | .875 | 1 | 1.125 | 1.25 | 1.5 | 1.875 | 2.25
 
 | Cls                   | Prop                       |
 | --------------------- | -------------------------- |
@@ -105,9 +109,10 @@ Text-xs|text-sm|text-base|text-lg|text-2xl ...
 | .border-[solid\|none] | border-style: [solid\|none] |
 | .border-4             |                             |
 | .border-gray-600      |                             |
+| .rounded-sm           | border-radius: .125rem;     |
+| .rounded              | border-radius: 0.25rem;     |
 | .rounded-full         | border-radius: 9999px;      |
-
-
+|                       |                             |
 
 ## Active Styles
 

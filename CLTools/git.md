@@ -6,7 +6,7 @@ Git stores everything in a directory, `rm -rf .git` to delete the git project
 
 ## Changing History
 
-### Reflog
+#### Reflog
 
 Saves every instance of head changes
 
@@ -15,7 +15,7 @@ git reflog
 git checkout -b after-commit HEAD@{1}
 ```
 
-### Rebase
+#### Rebase
 
 - rewrites history, if commits not local can mess things up
 - could also rebase all your branch commits to occur at end of current master to **avoid a merge commit**
@@ -30,7 +30,7 @@ git checkout -b after-commit HEAD@{1}
 
 `git rebase -i <COMMIT_TO_IGNORE>`
 
-1. Squash all but top
+1. `S`quash all but top
 2. quit-save to rebase
 
 ### Stash
@@ -95,6 +95,10 @@ git push <remote> <local branch name>:<remote branch to push into>
 `git clean -fdx` //remove all untracked files including those ignored by .gitignore
 `git clean -fdX` //only remove files ignored by .gitignore
 
+#### Tagging
+
+`git tag -a v1.4 -m "my version 1.4"`
+
 ## Git grep
 
 `git grep [string]` find all lines tracked by the git repo with the given string
@@ -119,7 +123,7 @@ node_modules/ #any node_modules anywhere
 
 Basically, lets you use large files in github by using fileptrs
 
-## Setup
+### Setup
 
 1) `brew install git-lfs`
 

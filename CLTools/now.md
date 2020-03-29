@@ -1,5 +1,9 @@
 # Now
 
+```bash
+npm i -g now
+```
+
 Zeit ez
 
 ```bash
