@@ -2,9 +2,17 @@
 
 Stream editor to do bash text manipulation
 
-## Translate hello to world
+### String Substituting
+
+First one hit
 
 ```bash
 sed 's/hello/world/' input.txt > output.txt
+```
+
+Translate all
+
+```bash
+echo "hello hello my world world" | sed 's/hello/world/g'
 ```
 

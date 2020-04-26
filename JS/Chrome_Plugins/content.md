@@ -35,3 +35,48 @@ Use messages to access most chrome APIS, but can accessjj:
 - `document_end` - immediately after DOM is complete, but before subresources like images and frames have loaded
 
 There is fancy matching settings and white and black lists
+
+## Orphaned Content Scripts
+
+When you refresh/update the background script, the content scripts on past pages will still be there running code. But, they will not have access to localStorage or be able to message
+
+The best way to check if valid is to try to access localStorage, but can also just ensure the content script only runs code on messages or storage changes
+
+##### Injecting Content Script into Active Tab if needed
+
+```javascript
+export async function getActiveTab() {
+  const tabs = await browser.tabs.query({
+    lastFocusedWindow: true,
+    active: true
+  });
+  if (tabs.length === 0) {
+    const message = "There is no active tab";
+    debug(message);
+    throw new Error(message);
+  }
+
+  return tabs[0];
+}
+
+export async function getValidActiveTab() {
+  const activeTab = await getActiveTab();
+  const tabId = activeTab.id;
+
+  try {
+    await browser.tabs.sendMessage(tabId, { type: C.test });
+  } catch (_) {
+    try {
+      await browser.tabs.executeScript(tabId, {
+        file: "build/content.js"
+      });
+      debug("Injected content script");
+    } catch (_) {
+      throw new Error(browser.runtime.lastError.message);
+    }
+  }
+
+  return activeTab;
+}
+```
+

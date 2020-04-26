@@ -63,3 +63,8 @@ host www.modulo.blog
 Test https
 
 https://decoder.link/sslchecker/modulo.blog/443
+
+```bash
+curl -I www.example.com
+```
+

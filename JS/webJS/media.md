@@ -184,3 +184,19 @@ Recording a web video/audio will not have the duration set in the header. To let
   }, []);
 ```
 
+### Constraints
+
+If the browser doesn't support then these are ignored, check `navigator.mediaDevices.getSupportedConstraints() `
+
+```js
+audio: {
+  echoCancellation: true,
+  autoGainControl: true,
+  noiseSuppression: true
+}
+
+video: {
+  frameRate: 30
+}
+```
+

@@ -9,14 +9,16 @@ Vscode has an eslint plugin that allows you see potential errors
 ## Setup In Project
 
 ```bash
-npm install --save-dev eslint
+yarn add -D eslint
 ./node_modules/.bin/eslint --init
 ```
 
 ## Setup In Project With Prettier
 
+In root of project:
+
 ```bash
-npm install --save-dev eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks prettier
+yarn add -D eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks prettier
 ```
 
 .eslintrc
@@ -52,3 +54,4 @@ npm install --save-dev eslint eslint-config-prettier eslint-plugin-prettier esli
 }
 ```
 
+Can add additional config in prettier

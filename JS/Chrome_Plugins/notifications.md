@@ -2,6 +2,8 @@
 
 Need `notifications` permission in manifest.json
 
+Can change icon on bar with browser_action
+
 ```js
   const notif = await browser.notifications.create({
     type: "basic",

@@ -1,5 +1,7 @@
 # Tabs
 
+Mostly don't need `tabs` permission, except to populate `url`, `pendingUrl`, `title`, and `favIconUrl` properties of `Tab`.
+
 ### Open New Tab
 
 ```js
@@ -12,22 +14,20 @@ browser.tabs
 ### Get active tab
 
 ```js
-const queryInfo = {
+const tabs = await browser.tabs.query({
   lastFocusedWindow: true,
   active: true
-};
-browser.tabs.query(queryInfo).then(tabs => {
-  const activeTab = tabs[0];
 });
+const activeTab = tabs[0];
 ```
 
 ### Send Message to All Tabs
 
 ```js
-browser.tabs.query({}, (tabs) => {
-  const msg = 
-  tabs.forEach(tab => {
-	        chrome.tabs.sendMessage(tabs[i].id, message);
-  })
-}); //untested
+browser.tabs.query({}).then((tabs) => {
+  tabs.forEach((tab) => {
+    ensureValidContent(tab.id).catch(console.error);
+  });
+});
 ```
+

@@ -60,19 +60,21 @@ Accept: */*
 
 If you want to support **most** browsers, then don't exceed **50 cookies per domain**, and don't exceed **4093 total bytes per domain** 
 
-Often used to store sessions, just store session/user id in a cookie
+Often used to store sessions, just store session/user id in a cookie with a signature
 
 A cookie with no expiration date specified will expire when the browser is closed i.e `session` key set to true. 
 
-When a server responds to a browser request, it can send down a `Set-Cookie` header with one or many cookies:
+Servers set cookies with`Set-Cookie` header
 
-To send a cookie back to the server, the browser uses the `Cookie` header
+Browser sends cookies with `Cookie` header
 
 Cookie properties to control domains sent to:
 
 - `Secure`: This will ensure that cookies can only be sent to HTTPS servers.
 - `Domain`: A list of hosts that a cookie can be sent to.
 - `Path`: Similar to `Domain` but restricts the cookie from being sent to URLs that do not include the `Path`.
+
+Cookies are sent with every request to the server, even those from other sites :O, this can lead to CSRF where another website tricks the user into sending a get/post request to your server with their auth. 
 
 ## Design
 

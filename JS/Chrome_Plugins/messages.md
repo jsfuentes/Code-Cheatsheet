@@ -27,7 +27,8 @@ Same except specify tab id and tabs sendMessage
 browser.tabs
   .query({ active: true, currentWindow: true })
   .then(tabs => browser.tabs.sendMessage(tabs[0].id, { type: C.toast }))
-  .then(resp => debug("Got response", resp));
+  .then(resp => debug("Got response", resp))
+	.catch(_ => debug(browser.runtime.lastError.message));
 ```
 
 ### Listener

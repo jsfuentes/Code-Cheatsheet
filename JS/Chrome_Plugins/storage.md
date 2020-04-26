@@ -7,7 +7,10 @@ From ` webextension-polyfill`
 ```js
 await browser.storage.sync.set({iframeType: "onboard"});
 let storage = await browser.storage.sync.get(['iframeType', 'questions', 'lastQuestionDate']);
+const { iframeType } = storage;
 ```
+
+To check out limits: Go to background script, type `chrome.storage.sync.` then let browser autocomplete
 
 ## Chrome
 
@@ -48,20 +51,14 @@ chrome.storage.sync.clear();//to empty storage
 ##### Detect Changes
 
 ```js
-function logStorageChange(changes, area) {
-  console.log("Change in storage area: " + area);
- 
-  var changedItems = Object.keys(changes);
- 
-  for (var item of changedItems) {
-    console.log(item + " has changed:");
-    console.log("Old value: ");
-    console.log(changes[item].oldValue);
-    console.log("New value: ");
-    console.log(changes[item].newValue);
+browser.storage.onChanged.addListener((changes, namespace) => {
+  for (let key in changes) {
+    const storageChange = changes[key];
+    const oldValue = storageChange.oldValue;
+    const newValue = storageChange.newValue;
+    //not all in `` b/c it abbreivates objs there
+    debug(`${namespace} ${key} changed from`, oldValue, "to", newValue);
   }
-}
-
-browser.storage.onChanged.addListener(logStorageChange);
+});
 ```
 

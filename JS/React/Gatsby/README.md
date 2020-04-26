@@ -1,12 +1,12 @@
 # Gatsby
 
-Check out the gatsby-cli
+Check out the gatsby-**cli** for setup
 
 Whats different about this then React?
 
 - plugins simplify some things like configuration and shit
 - Link
-- Easy page adding
+- Easy page/article adding(just add md, no routing needed)
 - Data(anything outside code like Wordpress, css, markdown, apis, dbs) Integrations
 
 ## Basic Usage
@@ -15,15 +15,15 @@ Whats different about this then React?
 
 Just add a new file to `src/pages/name` and it will automatically be added to `localhost:8000/about`
 
+#### Add a page layout
+
+Just define a parent component and include it on every page using containment and `{{children}}`
+
 #### Add new component
 
 Make a `src/components`
 
 Add and import files
-
-#### Add a page layout
-
-Just define a parent component and include it on every page using containment and `{{children}}`
 
 ## Special Gatsby Files
 

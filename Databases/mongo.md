@@ -34,10 +34,6 @@ Referenced documents
 - saves are only atomic at the document level, so all referenced saves not atomic
 - Efficiency problems
 
-
-
-
-
 ### Advanced
 
 #####Storing and Querying Ranges 

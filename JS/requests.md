@@ -93,21 +93,33 @@ const resp = await axios
 
 ```js
 axios.get('/user/12345')
-  .catch(function (error) {
-    if (error.response) {
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
-    } else if (error.request) {
+  .catch(function (err) {
+    if (err.response) {
+      console.log(err.response.data);
+      console.log(err.response.status);
+      console.log(err.response.headers);
+    } else if (err.request) {
       // `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
-      console.log(error.request);
+      console.log(err.request);
     } else if(err.message === "Network Error") {
       console.log(err.message);
     } else {
-      console.log('Error', error.message);
+      console.log('Error', err.message);
     }
-    console.log(error.config);
+    console.log(err.config);
   });
+```
+
+#### Auth Bearer
+
+```js
+const config = {
+    headers: { Authorization: `Bearer ${token}` }
+};
+const bodyParameters = { key: "value" };
+axios.post( 
+  'http://localhost:8000/api/v1/get_token_payloads',
+  bodyParameters, config);
 ```
 
 ## Requests

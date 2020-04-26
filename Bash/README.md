@@ -4,6 +4,8 @@ GNU Bourne-Again SHell, an POSIX(file system standard) compliant shell thingy. `
 
 *The language with literally multiple ways to do everything xO*
 
+Alternatives include zsh shell which is default *interactive* shell after Catalina(you can still run bash scripts with bash with a shebang)
+
 ## Defining a Bash Script
 
 ```bash

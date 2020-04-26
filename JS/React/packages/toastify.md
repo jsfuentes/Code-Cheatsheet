@@ -84,7 +84,7 @@ toast.configure({
 });
 ```
 
-If you configure in individual, then you lose access to the outer container and ClassName becomes toastClassName
+If you configure in individual, then you lose access to the outer container and `className` becomes `toastClassName`
 
 ### Controlled Progress Bar Example
 

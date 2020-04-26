@@ -1,6 +1,6 @@
 # Shortcuts / Commands
 
-Manifest:	"commands": {...}
+background listener
 
 ```js
  chrome.commands.onCommand.addListener(function(command) {
@@ -8,7 +8,7 @@ Manifest:	"commands": {...}
       });
 ```
 
-
+manifest.json
 
 ```json
       {

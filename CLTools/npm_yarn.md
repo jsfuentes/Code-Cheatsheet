@@ -4,6 +4,16 @@ Both use a package.json to record packages
 
 You can add scripts to your package.json and run them with both
 
+# Yarn
+
+```bash
+yarn #install dependencies
+yarn add
+yarn add -D #add as dev dependecies
+yarn [script]
+yarn upgrade #upgrade all packages to latest version of specified range
+```
+
 # Npm
 
 ```bash
@@ -26,15 +36,6 @@ npx create-react-app my-app
 npx cmatrix
 ```
 
-# Yarn
-
-```bash
-yarn #install dependencies
-yarn add
-yarn add -D #add as dev dependecies
-yarn [script]
-```
-
 ## Package.json Syntax
 
 or example, to specify acceptable version ranges up to 1.0.4, use the following syntax:
@@ -46,3 +47,9 @@ or example, to specify acceptable version ranges up to 1.0.4, use the following 
 `~1.0.2` = latest patch version like `1.0.4`
 
  `^1.0.2` = latest minor/patch version like `1.1.0`.
+
+#### Dev Dependencies
+
+Things only used in dev like testing frameworks, bundling, or checking code style
+
+ if `NODE_ENV` is set to `production` npm will skip `devDependencies`

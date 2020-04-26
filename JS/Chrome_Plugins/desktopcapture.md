@@ -2,50 +2,67 @@
 
 Permission: `desktopCapture`
 
-Half implemented solution, good luck
-
 Uses WebRTC by using navigator.mediaDevices
 
 ```js
-async function getMedia(streamId) {
-  let stream = null;
+startStreams() {
+    return new Promise((resolve, reject) => {
+      if (this.displayStream) {
+        //idempotentic
+        resolve();
+        return;
+      }
 
-  try {
-    navigator.mediaDevices
-      .getUserMedia({
-        video: {
-          mandatory: {
-            chromeMediaSource: "desktop",
-            chromeMediaSourceId: streamId
+      async function desktopCallback(streamId, options) {
+        if (!streamId) {
+          debug("Cancelled");
+          resolve();
+          return;
+        }
+
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: {
+              mandatory: {
+                chromeMediaSource: "desktop",
+                chromeMediaSourceId: streamId
+              }
+            },
+            audio: false
+          });
+          debug("Started display stream");
+          this.displayStream = stream;
+        } catch (err) {
+          await browser.storage.sync.set({ [C.curFilename]: null });
+          debug("Getting the screen recording failed");
+          Sentry.captureException(err);
+          console.error(err);
+          reject(err);
+          return;
+        }
+
+        await this.startAudio(); //try to get audio
+
+        if (this.audioStream) {
+          const audioTracks = this.audioStream.getAudioTracks();
+          if (this.displayStream) {
+            this.displayStream.addTrack(audioTracks[0]);
+          } else {
+            //stop audio if no displayStream(user denied)
+            audioTracks.forEach(t => t.stop());
           }
         }
-      })
-      .then(returnedStream => {
-        stream = returnedStream;
-        const video = document.querySelector("#video");
-        video.src = window.URL.createObjectURL(stream);//wasnt working at time, but maybe
-      })
-      .catch(err => {
-        console.error("Could not get stream: ", err);
-      });
 
-    /* use the stream */
-  } catch (err) {
-    debug("navigator", err);
-    /* handle the error */
+        resolve();
+      }
+      desktopCallback = desktopCallback.bind(this);
+
+      browser.desktopCapture.chooseDesktopMedia(
+        ["screen", "audio"],
+        desktopCallback
+      );
+    });
   }
-}
-
-function captureDesktop() {
-  browser.desktopCapture.chooseDesktopMedia(
-    ["screen", "audio"],
-    (streamId, options) => {
-      getMedia(streamId);
-    }
-  );
-}
-
-captureDesktop();
 ```
 
 ### Getting Audio

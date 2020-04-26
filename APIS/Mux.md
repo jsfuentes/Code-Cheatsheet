@@ -84,3 +84,21 @@ curl -X GET https://api.mux.com/video/v1/assets/ymDhKE00YZ12XxJLFo76DIVqCzL15bVf
 https://stream.mux.com/EsxKJmzkfLvGV01cbThYHDcEz7TKcbR31.m3u8
 ```
 
+### Create Mp4
+
+1) 
+
+```bash
+curl https://api.mux.com/video/v1/assets/{ASSET_ID}/mp4-support \
+  -H "Content-Type: application/json" \
+  -X PUT \
+  -d '{ "mp4_support": "standard" }' \
+  -u ${MUX_TOKEN_ID}:${MUX_TOKEN_SECRET}
+```
+
+Then
+
+```
+https://stream.mux.com/EsxKJmzkfLvGV01cbThYHDcEz7TKcbR31/medium.mp4
+```
+

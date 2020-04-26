@@ -15,6 +15,12 @@ git reflog
 git checkout -b after-commit HEAD@{1}
 ```
 
+#### Get specific file from past
+
+```bash
+git checkout <treeish> -- /path/to/dir/orfile.js
+```
+
 #### Rebase
 
 - rewrites history, if commits not local can mess things up
@@ -75,6 +81,10 @@ git push <remote> <local branch name>:<remote branch to push into>
 
 ## Other
 
+#### Tagging
+
+`git tag -a v1.4 -m "my version 1.4"`
+
 #### Delete branches
 
 `git branch -d <branchname>` 
@@ -94,10 +104,6 @@ git push <remote> <local branch name>:<remote branch to push into>
 `git clean -fd` //remove everything untracked besides what is  ignored by .gitignore
 `git clean -fdx` //remove all untracked files including those ignored by .gitignore
 `git clean -fdX` //only remove files ignored by .gitignore
-
-#### Tagging
-
-`git tag -a v1.4 -m "my version 1.4"`
 
 ## Git grep
 

@@ -12,6 +12,7 @@ var last = fruits[fruits.length - 1];
 - `.push(e)` 
 - `.pop()`
 - `.shift()` - popleft returning first ele
+- `.unshift(e)` - pushes to array returning length
 - `.indexOf(e)` - return index of ele or -1
 - `.includes(e)` - return true/false
 - `.findIndex(y => y === 1)` - returns the first index which cause ft to return true 

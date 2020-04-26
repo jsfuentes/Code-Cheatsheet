@@ -1,5 +1,7 @@
 # Emacs
 
+If emacs is opening in a window, run `emacs -nw`
+
 M means Alt
 
 | Cmd   | Effect                   |

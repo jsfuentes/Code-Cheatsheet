@@ -15,6 +15,8 @@ padding: 5px 1em 0 2em;
 
 By default, padding ADDS to the declared dimensions(see below)
 
+Can have negative margin, but not negative padding
+
 ### Margin
 
 ```css
@@ -26,6 +28,8 @@ margin: 2px 1em 0 auto;
 ```
 
 Margin is collapsable. So if divs stacked and top has margin-bottom: 40px and bottom one has margin-top 30px. Space between them will be 40px
+
+Margin-auto horizontal centers div if it has set width
 
 ### Border
 
