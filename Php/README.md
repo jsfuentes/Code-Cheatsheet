@@ -2,19 +2,29 @@
 
 ## Running
 
-See setup and AMP notes
+See setup and AMP notes, need the server
 
 ## Basics
 
 ```php
 <?php
   //code here
+  $my_name = "JJ";
+  print($my_name);
+	print "Hi"
 ?>
 <div> body </div>
 ```
 
 - dynamically typed language
-- All variable names begin with a $ followed byletters digits or underscores
+- All **variable** names begin with a `$` followed by letters digits or underscores
+
+#### Printing
+
+- echo //no return type
+- print //return true always
+- if you use (), only one argument
+- should do `$s." ".$t`
 
 #### Functions
 - Function names are not case sensitive
@@ -32,15 +42,18 @@ function increment(&$num) {
 ```
 
 #### Strings
-- double quotes allows interpolation
-`"Passwd:$password[Joe]"`
-
-- Explode is like split in python `$ar = explode(":",$str);`
-- Implode is like join  `$str = implode("^",$ar")`
+```php
+<?php 
+  "Passwd:$password[Joe]" #double quotes allow interpolation
+  $name = 'j' . 'f' #concatination
+  $str = implode("^",$ar") #join in python
+  $ar = explode(":",$str); #split in python
+?>
+```
 
 
 #### Arrays
-Basically dictionaries
+Basically dictionaries that if not set use numeric indexes
 ```php
 <?php
 $ar = array("key1"=>"value 1", 67=>3, "a"=>10, 4=>"Hi");
@@ -59,21 +72,23 @@ $passwds= array_values($ar);
 - is_array
 
 #### Control
-- if and then like C++
+- if and then like C++, switch statement
+#### Loops
+
+- while, for
+
 ```php
 <?php
   foreach($array as $value) {}
   foreach($array as $key => $value){}
+  for ($i = 0; $i < 10; $i++) {
+    //
+  }
 ?>
 ```
 
-#### Printing
-- echo //no return type
-- print //return true always
-- if you use (), only one argument
-- should do `$s." ".$t`
-
 #### Big Project Functions
+
 - isset($x)
 - gettype($x)
 

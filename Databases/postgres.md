@@ -13,7 +13,7 @@ SQL DB with:
 
 ## Setup
 
-Can install with brew `brew install postgresql`
+Can install with brew `brew install postgresql`, follow instructions onscreen(`brew services start postgresql` & `initdb  /usr/local/var/postgres` )
 
 `postgres -V`
 

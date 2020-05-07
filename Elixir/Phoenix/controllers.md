@@ -5,6 +5,11 @@ lib/hello_web/controllers/hello_controller.ex
 ```elixir
 defmodule HelloWeb.HelloController do
   use HelloWeb, :controller
+  #import an Auth Plugin ft
+  import Hello.Auth, only: [logged_in_user: 2]
+  #pass through plug with a guard(like middleware)
+  plug :logged_in_user when action not in [:new, :create]
+
 
   def index(conn, _params) do #ACTION
     render(conn, "index.html") 
@@ -27,9 +32,10 @@ All actions take two args:
 
 ## API Stuff
 
+web/controllers/user_controller
+
 ```elixir
-# web/controllers/user_controller
-defmodule ApiExample.UserController do
+ defmodule ApiExample.UserController do
   use ApiExample.Web, :controller
   def index(conn, _params) do
     users = [

@@ -18,6 +18,8 @@ Need host, port, and username and password to connect with some dbtool like tabl
 
 Code connects also need database name
 
+Also need to modify RDS security to allow external access, then select the RDS security group, change the security group inbound rules to allow all traffic from PostgresSQL.
+
 ## Creation
 
 Set admin user and password

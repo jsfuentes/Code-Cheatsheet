@@ -26,7 +26,7 @@ ch := make(chan int)
 
 By default, sends and receives block until the other side is ready.
 
-#### SUm Example
+#### Sum Example
 
 ```go
 package main

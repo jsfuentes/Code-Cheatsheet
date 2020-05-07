@@ -2,39 +2,33 @@
 
 Web servers, API backends, and distributed messaging systems
 
-Phoenix is not app, but ergonomic way to build web based interfaces
+Phoenix is ergonomic way to build web interfaces
 
 - MVC framework, Ruby on Rails like
-- Real-time messaging channels allowing pub/sub out of the box
-- Easy to test with high productivity & performance
+- Real-time messaging [Channels](https://hexdocs.pm/phoenix/channels.html) allowing pubsub and websockets out of the box
+- Easy to test with high productivity & performance(**observer tool** can be used in prod, to find bottlenecks just see which process has a big message queue)
 - Auto hot reloading, Postgres default
+- **Presence** lets you replicate data across clients easily like which users are online
 
 ## Phoenix Layers
 
-- [Endpoint](https://hexdocs.pm/phoenix/endpoint.html)
+- [Endpoint](https://hexdocs.pm/phoenix/endpoint.html) - *lib/hello_web/endpoint.ex*
   - the start and end of the request lifecycle
-  - handles all aspects of requests up until the point where the router takes over
-  - provides a core set of plugs to apply to all requests
-  - dispatches requests into a designated router
-- [Router](https://hexdocs.pm/phoenix/routing.html)
+  - uses Plugs to do stuff like serve static files, log info, parse bodys => then routes to router
+- [Router](https://hexdocs.pm/phoenix/routing.html) *- lib/hello_web/router.ex*
   - parses incoming requests and dispatches them to the correct controller/action, passing parameters as needed
-  - provides helpers to generate route paths or urls to resources
-  - defines named pipelines through which we may pass our requests
-  - Pipelines - allow easy application of groups of plugs to a set of routes
-- [Controllers](https://hexdocs.pm/phoenix/controllers.html)
+  - Pipelines - groups plugs that requests can go through
+- [Controllers](https://hexdocs.pm/phoenix/controllers.html) - *lib/hello_web/controllers/page_controller.ex*
   - provide functions, called *actions*, to handle requests
   - actions:
-    - prepare data and pass it into views
-    - invoke rendering via views
+    - prepare data then render views
     - perform redirects
-- [Views](https://hexdocs.pm/phoenix/views.html)
-  - render templates
-  - act as a presentation layer
+- [Views](https://hexdocs.pm/phoenix/views.html) - *lib/hello_web/views/page_view.ex*
+  - controllers render templates, and views called implicitly
   - define helper functions, available in templates, to decorate data for presentation
-- [Templates](https://hexdocs.pm/phoenix/templates.html)
-  - files containing the contents that will be served in a response
-  - provide the basic structure for a response, and allow dynamic data to be substituted in
-  - are precompiled and fast
+- [Templates](https://hexdocs.pm/phoenix/templates.html) - *lib/hello_web/templates/page/index.html.eex*.
+  - files that will be served allowing dynamic data/code
+  - nested in the app template found in app.html.eex
 - [Channels](https://hexdocs.pm/phoenix/channels.html)
   - manage sockets for easy realtime communication
   - are analogous to controllers except that they allow bi-directional communication with persistent connections
@@ -60,6 +54,3 @@ most popular small, fast, modular HTTP server written in Erlang that underlies P
 ### Ecto
 
 A DSL for writing queries and interacting with databases
-
-
-

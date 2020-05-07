@@ -1,18 +1,19 @@
 # Default File Structure
 
-├── _build
+- Can make a plug folder in web and then include in router.ex
+- Can import things in discuss_web.ex that will then be available in all views/controllers
+
+├── build
 ├── assets
 ├── config
 ├── deps
 ├── lib
-│   └── hello
-│   └── hello_web
-│   └── hello.ex
-│   └── hello_web.ex
+       └── hello
+       └── hello_web
+       └── hello.ex
+       └── hello_web.ex
 ├── priv
 ├── test
-
-
 
 Lib/hello_web
 

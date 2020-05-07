@@ -1,13 +1,13 @@
 # Strings
 
-Prepending `s` to any string literal allows the usage of variables directly in the string
+Prepending `s` to strings allow usage of `$variable`
 
 ```scala
 val name = "James"
 println(s"Hello, $name")  // Hello, James
 ```
 
-`f` to any string literal allows the creation of simple formatted strings, similar to `printf` in other languages. When using the `f` interpolator, all variable references should be followed by a `printf`-style format string, like `%d`. Let’s look at an example:
+Prepending `f` to strings allows simple formatted string like `printf`. Follow the `$variable%s` with the %d or %s etc like `printf` 
 
 ```scala
 val height = 1.9d

@@ -1,22 +1,31 @@
 # Elixir
 
-Functional highly scalable language for realtime data built on Erlang VM allowing usage of Erlang libs/functions
+Functional highly scalable language for realtime data built on Erlang VM allowing usage of Erlang libs/functions like OTP. 
 
-Ruby-like functional programming
+Ruby on Rails-like immutable, **dynamically typed**, **functional language**
 
-Runs inside lightweight threads(called processes) communicating via messages even if on different machines so legit horizontal scale
+Runs inside lightweight threads(called **processes**) communicating via **messages** even if on different machines so legit horizontal scale(Erlang VM handles multi-machine, can also implement with Redis)
 
-- Hex package manager
+Elixir uses **supervisers** and processes fail fast. If there is an error, restart in proper/known state
+
+- **Hex** package manager
+- Elixir used by Brex, Tandem, Pagerduty
+- Inline code tests
+- Pure Functional
+  - no class with internal state, but modules that init or transform an input state and return new state
+  - Not indexable list, but recursive head rest pattern matching
+- To dealing with state across processes, use Erlang Term Storage([ETS](http://www.erlang.org/doc/man/ets.html)) or processes like **Agents, Genserver**  
 
 ## Basic
 
 - Double and triple equals like javascript(type conversion vs no type conversion)
-- if else, ruby unless, switch => case, long if else can be cond similar to Ocaml
-- Immutable, dynamically typed values
+- `if age === 18 do [.] else [.] end`, ruby unless, switch => case, long if else can be cond similar to Ocaml
 - Like erlang, function returns the last value
 - Can't do for (int ....) b/c immutable, must use recursion
 -  `=` operator is actually called *the match operator*
-- `someFunction/2` means someFunction with two args as functions unique by name & arg count
+- `someFunction/2` means someFunction with two args as functions unique by name & arg count(arity)
+-  `or`, `and`, `not`  and can short circuit
+-  `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>`
 
 test.exs
 
@@ -45,40 +54,17 @@ Print internal representation
 IO.inspect String.split(longer_str, " ") 
 IO.write "No newline"
 IO.puts "Puts with newline"
+IO.puts(:stderr, "error bb")
+x = IO.gets("yes or no?") #prompts user and return string with newline
+
+(1..10)
+|> IO.inspect #returns param for easy pipe usage
+|> Enum.map(fn x -> x * 2 end)
 ```
 
 `IO.inspect [97, 98] ` => [a,b]
 
 `IO.inspect [97, 98], char_lists: :as_lists` => [97, 98]
-
-#### Strings
-
-```Elixir
-defmodule M do
-  def main do
-	  do_stuff()
-  end
-
-  def do_stuff do
-    my_str = "My Sentence"
-    IO.puts "Length: #{String.length(my_str)}"
-    longer_str = my_str <> " " <> "is longer"
-    IO.puts "My ? #{String.contains?(my_str, "My")}"
-    IO.puts "First : #{String.first(my_str)}"
-    IO.puts "Index 4 ? #{String.at(my_str, 4)}"
-    IO.puts "Substring : #{String.slice(my_str, 3, 8)}"
-    4 * 10 |> IO.puts
-  end
-end
-```
-
-String.reverse(str)
-
-String.upcase(str)
-
-String.downcase(str)
-
-String.capitalize(str)
 
 #### Math
 
@@ -87,26 +73,6 @@ All ops normal, except `/` always returns float
 div(5, 4) is integer division => 1
 
 rem(5, 4) is modulo => 1
-
-### Atoms
-
-An atom is a constant whose value is its own name
-
-`true`, `false`, and `nil` are atoms, but can skip `:`
-
-```elixir
-:apple
-:ok != :error
-:true == true
-is_atom(false) # => true
-true and true
-false or not true
-1 and true # => raises exception
-```
-
- `or`, `and`, `not`  short circuit
-
- `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>`
 
 ### Branches
 
@@ -141,7 +107,7 @@ switch
 ```elixir
 case 2 do 
 	1 -> IO.puts "Entered 1"
-	2-> IO.puts "Entered 2"
+	2 -> IO.puts "Entered 2"
 	_ -> IO.puts "Default"
 end
 ```
@@ -149,7 +115,7 @@ end
 Trenary op
 
 ```elixir
-canVote = if age > 18, do: "Can Vote", else: "Can't Vote"
+canvote = if age > 18, do: "Can Vote", else: "Can't Vote"
 ```
 
 #### 

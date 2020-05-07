@@ -20,4 +20,4 @@ Are you sure the project will work? Is there a better way to do it?
 
 - Getting the opposite boolean expression from what I want
 - Type errors in untyped langauges
-- 
+- Don't actually think about what to do upon errors 

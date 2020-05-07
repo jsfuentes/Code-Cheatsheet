@@ -1,6 +1,12 @@
 # Secrets
 
-dev.secrets.exs
+config/dev.exs
+
+```elixir
+import_config "dev.secret.exs"
+```
+
+config/dev.secrets.exs
 
 ```elixir
 use Mix.Config

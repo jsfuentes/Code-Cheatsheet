@@ -20,7 +20,6 @@ import axios from 'axios';
 axios.get("/event", { params: { api_key })
   .then(response => {
     console.log(response.data.url);
-    console.log(response.data.explanation);
   })
   .catch(error => {
     console.log(error);
@@ -42,6 +41,44 @@ axios.post('/user', {
 **axios.get(url[, config])**
 
 **axios.post(url[, data[, config]])**
+
+#### Error Handling
+
+- `err.response.status` if any other server status than 2xx
+- `err.request` if request was made without a response
+- `err.message === "Network Error"` [special network error case]((https://github.com/axios/axios/issues/383#issuecomment-234079506))
+- `err.message` if something while setting up request
+
+```js
+axios.get('/user/12345')
+  .catch(function (err) {
+    if (err.response) {
+      console.log(err.response.data);
+      console.log(err.response.status);
+      console.log(err.response.headers);
+    } else if (err.request) {
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
+      console.log(err.request);
+    } else if(err.message === "Network Error") {
+      console.log(err.message);
+    } else {
+      console.log('Error', err.message);
+    }
+    console.log(err.config);
+  });
+```
+
+#### Auth Bearer
+
+```js
+const config = {
+    headers: { Authorization: `Bearer ${token}` }
+};
+const bodyParameters = { key: "value" };
+axios.post( 
+  'http://localhost:8000/api/v1/get_token_payloads',
+  bodyParameters, config);
+```
 
 #### Setting up base
 
@@ -82,44 +119,6 @@ const resp = await axios
     },
     timeout: 30000
   })
-```
-
-#### Error Handling
-
-- `err.response.status` if any other server status than 2xx
-- `err.request` if request was made without a response
-- `err.message === "Network Error"` [special network error case]((https://github.com/axios/axios/issues/383#issuecomment-234079506))
-- `err.message` if something while setting up request
-
-```js
-axios.get('/user/12345')
-  .catch(function (err) {
-    if (err.response) {
-      console.log(err.response.data);
-      console.log(err.response.status);
-      console.log(err.response.headers);
-    } else if (err.request) {
-      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
-      console.log(err.request);
-    } else if(err.message === "Network Error") {
-      console.log(err.message);
-    } else {
-      console.log('Error', err.message);
-    }
-    console.log(err.config);
-  });
-```
-
-#### Auth Bearer
-
-```js
-const config = {
-    headers: { Authorization: `Bearer ${token}` }
-};
-const bodyParameters = { key: "value" };
-axios.post( 
-  'http://localhost:8000/api/v1/get_token_payloads',
-  bodyParameters, config);
 ```
 
 ## Requests

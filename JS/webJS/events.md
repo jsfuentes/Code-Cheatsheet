@@ -50,6 +50,15 @@ mouseenter => only when div first entered
 
 onmousemove  => any movement over the div element.
 
+#### Pointer Events [CanIUse](https://caniuse.com/#feat=pointer) 
+
+- Allows varius inputs like touchscreens, pens, etc
+
+- Supported in most browsers now even IE11
+- In react, onPointerDown or regular pointerdown. For backwards compatability, touch/pen events fire mouse events but a little late and a little unreliably
+
+
+
 ## Custom Events
 
 Use detail to hold extra information 

@@ -1,10 +1,18 @@
 # Functions
 
-Functions defined by name and # of args(arity)
+Functions defined by name and # of args(**arity**), and can have **guards**
 
 Functions return last value automatically
 
-Anonyomus functions with some crazy shorthand
+Leading `_` indicates the param should be ignored
+
+`defp` for private fts
+
+#### Anonymous fts
+
+Need a `.` after ft name, `&` can capture Module fts making it anon and also create anon fts
+
+`&List.flatten(&1, &2)` is the same as writing `fn(list, tail) -> List.flatten(list, tail)` end
 
 ```elixir
 get_sum = fn (x,y) -> x + y end
@@ -19,6 +27,7 @@ add_sum = fn
 end
 add_sum.({1,2})
 add_sum.({1,2,3})
+
 ```
 
 Default values
@@ -77,4 +86,24 @@ drive(User.get("John Doe"))
 #=> Fails if the user is under 16
 ```
 
-### 
+```elixir
+def print_multiple_times(msg, n) when n <= 1 do
+	IO.puts msg
+end
+
+def print_multiple_times(msg, n) do
+  IO.puts msg
+  print_multiple_times(msg, n - 1)
+end
+```
+
+### Pipe |>
+
+Output from the left is passed as first arg to ft on right
+
+```elixir
+Enum.sum(Enum.filter(Enum.map(1..100_000, &(&1 * 3)), odd?)) 
+#becomes
+1..100_000 |> Enum.map(&(&1 * 3)) |> Enum.filter(odd?) |> Enum.sum
+```
+
