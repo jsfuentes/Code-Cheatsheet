@@ -1,4 +1,8 @@
-#Setup
+# Setup
+
+```bash
+iex -S mix phx.server
+```
 
 #### Installation
 
@@ -37,11 +41,20 @@ AWS: Before running `mix ecto.create` go into `config/dev.ex` and change the db 
 
 Used as learning tools
 
+Generating a schema in increasing complexity
+
 ```bash
-mix phx.gen.html [Context] [Schema] [schema_plural]  [field1] [field2] [....]#building a page
-mix phx.gen.json #building an api
-mix phx.gen.channel #building a channel
-mix phx.gen.context #just db stuff?
+mix phx.gen.schema [Schema] [schema_plural]  [field1] [field2] [....] #just schema and migration
+mix phx.gen.context [Context] [Schema...] #all + context
+mix phx.gen.json [....] #all of above + resource
+mix phx.gen.html [Context]  #all of above + html
+```
+
+Other
+
+```bash
+mix phx.gen.channel [Module_Name_for_channel]
+mix phx.gen.migration [Migration Name]
 ```
 
 #### Examples
@@ -54,5 +67,6 @@ mix phx.gen.context Accounts Credential credentials email:unique password_hash u
 mix phx.gen.html Chat Room rooms name:unique description:text user_id:references:users
 ```
 
-### Running
+### Deployment
 
+https://hexdocs.pm/phoenix/releases.html

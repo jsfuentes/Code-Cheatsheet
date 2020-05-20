@@ -295,3 +295,7 @@ grid-auto-columns: 100px;
 ```
 
 Any col that is added is 100px 
+
+#### Advanced
+
+If you use 1fr, content that is too big will make the content bigger than the grid. Use minmax(0, 1fr) instead, something about how the min and max are both 1fr which is auto so content size. 

@@ -3,10 +3,23 @@
 Register process info on topic and replicate it across cluster.
 
 - Simple use case would be showing whose online
-
 - metadata should be minimized and used to store small, ephemeral state, such as a user's "online" or "away" status. Can fetch more substantial stuff by overriding the fetch/2 ft
 
-## Setup
+### Usage
+
+Probably used in channel with access to socket
+
+```elixir
+Presence.track(socket, socket.assigns.user_id, %{
+      online_at: inspect(System.system_time(:second))
+    });
+push(socket, "presence_state", Presence.list(socket));
+Presence.update(socket, socket.assigns.user_id, %{
+	online_at: inspect(System.system_time(:second))
+})
+```
+
+## Complete Example
 
 Need to have channel already setup
 
@@ -96,5 +109,33 @@ socket.connect()
 presence.onSync(() => renderOnlineUsers(presence))
 
 channel.join()
+```
+
+##### More Client
+
+```elixir
+let presence = new Presence(channel)
+
+// detect if user has joined for the 1st time or from another tab/device
+presence.onJoin((id, current, newPres) => {
+  if(!current){
+    console.log("user has entered for the first time", newPres)
+  } else {
+    console.log("user additional presence", newPres)
+  }
+})
+
+// detect if user has left from all tabs/devices, or is still present
+presence.onLeave((id, current, leftPres) => {
+  if(current.metas.length === 0){
+    console.log("user has left from all devices", leftPres)
+  } else {
+    console.log("user left from a device", leftPres)
+  }
+})
+// receive presence data from server
+presence.onSync(() => {
+  displayUsers(presence.list())
+})
 ```
 

@@ -58,7 +58,13 @@ function startCapture(displayMediaOptions) {
 }
 ```
 
+#### Checking Permissions
 
+```js
+const audioP = await navigator.permissions.query({ name: "microphone" });
+debug(audioP.state); // granted, denied, prompt
+audioP.onchange = () => debug("Changed to", this.state);
+```
 
 ## Using Stream
 
@@ -73,6 +79,7 @@ return (<video
           className="h-full scale-medium"
           muted
           autoPlay
+          playsInline
           data-setup="{}"
           ref={vRef}
           />)

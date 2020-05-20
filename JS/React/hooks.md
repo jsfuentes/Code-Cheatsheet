@@ -102,7 +102,7 @@ Add as return
 
 - [`useCallback`](https://reactjs.org/docs/hooks-reference.html#usecallback)
 
-  ​	Used when you need a function to be conditionally remade, avoid the work and if you need it to be a dep of another hook
+  Not actually cheaper than defining function by itself. But makes the reference the same for React's equality check if you use the ft in **another hook or as a prop** to avoid reruns
 
   - ```react
     function MeasureExample() {

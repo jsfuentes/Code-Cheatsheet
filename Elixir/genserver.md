@@ -1,17 +1,26 @@
 ## GenServer (Generic Server)
 
-Start seperate process that holds some state, changes its state based on **calls**(sync expecting response) or **casts**(async, no resp) 
+- Great for scheduled/cron jobs, best to have it create a new process for doing work and just handling scheduling
+
+- Start seperate process that holds some state, changes its state based on **calls**(sync expecting response) or **casts**(async, no resp) 
 
 ```elixir
 defmodule SimpleGen do
   use GenServer
+  @interval 1_000
   def start_link() do
     # runs in the caller context 🐌Alice
     GenServer.start_link(__MODULE__, [])
   end
   def init(_) do
     # runs in the server context 🐨Bob
+    Process.send_after(self(), :increment, @interval)
     {:ok, 1}
+  end
+  def handle_info(:work, state) do
+  	#some scheduled work
+    Process.send_after(self(), :increment, @interval)
+    {:noreply, state}
   end
   def handle_call(:get_data, _, state) do
     # runs in the server context 🐨Bob

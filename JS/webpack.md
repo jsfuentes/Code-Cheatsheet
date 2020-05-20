@@ -100,3 +100,21 @@ module.exports = (env, options) => ({
 });
 ```
 
+### Visualizing
+
+Create a viz of the libs increasing size of your bundle
+
+```bash
+yarn add -D webpack-bundle-analyzer
+```
+
+```js
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+ 
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ]
+}
+```
+

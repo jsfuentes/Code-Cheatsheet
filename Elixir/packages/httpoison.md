@@ -2,13 +2,9 @@
 
 HTTPoison uses [hackney](https://github.com/benoitc/hackney) to execute HTTP requests instead of ibrowse
 
-mix.exs
-
 ```elixir
     {:httpoison, "~> 1.6"}
 ```
-
-
 
 ## Usage
 

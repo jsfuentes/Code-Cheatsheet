@@ -31,6 +31,12 @@ mix compile
  iex> recompile()
 ```
 
+#### Format
+
+```bash
+mix format
+```
+
 ## Hex package Manager
 
 To install hex if not installed

@@ -4,7 +4,7 @@
 - Only communication is messages between processes
 - Supervisors often linked to processes and will restart on failure
 - [Agent](https://hexdocs.pm/elixir/Agent.html) - Simple wrappers around state.
-- [GenServer](https://hexdocs.pm/elixir/GenServer.html) - “Generic servers” (processes) that encapsulate state, provide sync and async calls, support code reloading, and more.
+- [GenServer](https://hexdocs.pm/elixir/GenServer.html) - “Generic servers” (processes) that encapsulate state, provide sync and async calls, support code reloading, and more. For ongoing background work 
 - [Task](https://hexdocs.pm/elixir/Task.html) - Asynchronous units of computation that allow spawning a process and potentially retrieving its result at a later time.
 
 #### Spawn
@@ -33,8 +33,4 @@ receive do
 end
 ```
 
-## Tasks
 
-Extends spawn to provide better error & introspection
-
-Instead of `spawn/1` and `spawn_link/1`, we use `Task.start/1` and `Task.start_link/1` which return `{:ok, pid}` rather than just the PID. This is what enables tasks to be used in supervision trees. Furthermore, `Task` provides convenience functions, like `Task.async/1` and `Task.await/1`, and functionality to ease distribution.

@@ -23,86 +23,66 @@ export default function App() {
 }
 ```
 
-List of validation rules supported by:
-
-- required
-- min
-- max
-- minLength
-- maxLength
-- pattern
-- validate
-
-## Inputs
-
-```js
-  const [title, setTitle] = useState("Enter Title...");
-
-	//........
-
-	<input
-    className="border-none bg-transparent outline-none"
-    value={title}
-    onChange={e => setTitle(e.target.value)}
-  />
-```
-
-
+List of validation rules supported: required | min | max | minLength | maxLength | pattern | validate
 
 ## Controlled Components
 
-Normally form elements such as `<input> `maintain their own state and update based on input. To combine with React state, let React state be the “single source of truth” by updating it on change
+Normally form elements such as `<input> `  maintain their own state and update based on input. To combine with React state, let React state be the “single source of truth” by updating it on change
 
-- React makes different tags like select, textarea, and text all have value attribute with similar code for a controlled component
-- specify `value` to prevent user from changing input, set to null/undefined to make re editable
+- React normalizes different tags like select, textarea, and text to have value attribute
 
 ```react
-class Reservation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isGoing: true,
-      numberOfGuests: 2
-    };
-  }
+export default function Create() {
+  const [name, setName] = useState("");
+  const [noEvent, setNoEvent] = useState(true);
 
-  handleInputChange = (event) =>  { 
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    
-    this.setState({
-      [target.name]: value //es6 computed property syntax
-    });
-  }
-  
-  handleSubmit(event) {
+  function onSubmit(event) {
     event.preventDefault();
-    //.. process submission with state
+    axios
+      .post("/api/events", { name, noEvent })
+      .then((resp) => debug("resp recieved", resp));
   }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Number of guests:
-          <input
-            name="numberOfGuests"
-            type="number"
-            value={this.state.numberOfGuests}
-            onChange={this.handleInputChange} />
-        </label>
-        <label>
-          Is going:
-          <input
-            name="isGoing"
-            type="checkbox"
-            checked={this.state.isGoing}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-      </form>
-    );
-  }
+  return (
+    <form
+      className="border-4 border-solid rounded-sm flex flex-col justify-center items-center p-6 mb-4"
+      onSubmit={onSubmit}
+    >
+      <div className="text-3xl font-bold">Create Event</div>
+      <label
+        className="block text-gray-700 text-sm font-bold mb-2"
+        htmlFor="name"
+      >
+        Name
+      </label>
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="name"
+        type="text"
+        placeholder="Event Title"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <label
+        className="block text-gray-700 text-sm font-bold mb-2"
+        htmlFor="noEvent"
+      >
+        noEvent
+      </label>
+      <input
+        id="noEvent"
+        type="checkbox"
+        checked={noEvent}
+        onChange={(e) => setNoEvent(e.target.checked)}
+      />
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit"
+      >
+        Create
+      </button>
+    </form>
+  );
 }
 ```
 

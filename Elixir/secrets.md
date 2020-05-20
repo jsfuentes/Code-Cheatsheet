@@ -1,5 +1,7 @@
 # Secrets
 
+`config/config.exs`  is base of every project 
+
 config/dev.exs
 
 ```elixir

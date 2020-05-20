@@ -1,10 +1,4 @@
-# P2P
-
-## ORTC
-
-Microsoft supported object real time connection focused on expert developers
-
-## RTC
+# WebRTC
 
 Google supported standard for easy p2p communication that can then scale to use an intermediate server for > 4
 

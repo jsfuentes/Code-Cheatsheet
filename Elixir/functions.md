@@ -1,41 +1,32 @@
 # Functions
 
-Functions defined by name and # of args(**arity**), and can have **guards**
+Defined by **name** and # of args(**arity**) `hello/1` vs `hello/2`
 
-Functions return last value automatically
+Instead of early exits/for invalid args use **guards** and param pattern matching
 
-Leading `_` indicates the param should be ignored
+Named Fts must be defined inside module, anon fts can be defined anywhere
 
-`defp` for private fts
-
-#### Anonymous fts
-
-Need a `.` after ft name, `&` can capture Module fts making it anon and also create anon fts
-
-`&List.flatten(&1, &2)` is the same as writing `fn(list, tail) -> List.flatten(list, tail)` end
+### Named Fts
 
 ```elixir
-get_sum = fn (x,y) -> x + y end
-IO.puts "5 + 5 = #{get_sum.(5,5)}"
+defmodule M do
+    def transform(myvar, _opts) do #_ means ignore arg
+        8 * myvar + 3 #returns last value automatically
+    end
+    
+    #defp for private fts
+    defp privateTransform(v, z \\ 1) do  #default value
+    	v * 4 + z
+    end
 
-get_less = &(&1 - &2)
-IO.puts "7 - 6 = #{get_less.(7,6)}"
-
-add_sum = fn
-	{x, y} -> IO.puts "#{x} + #{y} = {x+y}"
-	{x, y, z} -> IO.puts "#{x} + #{y} + #{z} = {x+y+z}"
-end
-add_sum.({1,2})
-add_sum.({1,2,3})
-
-```
-
-Default values
-
-```elixir
-IO.puts do_it()
-def do_it(x \\ 1, y\\1) do
-	x + y
+		def getcookie(%{cookie: c} = conn, _params) do
+    	IO.inspect(conn)
+    	IO.puts("Has cookie #{c}")
+    end
+    
+    def getcookie(conn, _params) do
+    	IO.puts("No cookie")
+    end
 end
 ```
 
@@ -56,7 +47,7 @@ Loop?
 
 ```elixir
 def sum([]), do: 0
-def sum([h|t]), do: h + s um(t)
+def sum([h|t]), do: h + sum(t)
 
 IO.puts("Sum: #{sum([1,2,3])}")
 ```
@@ -97,7 +88,7 @@ def print_multiple_times(msg, n) do
 end
 ```
 
-### Pipe |>
+#### Pipe |>
 
 Output from the left is passed as first arg to ft on right
 
@@ -105,5 +96,28 @@ Output from the left is passed as first arg to ft on right
 Enum.sum(Enum.filter(Enum.map(1..100_000, &(&1 * 3)), odd?)) 
 #becomes
 1..100_000 |> Enum.map(&(&1 * 3)) |> Enum.filter(odd?) |> Enum.sum
+```
+
+#### Anonymous fts
+
+Defined within a variable scope
+
+**Need a `.` after ft name to call**, `&` can capture Module fts making it anon and also create anon fts
+
+`&List.flatten(&1, &2)` is the same as writing `fn(list, tail) -> List.flatten(list, tail)` end
+
+```elixir
+get_sum = fn (x,y) -> x + y end
+IO.puts "5 + 5 = #{get_sum.(5,5)}"
+
+get_less = &(&1 - &2)
+IO.puts "7 - 6 = #{get_less.(7,6)}"
+
+add_sum = fn #no args notice
+	{x, y} -> IO.puts "#{x} + #{y} = {x+y}"
+	{x, y, z} -> IO.puts "#{x} + #{y} + #{z} = {x+y+z}"
+end
+add_sum.({1,2})
+add_sum.({1,2,3})
 ```
 

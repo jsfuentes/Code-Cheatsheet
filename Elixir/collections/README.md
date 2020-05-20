@@ -6,21 +6,11 @@ Functional so no inplace
 
 Provies set of algs to enumerate enumeratable types
 
-- .shuffle(enum)
-- .member(enum, el)
-- .split(enum, count) => returns tuple of two enums with count in first one
-
 ```elixir
 Enum.each list4, fn item ->
 	IO.puts item
 end
-#check if even list
-Enum.all?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #false
-Enum.any?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #true
-Enum.any?([1,2,3], fn(n) -> IO.puts n end) #1\n2\n3\n
-dbl_list = Enum.map([1,2,3], fn(n) -> n * 2 end)
-sum_val = Enum.reduce([1,2,3], fn(n, sum) -> n + sum end)
-Enum.uniq([1,2,2]) #[1,2]
+len = Enum.count(l)
 ```
 
 Map, Reduce, Filter
@@ -28,7 +18,8 @@ Map, Reduce, Filter
 ```elixir
 Enum.map([1, 2, 3], fn x -> x * 2 end)
 Enum.map(%{1 => 2, 3 => 4}, fn {k, v} -> k * v end)
-Enum.reduce(1..3, 0, &+/2)
+Enum.reduce(1..3, 0, fn (new, acc) -> new + acc end)
+Enum.map(%{1 => 2, 3 => 4}, fn {k, _} -> k === 3 end)
 ```
 
 Enums are eager so a pipe means an intermediate list is always created
@@ -36,6 +27,19 @@ Enums are eager so a pipe means an intermediate list is always created
 ```elixir
 1..100_000 |> Enum.map(&(&1 * 3)) |> Enum.filter(odd?) |> Enum.sum
 ```
+
+Other
+
+```elixir
+Enum.uniq([1,2,2]) #[1,2]
+Enum.all?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #false
+Enum.any?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #true
+Enum.any?([1,2,3], fn(n) -> IO.puts n end) #1\n2\n3\n
+```
+
+- .shuffle(enum)
+- .member(enum, el)
+- .split(enum, count) => returns tuple of two enums with count in first one
 
 ### Comprehension
 
@@ -45,10 +49,6 @@ for n <- 1..4, do: n * n
 values = [good: 1, good: 2, bad: 3, good: 4]
 for {:good, n} <- values, do: n * n #[1, 4, 16]
 ```
-
-
-
-
 
 ### Streams
 

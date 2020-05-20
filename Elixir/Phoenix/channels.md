@@ -66,7 +66,8 @@ defmodule SsWeb.RoomChannel do
     {:error, %{reason: "unauthorized"}}
   end
   
-    def handle_in("new_msg", %{"body" => body}, socket) do
+  #eChannel.push("new_msg", {body: "hi"});
+  def handle_in("new_msg", %{"body" => body}, socket) do
     broadcast!(socket, "new_msg", %{body: body})
     {:noreply, socket}
   end
@@ -84,7 +85,7 @@ end
 
 `broadcast` will notify all clients on socket's topic and invoke their handle_out callback if defined for filtering/customization
 
-### Client
+### [Client](https://hexdocs.pm/phoenix/js/#channelleave)
 
 When a client successfully establishes this connection, Phoenix Channels initializes an instance of `%Phoenix.Socket{}`. The channel server then retains awareness of this `socket` instance and maintains state within that instance via calls to `socket.assign`
 
@@ -107,5 +108,19 @@ function onClick() {
 }
 ```
 
+### Other Client
 
+```js
+socket.onError( () => )
+socket.onClose( () => )
+channel.onError( () => console.log("error!") )
+channel.onClose( () => console.log("gone gracefully") )
+// Unsubscribe the do_stuff handler
+const ref1 = channel.on("event", do_stuff)
+channel.off("event", ref1)
+
+// Unsubscribe all handlers from event
+channel.off("event")
+channel.leave().receive("ok", () => alert("left!") )
+```
 

@@ -4,10 +4,6 @@ The application layer protocol of the internet, port 80 or 8080
 
 ## Methods
 
-GET is supposed to be safe and idempotent
-
-POST is to modify data
-
 So common b/c in past browsers just supported these two
 
 | HTTP method | RFC                                                          | Request has Body | Response has Body | Safe | Idempotent |
@@ -54,8 +50,6 @@ Accept: <MIME_type>/*
 Accept: */*
 ```
 
-### Response
-
 ## Cookies
 
 If you want to support **most** browsers, then don't exceed **50 cookies per domain**, and don't exceed **4093 total bytes per domain** 
@@ -78,6 +72,37 @@ Cookies are sent with every request to the server, even those from other sites :
 
 ## Design
 
-REST and all the verbs
+Most common is Rest Resources with some rpc like functions calls thrown in
 
-Using id/1 is kinda a pain if you wanna do id/question in the future, but you can just make all these kinda /3241 be preceded by an id/
+#### Rest
+
+- REST, mostly about defining resources at an endpoint like `/event` that you can then do get, create, update, in an idomatic way.
+
+- Relies heavily on HTTP defaults like caching
+
+- Ideal is complete decoupling of client and server (HAL, JSON-API, etc)
+- Large payload sizes often requiring many http calls to populate a page
+- Best for most general use case with many clients, clear documentation, and focus on objects/resources
+
+`event/1/question` to add to an id
+
+#### GraphQL
+
+- Instead of modeling fts or resources, you model queries. 
+
+- Can specify the specific data you want
+- Strongly typed schema sending queries
+- Most Complex, but low coupling and high efficiency especially for graphs
+- Best for graph-like data and weak, decoupled clients like mobile
+
+#### RPC
+
+- Basically everything is a function you call like `listEvents?id=1`, more common actually. gRPC is a very effiecient google implementation based on HTTP/2.
+
+- More efficient, but more tight coupling
+
+- Great for internal microservices sending secure messages
+
+- Best for action-oriented and simple interactions like Slack join or leave channel. Best for efficiency with little metadata
+
+  

@@ -20,6 +20,8 @@ Yarn:
 
 ### Server-Side Vs Client-Side Rendering
 
+ServerSide Rendering means the server will generate the initial html of the React element that can then be rehydrated. Default lib in node.
+
 Server-Side
 
 - Faster initial load(Less roundtrips)

@@ -54,3 +54,8 @@ most popular small, fast, modular HTTP server written in Erlang that underlies P
 ### Ecto
 
 A DSL for writing queries and interacting with databases
+
+### Contexts
+
+Dedicated Modules that expose and group related functionality
+

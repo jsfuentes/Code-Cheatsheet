@@ -54,9 +54,9 @@ r.text #u'[{"repository":{"open_issues":0,"url":"https://github.com/...
 r.encoding #'utf-8'
 r.status_code == requests.codes.ok
 r.headers
+r.json() #builtin json decoder
 ```
 
-Builtin json decoder `r.json()`
 To get bit representation(turn into Image) `i = Image.open(BytesIO(r.content))`
 
 Checking response r.headers

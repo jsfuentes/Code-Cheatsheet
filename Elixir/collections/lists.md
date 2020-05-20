@@ -37,4 +37,3 @@ end
 def display_list([]), do: nil
 ```
 
-####

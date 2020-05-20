@@ -1,6 +1,30 @@
-# Adding Plugs
+# Plugs
 
-Takes in conn and return conn
+Plugs implement two fts `init` and `call` which takes in a conn and return a conn
+
+Fetchable Fields
+
+Must fetch them before use, best placed in the router.ex plug list. For example, the `cookies` field uses [`fetch_cookies/2`](https://hexdocs.pm/plug/Plug.Conn.html#fetch_cookies/2).
+
+- `cookies`- the request cookies with the response cookies
+- `body_params` - the request body params, populated through a [`Plug.Parsers`](https://hexdocs.pm/plug/Plug.Parsers.html) parser.
+- `query_params` - the request query params, populated through [`fetch_query_params/2`](https://hexdocs.pm/plug/Plug.Conn.html#fetch_query_params/2)
+- `path_params` - the request path params, populated by routers such as [`Plug.Router`](https://hexdocs.pm/plug/Plug.Router.html)
+- `params` - the request params, the result of merging the `:path_params` on top of `:body_params` on top of `:query_params`
+- `req_cookies` - the request cookies (without the response ones)
+
+### Functions
+
+| Ft                                                           | Effect                                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [assign(conn, key, value)](https://hexdocs.pm/plug/Plug.Conn.html#assign/3) | Assigns a value to a key in the connection.                  |
+| [halt(conn)](https://hexdocs.pm/plug/Plug.Conn.html#halt/1)  | Stops the plug pipeline . [See](https://hexdocs.pm/plug/Plug.Builder.html) |
+| [put_session(conn, key, value)](https://hexdocs.pm/plug/Plug.Conn.html#put_session/3) |                                                              |
+| [put_status(conn, status)](https://hexdocs.pm/plug/Plug.Conn.html#put_status/2) | Return status                                                |
+| [send_resp(conn, status, body)](https://hexdocs.pm/plug/Plug.Conn.html#send_resp/3) | Sends a response with the given status and body.             |
+|                                                              |                                                              |
+
+### Auth Plug
 
 router.ex
 
@@ -25,10 +49,11 @@ defmodule Discuss.Auth do
 
   def init(opts), do: opts
 
+	#opts are then passed to every future call
   def call(conn, _opts) do
     user_id = get_session(conn, :user_id)
     user = user_id && Discuss.Accounts.get_user!(user_id)
-    assign(conn, :current_user, user)
+    assign(conn, :current_user, user) #only available for current connection
   end
 
   def logged_in_user(conn = %{assigns: %{current_user: %{}}}, _), do: conn

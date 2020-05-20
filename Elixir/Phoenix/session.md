@@ -1,6 +1,14 @@
 # Session
 
+Builtin to Phoenix, session_opts defined in `endpoint.ex`
+
 You can put and get things from the session then pass it into the render or I guess return it on api call
+
+- put_session(conn, key, value)
+- configure_session(conn, renew: true)
+- configure_session(conn, drop: true)
+- fetch_session(conn, opts \\\\ [])
+- get_session(conn) => all OR get_session(conn, key)
 
 router.ex
 
@@ -36,7 +44,7 @@ defmodule DiscussWeb.SessionController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Welcome back!")
-        |> put_session(:user_id, user.id)
+        |> put_session(:user_id, user.id) #Use an Auth Plug to lookup user
         |> configure_session(renew: true)
         |> redirect(to: "/")
       {:error, :unauthorized} ->
@@ -105,8 +113,6 @@ defmodule DiscussWeb.UserController do
   import Discuss.Auth, only: [logged_in_user: 2]
   plug :logged_in_user when action not in [:new, :create]
 ```
-
-
 
 app.html.eex
 

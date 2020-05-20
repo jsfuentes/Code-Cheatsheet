@@ -1,12 +1,14 @@
-# Map
+#  Map
 
 #### Creation
 
+Atoms and strings are DIFFERENT keys with different matching and creation syntax 
+
 ```elixir
+# String Syntax
 capitals = %{"Alabama" => "Montgomery",
 	"Alaska" => "Juneau", "Arizona" => "Phoenix"}
-IO.puts "Capital of Alaska is #{capitals["Alaska"]}"
-
+# Atom Syntax
 capitals2 = %{alabama: "Montgomery",
 	alaska: "Juneau", arizona: "Phoenix"}
 ```
@@ -15,11 +17,16 @@ capitals2 = %{alabama: "Montgomery",
 
 ```elixir
 map = %{a: 1, b: 2}
-Map.fetch(map, :a) {:ok, 1}
-#Use for dynamic maps
+Map.get(“key”) || Map.get(:key) #Atom and String
+
+Map.get(map, :c) #nil
+Map.get(map, :c, 3) #3
+Map.fetch(map, :a) #:error
+Map.fetch(map, :c) #{:ok, 1}
+#!Must be an atom not a string!, good for structs
 map[:b]
 map.b
-#Use for static maps like structs
+#More for dynamic maps
 map["non_existing_key"] #nil
 map.non_existing_key #Key Error
 ```
@@ -33,11 +40,14 @@ Pattern matching
 ```elixir
 [length, width] = [20, 40]
 [ ,[ , a]] = [20, [30, 40]]
-%{a: a} = %{:a => 1, "b" => 2, [:c, :e, :e] => 3} #a= 1
+x = %{:a => 1, "b" => 2, [:c, :e, :e] => 3}
+%{a: a} = x # ATOM MATCHING
+%{"b" => b} = x # STRING MATCHING
 ```
 
 #### Other
 
--`.pop(map, key, default \\ nil)`
-
--`.pop!(map, key)`
+```elixir
+Map.pop(%{a: 1}, :a) #{1, %{}}
+Map.pop(%{a: 1}, :b, 3) #default 3: {3, %{a: 1}}
+```

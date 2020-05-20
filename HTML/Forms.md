@@ -3,13 +3,13 @@
 #### Form tag
 
 - GET sends data in URL: processform.php?fullname=.....
-- POST gets data in backgournd and use for longer forms/secure
+- POST gets data in background better for longer forms/secure
 ```html
 <form action="wher to send data"
   enctype="how to encode data" //default
   method="post" >
   <input type="submit" value="OK">
-  </form>
+</form>
 ```
 #### Enc Types
 - `multipart/form-data` needed to get files
@@ -17,7 +17,7 @@
 
 ## INPUT
 ```html
-<label for="name">Name:</label>
+<label for="name">Name:</label> <!--htmlFor in React-->
 <input name="user_name" id="name">
 ```
 
@@ -25,7 +25,8 @@
 
 - name for form identification
 - value is initial field value
-- id is for js/`label for`
+- id needed for label/js
+- if you click `<label>` , it selects input and screenreader better
 
 #### Input Types (text default)
 

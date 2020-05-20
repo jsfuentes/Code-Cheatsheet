@@ -15,3 +15,8 @@ mix.exs
 ```
 
 Then run `mix deps.get`
+
+### Packages of Interest
+
+- [guardian](https://github.com/ueberauth/guardian)
+

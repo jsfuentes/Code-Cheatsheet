@@ -26,6 +26,7 @@ Elixir uses **supervisers** and processes fail fast. If there is an error, resta
 - `someFunction/2` means someFunction with two args as functions unique by name & arg count(arity)
 -  `or`, `and`, `not`  and can short circuit
 -  `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>`
+-  Use pin operator `^` to pattern match against variables cur value: `x = 1 ^x = 2` => Error no match 1 = 2
 
 test.exs
 
@@ -80,7 +81,7 @@ rem(5, 4) is modulo => 1
 age = 16
 if age >= 18 do
 	IO.puts "Can Vote"
-else 
+else #no else if
 	IO.puts "Can't Vote" 
 end
 
