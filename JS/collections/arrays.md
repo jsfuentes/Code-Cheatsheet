@@ -24,16 +24,17 @@ var last = fruits[fruits.length - 1];
 
 ## Functional Stuff
 
-- `.map(ft)` - return new array with ft applied to each
-- `flatMap(ft)` - map followed by a depth 1 [`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) , allows modification of number of elements
-- `.reduce(ft)` - return single ele..
-- `.some(ft)` - true if one ele satisfies ft given
-- `.filter(ft)`-  return  new array with elements where ft true
+- `.map(ft/1)` - return new array with ft applied to each
+- `flatMap(ft/1)` - map followed by a depth 1 [`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) , allows modification of number of elements
+- `.reduce(ft(acc, e), initialValue?)` - return single ele..
+- `.some(ft/1)` - true if one ele satisfies ft given
+- `.filter(ft/1)`-  return  new array with elements where ft true
 
 ```js
 words.filter(word => word.length > 6);
 words.map((element, index) => element+index);
-arr.reduce((a,b) => a + b, 0)
+arr.reduce((acc, x) => acc + x, 0) //sum
+j.reduce((acc, a) => acc + (a/j.length), 0) //average
 ```
 
 Can do async fts in map and then wrap it in a promise.all

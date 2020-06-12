@@ -49,8 +49,9 @@ The command in a web process type must bind to the port number [specified in the
 
 ### [Custom Domain](https://devcenter.heroku.com/articles/custom-domains)
 
-1. `heroku domains:add *.nibble.blog`
-2. Point CNAME(www) to the returned DNS Target or ALIAS for root domains (cloudflare lets you do CNAME for root)
+1. `heroku domains:add nibble.blog` & ``heroku domains:add www.nibble.blog`, do for **BOTH**
+2. The command will return a DNS target like `adjacent-beyond-4gewdoomo52mqsps2xp87wns.herokudns.com`
+3. Set a CNAME record to the returned DNS Target for www(or both @ and www on cloudlfare) or ALIAS for @
 
 ### Different Price Tiers
 

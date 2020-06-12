@@ -14,9 +14,16 @@ Presence.track(socket, socket.assigns.user_id, %{
       online_at: inspect(System.system_time(:second))
     });
 push(socket, "presence_state", Presence.list(socket));
+
 Presence.update(socket, socket.assigns.user_id, %{
 	online_at: inspect(System.system_time(:second))
 })
+Presence.update(socket, socket.assigns.user_id, fn map -> Map.put(map, :name, name) end)
+Presence.update( socket, socket.assigns.user_id,
+&(Map.put(&1, :name, name) |> Map.put(:online_at, now)))
+
+Presence.get_by_key(socket, socket.assigns.user_id)
+MyPresence.get_by_key("room:1", "user1")
 ```
 
 ## Complete Example
@@ -83,6 +90,8 @@ end
 
 Actually (and before 1.4?) recieved "presence_diff" and "presence_state" events
 
+Only one onSync handler allowed
+
 ```js
 import {Socket, Presence} from "phoenix"
 
@@ -113,7 +122,7 @@ channel.join()
 
 ##### More Client
 
-```elixir
+```js
 let presence = new Presence(channel)
 
 // detect if user has joined for the 1st time or from another tab/device

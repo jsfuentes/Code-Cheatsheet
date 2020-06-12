@@ -1,5 +1,9 @@
 # Puppeteer
 
+```bash
+yarn add puppeteer
+```
+
 https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md
 
 ## Usage

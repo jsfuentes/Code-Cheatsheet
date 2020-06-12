@@ -54,7 +54,7 @@ Need certificate, note *.slingshow.com isnt the same as slingshow.com
 
 ### Testing
 
-Perform a DNS query
+Perform a DNS query (No https or http here)
 
 ```bash
 host www.modulo.blog

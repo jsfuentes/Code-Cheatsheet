@@ -2,7 +2,7 @@
 
 Minimize data reduncancy with **normalization**
 
-One Primary Keys must be unique, unchanging, non null
+One Primary Key must be unique, unchanging, non null
 
 [Understanding Query Optimization](https://www.sqlite.org/queryplanner.html):
 

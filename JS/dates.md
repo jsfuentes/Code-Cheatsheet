@@ -9,9 +9,34 @@ x.toGMTString(); //=> "Wed, 22 Jan 2020 07:48:33 GMT"
 x.toLocaleDateString(); //=> "1/21/2020"
 ```
 
-## Moment.js
+## DateFns
 
-datefns considered better because can do selective importing reducing bundle size, and uses normal javascript date object
+Better than moment b/c selective importing and uses normal js date object
+
+```js
+import { format, formatDistance, formatRelative, subDays } from 'date-fns'
+
+format(new Date(), "'Today is a' iiii")
+//=> "Today is a Thursday"
+
+formatDistance(subDays(new Date(), 3), new Date())
+//=> "3 days ago"
+
+formatRelative(subDays(new Date(), 3), new Date())
+//=> "last Friday at 7:26 p.m."
+
+// Add the following duration to 1 September 2014, 10:19:50
+var result = add(new Date(2014, 8, 1, 10, 19, 50), {
+  years: 2,
+  months: 24,
+  days: 7,
+  hours: 5,
+  minutes: 9,
+  seconds: 30,
+})
+```
+
+## Moment.js
 
 ### Creation
 

@@ -4,12 +4,45 @@ Render templates and are presentation layer processing raw data for use
 
 Must match name of controller
 
-lib/hello_web/views/hello_view.ex
+lib/react_phoenix_web/views/event_view.ex
 
 ```elixir
-defmodule HelloWeb.HelloView do
-  use HelloWeb, :view
+defmodule ReactPhoenixWeb.EventView do
+  use ReactPhoenixWeb, :view
+  alias ReactPhoenixWeb.EventView
+
+  def render("index.json", %{events: events}) do
+    %{data: render_many(events, EventView, "event.json")}
+  end
+
+  def render("show.json", %{event: event}) do
+    %{data: render_one(event, EventView, "event.json")}
+  end
+
+  def render("event.json", %{event: event}) do
+    %{
+      id: event.id,
+      title: event.title,
+      description: event.description,
+      start_time: event.start_time,
+      host_name: event.host_name,
+      host_description: event.host_description,
+#event has_many :subevents, ReactPhoenix.Events.Subevent
+      subevents: render_many(event.subevents, EventView, "subevent.json", as: :subevent)
+    }
+  end
+
+  def render("subevent.json", %{subevent: subevent}) do
+    %{
+      id: subevent.id,
+      title: subevent.title,
+      description: subevent.description,
+      link: subevent.link,
+      type: subevent.type
+    }
+  end
 end
+
 ```
 
 ## Templates

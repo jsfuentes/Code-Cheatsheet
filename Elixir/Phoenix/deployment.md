@@ -50,9 +50,10 @@ config/prod.exs
 config :react_phoenix, ReactPhoenixWeb.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "mysterious-meadow-6277.herokuapp.com", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"
 ```
+
+[Can let phoneix handle http to https](https://hexdocs.pm/phoenix/using_ssl.html#force-ssl)
 
 Now you want to make sure elixir closes connections instead of heroku
 

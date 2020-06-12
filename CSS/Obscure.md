@@ -27,6 +27,15 @@ Sick polygon shape with like curved line on one side that text follows
 
 Chrome extension called shape editor to help ya out with complex shapes like polygons
 
+### Overflow
+
+```css
+overflow: visibile; //default render outside box
+overflow: hidden; //rest gone
+overflow: scroll; //scroll bar to see rest of clipped
+overflow: auto; //add scrollbar only when needed
+```
+
 ## Text-Overflow
 
 ```css

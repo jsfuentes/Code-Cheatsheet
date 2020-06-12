@@ -2,6 +2,8 @@
 
 Add the sdk and it will automatically capture any fatal errors
 
+[As of May 2020](https://forum.sentry.io/t/react-install-fails-with-projectid-error/9620/7),  must wait about an hour after project is created to use
+
 ## Javascript
 
 All javascript libs have the same API:
@@ -59,13 +61,9 @@ Sentry.setExtra("profile", { name: "Jorge", time: 1 }); //will be under addition
   });
 ```
 
-#### Seeing Filtered
+## Server-Side
 
-
-
-## Advanced
-
-#### Node
+#### Node Specific
 
 ```js
 const express = require('express');

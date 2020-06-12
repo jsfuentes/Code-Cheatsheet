@@ -25,8 +25,8 @@ Elixir uses **supervisers** and processes fail fast. If there is an error, resta
 -  `=` operator is actually called *the match operator*
 - `someFunction/2` means someFunction with two args as functions unique by name & arg count(arity)
 -  `or`, `and`, `not`  and can short circuit
--  `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>`
--  Use pin operator `^` to pattern match against variables cur value: `x = 1 ^x = 2` => Error no match 1 = 2
+-  `==`, `!=`, `===`(doesn't count integers and floats as equal), `!==`, `<=`, `>=`, `<` and `>`
+-  Use pin operator `^` to pattern match against variables cur value: `x = 1 ^x = 2` => Error no match 1 = 2 ( apparently also used in queries for [type coercion](https://dev.to/lasseebert/til-ecto-s-pin-is-coercing-19fh))
 
 test.exs
 

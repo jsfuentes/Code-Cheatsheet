@@ -18,8 +18,12 @@ Map, Reduce, Filter
 ```elixir
 Enum.map([1, 2, 3], fn x -> x * 2 end)
 Enum.map(%{1 => 2, 3 => 4}, fn {k, v} -> k * v end)
-Enum.reduce(1..3, 0, fn (new, acc) -> new + acc end)
 Enum.map(%{1 => 2, 3 => 4}, fn {k, _} -> k === 3 end)
+
+Enum.reduce(1..3, 0, fn (new, acc) -> new + acc end)
+
+Enum.filter([1,2,3], fn a -> a in [1,3] end)
+Enum.filter([1,2,3], fn a -> a not in [1,3] end)
 ```
 
 Enums are eager so a pipe means an intermediate list is always created
@@ -31,6 +35,9 @@ Enums are eager so a pipe means an intermediate list is always created
 Other
 
 ```elixir
+Enum.sort_by(events, & &1.start_time)
+Enum.sort_by(events, & &1.start_time, :desc)
+Enum.sort_by(iterable, mapper, sort_ft // Kernel.<=)
 Enum.uniq([1,2,2]) #[1,2]
 Enum.all?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #false
 Enum.any?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #true

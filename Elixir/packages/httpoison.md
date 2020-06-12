@@ -8,10 +8,17 @@ HTTPoison uses [hackney](https://github.com/benoitc/hackney) to execute HTTP req
 
 ## Usage
 
+Need options rn b/c of latest elixir default change
+
 HTTPoison.start
 
 ```elixir
 {:ok, response} = HTTPoison.get(url, headers, options)
+
+url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" <> gaccess_token
+options = [ssl: [{:versions, [:"tlsv1.2"]}]]
+%HTTPoison.Response{status_code: 200, body: body} = HTTPoison.get!(url, [], options)
+profile = Jason.decode!(body)
 ```
 
 ```elixir

@@ -24,19 +24,21 @@ Cons
 - harder to logic sometimes
 - harder to hire for 
 
-## Compiled Vs Interpreted
-
-In principle, not a lang characteristic as you can compile or interpret a lang
-
-### Compiled
-
-C++ and Java are compiled meaning they are turned in byte code and need to be precompiled
-
 **Statically Typed**: Variables have specific types at compiletime
 
 **Dynamically Typed**: Variables define their type at runtime
 
-### Interpreted
+**Strongly vs Weakly Typed** : About if it automatically converts float to integers or strings or it must be explicit
+
+### Compiled Vs Interpreted
+
+In principle, not a lang characteristic as you can compile or interpret a lang
+
+##### Compiled
+
+C++ and Java are compiled meaning they are turned in byte code and need to be precompiled
+
+##### Interpreted
 
 Python, JS is interpretrated meaning it is turned into byte code as needed
 

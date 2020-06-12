@@ -17,16 +17,18 @@ mix phx.gen.json [....] #all of above + controller
 mix phx.gen.html [Context]  #all of above + html
 ```
 
-**Types**: `:integer` | `:float` |`:decimal` |`:boolean` |`:map` (Will convert to string keys)|`:string` |`:array`  |`:references` |`:text` |`:date` | `:time` |`:time_usec` |`:naive_datetime` |`:naive_datetime_usec` |`:utc_datetime` |`:utc_datetime_usec` |`:uuid` |`:binary` |`:datetime` 
+**Types**: `:integer` | `:float` |`:decimal` |`:boolean` |`:map` (Will convert to string keys)|`:string`(255 char limit use text instead) |`:array`  |`:references` |`:text`(In ecto schema still string type) |`:date` | `:time` |`:time_usec` |`:naive_datetime` |`:naive_datetime_usec` |`:utc_datetime` |`:utc_datetime_usec` |`:uuid` |`:binary` |`:datetime` 
 
 #### DataTime Types
 
 Only difference is the conversion to elixir, same DB type
 
-- `naive_datetime` - has a precision of seconds and casts values to Elixir's [`NaiveDateTime`](https://hexdocs.pm/elixir/NaiveDateTime.html) struct which has no timezone information.
-- `naive_datetime_usec` - has a default precision of microseconds and also casts values to [`NaiveDateTime`](https://hexdocs.pm/elixir/NaiveDateTime.html) with no timezone information.
-- `utc_datetime` - has a precision of seconds and casts values to Elixir's [`DateTime`](https://hexdocs.pm/elixir/DateTime.html) struct and expects the time zone to be set to UTC.
-- `utc_datetime_usec` has a default precision of microseconds and also casts values to [`DateTime`](https://hexdocs.pm/elixir/DateTime.html) expecting the time zone be set to UTC.
+| type                | precision | Elixir type                                                  | timezone |
+| ------------------- | --------- | ------------------------------------------------------------ | -------- |
+| naive_datetime      | sec       | [`NaiveDateTime`](https://hexdocs.pm/elixir/NaiveDateTime.html) | None     |
+| naive_datetime_usec | microsec  | [`NaiveDateTime`](https://hexdocs.pm/elixir/NaiveDateTime.html) | None     |
+| utc_datetime        | sec       | [`DateTime`](https://hexdocs.pm/elixir/DateTime.html)        | UTC      |
+| utc_datetime_usec   | microsec  | [`DateTime`](https://hexdocs.pm/elixir/DateTime.html)        | UTC      |
 
 ```bash
 # no type like name means string
@@ -41,6 +43,7 @@ Default id of type integer and timestamps() creates inserted/updated at field.
 ```elixir
 defmodule User do
   use Ecto.Schema
+  @derive {Jason.Encoder, only: [:name, :age, :company_id]} #for sending %User through HTTP requests
 
   schema "users" do #users is table name
     field :name, :string
@@ -88,8 +91,6 @@ many_to_many :tags, MyApp.Tag, join_through: "posts_tags"
   id   <--   post_id
               tag_id    -->  id
 ```
-
-
 
 Finally, schemas can also have virtual fields by passing the `virtual: true` option.
 
@@ -271,8 +272,6 @@ end
 ```
 
 ### Extra
-
----------------------
 
 lib/hello/repo.ex
 

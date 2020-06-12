@@ -15,5 +15,5 @@
 - `.search("W3Schools");` - returns index of first character or -1
 - ``.toLowerCase()`
 - `.toUpperCase()`
-- 
+- `.join([seperatar ,])`
 
