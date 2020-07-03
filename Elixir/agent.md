@@ -1,9 +1,11 @@
 ## Agent
 
-Abstraction for raw implementation of an infinite process that maintains state
+ **see process.md for overview, wrapper for genserver**
+
+Simple wrapper of genserver for state
 
 -  creates child_spec/1 function that start agent directly under a supervisor.
--  should think about putting long running processes in client(not inside agent calls), because it will block the agent from recieving other calls from other processes
+-  single threaded state management, updates require new object(ETS much more scalable, but agent good for smaller use cases)
 
 ```elixir
 defmodule Counter do
@@ -14,11 +16,13 @@ defmodule Counter do
   end
 
   def value do
+  	#gets agent state, applies ft, then returns
     Agent.get(__MODULE__, & &1)
   end
 
   def increment do
-    Agent.update(__MODULE__, &(&1 + 1)) #any ft that takes state and returns new state
+  	#applies ft to the state and updates it
+    Agent.update(__MODULE__, &(&1 + 1)) 
   end
 end
 ```
@@ -32,6 +36,11 @@ Counter.increment() #=> :ok
 Counter.increment() #=> :ok
 Counter.value() #=> 2
 ```
+
+#### Considerations
+
+- Atomic updates because server fns run one by one
++ Should therefore put long running processes in client(not inside agent ft calls), because it will block the agent from recieving other calls from other processes
 
 #### Raw
 

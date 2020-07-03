@@ -27,6 +27,8 @@ end
 
 3) `mix ecto.migrate`
 
+*Can undo with `mix ecto.rollback`*
+
 ## UUID 
 
 Creating (will be uuid in table)

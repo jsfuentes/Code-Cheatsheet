@@ -69,3 +69,11 @@ rescue
     Sentry.capture_exception(my_exception, [stacktrace: __STACKTRACE__, extra: %{extra: information}])
 end
 ```
+
+### Messages
+
+```elixir
+Sentry.capture_message("custom_event_name", extra: %{extra: information})
+
+```
+

@@ -16,13 +16,25 @@ import Robodog from "@uppy/robodog";
 
 const resultPromise = Robodog.upload(files, {
   params: {
-    auth: { key: '' },
-    template_id: ''
-  }
-})
+    auth: { key: "3.dsafkjads.adsf.afds.adsf.." },
+    steps: {
+      ":original": {
+        robot: "/upload/handle",
+      },
+      export: {
+        use: ":original",
+        robot: "/s3/store",
+        credentials: "eta-aws",
+        //\$ for translodits string stuff url_name is url encoded name with extension
+        path: `${new Date().toISOString()}-\${file.url_name}`,
+      },
+    },
+  },
+});
+
 resultPromise.then((bundle) => {
   bundle.transloadit // Array of Assembly statuses
-  bundle.results // Array of all Assembly results
+  
 })
 ```
 
@@ -61,7 +73,7 @@ Can use assembly variables like `${fields.*}` if uppy was set to allow it
         "video_webm"
       ],
       "robot": "/s3/store",
-      "credentials": "slingshow_aws"
+      "credentials": "slingshow_aws",
     }
   }
 }

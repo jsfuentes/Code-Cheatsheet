@@ -42,6 +42,7 @@ Enum.uniq([1,2,2]) #[1,2]
 Enum.all?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #false
 Enum.any?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #true
 Enum.any?([1,2,3], fn(n) -> IO.puts n end) #1\n2\n3\n
+Enum.random(1..3) #random element from list
 ```
 
 - .shuffle(enum)

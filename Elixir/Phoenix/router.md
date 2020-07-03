@@ -1,5 +1,7 @@
 # Router
 
+Run `mix phx.routes` to see route list 
+
 [`mix phx.routes`](https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Routes.html)
 
 lib/eServer_web/router.ex
@@ -70,3 +72,5 @@ resources "/posts", PostController, only: [:index, :show]
 ### More
 
 get is actually a Phoenix macro that is one clause of a match for HTTP get request
+
+Error handling in the default error view, default is returning name from status code

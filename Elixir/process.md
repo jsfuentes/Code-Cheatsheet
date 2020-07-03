@@ -3,7 +3,7 @@
 - As easy as `spawn` to  runs code specified at undefined time each with a process_id
 - Only communication is messages between processes
 - Supervisors often linked to processes and will restart on failure
-- [Agent](https://hexdocs.pm/elixir/Agent.html) - Simple wrappers around state.
+- [Agent](https://hexdocs.pm/elixir/Agent.html) - Simple wrappers around genserver for state. 
 - [GenServer](https://hexdocs.pm/elixir/GenServer.html) - “Generic servers” (processes) that encapsulate state, provide sync and async calls, support code reloading, and more. For ongoing background work 
 - [Task](https://hexdocs.pm/elixir/Task.html) - Asynchronous units of computation that allow spawning a process and potentially retrieving its result at a later time.
 

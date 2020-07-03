@@ -17,7 +17,7 @@
 
 ## INPUT
 ```html
-<label for="name">Name:</label> <!--htmlFor in React-->
+<label for="name">Name:</label> <!--htmlFor in React links to id attribute-->
 <input name="user_name" id="name">
 ```
 

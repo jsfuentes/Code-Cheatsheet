@@ -8,3 +8,15 @@ dt = ~U[2020-05-29 02:15:00Z]
 dt |> DateTime.add(60, :second)
 ```
 
+### Native DateTime
+
+Not linked to timezone so because of daylight savings could occur twice or never
+
+```elixir
+naive = ~N[2000-01-01 23:00:07]
+naive.year #2000
+naive.second #7
+
+NaiveDateTime.add(~N[2014-10-02 00:29:10.021], 21, :second) #Expected :second, :millisecond, :microsecond, :nanosecond
+```
+

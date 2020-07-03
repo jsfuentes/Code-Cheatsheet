@@ -68,7 +68,5 @@ const mapDispatchToProps = dispatch => {
 const ItemsListContainer = connect(mapStateToProps, mapDispatchToProps)( 
 	Itemslist //what component to attach redux state to
 );
-
-
 ```
 

@@ -1,10 +1,16 @@
 # Curl
 
+Transfer data with all these protocols: DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET and TFTP
+
+## Post
+
+Basic
+
 ```bash
-curl localhost:4000/api/events -X POST -d '{"event": {"type": "basic"}}'
+curl localhost:4000/api/events -X POST -d '{"event": {"type": "basic"}}' | json_pp
 ```
 
-Transfer data with all these protocols: DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET and TFTP
+Advanced
 
 ```bash
 curl https://api.mux.com/video/v1/assets \
@@ -15,3 +21,10 @@ curl https://api.mux.com/video/v1/assets \
 ```
 
 `json_pp` takes json and outputs pretty printed json
+
+##### Authorization Header
+
+```bash
+curl -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" https://api.linkedin.com/v2/me\?projection\=\(id,profilePicture,localizedHeadline,headline,vanityName\) | json_pp
+```
+

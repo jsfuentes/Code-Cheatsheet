@@ -4,13 +4,24 @@ Extends spawn to provide better error & introspection
 
 Instead of `spawn/1` and `spawn_link/1`, we use `Task.start/1` and `Task.start_link/1` which return `{:ok, pid}` rather than just the PID. This is what enables tasks to be used in supervision trees. Furthermore, `Task` provides convenience functions, like `Task.async/1` and `Task.await/1`, and functionality to ease distribution.
 
+## Adhoc Tasks
+
 Can easily run without a supervisor for unessential tasks like emails
 
 ```elixir
 Task.start(fn -> send_email_to_user(user) end) # 🎉
 ```
 
-## Setup
+##### Async requests
+
+```elixir
+1..2 |> Task.async_stream(fn(_) -> DailyHelper.createDailyRoom() end) |> Enum.to_list()
+#[{:ok, %{..}}, {:ok, %{..}}]
+```
+
+
+
+## Task Supervisor Setup
 
 Application.ex
 

@@ -47,7 +47,9 @@ end
 
 ## Templates
 
-standard templating engine Phoenix uses is [`EEx`](https://hexdocs.pm/eex/EEx.html), which stands for Embedded Elixir.
+Phoenix template engine is [`EEx`](https://hexdocs.pm/eex/EEx.html)(Embedded Elixir)
+
+Like ruby `<% %>` to just run code and `<%= %>` to insert into HTML
 
 lib/hello_web/templates/hello/index.html.eex
 
@@ -57,11 +59,27 @@ lib/hello_web/templates/hello/index.html.eex
 </div>
 ```
 
+`messenger` was passed in with `render(conn, "index.html", messenger: "j")`
+
 Notice inserted in an app layout found at
 
 lib/hello_web/templates/layout/app.html.eex
 
 ```html
 <%= render @view_module, @view_template, assigns %>
+```
+
+### Nesting Templates
+
+lib/hello_web/templates/user/user.html.eex
+
+```html
+<strong> <%= first_name(@user) %> </strong>
+```
+
+Another template
+
+```html
+<h1> Showing Users </h1> <%= render "user.html", user: @user %>
 ```
 

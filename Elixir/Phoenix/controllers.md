@@ -2,6 +2,8 @@
 
 See **plug** for more info since controllers are plugs
 
+External data uses string keys, internal data uses atoms
+
 ### Actions
 
 All actions take two args:
@@ -21,11 +23,6 @@ defmodule HelloWeb.HelloController do
   import Hello.Auth, only: [logged_in_user: 2]
   #pass through plug with a guard(like middleware)
   plug :logged_in_user when action not in [:new, :create]
-
-  def index(conn, _params) do
-    render(conn, "index.html") 
-    #find and render index.html.eex in lib/hello_web/templates/hello (named after controller)
-  end
   
   #params are combo of /m/:messenger and query params
   def show(conn, %{"messenger" => messenger}) do
@@ -34,12 +31,14 @@ defmodule HelloWeb.HelloController do
     conn
     |> assign(:messenger, messenger)
     |> render("show.html")
+    #find and render show.html.eex in lib/hello_web/templates/hello (named after controller)
   end
   
   def redirect(conn, _params) do
   	conn 
   	|> put_flash(:info, "Redirecting")
   	|> redirect(to: "/redirect_test")
+  	#  	|> redirect(external: "google.com")
   end
   
   def get(conn, _params) do

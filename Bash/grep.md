@@ -12,12 +12,6 @@ grep "jorge" test.txt
 
 Use `\` to escape characters 
 
-233396
-
-258519
-
-1476969
-
 ### Search Directory
 
 ```bash

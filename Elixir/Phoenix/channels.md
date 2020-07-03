@@ -59,7 +59,7 @@ defmodule SsWeb.RoomChannel do
 
   def join("room:lobby", _message, socket) do
     {:ok, socket}
-    {:ok, :payload, socket} #paylaod can be object
+    #{:ok, :payload, socket} #paylaod can be object
   end
   
   def join("room:" <> _private_room_id, _params, _socket) do
@@ -70,6 +70,7 @@ defmodule SsWeb.RoomChannel do
   def handle_in("new_msg", %{"body" => body}, socket) do
     broadcast!(socket, "new_msg", %{body: body})
     {:noreply, socket}
+    #{:reply, socket}
   end
   
   def handle_out("user_joined", msg, socket) do

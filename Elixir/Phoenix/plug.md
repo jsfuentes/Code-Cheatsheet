@@ -26,6 +26,8 @@ Must fetch them before use, best placed in the router.ex plug list. For example,
 
 ### Auth Plug
 
+Usage `conn.assigns.current_user`
+
 router.ex
 
 ```elixir

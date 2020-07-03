@@ -13,7 +13,7 @@ capitals2 = %{alabama: "Montgomery",
 	alaska: "Juneau", arizona: "Phoenix"}
 ```
 
-#### Get/Set
+#### Get
 
 ```elixir
 map = %{a: 1, b: 2}
@@ -31,8 +31,13 @@ map["non_existing_key"] #nil
 map.non_existing_key #Key Error
 ```
 
+#### Setting
+
 ```elixir
 Map.put(map, :a, 2)
+
+#for complex nested puts
+put_in(deep_map, [:key1, :key2], "key2val")
 ```
 
 Pattern matching
@@ -43,6 +48,7 @@ Pattern matching
 x = %{:a => 1, "b" => 2, [:c, :e, :e] => 3}
 %{a: a} = x # ATOM MATCHING
 %{"b" => b} = x # STRING MATCHING
+def hasState?(%{state: _}), do: true
 ```
 
 #### Other

@@ -57,8 +57,6 @@ onmousemove  => any movement over the div element.
 - Supported in most browsers now even IE11
 - In react, onPointerDown or regular pointerdown. For backwards compatability, touch/pen events fire mouse events but a little late and a little unreliably
 
-
-
 ## Custom Events
 
 Use detail to hold extra information 
