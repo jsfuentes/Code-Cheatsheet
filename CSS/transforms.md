@@ -11,16 +11,33 @@
 
 ```css
 .letters {
+  /* Space seperated list */
     transform: 
-    	translate(-90px, 0px), 	/*hor, ver*/			rotate(90deg), scale(0.25, 0.75),/*w, h*/
-        skew(5deg, 5deg)
-        
+    	translate(-90px, 0px) 	/*hor, ver*/			
+      rotate(90deg) 
+      scale(0.25, 0.75)/*w, h*/
+      skew(5deg, 5deg)
 }
 ```
 
-Can use any of these, this order does matter and each operation is done in that order. Recall graphics/matrix manipulation translating than rotating is different from rotating than translating. Rotates about center of image though not origin, and translates on its current axises
+Can use any of these, this **order does matter** and each operation is done in that order. Recall graphics/matrix manipulation translating than rotating is different from rotating than translating. Rotates about center of image though not origin, and translates on its current axises
+
+### In React
+
+```jsx
+<div
+  className="duration-1000 hover:bg-green-200"
+  style={{ scale: 1.1 }}
+  >
+  Im so alone
+</div>
+```
+
+
 
 ## 3D Transform
+
+https://3dtransforms.desandro.com/carousel
 
 - translate3d
 - scale3d

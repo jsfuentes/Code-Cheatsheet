@@ -19,14 +19,17 @@ capitals2 = %{alabama: "Montgomery",
 map = %{a: 1, b: 2}
 Map.get(“key”) || Map.get(:key) #Atom and String
 
+#Use the atom or string
 Map.get(map, :c) #nil
 Map.get(map, :c, 3) #3
 Map.fetch(map, :a) #:error
 Map.fetch(map, :c) #{:ok, 1}
-#!Must be an atom not a string!, good for structs
-map[:b]
-map.b
-#More for dynamic maps
+
+map[:b] #atom key
+map.b #atom key
+map["b"] # String keys
+
+#For dynamic maps
 map["non_existing_key"] #nil
 map.non_existing_key #Key Error
 ```
@@ -57,3 +60,12 @@ def hasState?(%{state: _}), do: true
 Map.pop(%{a: 1}, :a) #{1, %{}}
 Map.pop(%{a: 1}, :b, 3) #default 3: {3, %{a: 1}}
 ```
+
+Pipe Merging
+
+```elixir
+x = %{a: 1, b: 2}
+%{x | a: 3} #%{a: 3, b: 2}
+%{x | c: 5} #** (KeyError) key :c not found
+```
+

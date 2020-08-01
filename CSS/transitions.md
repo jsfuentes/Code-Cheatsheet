@@ -15,9 +15,9 @@ a:hover {
 ```
 
 - Transition-property: props that transition
-- Transition-duration: s or ms
+- Transition-duration: time it takes, s or ms
 - Transition-timing-function: bezier curve 
-- Transition delay: after starts
+- Transition delay: time until starts (good for hover if someone just moves past it)
 - Transition: shorthand for 4
 
 ## Example

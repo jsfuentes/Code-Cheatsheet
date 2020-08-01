@@ -18,4 +18,9 @@ many_zeroes = Tuple.duplicate(0, 5)
 IO.puts "Weight: #{weight}"
 ```
 
-#### 
+#### Turn List of Tuples Into A Map
+
+```elixir
+[a: 1, b: 2] |> Enum.into(%{}) #%{a: 1, b: 2}
+```
+

@@ -9,3 +9,8 @@ In the head tag, good to include a descriptive title and meta description
 
 [Special Tags that google understands](https://support.google.com/webmasters/answer/79812)
 
+### Dynamically Setting Meta
+
+Most crawlers just use the server direct meta tag. Can't use something like react helmet here. Should set on server so when pinged directly works. Its fine that react-router redirection doesn't update meta, you care about crawlers accessing directly. 
+
+https://create-react-app.dev/docs/title-and-meta-tags/#generating-dynamic-meta-tags-on-the-server

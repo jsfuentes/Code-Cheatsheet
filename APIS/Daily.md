@@ -1,12 +1,14 @@
 # Daily
 
+When the room exps, cant modify it anymore. Basically doesn't exist according to API. 
+
 ```elixir
   def createDailyRoom() do
     nowUTC = DateTime.utc_now() |> DateTime.to_unix()
     rawPayload = %{
       privacy: "public",
       # properties: %{exp: nowUTC + 24 * 60 * 60}
-      properties: %{exp: nowUTC + 5 * 60}
+      properties: %{exp: nowUTC + 5 * 60} # in seconds
     }
     payload = Jason.encode!(rawPayload)
     url = "https://api.daily.co/v1/rooms"
@@ -15,7 +17,7 @@
       "Content-Type": "Application/json; charset=utf-8",
       Authorization: "Bearer #{Application.fetch_env!(:react_phoenix, :daily_api)}"
     ]
-    HTTPoison.post(url, payload, headers)!
+    HTTPoison.post!(url, payload, headers)
     end
   end
 ```

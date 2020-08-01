@@ -1,3 +1,11 @@
+# Other
+
+Can have set position for scroll 
+
+```css
+.container {  scroll-snap-type: y mandatory; } .child {  scroll-snap-align: start; }
+```
+
 ## Painting
 
 ### -webkit-filter
@@ -27,23 +35,6 @@ Sick polygon shape with like curved line on one side that text follows
 
 Chrome extension called shape editor to help ya out with complex shapes like polygons
 
-### Overflow
-
-```css
-overflow: visibile; //default render outside box
-overflow: hidden; //rest gone
-overflow: scroll; //scroll bar to see rest of clipped
-overflow: auto; //add scrollbar only when needed
-```
-
-## Text-Overflow
-
-```css
-overflow: hidden;
-white-space:nowrap;
-text-overflow: hidden;
-```
-
 ## Calc
 
 +, -, *, /, mod, min, max
@@ -70,3 +61,26 @@ If you want something to be read, but no display. Postion absolute off the page,
 Go to font squirrel and make font with just hte things you want
 
 Can get only certain letters from font and have rest of font fall back
+
+# Resize
+
+ There is a CSS property to have resizing like a textarea, but you have to hover the bottom right which is jank
+
+If you want it on the bottom left you can do this:
+
+```jsx
+<div className="w-full h-full flex flex-col lg:flex-row justify-center items-center overflow-hidden">
+  <div className="w-full flex-1 h-full bg-pureBlack  ">
+  	{innerContent}
+  </div>
+  <div
+  className="flex flex-none h-full bg-white hidden lg:block overflow-auto resize-x"
+  style={{ direction: "rtl", maxWidth: "26rem", minWidth: "20rem" }}
+  >
+    <div style={{ direction: "ltr" }} className="w-full h-full">
+    	<EventSidebar />
+    </div>
+  </div>
+</div>
+```
+

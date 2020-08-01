@@ -94,8 +94,6 @@ alias est='cd ~/Projects/ecstatic'
 alias estb='cd ~/Projects/ecstatic-botpress'
 ```
 
-## 
-
 ## My Bash_Profile
 
 ```bash

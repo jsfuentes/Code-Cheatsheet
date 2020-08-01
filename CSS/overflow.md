@@ -10,3 +10,15 @@ Control what happens when content too big either scroll/clip
 Only happens if block display with height
 
 The scrollbar actually takes up space in the div
+
+**Make sure container is overflow hidden** so it constrains the inner divs, then you can add auto(scrollbar) to the child
+
+## Text-Overflow
+
+```css
+overflow: hidden;
+white-space:nowrap;
+text-overflow: hidden;
+```
+
+## 

@@ -31,3 +31,36 @@ const msg = {
 await sgMail.send(msg);
 ```
 
+## [Elixir](https://hexdocs.pm/sendgrid/SendGrid.Email.html)
+
+mix.exs
+
+```elixir
+{:sendgrid, "~> 2.0"}
+```
+
+config.exs
+
+```elixir
+config :sendgrid,
+  api_key: "SENDGRID_API_KEY"
+```
+
+reactphoenix/email.ex
+
+```elixir
+defmodule ReactPhoenix.Email do
+  alias SendGrid.Email
+  alias SendGrid.Mail
+
+  def test() do
+    Email.build()
+    |> Email.add_to("jsjfuentesj@gmail.com")
+    |> Email.put_from("test@slingshow.com")
+    |> Email.put_subject("Hello from Elixir")
+    |> Email.put_text("Sent with Elixir")
+    |> Mail.send()
+  end
+end
+```
+

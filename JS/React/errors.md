@@ -1,6 +1,6 @@
 # Errors in React
 
- **As of React 16, errors that were not caught by any error boundary will result in unmounting of the whole React component tree.**
+**As of React 16, errors that were not caught by any error boundary will result in unmounting of the whole React component tree.**
 
 ## [Error Boundary](https://reactjs.org/docs/error-boundaries.html) 
 

@@ -46,13 +46,13 @@ end
 Supports literal Integers, Floats, Bools, Binary(<<1, 2 >>), Strings, and arrays, other external variables must be pinned`^`. Using with Schema(`User` instead of `"users"`) lets it know what type to cast to and automatically retrieves all fields
 
 ```elixir
-query = from u in User, where: u.age == ^age and u.height > ^(height_ft * 3.28), order_by: u.city
+query = from u in User, where: u.age == ^age and u.height > ^(height_ft * 3.28), order_by: u.city, preload: [:company]
 
 #Can explicitly cast type
 query = from u in "users", where: u.age > type(^age, :integer), select: u.name
 
 #List of map from id to email
-query = from u in User, select: %{u.id => u.email}) 
+query = from u in User, select: %{u.id => u.email}), where: not is_nil(u.birthday) 
 
 query = "users"
 |> where([u], u.age > 18)

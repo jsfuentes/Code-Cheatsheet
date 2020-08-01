@@ -31,6 +31,10 @@ mix compile
  iex> recompile()
 ```
 
+Can use the interactive prompt to test all the modules
+
+*Must restart server when you move/rename files or err*
+
 #### Format
 
 ```bash

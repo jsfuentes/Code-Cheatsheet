@@ -62,26 +62,43 @@ defmodule SsWeb.RoomChannel do
     #{:ok, :payload, socket} #paylaod can be object
   end
   
-  def join("room:" <> _private_room_id, _params, _socket) do
-    {:error, %{reason: "unauthorized"}}
+  def join("subevent:*", payload, socket) do
+    assignedSocket = assign(socket, :event_id, event_id)
+    #broadcast can only be called after socket finishes joining
+    send(self, :after_join)
+    {:ok, assignedSocket}
   end
+  
+   def handle_info(:after_join, socket) do
+      push(socket, "feed", %{list: feed_items(socket)})
+      {:noreply, socket}
+    end
   
   #eChannel.push("new_msg", {body: "hi"});
   def handle_in("new_msg", %{"body" => body}, socket) do
     broadcast!(socket, "new_msg", %{body: body})
-    {:noreply, socket}
-    #{:reply, socket}
+    {:reply, :ok, socket}
+    {:reply, {:error, %{errors: changeset}}, socket)
+    #best practice to respond with error or ok so client can properly deal 
   end
   
+  #when you broadcast user_joined this intercepts
   def handle_out("user_joined", msg, socket) do
-  if Accounts.ignoring_user?(socket.assigns[:user], msg.user_id) do
-    {:noreply, socket}
-  else
-    push(socket, "user_joined", msg)
+    if Accounts.ignoring_user?(socket.assigns[:user], msg.user_id) do
+      {:noreply, socket}
+    else
+      push(socket, "user_joined", msg)
+      {:noreply, socket}
+    end
+  end
+  
+  def terminate(reason, socket) do
+  	#can't do send self here
+    broadcast socket, "user_left", payload
     {:noreply, socket}
   end
 end
-end
+
 ```
 
 `broadcast` will notify all clients on socket's topic and invoke their handle_out callback if defined for filtering/customization
@@ -103,6 +120,11 @@ channel.join()
 channel.on("new_msg", payload => {
   //payload is exactly as passed, no wrapper
 })
+
+channel.push(event, payload)
+  .receive('ok', data => resolve(data))
+  .receive('error', rejectUnsub)
+  .receive('timeout', rejectUnsub)
 
 function onClick() {
   channel.push("new_msg", {body: "test"})

@@ -35,6 +35,18 @@ analytics.identify(id, {
   status: source,
 });
 
+analytics.identify(id,{
+    name: user.name,
+    email: user.email,
+  },
+  {
+    integrations: {
+      All: true,
+      Mailchimp: false,
+    },
+  }
+);
+
 analytics.track(event, [properties], [options], [callback]);
 analytics.track("Demo Recorded", {video_id});
 ```

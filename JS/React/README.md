@@ -1,13 +1,5 @@
 # React
 
-## Thinking about React
-
-- Data flows down from parent to child
-
-- Passing props for specialization is equivalent of composition/inheritance, 
-
-- can even pass other components in props and choose what to do with it
-
 Given design:
 
 1) Break UI into component hierarchy
@@ -20,88 +12,169 @@ Given design:
 
 5) Add Inverse Data Flow, pass update fts to lower components
 
-## Installation
+### Data Flow
 
-```bash
-npm i react-dom
-npm i react
-```
+Data flows down from parent to child, so if multiple components have a shared state put it in the closest common ancestor
 
-Include html file with a root div
+Notice if we rerender a parent component with setState() all the children get rerendered (if needed?)
 
-Add these script
+If something can be derived from either props or state, it probably shouldn’t be in the state.
 
-```html
-   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
-   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
-   <script type="text/babel">
-   ReactDOM.render(
-       <div>Hello World</div>,
-       document.getElementById("root")
-   )
-   </script>
-```
+### Thinking about React
 
-react-scripts creates the root html page
+- Data flows down from parent to child
+- Try to get small, reusable components
+- Components take props and return react component
 
-## Create-react-app
+- Passing props for specialization is equivalent of composition/inheritance (i.e create WelcomeDialog by passing in specific props to Dialog)
+- can even pass other components in props and choose what to do with it
 
-```bash
-npx create-react-app client
-```
+```jsx
+function FancyBorder(props) {
+  return (
+    <div className={'FancyBorder'}>
+      {props.children}
+    </div>
+  );
+}
 
-Check  `process.env.NODE_ENV`  for the current environment either "production" when built or "development"
-
-To set all imports to be absolute "components/CTA.js" instead of "../components/CTA.js", add the following file to the root(package.json level) dir
-
-jsconfig.json
-
-```json
-{
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES6",
-    "jsx": "preserve",
-    "checkJs": true,
-    "baseUrl": "./src"
-  },
-  "exclude": ["node_modules", "**/node_modules/*"]
+function WelcomeDialog() {
+  return (
+    <FancyBorder>Welcome</FancyBorder>
+  );
 }
 ```
 
-## Setup With Node
+Need multiple children??
 
-```bash
-mkdir node-react-app && cd node-react-app
-npx create-react-app client
-npx express-generator backend --no-view
-cd backend && npm install
+```jsx
+function SplitPane(props) {
+  return (
+    <div className="w-full h-full flex">
+      <div className="h-1/2">{props.left}</div>
+      <div className="h-1/2">{props.right}</div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <SplitPane 
+      left={<Contacts />} 
+      right={<Chat />  } 
+    />
+  );
+}
 ```
 
-In `backend/bin/www`,  change the default port number to 3001
+# Components
 
-In `client/package.json` add `  "proxy": "http://localhost:3001"` to the json
+**Cant change props**
 
-Now in the main folder fullstack_app:
+```react
+import React from "react"; //jsx support
+//Functional component - Good style when no need for advanced stuff
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
 
-```bash
-npm init -y 
-npm i concurrently
+//has constructor, state&lifecycle stuff
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
 ```
 
-In `package.json`, add `"start": "concurrently \"cd backend && npm run start\" \"cd client && yarn start\""`  under scripts
+## Using Components
 
-Now just `npm run start` in the main folder
+If you have user defined component(capitalized) in JSX, passes in props
 
-#### Docker
+```react
+const element = <Welcome name="Sara" />;
+//OR
+const x = "Sara";
+const element = <Welcome name={x} />
+//renders as: Hello, Sara
+```
 
-Use docker-compose to get two containers up, use `"proxy": "http://[service-name]:[port-number]"` instead
+### Passing in props to children 
 
-### Gotchas
+```react
+<Component {...this.props} more="values" />
+```
 
-Express generator comes with express.json bodyparsering which is a much less lenient form of post request processing then the bodyparser package(must specify application/json header)
+## Example
 
-Nodemon needs to be added
+Lets say we are trying to make a F & C temp indicator
 
-React-generator uses yarn and has a yarn.lock, it became a problem
+##### Temperature Input for F or C
+
+```react
+class TemperatureInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.props.onTemperatureChange(e.target.value);
+  } //notice call ft from props
+
+  render() {
+    const temperature = this.props.temperature;
+    const scale = this.props.scale; //notice dynamic based on props
+    return (
+      <fieldset>
+        <legend>Enter temperature in {scaleNames[scale]}:</legend>
+        <input value={temperature}
+               onChange={this.handleChange} />
+      </fieldset>
+    );
+  }
+}
+```
+
+##### Temp Calculator
+
+```react
+class Calculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
+    this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
+    this.state = {temperature: '', scale: 'c'};
+  }
+
+  handleCelsiusChange(temperature) {
+    this.setState({scale: 'c', temperature});
+  }
+
+  handleFahrenheitChange(temperature) {
+    this.setState({scale: 'f', temperature});
+  }
+
+  render() {
+    const scale = this.state.scale;
+    const temperature = this.state.temperature;
+    const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+    const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
+
+    return (
+      <div>
+        <TemperatureInput
+          scale="c"
+          temperature={celsius}
+          onTemperatureChange={this.handleCelsiusChange} />
+        <TemperatureInput
+          scale="f"
+          temperature={fahrenheit}
+          onTemperatureChange={this.handleFahrenheitChange} />
+        <BoilingVerdict
+          celsius={parseFloat(celsius)} />
+      </div>
+    );
+  }//notice the props passed in including a ft
+}
+```
+

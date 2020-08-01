@@ -12,80 +12,10 @@
 - Only call Hooks **at the top level**. Don’t call Hooks inside loops, conditions, or nested functions.
 - Only call Hooks **from React function components**.
 
-## useState
+## All Hooks
 
-```js
-function Example() {
-  // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
-}
-```
-
-Updating *replace*s its value instead of setState which *merges*
-
-`setCount(prevState => return ....)`
-
-## useEffect
-
-For data fetching, subscriptions, or manually changing the DOM because they can affect other components and can’t be done during rendering.
-
-`useEffect` Hook runs after every render and offers clean up so === to  `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` combined.
-
-```jsx
-import React, { useState, useEffect } from 'react';
-
-function Example() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    document.title = `You clicked ${count} times`;
-  });
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
-}
-```
-
-#### Conditional Effect
-
-```js
-useEffect(() => {
-  document.title = `You clicked ${count} times`;
-}, [count]); // Only re-run the effect if count changes
-```
-
-Pass an empty array(`[]`) if you only want the effect on mount and unmount
-
-#### Clean up
-
-Add as return 
-
-```js
-  useEffect(() => {
-    // ...
-    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-    return () => {
-      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
-    };
-  });
-```
-
-## Other Hooks
+- useState => See state.md
+- useEffect => See effect.md
 
 - useContext
 
@@ -98,7 +28,7 @@ Add as return
 
 - [`useReducer`](https://reactjs.org/docs/hooks-reference.html#usereducer)
 
-  - **If your one element of your state relies on the value of another element of your state, then it's almost always best to use `useReducer`**
+  - If one element of your state relies on the value of another element of your state, then it's almost always best to use `useReducer`
 
 - [`useCallback`](https://reactjs.org/docs/hooks-reference.html#usecallback)
 

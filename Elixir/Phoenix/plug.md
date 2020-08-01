@@ -2,7 +2,7 @@
 
 Plugs implement two fts `init` and `call` which takes in a conn and return a conn
 
-Fetchable Fields
+## Fetchable Fields
 
 Must fetch them before use, best placed in the router.ex plug list. For example, the `cookies` field uses [`fetch_cookies/2`](https://hexdocs.pm/plug/Plug.Conn.html#fetch_cookies/2).
 
@@ -24,7 +24,47 @@ Must fetch them before use, best placed in the router.ex plug list. For example,
 | [send_resp(conn, status, body)](https://hexdocs.pm/plug/Plug.Conn.html#send_resp/3) | Sends a response with the given status and body.             |
 |                                                              |                                                              |
 
-### Auth Plug
+### Custom Plug
+
+react_phoenix_web/plugs
+
+```elixir
+defmodule ReactPhoenixWeb.IsOrganizer do
+  import Plug.Conn
+  import Phoenix.Controller
+
+  # alias ReactPhoenixWeb.Router.Helpers
+
+  def init(opts), do: opts
+
+  def call(conn = %{assigns: %{current_user: %{type: "organizer"}}}, _opts), do: conn
+
+  def call(conn, _opts) do
+    conn
+    |> put_status(401)
+    |> text("Unauthorized")
+    |> halt()
+  end
+end
+```
+
+some controller
+
+```elixir
+defmodule ReactPhoenixWeb.EventController do
+  use ReactPhoenixWeb, :controller
+  require Logger
+  
+  plug ReactPhoenixWeb.LoggedIn
+       when action in [:post_analytics]
+
+  plug ReactPhoenixWeb.IsOrganizer
+       when action in [:index, :create, :update, :delete, :get_analytics]
+```
+
+
+
+#### Auth Example
 
 Usage `conn.assigns.current_user`
 

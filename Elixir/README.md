@@ -119,4 +119,18 @@ Trenary op
 canvote = if age > 18, do: "Can Vote", else: "Can't Vote"
 ```
 
-#### 
+#### With
+
+```
+with {:ok, user} <- create_user(user_params),
+     {:ok, email} <- Mailer.compose_email(user) do
+  {:ok, Mailer.send_email}
+else
+  {:error, _reason} ->
+    handle_error
+end
+```
+
+In the code snippet above we've rewrite nested `case` clauses with `with`. Within `with` we invoke some functions (either anonymous or named) and pattern match on their outputs. If all matched, `with` return `do` block result, or `else` block result otherwise.
+
+We can omit `else` so `with` will return either `do` block result or the first fail result.

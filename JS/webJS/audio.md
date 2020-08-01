@@ -64,6 +64,8 @@ Html
 ## Audio Viz
 
 ```js
+const VIZ_SENSITIVITY = 150;
+
 useEffect(() => {
   let analyser; //"global"
 
@@ -76,18 +78,13 @@ useEffect(() => {
       const els = document.querySelectorAll(".audio_bar");
       // Get the new frequency data
       analyser.getByteFrequencyData(frequencyData);
-      els.forEach((el, i) => {
-        const newPercent = (frequencyData[i] / 255) * 100;
-        el.style.height = newPercent + "%";
-      });
-      // const sumOfData = frequencyData.reduce((l, c) => l + c);
-      // const max = analyser.frequencyBinCount * 255;
-      // const percentOfMax = (sumOfData / max) * 100;
-      // // el.style.height = percentOfMax + "%";
+			const average = frequencyData.reduce((acc, e) => acc + e / frequencyData.length, 0);
+      const newPercent = (average / 255) * VIZ_SENSITIVITY;
+      els[0].style.height = Math.min(newPercent, 100) + "%";
     }
   }
 
-  if (audioStream && recordingState === RECORDING_STATE) {
+  if (audioStream) {
     console.log("Creating contexts");
     const audioCtx = new AudioContext();
     const source = audioCtx.createMediaStreamSource(audioStream);
@@ -100,27 +97,12 @@ useEffect(() => {
   }
 }, [audioStream, recordingState]);
 
-function bars() {
-  const barCount = 2048 / 2;
-  const percentPer = (1 / barCount) * 100;
-  console.log(percentPer);
-  let myBars = [];
-  for (let i = 0; i < barCount; i++) {
-    myBars.push(
-      <div
-      key={i}
-  className="absolute audio_bar bg-pink-500"
-  style={{ width: percentPer + "%", left: i * percentPer + "%" }}
-/>
-);
-}
-return myBars;
-}
+
 ```
 
+## Audio Context
 
-
-## Create Audio
+Analyze and create and play audio
 
 Create, manipulate, and play audio
 
@@ -139,3 +121,6 @@ sine.connect(audioCtx.destination);
 4. Choose the final destination for the audio, such as the user's computer speakers.
 5. Establish connections from the audio sources through zero or more effects, eventually ending at the chosen destination.
 
+#### Edge Cases
+
+Chrome needs use interaction before creating an audio context ot it 

@@ -6,6 +6,8 @@ Functional so no inplace
 
 Provies set of algs to enumerate enumeratable types
 
+Loop, length
+
 ```elixir
 Enum.each list4, fn item ->
 	IO.puts item
@@ -18,12 +20,19 @@ Map, Reduce, Filter
 ```elixir
 Enum.map([1, 2, 3], fn x -> x * 2 end)
 Enum.map(%{1 => 2, 3 => 4}, fn {k, v} -> k * v end)
-Enum.map(%{1 => 2, 3 => 4}, fn {k, _} -> k === 3 end)
+#[2, 12]
+Enum.map(%{1 => 2, 3 => 4}, fn {k, _} -> k === 3 end) #[false, true]
+%{monday: 28, tuesday: 29, wednesday: 29}
+|> Enum.map(fn ({d, t}) -> {d, t * 1.8 + 32} end)
+|> Enum.into(%{})
+
 
 Enum.reduce(1..3, 0, fn (new, acc) -> new + acc end)
 
 Enum.filter([1,2,3], fn a -> a in [1,3] end)
 Enum.filter([1,2,3], fn a -> a not in [1,3] end)
+Enum.filter(%{a: 1, b: 4}, fn {x, y} -> y === 1 end)
+#[a: 1]
 ```
 
 Enums are eager so a pipe means an intermediate list is always created
