@@ -104,10 +104,15 @@ echo The previous function has a return value of $? #$? is last return value
 `man test` for info about conditionals
 
 ```bash
-if [ $1 -gt 100 ]
-then
-    echo Hey that\'s a large number.
-    pwd
+FILE=/etc/resolv.conf
+if [ -f "$FILE" ]; then
+    echo "$FILE exists."
+else 
+    echo "$FILE does not exist."
+fi
+
+if [ ! -f "$FILE" ]; then
+    echo "$FILE does not exist."
 fi
 ```
 

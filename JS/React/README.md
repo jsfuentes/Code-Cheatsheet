@@ -71,7 +71,7 @@ function App() {
 
 **Cant change props**
 
-```react
+```jsx
 import React from "react"; //jsx support
 //Functional component - Good style when no need for advanced stuff
 function Welcome(props) {
@@ -90,7 +90,7 @@ class Welcome extends React.Component {
 
 If you have user defined component(capitalized) in JSX, passes in props
 
-```react
+```jsx
 const element = <Welcome name="Sara" />;
 //OR
 const x = "Sara";
@@ -100,7 +100,7 @@ const element = <Welcome name={x} />
 
 ### Passing in props to children 
 
-```react
+```jsx
 <Component {...this.props} more="values" />
 ```
 
@@ -110,7 +110,7 @@ Lets say we are trying to make a F & C temp indicator
 
 ##### Temperature Input for F or C
 
-```react
+```jsx
 class TemperatureInput extends React.Component {
   constructor(props) {
     super(props);
@@ -137,7 +137,7 @@ class TemperatureInput extends React.Component {
 
 ##### Temp Calculator
 
-```react
+```jsx
 class Calculator extends React.Component {
   constructor(props) {
     super(props);

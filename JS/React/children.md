@@ -2,7 +2,7 @@
 
 Grid.js
 
-```js
+```jsx
 function Grid(props) {
     return <div>{props.children}</div>;
 }

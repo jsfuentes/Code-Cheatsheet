@@ -2,18 +2,16 @@
 
 Minimal 3rd party State management lib
 
-- Stores is singleton that holds all app data
+- Stores is **singleton** that holds all app data
 
-- Actions are events that trigger change state
-- Reducers are pure functional defs of how app changes on events
+- Actions are events that trigger change state, objects with a type field usually written as `"domain/eventName"` with single `payload`
+- Reducers are pure functional defs of how app changes on events, you have m
 
 Allows you to not pass stateHandlers and data down through children, by allowing global accessiblity
 
 Just like React dont mutate store, make new obj so redux trigger updates
 
-## Installation
-
-`npm install redux`
+## Function List
 
 - [createStore(reducer, [preloadedState\], [enhancer])](https://redux.js.org/api/createstore)
 - [combineReducers(reducers)](https://redux.js.org/api/combinereducers)
@@ -36,7 +34,7 @@ Just like React dont mutate store, make new obj so redux trigger updates
 
 - Can subscribe to its changes
 
-```react
+```jsx
 var store = createStore(reducer);
 //opt 2nd param initial state, opt 3rd param middlewar
 store.getState();
@@ -49,7 +47,7 @@ unsub(); //stop ft from happening
 
 ## ACTIONS
 
-```react
+```jsx
 const ADD_ITEM = "ADD_ITEM";
 
 var action = {
@@ -68,7 +66,7 @@ const addItem = item => {
 
 ## Reducers
 
-```react
+```jsx
 //initial state is [] and define below
 const reducer = (prevState = [], action) => {
     switch (action.type) {
@@ -86,7 +84,7 @@ const reducer = (prevState = [], action) => {
 
 Splitting it up instead of one ft, often for single value in an action
 
-```react
+```jsx
 var initialState = {
     items: [],
     filter: "none",

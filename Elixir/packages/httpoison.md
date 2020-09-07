@@ -1,5 +1,7 @@
 # [HTTPoison](https://hexdocs.pm/httpoison/HTTPoison.html)
 
+`mix deps.update hackney`  for **quick fix**
+
 HTTPoison uses [hackney](https://github.com/benoitc/hackney) to execute HTTP requests instead of ibrowse
 
 ```elixir

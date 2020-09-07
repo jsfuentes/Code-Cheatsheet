@@ -1,7 +1,5 @@
 # Generators
 
-### Generators
-
 Used as learning tools
 
 Generating a schema in increasing complexity

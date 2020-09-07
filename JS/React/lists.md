@@ -3,7 +3,7 @@
 - Can just render an array of jsx 
 - But you should have a **key**  that is  *permanent* and *unique*(in the array) which identifies which items have changed/added/removed
 
-```react
+```jsx
 const numbers = [1, 2, 3, 4, 5];
 const listItems = numbers.map((number) =>
   <li key={number.toString()}>
@@ -30,7 +30,7 @@ const listItems = numbers.map((number) =>
 
 Keys arent passed to components
 
-```react
+```jsx
 const content = posts.map((post) =>
   <Post
     key={post.id} //Post props.key wont work

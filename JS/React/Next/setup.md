@@ -12,5 +12,19 @@ npm init next-app nextjs-blog --example "https://github.com/vercel/next-learn-st
 yarn dev
 ```
 
+## Absolute Path Imports
+
+Jsconfig.json
+
+```js
+{
+  "compilerOptions": {
+    "paths": {
+      "src": ["src"]
+    }
+  }
+}
+```
+
 
 

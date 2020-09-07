@@ -39,7 +39,7 @@ return (<BrowserRouter>
 
 #### 3 Render Options
 
-```react
+```jsx
 <BrowserRouter>
   <Route path="/home" component={Home} />
   <Route path="/about" render{ () =>  <About {...props} extra={someVariable} /> } />
@@ -51,7 +51,7 @@ return (<BrowserRouter>
 
 #### Link
 
-```react
+```jsx
 <Link to="/">HOME</Link>
 //build upon prev url
 <Link to="{match.url+"/email"}"> Email </Link>
@@ -63,7 +63,7 @@ return (<BrowserRouter>
 
 1) Return Redirect Object
 
-```react
+```jsx
 <Redirect to='/error'/>
 
 //Inside switches

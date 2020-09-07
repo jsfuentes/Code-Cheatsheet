@@ -27,6 +27,7 @@ Elixir uses **supervisers** and processes fail fast. If there is an error, resta
 -  `or`, `and`, `not`  and can short circuit
 -  `==`, `!=`, `===`(doesn't count integers and floats as equal), `!==`, `<=`, `>=`, `<` and `>`
 -  Use pin operator `^` to pattern match against variables cur value: `x = 1 ^x = 2` => Error no match 1 = 2 ( apparently also used in queries for [type coercion](https://dev.to/lasseebert/til-ecto-s-pin-is-coercing-19fh))
+-  `"a"` is UTF-8 encoded binary while `'a'` is charlist 
 
 test.exs
 
@@ -66,14 +67,6 @@ x = IO.gets("yes or no?") #prompts user and return string with newline
 `IO.inspect [97, 98] ` => [a,b]
 
 `IO.inspect [97, 98], char_lists: :as_lists` => [97, 98]
-
-#### Math
-
-All ops normal, except `/` always returns float
-
-div(5, 4) is integer division => 1
-
-rem(5, 4) is modulo => 1
 
 ### Branches
 

@@ -1,4 +1,4 @@
-## Pages
+# Pages
 
 Pages are associated with a route based on their **file name**. For example, in development:
 
@@ -140,3 +140,34 @@ export async function getStaticProps({ params }) {
 ## Router
 
 If you want to access the Next.js router, you can do so by importing the `useRouter` hook from `next/router`. Take a look at our [router documentation](https://nextjs.org/docs/routing/dynamic-routes) to learn more.
+
+### Redirecting in JS
+
+```jsx
+import { useRouter } from 'next/router'
+
+function ActiveLink({ children, href }) {
+  const router = useRouter()
+  const style = {
+    marginRight: 10,
+    color: router.pathname === href ? 'red' : 'black',
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    router.push(href)
+    router.push('/post/[pid]', '/post/abc')
+  }
+
+  return (
+    <a href={href} onClick={handleClick} style={style}>
+      {children}
+    </a>
+  )
+}
+
+export default ActiveLink
+```
+
+
+

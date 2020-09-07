@@ -7,6 +7,9 @@ Great playground in chrome console
 1. Thinking the value is invalid when it is actually undefined
 2. Not awaiting for a promise
 3. Can't do await in map/filter ft
+4. Equality and booleans are jank in js
+   1. `[] !== []` |  `Boolean([]) === true` 
+5. Problems with variable hoisting(using value before its defined, without throwing error)
 
 ## Console
 

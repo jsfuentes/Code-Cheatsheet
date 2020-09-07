@@ -1,5 +1,7 @@
 # Heroku
 
+1000 free dyno hours split across all your apps
+
 ```bash
 npm install -g heroku
 ```

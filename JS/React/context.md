@@ -12,7 +12,7 @@ For multiple contexts, just add multiple providers and contexts if needed
 
 PizzaContext.js
 
-```js
+```jsx
 import React from "react";
 
 const ThemeContext = React.createContext('light'); //default value
@@ -48,7 +48,7 @@ export default function Pizza(props) {
 
 - Contexttypes can access data in classes
 
-```js
+```jsx
 import ThemeContext from "./ThemeContext";
 
 class ThemedButton extends React.Component {
@@ -68,7 +68,7 @@ Pass a ft with the context that lets you toggle it
 
 theme-context.js
 
-```js
+```jsx
 export const themes = {
   light: { foreground: '#000000 },
   dark: {foreground: '#ffffff' },

@@ -4,7 +4,7 @@
 
 Inputs must have unique name
 
-```react
+```jsx
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -31,7 +31,7 @@ Normally form elements such as `<input> `  maintain their own state and update b
 
 - React normalizes different tags like select, textarea, and text to have value attribute
 
-```react
+```jsx
 export default function Create() {
   const [name, setName] = useState("");
   const [noEvent, setNoEvent] = useState(true);
@@ -88,7 +88,7 @@ export default function Create() {
 
 ## Custom Hooks
 
-```js
+```jsx
 const useSearch = (callback) => {
     const [inputs, setInputs] = useState({});
 
@@ -126,7 +126,7 @@ const useSearch = (callback) => {
 
 becomes
 
-```react
+```jsx
 <select value={this.state.value} onChange={this.handleChange}>
     <option value="coconut">Coconut</option>
     <option value="mango">Mango</option>

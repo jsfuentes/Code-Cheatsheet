@@ -32,7 +32,7 @@ heroku buildpacks:add https://github.com/gjaldon/heroku-buildpack-phoenix-static
 elixir_buildpack.config
 
 ```bash
-elixir_version=1.8.1
+elixir_version=1.10.1
 
 # available versions https://github.com/HashNuke/heroku-buildpack-elixir-otp-builds/blob/master/otp-versions
 erlang_version=21.2.5

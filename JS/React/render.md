@@ -1,6 +1,6 @@
 # Rendering
 
-```react
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -13,7 +13,7 @@ ReactDOM.render(element, document.getElementById('root'));
 - Need to create new element to change
 - Virtual DOM changes only whats needed
 
-```react
+```jsx
 function tick() {
   const element = (
     <div>
@@ -30,7 +30,7 @@ setInterval(tick, 1000);
 
 Simple
 
-```react
+```jsx
 function Greeting(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {

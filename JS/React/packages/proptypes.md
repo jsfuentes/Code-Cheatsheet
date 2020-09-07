@@ -4,7 +4,7 @@ Typechecking only in development, only gives a console warning
 
 To run typechecking on the props for a component, you can assign the special `propTypes` property:
 
-```react
+```jsx
 import PropTypes from 'prop-types';
 
 class Greeting extends React.Component {
@@ -22,7 +22,7 @@ Greeting.propTypes = {
 
 ### Default Values
 
-```js
+```jsx
 // Specifies the default values for props:
 Greeting.defaultProps = {
   name: 'Stranger'

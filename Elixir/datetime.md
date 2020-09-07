@@ -33,3 +33,11 @@ DateTime.from_unix(1594370959) #{:ok, ~U[2020-07-10 08:49:19Z]}
 DateTime.from_unix!(1594370959)
 ```
 
+#### Comparison
+
+Normaly < and > don't work well
+
+```elixir
+DateTime.compare(now, se.start_time) #:lt, :eq, :gt
+```
+

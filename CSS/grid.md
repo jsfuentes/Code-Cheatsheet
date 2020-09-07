@@ -45,7 +45,7 @@ CSS
 
 HTML
 
-```react
+```jsx
 <div className="app">
   <div className="header">
     <div> Header </div>

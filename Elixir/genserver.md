@@ -35,10 +35,13 @@ defmodule SimpleGen do
 end
 ```
 
-Usage
+### Usage
+
+`start_link(module, init_arg, options \\ [])` calls init of the module with the init_args
 
 ```elixir
-{:ok, pid} = SimpleGen.start_link() #starts new linked process(one dies both die)
+{:ok, pid} = GenServer.start_link() #starts new linked process(one dies both die)
+
 counter = GenServer.call(pid, :get_data) #sync/blocking, default timeout 5 sec
 IO.puts "Counter: #{counter}"
 GenServer.cast(pid, :increment)

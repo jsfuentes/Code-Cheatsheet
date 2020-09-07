@@ -205,5 +205,11 @@ audio: {
 video: {
   frameRate: 30
 }
+
+//prefer camera if available
+{ video: { deviceId: myPreferredCameraDeviceId } }
+//only this camera
+{ video: { deviceId: { exact: myExactCameraOrBustDeviceId } } }
+
 ```
 

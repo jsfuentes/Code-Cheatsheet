@@ -55,3 +55,13 @@ yarn add -D eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-r
 ```
 
 Can add additional config in prettier
+
+## Rules
+
+[No-unescaped-entities](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unescaped-entities.md)
+
+- The preferred way to include one of these characters is to use the HTML escape code.
+  - `>` can be replaced with `>`
+  - `"` can be replaced with &ldquo;, &quot;
+  - `'` can be replaced with &lsquo;, &apos;
+  - `}` can be replaced with &#125;

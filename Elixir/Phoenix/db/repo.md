@@ -94,6 +94,10 @@ counts_and_events =
 #### Update
 
 ```elixir
+call
+|> Call.changeset(attrs)
+|> Repo.update()
+    
 MyRepo.update_all(Post, set: [title: "New title"])
 
 MyRepo.update_all(Post, inc: [visits: 1])

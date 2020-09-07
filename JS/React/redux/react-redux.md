@@ -6,12 +6,6 @@ React component's state and action dispatching methods/event handles is now pass
 
 So redux changes passed in as props, trigger rerender 
 
-### INstallation
-
-`npm install redux`
-
-`npm install react-redux`
-
 ## Components Types
 
 ### Container Components
@@ -28,9 +22,9 @@ Present their props just as normal react components and use their prop callbacks
 
 ### Provider
 
-Provide your store to all your React components
+Provide your store to all your React components, wrap your app
 
-```react
+```jsx
 import { Provider } from 'react-redux';
 
 <Provider store={store}>
@@ -42,7 +36,7 @@ import { Provider } from 'react-redux';
 
 Connect store state to component props
 
-```react
+```jsx
 import { connect } from 'react-redux';
 
 //how will the props be available

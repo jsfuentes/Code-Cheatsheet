@@ -2,22 +2,63 @@
 
  (Open Telecom Platform) is a collection of framework/lib/tools written in Erlang
 
+Horrible error messaging
+
 # [Erlang Term Storage (ETS)](https://elixirschool.com/en/lessons/specifics/ets/)
 
-ETS is a robust in-memory store for Elixir and Erlang objects that comes included. ETS is capable of storing large amounts of data and offers constant time data access.
+- [Docs](http://erlang.org/doc/man/ets.html)
 
-Tables in ETS are created and owned by individual processes. When an owner process terminates, its tables are destroyed. You can have as many ETS table as you want, the only limit is the server memory. A limit can be specified using the `ERL_MAX_ETS_TABLES` environment variable.
+In-memory store key value for elixir and erlang
 
-Owned by process that creates it, doen't have bottleneck of agent.
+\>10x Faster than redis according [to](https://github.com/minhajuddin/redis_vs_ets_showdown)
 
-```elixir
-table_reference = :ets.new(:table_name, [:set])
-:ets.insert
-```
+- Created and owned by individual processes(destroyed on exit), so back with GenServer and now any process can access, no bottleneck
+-  Only limit is server memory.
+- Because multiple can access at the same time unlike message based agents, operations must be atomic (ft for something like counter updating)
+  - Concurrent reads with serial writes is a common ETS pattern
 
-### Uses
+### Applications of ETS
 
 - persisent shared state(tzdata, )
-- ephemeral shared state(cache)
+- ephemeral shared state(cache, rate limiter)
 - IPC
+
+### Usage
+
+```elixir
+tab = :ets.new(:my_table, [:set]) #=> 8211
+
+:ets.insert(tab, {:key1, "value1"}) #=> true
+
+:ets.lookup(tab, :key1) #=> [key1: "value1"]
+```
+
+#### Advanced
+
+```elixir
+:ets.tab2list(:rate_limiter_requests) #[[key1: "value1"]]
+```
+
+http://erlang.org/doc/man/disk_log.html
+
+### [Disk Based ETS(DETS)](https://erlang.org/doc/man//dets.html)
+
+APIS are interchangeable except
+
+-  how tables are created with named table default
+-  `:dets` vs `:ets` and fewer features
+- Slower cuz disk
+
+```elixir
+{:ok, table} = :dets.open_file(:disk_storage, [type: :set]) #{:ok, :disk_storage}
+:dets.open_file(:file_table, [{:file, "test/test.txt"}])
+```
+
+####Usage
+
+```elixir
+:dets.insert(table, {:k, 1}) #can also use :name to access table as that is what table is
+:dets.lookup(:file_table, :a) # => [a: 3]
+:dets.close(:file_table) #If you don't do this, the table will be repaired the next time it is opened.
+```
 

@@ -2,7 +2,7 @@
 
 Can just import a image and then the result will the final url after web pack
 
-```js
+```jsx
 import React from 'react';
 import logo from './logo.png'; // Tell Webpack this JS file uses this image
 

@@ -14,7 +14,7 @@
 
 becomes
 
-```react
+```jsx
 //React
 <button onClick={activateLasers}>
   Activate Lasers
@@ -34,7 +34,7 @@ call `preventDefault` rather then return false
 
 becomes
 
-```react
+```jsx
 //React
 function ActionLink() {
   function handleClick(e) {
@@ -58,7 +58,7 @@ Pass functions into event handlers
 
 - use `event.persist();` if you access async because react event objects are recycled so could be different
 
-```react
+```jsx
 class Toggle extends React.Component {
   constructor(props) {
     super(props);
@@ -97,7 +97,7 @@ Generally, if you refer to a method without `()` after it, such as `onClick={
 
 ##### Not using bind()?
 
-```react
+```jsx
 class LoggingButton extends React.Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.
@@ -117,7 +117,7 @@ class LoggingButton extends React.Component {
 
 ### Passing arg to Event Handler
 
-```react
+```jsx
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
 <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 ```

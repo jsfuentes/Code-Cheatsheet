@@ -64,27 +64,6 @@ many_to_many :tags, MyApp.Tag, join_through: "posts_tags"
 
 Finally, schemas can also have virtual fields by passing the `virtual: true` option.
 
-### [ChangeSets](https://hexdocs.pm/ecto/Ecto.Changeset.html) and validations
-
-Changesets define data transformations(type casting, filtering, validation)
-
-```elixir
-def changeset(%User{} = user, attrs) do
-  user
-  #mark new data(attrs) and columns to update
-  |> cast(attrs, [:name, :email, :bio]) 
-  #ensure fields present
-  |> validate_required([:name, :email, :bio])
-  |> validate_length(:bio, min: 2)
-  |> validate_format(:email, ~r/@/)
-end
-```
-
-```elixir
-changeset = Ecto.Changeset.cast(%User{}, %{"age" => "0"}, [:age])
-user = Repo.insert!(changeset)
-```
-
 ### Example
 
 Simple User

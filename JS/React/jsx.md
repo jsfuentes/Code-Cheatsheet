@@ -10,7 +10,7 @@ Need to import react to use
 
 - its elements are just JavaScript objects, you could potentially look at and clone with changes
 
-- ```react
+- ```jsx
   const name = 'Josh Perez';
   const element = <h1>Hello, {name}</h1>;
   
@@ -31,7 +31,7 @@ Need to import react to use
 
 #### JSX transform
 
-```react
+```jsx
 const element = (
   <h1 className="greeting">
     Hello, world!
@@ -55,7 +55,7 @@ const element = {
 
 ### Rendering with Variable
 
-```react
+```jsx
 let button = <LogoutButton onClick={this.handleLogoutClick} />;
 return (  <div>
         <Greeting isLoggedIn={isLoggedIn} />
@@ -66,7 +66,7 @@ return (  <div>
 
 ### Inline Logic 
 
-```react
+```jsx
 function Mailbox(props) {
   const unreadMessages = props.unreadMessages;
   return (
@@ -82,7 +82,7 @@ function Mailbox(props) {
 }
 ```
 
-```react
+```jsx
 render() {
   const isLoggedIn = this.state.isLoggedIn;
   return (
@@ -97,7 +97,7 @@ render() {
 
 just return null
 
-```react
+```jsx
 function WarningBanner(props) {
   if (!props.warn) {
     return null;
@@ -113,7 +113,7 @@ function WarningBanner(props) {
 
 ## Fragments
 
-```js
+```jsx
 class Columns extends React.Component {
   render() {
     return (

@@ -28,3 +28,10 @@ curl https://api.mux.com/video/v1/assets \
 curl -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" https://api.linkedin.com/v2/me\?projection\=\(id,profilePicture,localizedHeadline,headline,vanityName\) | json_pp
 ```
 
+--user, is transformed in basic authorization header so
+
+```
+Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l
+```
+
+The text after the Basic keyword is a base64 encoded text string of the username:password combination provided with the --user parameter

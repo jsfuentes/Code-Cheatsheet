@@ -40,15 +40,15 @@ export async function getStaticProps() {
 
 To use Server-side Rendering, you need to export [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) instead of `getStaticProps` from your page.
 
-Called at request time and context contains request specific parameters
+Called at **request time** and context contains request specific parameters
 
 ```jsx
 export async function getServerSideProps(context) {
-  return {
-    props: {
-      // props for your component
-    }
-  }
+const res = await fetch(`https://.../data`)
+  const data = await res.json()
+
+  // Pass data to the page via props
+  return { props: { data } }
 }
 ```
 

@@ -26,13 +26,16 @@ Enum.map(%{1 => 2, 3 => 4}, fn {k, _} -> k === 3 end) #[false, true]
 |> Enum.map(fn ({d, t}) -> {d, t * 1.8 + 32} end)
 |> Enum.into(%{})
 
-
 Enum.reduce(1..3, 0, fn (new, acc) -> new + acc end)
 
 Enum.filter([1,2,3], fn a -> a in [1,3] end)
 Enum.filter([1,2,3], fn a -> a not in [1,3] end)
 Enum.filter(%{a: 1, b: 4}, fn {x, y} -> y === 1 end)
 #[a: 1]
+
+#returns first val that fn returns truthy val or default
+Enum.find(enum, default, fn)
+Enum.find([1,2], 3, fn x -> x > 3 end) # 3
 ```
 
 Enums are eager so a pipe means an intermediate list is always created

@@ -31,7 +31,10 @@ map["b"] # String keys
 
 #For dynamic maps
 map["non_existing_key"] #nil
+map[:non_existing_key] #nil
 map.non_existing_key #Key Error
+
+Map.has_key?(event, :description)
 ```
 
 #### Setting

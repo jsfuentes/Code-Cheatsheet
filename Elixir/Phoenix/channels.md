@@ -122,9 +122,9 @@ channel.on("new_msg", payload => {
 })
 
 channel.push(event, payload)
-  .receive('ok', data => resolve(data))
-  .receive('error', rejectUnsub)
-  .receive('timeout', rejectUnsub)
+  .receive('ok', data => debug(data))
+  .receive('error', reasons => debug("er", reasons))
+  .receive('timeout', () => debug("timeout"))
 
 function onClick() {
   channel.push("new_msg", {body: "test"})

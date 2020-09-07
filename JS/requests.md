@@ -121,6 +121,30 @@ const resp = await axios
   })
 ```
 
+#### Advanced Axios
+
+Some random code I found to test out
+
+```js
+const api = axios.create({
+  baseURL: '/',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+})
+
+api.interceptors.request.use(
+  config => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      config.headers['Authorization'] = `Token ${token}`
+    }
+    return config
+  },
+  error => Promise.reject(error)
+)
+```
+
 ## Requests
 
 Simplified version of python 

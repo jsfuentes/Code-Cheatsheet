@@ -8,10 +8,13 @@ Infrastructure as a service:
 
 Platform as a service:
 
-- Heroku
-- EBS
+- Heroku (Best Always Free Tier with both DB and Compute)
+- AWS EBS
+- Render (Startup out of Stripe that is excellent combo of cheap/easy, no free tier rn)
 
 Static Site Servers:
+
+- [Vercel](https://vercel.com)
 
 - [Netlify](https://www.netlify.com/)
 - Surge

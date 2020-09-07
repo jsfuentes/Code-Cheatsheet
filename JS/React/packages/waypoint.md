@@ -19,7 +19,7 @@ A waypoint normally fires `onEnter` and `onLeave` as you are scrolling, but it c
 
 ## Example
 
-```react
+```jsx
  import { Waypoint } from "react-waypoint";
 
 class MenuBar extends Component {

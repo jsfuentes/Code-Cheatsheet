@@ -11,6 +11,7 @@
 
 - Only call Hooks **at the top level**. Don’t call Hooks inside loops, conditions, or nested functions.
 - Only call Hooks **from React function components**.
+- Functions/useCallbacks must be above their use in dependency arrays or else they *DONT ACTUALLY CAUSE A RERENDER*(cuz hoisting)
 
 ## All Hooks
 
@@ -20,9 +21,8 @@
 - useContext
 
   - Still need MyContext.Provider above
-    - 
 
-  ```js
+  ```jsx
   const value = useContext(MyContext);
   ```
 
@@ -34,7 +34,7 @@
 
   Not actually cheaper than defining function by itself. But makes the reference the same for React's equality check if you use the ft in **another hook or as a prop** to avoid reruns
 
-  - ```react
+  - ```jsx
     function MeasureExample() {
       const [height, setHeight] = useState(0);
     
@@ -57,15 +57,17 @@
 
 - [`useMemo`](https://reactjs.org/docs/hooks-reference.html#usememo)
 
-  - ```js
+  - ```jsx
   const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
     ```
 
-  - Only reruns op when array of dependencies changes, optimization 
+  - Your app must still work perfectly well (maybe a bit slow though) if `useMemo` calls your callback on every render.
+
+  - Introduces overhead, but for expensive pure computations
 
 - [`useRef`](https://reactjs.org/docs/hooks-reference.html#useref)
 
-  - ```react
+  - ```jsx
     function TextInputWithFocusButton() {
       const inputEl = useRef(null);
       const onButtonClick = () => {
@@ -95,7 +97,7 @@
 
 ##### useWindowWidth
 
-```js
+```jsx
 function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
   
@@ -111,7 +113,7 @@ function useWindowWidth() {
 }
 ```
 
-```js
+```jsx
 function MyResponsiveComponent() {
   const width = useWindowWidth(); // Our custom Hook
   return (

@@ -15,7 +15,7 @@ Encapulsate changes in the compoonent
 
 ### Create a Ticking Clock
 
-```react
+```jsx
 class Clock extends React.Component {
   constructor(props) {
     super(props);
@@ -68,7 +68,7 @@ ReactDOM.render(
 
 Use setState() to set state, except in constructor
 
-```react
+```jsx
 // Wrong
 this.state.comment = 'Hello';
 
@@ -80,7 +80,7 @@ setState() is **async** and multiple calls could be buffer
 
 Use overloaded setState() to rely on current state/props
 
-```react
+```jsx
 // Wrong
 this.setState({
   counter: this.state.counter + this.props.increment,
@@ -94,7 +94,7 @@ this.setState((prevState, props) => ({
 
 setState() merges given dict with current state overriding keys
 
-```react
+```jsx
   constructor(props) {
     super(props);
     this.state = {
@@ -118,7 +118,7 @@ Data flows down, state can only affect components below
 
 State vs stateless components are implementation detail and should be interchangeable
 
-```react
+```jsx
 <FormattedDate date={this.state.date} />
 ```
 

@@ -50,11 +50,23 @@ undefined == null //true
 ## Type Conversion
 
 ```js
-1.toString() //='1'
+let x = 132;
+x.toString(); //="132"
+//Noted 132.toString() doesn't work
+
 parseInt('42', 10) //42
 parseInt('42px', 10) //42
 parseInt('10a,a22') //10
 ```
 
 Find type with `typeof(var)`
+
+### Why Javascript Sucks
+
+[Can use a variable before it is initalized with no error](https://www.w3schools.com/js/js_hoisting.asp)
+
+```js
+Boolean([]) //true
+Boolean({}) //true
+```
 

@@ -27,7 +27,7 @@ function Example() {
 
 #### Conditional Effect
 
-```js
+```jsx
 useEffect(() => {
   document.title = `You clicked ${count} times`;
 }, [count]); // Only re-run the effect if count changes
@@ -39,7 +39,7 @@ Pass an empty array(`[]`) if you only want the effect on mount and unmount
 
 Add as return 
 
-```js
+```jsx
   useEffect(() => {
     // ...
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);

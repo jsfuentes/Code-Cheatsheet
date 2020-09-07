@@ -19,8 +19,6 @@ Task.start(fn -> send_email_to_user(user) end) # 🎉
 #[{:ok, %{..}}, {:ok, %{..}}]
 ```
 
-
-
 ## Task Supervisor Setup
 
 Application.ex
