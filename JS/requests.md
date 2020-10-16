@@ -1,4 +1,4 @@
-# Making a request
+#  Making a request
 
 Several Options:
 
@@ -46,7 +46,7 @@ axios.post('/user', {
 
 - `err.response.status` if any other server status than 2xx
 - `err.request` if request was made without a response
-- `err.message === "Network Error"` [special network error case]((https://github.com/axios/axios/issues/383#issuecomment-234079506))
+- `err.message === "Network Error"` [special network error case](https://github.com/axios/axios/issues/383#issue)
 - `err.message` if something while setting up request
 
 ```js
@@ -59,7 +59,7 @@ axios.get('/user/12345')
     } else if (err.request) {
       // `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
       console.log(err.request);
-    } else if(err.message === "Network Error") {
+    } else if(!err.status) {
       console.log(err.message);
     } else {
       console.log('Error', err.message);

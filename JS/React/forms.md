@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form'
 
 export default function App() {
   const { register, handleSubmit, errors } = useForm()
-  const onSubmit = data => { console.log(data) }
+  function onSubmit(data) {console.log(data)};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

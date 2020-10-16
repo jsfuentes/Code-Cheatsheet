@@ -12,6 +12,7 @@ yarn add
 yarn add -D #add as dev dependecies
 yarn [script]
 yarn upgrade #upgrade all packages to latest version of specified range
+yarn upgrade --latest #upgrade across major versions too, potentially changing package.json
 ```
 
 # Npm

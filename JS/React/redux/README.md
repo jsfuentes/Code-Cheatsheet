@@ -1,5 +1,7 @@
 # Redux
 
+Look at redux_toolkit.md for the modern usage
+
 ## Three Principles
 
 1) **The [global state](https://redux.js.org/glossary#state) of your application is stored in an object tree within a single [store](https://redux.js.org/glossary#store).**

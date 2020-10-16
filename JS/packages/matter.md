@@ -1,5 +1,11 @@
 # Matter
 
+```bash
+yarn add matter-attractors matter-js matter-wrap
+```
+
+--------
+
 Physics engine on canvas
 
 ```jsx
@@ -8,14 +14,17 @@ import ReactDOM from "react-dom";
 import Matter from "matter-js";
 import MatterAttractors from "matter-attractors";
 import MatterWrap from "matter-wrap";
-import { randomColor } from "src/utils/helpers.js";
 import PropTypes from "prop-types";
+
+import { randomColor } from "src/utils/helpers";
+import { isMobile } from "src/utils/utils";
 const debug = require("debug")("app:LandingViz");
 
-const BALL_COUNT = 150;
+let BALL_COUNT = 150;
+if (isMobile) BALL_COUNT = 50;
 const BALL_MIN_RADIUS = 10;
-const BALL_MAX_RADIUS = 12;
-const BALL_SPEED = 2;
+const BALL_MAX_RADIUS = 16;
+const BALL_SPEED = 1;
 
 const Engine = Matter.Engine,
   Render = Matter.Render,
@@ -31,13 +40,12 @@ const Engine = Matter.Engine,
 
 Matter.use(MatterAttractors);
 Matter.use(MatterWrap);
-MatterAttractors.Attractors.gravityConstant = 0.00005;
+MatterAttractors.Attractors.gravityConstant = 0.0001;
 
 export default function LandingViz(props) {
   const tableRef = useRef(null);
 
   function addCircles(world, render) {
-    debug("revder", render);
     for (let i = 0; i < BALL_COUNT; i++) {
       const radius = Common.random(BALL_MIN_RADIUS, BALL_MAX_RADIUS);
 
@@ -50,6 +58,7 @@ export default function LandingViz(props) {
           frictionAir: 0,
           render: {
             fillStyle: randomColor(),
+            // strokeStyle: "#FFFFFF",
           },
           plugin: {
             attractors: [
@@ -75,35 +84,63 @@ export default function LandingViz(props) {
   }
 
   useEffect(() => {
-    const CANVAS_WIDTH = tableRef.current.clientWidth;
-    const CANVAS_HEIGHT = tableRef.current.clientHeight;
+    setTimeout(() => {
+      const CANVAS_WIDTH = tableRef.current.clientWidth;
+      const CANVAS_HEIGHT = tableRef.current.clientHeight;
 
-    const engine = Engine.create();
-    engine.world.gravity.scale = 0;
+      const engine = Engine.create();
+      engine.world.gravity.scale = 0;
 
-    const render = Render.create({
-      element: tableRef.current,
-      engine: engine,
-      options: {
-        width: CANVAS_WIDTH,
-        height: CANVAS_HEIGHT,
-        background: "transparent",
-        // wireframes: false,
-      },
-    });
+      const render = Render.create({
+        element: tableRef.current,
+        engine: engine,
+        options: {
+          width: CANVAS_WIDTH,
+          height: CANVAS_HEIGHT,
+          background: "transparent",
+          wireframes: false,
+        },
+      });
 
-    const runner = Runner.create();
-    Runner.run(runner, engine);
-    Render.run(render);
+      const runner = Runner.create();
+      Runner.run(runner, engine);
+      Render.run(render);
 
-    addCircles(engine.world, render);
+      addCircles(engine.world, render);
 
-    Engine.run(engine);
+      // // add mouse control
+      // const mouse = Mouse.create(render.canvas),
+      //   mouseConstraint = MouseConstraint.create(engine, {
+      //     mouse: mouse,
+      //     constraint: {
+      //       stiffness: 0.2,
+      //       render: {
+      //         visible: false,
+      //       },
+      //     },
+      //   });
+      // World.add(engine.world, mouseConstraint);
 
-    return () => {
-      Matter.Render.stop(render);
-      Matter.Runner.stop(runner);
-    };
+      // Matter.Events.on(mouseConstraint, "mousedown", function (event) {
+      //   addCircle(engine.world);
+      // });
+
+      // mouseConstraint.mouse.element.removeEventListener(
+      //   "mousewheel",
+      //   mouseConstraint.mouse.mousewheel
+      // );
+      // mouseConstraint.mouse.element.removeEventListener(
+      //   "DOMMouseScroll",
+      //   mouseConstraint.mouse.mousewheel
+      // );
+
+      Engine.run(engine);
+
+      return () => {
+        Matter.Render.stop(render);
+        Matter.Runner.stop(runner);
+      };
+    }, 1500);
   }, []);
 
   return <div className="w-full h-full" ref={tableRef} />;

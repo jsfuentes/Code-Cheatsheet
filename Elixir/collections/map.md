@@ -62,6 +62,8 @@ def hasState?(%{state: _}), do: true
 ```elixir
 Map.pop(%{a: 1}, :a) #{1, %{}}
 Map.pop(%{a: 1}, :b, 3) #default 3: {3, %{a: 1}}
+
+Map.delete(map, key)
 ```
 
 Pipe Merging

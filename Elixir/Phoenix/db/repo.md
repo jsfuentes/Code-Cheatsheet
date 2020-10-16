@@ -25,6 +25,8 @@ Repo.one(from ea in EventAnalytics, where: ea.email == "j@g" and ea.type == "RSV
 
 See query for more complex stuff
 
+*If variable is nil, don't just compare use is_nil*
+
 ##### Insert
 
 ```elixir

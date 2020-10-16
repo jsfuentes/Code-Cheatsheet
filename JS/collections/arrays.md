@@ -1,6 +1,6 @@
 # Array
 
-## basics
+## Basics
 
 ```javascript
 var fruits = ['Apple', 'Banana'];

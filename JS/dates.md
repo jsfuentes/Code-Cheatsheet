@@ -1,5 +1,7 @@
 # Dates
 
+For more accuracy use, [window.performance.now() ](https://stackoverflow.com/questions/6233927/microsecond-timing-in-javascript)
+
 ```javascript
 Date() // => "Tue Jan 21 2020 23:50:09 GMT-0800 (Pacific Standard Time)"
 let x = new Date() //create Date object

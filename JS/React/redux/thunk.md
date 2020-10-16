@@ -1,5 +1,31 @@
 # Thunk
 
+[Do I need async middleware? ](http://stackoverflow.com/questions/35411423/how-to-dispatch-a-redux-action-with-a-timeout/35415559#35415559)
+
+Just defining a function that takes the dispatch works fine most of the time
+
+```javascript
+let nextNotificationId = 0
+export function showNotificationWithTimeout(dispatch, text) {
+  const id = nextNotificationId++
+  dispatch(showNotification(id, text))
+
+  setTimeout(() => {
+    dispatch(hideNotification(id))
+  }, 5000)
+}
+
+// component.js
+showNotificationWithTimeout(this.props.dispatch, 'You just logged in.')
+
+// otherComponent.js
+showNotificationWithTimeout(this.props.dispatch, 'You just logged out.')    
+```
+
+More advanced async control flows like multi-step onboarding or retrying failed requests might need [Redux Saga](https://github.com/yelouafi/redux-saga) or [Redux Loop](https://github.com/raisemarketplace/redux-loop). 
+
+## Overview
+
 The Redux core (ie, `createStore`) is completely synchronous. When you call `store.dispatch()`, the store runs the root reducer, saves the return value, runs the subscriber callbacks, and returns, with no pause. By default, any asynchronicity has to happen outside of the store.
 
 But, what if you want to have async logic interact with the store by dispatching or checking the current store state? That's where [Redux middleware](https://redux.js.org/advanced/middleware) come in. They extend the store, and allow you to:
@@ -22,14 +48,44 @@ For further explanations, see [these articles explaining thunks in the `redux-th
 
 ## Usage
 
-The thunk middleware will see the function, prevent it from actually reaching the "real" store, and call our function and pass in `dispatch` and `getState` as arguments. So, a "thunk function" looks like this:
+ **If Redux Thunk middleware is enabled, any time you attempt to dispatch a function instead of an action object, the middleware will call that function with `dispatch` method itself as the first argument** and `getState` as the second.
+
+ So, a "thunk function" looks like this:
 
 ```js
+export const fetchIssues = (
+  org: string,
+  repo: string,
+  page?: number
+): AppThunk => async dispatch => {
+  try {
+    dispatch(getIssuesStart())
+    const issues = await getIssues(org, repo, page)
+    dispatch(getIssuesSuccess(issues))
+  } catch (err) {
+    dispatch(getIssuesFailure(err.toString()))
+  }
+}
+```
+
+### Basics
+
+```jsx
 function exampleThunkFunction(dispatch, getState) {
   // do something useful with dispatching or the store state here
 }
 
 // normally an error, but okay if the thunk middleware is added
 store.dispatch(exampleThunkFunction)
+
+//Using like regular action creator
+function exampleThunk() {
+  return function exampleThunkFunction(dispatch, getState) {
+    // do something useful with dispatching or the store state here
+  }
+}
+
+// normally an error, but okay if the thunk middleware is added
+store.dispatch(exampleThunk())
 ```
 

@@ -13,37 +13,11 @@ yarn add react-redux @reduxjs/toolkit
 yarn add -D redux-devtools
 ```
 
-`@reduxjs/toolkit` => includes the Redux core, as well as other key packages like(Redux Thunk and Reselect) and
+`@reduxjs/toolkit` => includes the Redux core with some sweet sugar, as well as other key packages like(Redux Thunk and Reselect)
 
-### 1) Add Store
+###1) Create Slice
 
-*Using latest configureStore with basic middleware instead of older createStore*
-
-index.js
-
-```jsx
-import { configureStore } from "@reduxjs/toolkit";
-import React, { Suspense } from "react";
-import ReactDOM from "react-dom";
-
-import rootReducer from "./redux/rootReducer.js";
-import App from "./App.js"
-
-const store = configureStore({
-  reducer: rootReducer,
-});
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
-```
-
-###2) Create Slice
-
-featureSlice.js
+redux/todos.js
 
 ```jsx
 import { createSlice } from '@reduxjs/toolkit'
@@ -81,7 +55,9 @@ export const login = ({ username, password }) => async dispatch => {
 }
 ```
 
-### 3) Create root reducer
+### 2) Create root reducer
+
+redux/rootReducer.js
 
 ```jsx
 import { combineReducers } from '@reduxjs/toolkit'
@@ -95,22 +71,63 @@ export default combineReducers({
 })
 ```
 
+### 3) Add Store
+
+index.js
+
+```jsx
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import React from "react";
+import ReactDOM from "react-dom";
+
+import rootReducer from "./redux/rootReducer.js";
+import App from "./App.js"
+
+const store = configureStore({
+  reducer: rootReducer,
+});
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+```
+
 ### 4) Use in App
 
 ```jsx
-import {useDispatch, useSelector} from 'react-redux';
-import {login, logout} from './store/user'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-function App() {
-  const dispatch = useDispatch()
-  const { user } = useSelector(state => state.user)
+import { addTodo, toggleTodo } from "./redux/todos";
 
-      return(<div>
-        Hi, {user.username}!
-        <button onClick={() => dispatch(logout())}>Logout</button>
-      </div>
-    )
+export default function App() {
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos);
 
+  return (
+    <div className="App">
+      <h1> Todo List </h1>
+      {todos.map((t) => (
+        <div key={t.id}>
+          {t.text} {t.completed ? "X" : "O"}
+          <button onClick={() => dispatch(toggleTodo(t.id))}>Toggle</button>
+        </div>
+      ))}
+      <button
+        onClick={() =>
+          dispatch(
+            addTodo({ id: Math.floor(Math.random() * 1000), text: "Lalalal" })
+          )
+        }
+      >
+        Hit Me
+      </button>
+    </div>
+  );
 }
 ```
 

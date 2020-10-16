@@ -27,3 +27,24 @@ user = Repo.insert!(changeset)
 Most validations(expect ones marked unsafe) don't require the db
 
 COnstraints rely on the db and are always safe
+
+## Advanced
+
+Conditionally validate_required
+
+```elixir
+def changeset(chat_channel, attrs) do
+  chat_channel
+  |> cast(attrs, [:type, :user_id, :event_id, :subevent_id, :group_id])
+  |> validate_required([:type])
+  |> (fn cs ->
+  case get_field(cs, :type) do
+      "event" -> cs |> validate_required([:event_id])
+      "group" -> cs |> validate_required([:subevent_id, :group_id])
+      "user" -> cs |> validate_required([:user_id])
+      _ -> cs
+    end
+    end).()
+end
+```
+

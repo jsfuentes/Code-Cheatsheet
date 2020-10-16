@@ -34,6 +34,15 @@ e.onclick = () => alert('hi');
 e.onclick = () => alert('bye');
 ```
 
+## Only trigger event on parent, not children
+
+```js
+if (e.target === e.currentTarget) {
+  debug("YUP");
+  setIsSubChatActive(false);
+}
+```
+
 ###HTML
 
 ```html

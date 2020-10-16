@@ -14,6 +14,13 @@ https://render.com/chat
 
 https://render.com/docs/custom-domains#configuring-dns-to-point-to-render
 
+## Pull Request Preview
+
+Enable in settings, and all pull requests will result in a server being spun up. Use environment variables to configure the domain:
+
+- `IS_PULL_REQUEST` is true in this PR preview
+- `RENDER_EXTERNAL_HOSTNAME` has server url
+
 #### Yaml
 
 Private services are the same as public web services, but they **don’t have a publicly accessible HTTPS URL**.

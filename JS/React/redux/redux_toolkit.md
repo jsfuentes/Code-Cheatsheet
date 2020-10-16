@@ -4,9 +4,9 @@
 yarn add react-redux @reduxjs/toolkit
 ```
 
-includes the Redux core, as well as other key packages like(Redux Thunk and Reselect)  and helper functions
+includes the Redux core, as well as other key packages like(Redux Thunk and Reselect) and helper functions
 
-## Helper Functions
+## Configure Store
 
 - A [`configureStore()` function](https://redux-toolkit.js.org/api/configureStore) with simplified configuration options. It can automatically combine your slice reducers, adds whatever Redux middleware you supply, includes `redux-thunk` by default, and enables use of the Redux DevTools Extension.
 
@@ -15,6 +15,8 @@ const store = configureStore({
   reducer: counter
 })
 ```
+
+## Create Slice
 
 - A [`createSlice()` function](https://redux-toolkit.js.org/api/createSlice) that accepts a set of reducer functions, a slice name, and an initial state value, and automatically generates a slice reducer with corresponding action creators and action types. Default(unknown action type) returns current. 
   - Mutations of state will auto create a new object on change as needed
@@ -42,19 +44,7 @@ export const { increment, decrement, addTodo } = todosSlice.actions;
 export default todosSlice.reducer;
 ```
 
-- The [`createSelector` utility](https://redux-toolkit.js.org/api/createSelector) from the [Reselect](https://github.com/reduxjs/reselect) library, re-exported for ease of use.
-
-```js
-import React from 'react'
-import { useSelector } from 'react-redux'
-
-export const CounterComponent = () => {
-  const counter = useSelector(state => state.counter)
-  return <div>{counter}</div>
-}
-```
-
-#### Old Helpers but unneeded b/c create Slic
+#### Old Helpers but unneeded b/c create Slice
 
 - A [`createReducer()` utility](https://redux-toolkit.js.org/api/createReducer) that lets you supply a lookup table of action types to case reducer functions, rather than writing switch statements. In addition, it automatically uses the [`immer` library](https://github.com/mweststrate/immer) to let you write simpler immutable updates with normal mutative code, like `state.todos[3].completed = true`.
 

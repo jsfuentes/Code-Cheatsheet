@@ -1,5 +1,9 @@
 # Generators
 
+Think about how to auto make the foreign keys cascade
+
+mix phx.gen.schema ChatChannel chat_channels user_id:references:users event_id:references:events subevent_id:references:subevents group_id type
+
 Used as learning tools
 
 Generating a schema in increasing complexity
@@ -45,7 +49,7 @@ mix ecto.migrate
 Other
 
 ```bash
-mix phx.gen.channel [Module_Name_for_channel]
+mix phx.gen.channel [module_name] #adds channel to name
 mix phx.gen.migration [Migration Name]
 ```
 

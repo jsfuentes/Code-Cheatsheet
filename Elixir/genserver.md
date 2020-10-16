@@ -24,7 +24,7 @@ defmodule SimpleGen do
     Process.send_after(self(), :increment, @interval)
     {:noreply, state}
   end
-  def handle_call(:get_data, _, state) do
+  def handle_call(:get_data, _from, state) do
     # runs in the server context 🐨Bob
     {:reply, state, state}
   end

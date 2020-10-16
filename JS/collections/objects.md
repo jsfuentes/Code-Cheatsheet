@@ -10,12 +10,10 @@ var person1 = new Object();
 ## Iterate Over
 
 ```js
-for (let pId in players) {
-   if (players.hasOwnProperty(pId)) {
-     //......
-   }
-}
-
+Object.keys(p).map(k => )
+Object.entries(p).map(([k, v]) => )
+Object.values(p).map(v => )
+                     
 for (let key of Object.keys(players)) {
 	//.......
 }
@@ -31,13 +29,17 @@ for (let key of Object.keys(players)) {
 
 #### Combine Objects
 
+Objects/keys on the right override those to the left
+
 ```javascript
-Object.assign(x, y, z) //objects on the right override those to the left
+{...x, ...y, ...z, a: 1}
+Object.assign(x, y, z) //
 ```
 
 #### Copy
 
 ```js
+{...x}
 Object.assign({}, x)
 ```
 

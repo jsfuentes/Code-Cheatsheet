@@ -114,7 +114,7 @@ canvote = if age > 18, do: "Can Vote", else: "Can't Vote"
 
 #### With
 
-```
+```elixir
 with {:ok, user} <- create_user(user_params),
      {:ok, email} <- Mailer.compose_email(user) do
   {:ok, Mailer.send_email}

@@ -56,7 +56,9 @@ git stash list
 
 #### Undoing Last Commit
 
-`git reset --hard HEAD~1`
+`git reset --hard HEAD~1` => don't keep changes
+
+`git reset --soft HEAD~1` => undo commit, but keep working changes
 
 `git revert <commit to undo>` =>Commit a commit undoing last commit
 

@@ -1,4 +1,4 @@
-# Migration
+# [Migration](https://hexdocs.pm/ecto_sql/Ecto.Migration.html)
 
 DB schema_migration table used to know which migrations have yet to run 
 
@@ -16,10 +16,12 @@ defmodule ReactPhoenix.Repo.Migrations.ChangeGid do
     alter table(:users) do
       add :address, :string
       add :usertype_id, references(:usertypes, on_delete: :nothing)
+      add :event_id, references(:usertypes, on_delete: :delete_all, type: :string)
       modify :title, :text
   		remove :views
     end
     
+    #rename is outside alter statement
     rename table(:subevents), :parent, to: :event_id
   end
 end

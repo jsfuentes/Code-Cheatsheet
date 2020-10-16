@@ -31,17 +31,19 @@ Error has name, message and can have custom info/code
 ## Custom Errors
 
 ```js
-class GoodError extends Error {
+export class MediaError extends Error {
   //without constructor will include this class in stack trace
-    constructor(...args) {
-        super(...args)
-        Error.captureStackTrace(this, GoodError)
-      this.data = "hi";
+  constructor(message, user_message, err) {
+    super(message);
+    this.name = "MediaError";
+    this.user_message = user_message;
+    if (Error.captureStackTrace !== undefined) {
+      //Firefox problem, since its non-standard
+      Error.captureStackTrace(this, MediaError);
     }
+  }
 }
 ```
-
-
 
 #### Common Custom Errors
 
