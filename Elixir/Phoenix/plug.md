@@ -62,8 +62,6 @@ defmodule ReactPhoenixWeb.EventController do
        when action in [:index, :create, :update, :delete, :get_analytics]
 ```
 
-
-
 #### Auth Example
 
 Usage `conn.assigns.current_user`

@@ -3,9 +3,13 @@
 | Cls             | Prop              |
 | --------------- | ----------------- |
 | .bg-blue-500    |                   |
-| .font-bold      | font-weight: 700; |
+| .font-medium    | font-weight: 500; |
 | .cursor-pointer | cursor: pointer;  |
 |                 |                   |
+
+##### Font Weight
+
+font-hairline | font-thin | font-light | font-normal | font-medium | font-semibold | font-bold | font-extrabold | font-black
 
 #### Text
 

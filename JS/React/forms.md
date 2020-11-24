@@ -2,28 +2,97 @@
 
 ## [react-hook-form](https://react-hook-form.com/get-started)
 
+[Form Builder](https://react-hook-form.com/form-builder/)
+
 Inputs must have unique name
 
 ```jsx
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React from "react";
+import { useForm } from "react-hook-form";
 
 export default function App() {
-  const { register, handleSubmit, errors } = useForm()
-  function onSubmit(data) {console.log(data)};
+  const { register, handleSubmit, errors } = useForm();
+  function onSubmit(data) { console.log(data); }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input name="example" defaultValue="test" ref={register} />
       <input name="exampleRequired" ref={register({ required: true })} />
       {errors.exampleRequired && <span>This field is required</span>}
-      <input type="submit" />
+      <button type="submit" > Submit </button>
     </form>
-  )
+  );
 }
 ```
 
 List of validation rules supported: required | min | max | minLength | maxLength | pattern | validate
+
+## TextInput
+
+```react
+TextInput.propTypes = {
+  title: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  registerInForm: PropTypes.any.isRequired,
+  placeholder: PropTypes.string,
+  errors: PropTypes.object,
+  className: PropTypes.string,
+};
+
+export function TextInput(props) {
+  const {
+    title,
+    placeholder,
+    name,
+    registerInForm,
+    errors,
+    className,
+  } = props;
+
+  return (
+    <div className={className}>
+      {title && (
+        <label
+          htmlFor={name} //use randomid if multiple per page
+          className="block font-medium leading-5 text-gray-600"
+        >
+          {title}
+        </label>
+      )}
+      <div className="mt-2">
+        <input
+          type="text"
+          id={name}
+          className={
+            "form-input block w-full transition duration-150 ease-in-out " +
+            (className ? `${className}` : +"")
+          }
+          name={name}
+          placeholder={placeholder}
+          ref={registerInForm}
+        />
+        {errors && errors[name] && (
+          <div className="mt-1 text-red-500">
+            {generateErrorMessage(errors, name)}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function generateErrorMessage(errors, key) {
+  const type = errors[key].type;
+  switch (type) {
+    case "maxLength":
+      return "This field is too long";
+    case "required":
+      return "Oops, you missed this field";
+    default:
+      return "Invalid value";
+  }
+}
+```
 
 ## Controlled Components
 

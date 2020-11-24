@@ -1,11 +1,10 @@
-## Agent
-
- **see process.md for overview, wrapper for genserver**
+# Agent
 
 Simple wrapper of genserver for state
 
 -  creates child_spec/1 function that start agent directly under a supervisor.
--  single threaded state management, updates require new object(ETS much more scalable, but agent good for smaller use cases)
+-  **single threaded state management**, updates require new object(ETS much more scalable, but agent good for smaller use cases)
+-  genserver with specific functions for get, update, cast that operate on state and combining server and client code into one function
 
 ```elixir
 defmodule Counter do

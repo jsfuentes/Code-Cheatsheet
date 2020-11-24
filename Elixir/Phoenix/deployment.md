@@ -25,8 +25,17 @@ PORT=4001 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server
 Need 2 buildpacks, config the version of elixir and erlang, configure config.exs
 
 ```bash
-heroku create --buildpack hashnuke/elixir
+heroku create --buildpack hashnuke/elixir #will return url to use in prod
 heroku buildpacks:add https://github.com/gjaldon/heroku-buildpack-phoenix-static.git
+```
+
+config/prod.exs
+
+```elixir
+config :react_phoenix, ReactPhoenixWeb.Endpoint,
+  http: [port: {:system, "PORT"}],
+  url: [scheme: "https", host: "mysterious-meadow-6277.herokuapp.com", port: 443],
+  cache_static_manifest: "priv/static/cache_manifest.json"
 ```
 
 elixir_buildpack.config
@@ -42,15 +51,6 @@ phoenix_static_buildpack.config
 
 ```bash
 node_version=12.14.1
-```
-
-config/prod.exs
-
-```elixir
-config :react_phoenix, ReactPhoenixWeb.Endpoint,
-  http: [port: {:system, "PORT"}],
-  url: [scheme: "https", host: "mysterious-meadow-6277.herokuapp.com", port: 443],
-  cache_static_manifest: "priv/static/cache_manifest.json"
 ```
 
 [Can let phoneix handle http to https](https://hexdocs.pm/phoenix/using_ssl.html#force-ssl)

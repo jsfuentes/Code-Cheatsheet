@@ -1,10 +1,8 @@
-## GenServer (Generic Server)
-
- **see process.md for more**
+# GenServer (Generic Server)
 
 - Great for scheduled/cron jobs, best to have it create a new process for doing work and just handling scheduling
-
 - Start seperate process that holds some state, changes its state based on **calls**(sync expecting response) or **casts**(async, no resp) 
+- Can recieve other/more messages than agent with handle_info
 
 ```elixir
 defmodule SimpleGen do

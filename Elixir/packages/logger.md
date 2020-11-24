@@ -1,4 +1,4 @@
-# Logger
+# [Logger](https://hexdocs.pm/logger/Logger.html)
 
 It includes many features:
 
@@ -11,11 +11,13 @@ It includes many features:
 
 ## Usage
 
+Note the arguments given to [`info/2`](https://hexdocs.pm/logger/Logger.html#info/2) will only be evaluated if a message is logged(its a high enough log level)
+
 ```elixir
   require Logger
   
   #......
-  Logger.info("Deleting user from the system: #{inspect(user)}")
+	Logger.info("Deleting user from the system: #{inspect(user)}")
 ```
 
 Levels, setting logger to any level will show all above too

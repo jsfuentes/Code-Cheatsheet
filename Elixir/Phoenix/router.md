@@ -56,14 +56,16 @@ resources "/users", UserController
 
 Expands out to
 
-user_path  GET     /users                HelloWeb.UserController :index
-user_path  GET     /users/:id/edit  HelloWeb.UserController :edit
-user_path  GET     /users/new       HelloWeb.UserController :new
-user_path  GET     /users/:id          HelloWeb.UserController :show
-user_path  POST    /users              HelloWeb.UserController :create
-user_path  PATCH   /users/:id       HelloWeb.UserController :update
-                    PUT     /users/:id         HelloWeb.UserController :update
-user_path  DELETE  /users/:id       HelloWeb.UserController :delete
+| ACTION | Route           | Function                        |
+| ------ | --------------- | ------------------------------- |
+| GET    | /users          | HelloWeb.UserController :index  |
+| GET    | /users/:id/edit | HelloWeb.UserController :edit   |
+| GET    | /users/new      | HelloWeb.UserController :new    |
+| GET    | /users/:id      | HelloWeb.UserController :show   |
+| POST   | /users          | HelloWeb.UserController :create |
+| PATCH  | /users/:id      | HelloWeb.UserController :update |
+| PUT    | /users/:id      | HelloWeb.UserController :update |
+| DELETE | /users/:id      | HelloWeb.UserController :delete |
 
 ```elixir
 resources "/posts", PostController, only: [:index, :show]

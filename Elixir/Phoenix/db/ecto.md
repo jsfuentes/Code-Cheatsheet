@@ -18,6 +18,7 @@ defmodule User do
   schema "users" do #users is table name
     field :name, :string
     field :age, :integer, default: 0
+    field :links, {:array, :string}
     has_many :posts, Post
     belongs_to :company, MyApp.Company
   end

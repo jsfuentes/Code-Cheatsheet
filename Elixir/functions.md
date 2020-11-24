@@ -88,6 +88,14 @@ def print_multiple_times(msg, n) do
 end
 ```
 
+Capture
+
+Need to capture to use named ft as anon ft 
+
+```elixir
+Enum.each(data_by_columns, &put_in_one_row/1)
+```
+
 #### Pipe |>
 
 Output from the left is passed as first arg to ft on right

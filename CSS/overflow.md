@@ -21,4 +21,8 @@ white-space:nowrap;
 text-overflow: hidden;
 ```
 
-## 
+## Advanced
+
+On mobile, you can run into weird bouncing issues with the window scrolling instead of the content
+
+Check out: https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior

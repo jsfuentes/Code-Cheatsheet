@@ -1,9 +1,9 @@
 # Bowser
 
-Detect user-agent
+Detect user-agent, [full list](https://github.com/lancedikson/bowser/blob/master/src/constants.js)
 
 ```js
-const browser = Bowser.getParser(window.navigator.userAgent);
+const browser = Bowser.parse(window.navigator.userAgent);
 const isValidBrowser = browser.satisfies({
   // declare browsers per OS
   windows: {

@@ -4,7 +4,7 @@
 
 ##### Cross-Axis
 
-.items-stretch  | .items-start  | .items-center  | .items-end  | .items-baseline  |
+.items-stretch (default?)  | .items-start  | .items-center  | .items-end  | .items-baseline  |
 
 ##### Main-Axis
 

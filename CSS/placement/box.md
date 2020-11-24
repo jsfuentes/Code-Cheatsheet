@@ -55,7 +55,3 @@ Margin and Padding can be negative :0
 box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 50px;
 ```
 
-## Center a Div 
-
-https://www.w3schools.com/css/css_align.asp
-

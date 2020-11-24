@@ -34,6 +34,8 @@ iex> HTTPoison.get "http://localhost:1"
 #### Post
 
 ```elixir
+HTTPoison.post(url, payload, headers, options)
+
 rawPayload = %{privacy: "public"}
 payload = Jason.encode!(rawPayload)
 url = "https://api.daily.co/v1/rooms"
@@ -77,5 +79,38 @@ case HTTPoison.get(url) do
   {:error, %HTTPoison.Error{reason: reason}} ->
     IO.inspect reason
 end
+```
+
+## Authorization
+
+Basic
+
+```elixir
+url =
+"https://api.agora.io/v1/apps/#{Application.fetch_env!(:react_phoenix, :agora_id)}/cloud_recording/acquire"
+
+headers = [
+Accept: "Application/json; Charset=utf-8",
+"Content-Type": "Application/json; charset=utf-8"
+]
+
+options = [hackney: [basic_auth:{Application.fetch_env!(:react_phoenix, :agora_key),
+Application.fetch_env!(:react_phoenix, :agora_secret)} ]]
+
+%HTTPoison.Response{status_code: 200, body: body} = HTTPoison.post!(url, payload, headers. options)
+```
+
+Bearer
+
+```elixir
+payload = Jason.encode!(%{privacy: "public"})
+url = "https://api.daily.co/v1/rooms"
+headers = [
+Accept: "Application/json; Charset=utf-8",
+"Content-Type": "Application/json; charset=utf-8",
+Authorization: "Bearer #{Application.fetch_env!(:react_phoenix, :daily_api)}"
+]
+
+HTTPoison.post(url, payload, headers)
 ```
 

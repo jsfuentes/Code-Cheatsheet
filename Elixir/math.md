@@ -21,3 +21,10 @@ easiness_factor = (card.easiness_factor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.0
 - min
 
    max
+
+Random Number
+
+```elixir
+:rand.uniform(n) #1-n inclusive
+```
+

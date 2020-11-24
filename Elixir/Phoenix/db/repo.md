@@ -17,7 +17,7 @@ MyRepo.get_by(Post, title: "My post") #error if not one result
 
 
 Repo.all(User)
-Repo.all(from u in User, select: u.email, where: u.age == ^age)
+Repo.all(from u in User, select: u.email, where: u.age == ^age) #[...]
 
 Repo.one(from u in User, where: ilike(u.email, "%1%"), select: count(u.id))  # of users with 1 in their email
 Repo.one(from ea in EventAnalytics, where: ea.email == "j@g" and ea.type == "RSVP") #will error if > one response, nil if none
@@ -41,7 +41,11 @@ def get_event!(id) do
   Repo.get!(Event, id)
   |> Repo.preload(:subevents)
 end
+
+Repo.all(from q in Question, where: q.subevent_id == ^subevent_id,  preload: [user])
 ```
+
+I think both do two queries: [in query](https://hexdocs.pm/ecto/Ecto.Query.html#preload/3)
 
 ### [Query](https://hexdocs.pm/ecto/Ecto.Query.html#content)
 
@@ -92,6 +96,20 @@ counts_and_events =
     start_time: e.start_time,
 	}
 ```
+
+```elixir
+Repo.all(
+  from q in Question,
+  where: q.subevent_id == ^subevent_id,
+  preload: [:user],
+  left_join: qu in QuestionUpvote,
+  on: qu.question_id == q.id,
+  group_by: [q.id],
+  select: %{question: q, upvotes: count(qu.id)}
+)
+```
+
+
 
 #### Update
 

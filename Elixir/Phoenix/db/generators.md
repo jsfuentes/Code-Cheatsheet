@@ -2,7 +2,15 @@
 
 Think about how to auto make the foreign keys cascade
 
-mix phx.gen.schema ChatChannel chat_channels user_id:references:users event_id:references:events subevent_id:references:subevents group_id type
+mix phx.gen.context Registration RegistrationQuestion registration_questions type text default:boolean
+
+mix phx.gen.context Registration RegistrationEventQuestion registration_event_questions question_id:references:registration_questions event_id:references:events required:boolean
+
+mix phx.gen.context Registration EventRegistrationQuestion event_registration_questions question_id:references:registration_questions event_id:references:events required:boolean  
+
+chat_message_upvotes user_id:references:users chat_message_id:references:chat_messages
+
+mix phx.gen.json Questions QuestionUpvote question_upvotes user_id:references:users question_id:references:questions
 
 Used as learning tools
 
@@ -53,4 +61,15 @@ mix phx.gen.channel [module_name] #adds channel to name
 mix phx.gen.migration [Migration Name]
 ```
 
+### Advanced, Default to Binary_ID
+
+BinaryID is uuid letting you generate ids on the client
+
+Config.exs
+
+```elixir
+config :react_phoenix,
+  ecto_repos: [ReactPhoenix.Repo],
+  generators: [binary_id: true] #default to binary_id
+```
 

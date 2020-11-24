@@ -22,6 +22,10 @@
 | Cmd-Shift-K | Delete Current Line |
 |             |                     |
 
+## Packages
+
+
+
 ## Install Shell
 
 Open the **Command Palette** (⇧⌘P) and type 'shell command'

@@ -31,8 +31,15 @@ Then run `mix deps.get`
 "~> 2.0.0"
 ```
 
+### [Updating](https://inquisitivedeveloper.com/lwm-elixir-58/)
 
+```bash
+mix hex.outdated #to see what packages have newer versions
+mix deps.update --all #updates minor versions of all deps 
+# Need to manually change mix.exs to update major version
+```
 
 ### Packages of Interest
 
 - [guardian](https://github.com/ueberauth/guardian)
+- Genstage, broadway

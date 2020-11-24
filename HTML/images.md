@@ -1,5 +1,17 @@
 # Images
 
+### Correct Size Before Load
+
+Just put correct natural width and height, even if CSS makes image fluid. So `<img src="image.jpg" width="800" height="600">`
+
+## Lazy Loading Image
+
+Can use lib, usually use something like data-src with listeners
+
+## Image Types
+
+Next gen formats, see next.js image loader for latest
+
 ##### Svg vs Png
 
 Svg is great for infinite scaling with a relatively small file size, but the computer has to render the image from code
@@ -10,7 +22,7 @@ Pngs are ready to go and better for lower compute devices if you dont need infin
 
 XML language, style through CSS, images, scriptable(animatable)
 
-## Primatives
+#### Primatives
 
 - `<svg>`
 - `rect`, `circle`, `line`, `text`, `polyline` all selfclosing except text i.e `<line ... />`

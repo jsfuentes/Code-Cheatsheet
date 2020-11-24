@@ -6,6 +6,8 @@ Git stores everything in a directory, `rm -rf .git` to delete the git project
 
 ## Changing History
 
+
+
 #### Reflog
 
 Saves every instance of head changes
@@ -92,10 +94,6 @@ git push <remote> <local branch name>:<remote branch to push into>
 `git branch -d <branchname>` 
 
 `git remote prune origin`  //remove all branches not in origin
-
-#### Checkout specific file
-
-`git checkout <branch_name> -- <paths>`
 
 #### Stop tracking file
 

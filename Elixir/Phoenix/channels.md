@@ -4,32 +4,19 @@
 
 See Presence to extend functionality
 
+```bash
+mix phx.gen.channel [module_name] #user
+```
+
 ### Server
 
-Already setup by default, work is client side
+Already setup by default in endpoint.ex and user_socket.ex, most of the work is client side
 
-Lib/ss_wb/endpoint.ex
-
-```elixir
-  socket "/socket", SsWeb.UserSocket,
-    websocket: true,
-    longpoll: false
-```
+##### To add current user to socket
 
 lib/ss_web/channels/user_socket.ex
 
 ```elixir
-defmodule PhoenixPair.UserSocket do
-  use Phoenix.Socket
-
-  channel "challenges:*", PhoenixPair.ChallengeChannel
-  
-  def connect(_params, socket, _connect_info) do
-    IO.puts "CONNTECTING BABY"
-    #......
-  end
-end
-
 defmodule SsWeb.UserSocket do
   use Phoenix.Socket
 
@@ -83,6 +70,8 @@ defmodule SsWeb.RoomChannel do
   end
   
   #when you broadcast user_joined this intercepts
+  intercept ["user_joined"]
+
   def handle_out("user_joined", msg, socket) do
     if Accounts.ignoring_user?(socket.assigns[:user], msg.user_id) do
       {:noreply, socket}
@@ -95,6 +84,8 @@ defmodule SsWeb.RoomChannel do
   def terminate(reason, socket) do
   	#can't do send self here
     broadcast socket, "user_left", payload
+    #will not send to socket
+    broadcast_from socket, "user_left", payload
     {:noreply, socket}
   end
 end

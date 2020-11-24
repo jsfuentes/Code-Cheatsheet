@@ -3,9 +3,8 @@
 You can style many parts of the list
 
 ```css
-  list-style-image: url('sqpurple.gif');
-  list-style-position: inside; //default is outside
-
+list-style-image: url('sqpurple.gif');
+list-style-position: inside; //default is outside
 ```
 
 List also comes with default margin and padding if you want to get rid of it
