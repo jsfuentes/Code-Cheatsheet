@@ -14,13 +14,11 @@ Kernel has functions that work on many
 easiness_factor = (card.easiness_factor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))) |> Float.round(3) |> Kernel
 ```
 
-
-
 ## Kernel
 
-- min
-
-   max
+- .min
+- .max
+- .round - to nearest integer
 
 Random Number
 

@@ -64,6 +64,8 @@ Map.pop(%{a: 1}, :a) #{1, %{}}
 Map.pop(%{a: 1}, :b, 3) #default 3: {3, %{a: 1}}
 
 Map.delete(map, key)
+
+Map.merge(map1, map2) #map2 wins on collision
 ```
 
 Pipe Merging

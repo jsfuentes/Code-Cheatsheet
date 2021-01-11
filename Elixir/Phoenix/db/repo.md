@@ -34,19 +34,6 @@ Repo.insert(%User{email: "user1@example.com"})
 #{:ok, [new User object...]}
 ```
 
-##### Preload
-
-```elixir
-def get_event!(id) do
-  Repo.get!(Event, id)
-  |> Repo.preload(:subevents)
-end
-
-Repo.all(from q in Question, where: q.subevent_id == ^subevent_id,  preload: [user])
-```
-
-I think both do two queries: [in query](https://hexdocs.pm/ecto/Ecto.Query.html#preload/3)
-
 ### [Query](https://hexdocs.pm/ecto/Ecto.Query.html#content)
 
 Supports literal Integers, Floats, Bools, Binary(<<1, 2 >>), Strings, and arrays, other external variables must be pinned`^`. Using with Schema(`User` instead of `"users"`) lets it know what type to cast to and automatically retrieves all fields
@@ -82,6 +69,8 @@ ReactPhoenix.Repo.all(from m in ReactPhoenix.Events.Meeting, where: m.user1_id =
 
 ### Join
 
+`:inner_join`, `:left_join`, `:right_join`, `:cross_join`, `:full_join`, `:inner_lateral_join` or `:left_lateral_join`. `:join` is equivalent to `:inner_join`(match both returned)
+
 ```elixir
 counts_and_events =
   from ea in subquery(count_types),
@@ -109,7 +98,29 @@ Repo.all(
 )
 ```
 
+##### Preload
 
+Can be used very similarly to a join, and keeps proper select and structure
+
+```elixir
+def get_event!(id) do
+  Repo.get!(Event, id)
+  |> Repo.preload(:subevents)
+end
+
+Repo.all(from q in Question, where: q.subevent_id == ^subevent_id,  preload: [user])
+
+# seperating ra_query first gets all the reqs then fills in the association(if joined with where it wouldn't return reqs without ra with the right email)
+ra_query = from ra in RegistrationAnswer, where: ra.email == ^email
+
+Repo.all(from req in RegistrationEventQuestion,
+  where: req.event_id == ^event_id,
+  preload: [registration_answers: ^ra_query],
+  select: req)
+ 
+```
+
+I think both do two queries: [in query](https://hexdocs.pm/ecto/Ecto.Query.html#preload/3)
 
 #### Update
 

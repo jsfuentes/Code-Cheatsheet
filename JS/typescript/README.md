@@ -6,24 +6,11 @@ New:
 * Object oriented
 * Compile time errors
 
-`let` introduces scoping to {} blocks like for loops(also in ES6(2015))
+## Type Files
 
-```ts
-let a: number;
-let b: boolean;
-let c: string;
-let d: any;
-let e: number[] = [1,2,3];
-let f: any[] = [1, true, 'a'];
+Types files should just be in [devDependencies](https://stackoverflow.com/questions/45176661/how-do-i-decide-whether-types-goes-into-dependencies-or-devdependencies)
 
-enum Color { Red = 0, Green = 1, Blue = 2};
-let backgroundColor = Color.Red;
-```
 
-By default the type is any.
-To use as a type, `(message as string)` purely a way to tell Typescript compiler what it is(and intelligent IDEs)
-
-When you define and assign value, type is autoinferred
 
 ### Classes
 ```ts

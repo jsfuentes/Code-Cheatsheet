@@ -14,6 +14,21 @@ yarn dev
 
 ## Absolute Path Imports
 
+### TS
+
+```json
+"compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "conf": ["conf/*"],
+      "src": ["src/*"],
+      "styles": ["styles/*"]
+    },
+    ...
+```
+
+### JS
+
 Jsconfig.json
 
 ```js

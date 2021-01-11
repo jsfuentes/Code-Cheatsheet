@@ -91,8 +91,11 @@ If you want to deploy a subdirectory:
 
 ```bash
 heroku create
+
 heroku git:remote -a [APP_NAME] #from prev step
+
 git subtree push --prefix [PATH_TO_SUBDIRECTORY] heroku master
+
 heroku open
 ```
 

@@ -4,7 +4,7 @@
 yarn add react-redux @reduxjs/toolkit
 ```
 
-includes the Redux core, as well as other key packages like(Redux Thunk and Reselect) and helper functions
+includes the Redux core, as well as other key packages like(Redux Thunk and Reselect, immer) and helper functions
 
 ## Configure Store
 

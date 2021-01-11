@@ -42,6 +42,7 @@ is_atom(false) # => true
 true and true
 false or not true
 1 and true # => raises exception
+Atom.to_string(:foo) 
 ```
 
 _Atoms are not garbage collected, so never convert user input to atoms_

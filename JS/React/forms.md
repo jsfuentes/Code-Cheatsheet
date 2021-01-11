@@ -25,7 +25,7 @@ export default function App() {
 }
 ```
 
-List of validation rules supported: required | min | max | minLength | maxLength | pattern | validate
+List of validation rules supported: required | min | max | minLength | maxLength | pattern | validate (custom function)
 
 ## TextInput
 

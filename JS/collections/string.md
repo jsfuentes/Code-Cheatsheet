@@ -1,7 +1,5 @@
 # Strings
 
-## Template Literals
-
 ```js 
 `String text ${expression}`
 ```
@@ -13,7 +11,9 @@
 - `.trim()` //remove whitespace
 - `.includes("seq")`  -  true if "seq" in string
 - `.search("W3Schools");` - returns index of first character or -1
-- ``.toLowerCase()`
+- `.toLowerCase()`
 - `.toUpperCase()`
 - `.join([seperatar ,])`
+
+## To String
 

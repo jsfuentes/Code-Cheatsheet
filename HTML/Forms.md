@@ -17,8 +17,8 @@
 
 ## INPUT
 ```html
-<label for="name">Name:</label> <!--htmlFor in React links to id attribute-->
-<input name="user_name" id="name">
+<label for="some-iddd">Name:</label> <!--htmlFor in React links to id attribute-->
+<input name="user_name" id="some-iddd">
 ```
 
 #### Basic Attributes
@@ -31,7 +31,6 @@
 #### Input Types (text default)
 
 - type = "password"
-- type = "file"
 - type = "checkbox"
 - type= "radio"
 - type="hidden" //just to send to your server
@@ -39,9 +38,48 @@
 - type="reset"
 - type="image" //will submit, to make submit button image
 - type="number"
+- type = "file"
+  - accept is a comma separted list of [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Unique_file_type_specifiers)
+  - 
+
+```jsx
+//React style but shows idea
+async function onFileChange(e) {
+  const uploadedFiles = e.target.files;
+  debug("UPLOADED FILES");
+  if (uploadedFiles && uploadedFiles.length > 0) {
+    const file = uploadedFiles[0];
+  }
+}
+
+return (
+  <>
+  <label className="cursor-pointer" htmlFor={randomId}>
+    Import
+  </label>
+  </Button>
+  <input
+    type="file"
+    id={randomId}
+    name="pic"
+    style={{
+      width: "0.1px",
+      height: "0.1px",
+      opacity: 0,
+      overflow: "hidden",
+      position: "absolute",
+      zIndex: -1,
+    }}
+    accept="image/*,.csv"
+    onChange={onFileChange}
+    />
+  </>);
+```
+
 
 
 #### Advanced Forms
+
 Values are sent to the sever
 Multiple lets you select multiple, sends csv
 ```html

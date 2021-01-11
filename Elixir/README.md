@@ -25,7 +25,7 @@ Elixir uses **supervisers** and processes fail fast. If there is an error, resta
 -  `=` operator is actually called *the match operator*
 - `someFunction/2` means someFunction with two args as functions unique by name & arg count(arity)
 -  `or`, `and`, `not`  and can short circuit
--  `==`, `!=`, `===`(doesn't count integers and floats as equal), `!==`, `<=`, `>=`, `<` and `>`
+-  `==`, `!=`, `===`(doesn't count integers and floats as equal, but **works at comparing native objects! [1,2] === [1,2]**), `!==`, `<=`, `>=`, `<` and `>`
 -  Use pin operator `^` to pattern match against variables cur value: `x = 1 ^x = 2` => Error no match 1 = 2 ( apparently also used in queries for [type coercion](https://dev.to/lasseebert/til-ecto-s-pin-is-coercing-19fh))
 -  `"a"` is UTF-8 encoded binary while `'a'` is charlist 
 
@@ -35,13 +35,14 @@ test.exs
 #comments
 defmodule M do
 	def main do
-		do_stuff()
+		do_stuff()		
 	end
 	
 	def do_stuff do
 		my_str = "My Sentence"
 		IO.puts "Length: #{String.length(my_str)}"
 		IO.puts not true
+		1
 	end
 end
 ```
@@ -55,7 +56,8 @@ Print internal representation
 ```elixir
 IO.inspect String.split(longer_str, " ") 
 IO.write "No newline"
-IO.puts "Puts with newline"
+a = "hi"
+IO.puts "Puts with newline #{a}" 
 IO.puts(:stderr, "error bb")
 x = IO.gets("yes or no?") #prompts user and return string with newline
 
@@ -88,8 +90,8 @@ end
 Conditional Matching, goes to first match
 
 ```elixir
-cond do 
-	age >= 18 -> IO.puts "You can vote"
+cond do #checks list of conditions
+	x -> IO.puts "You can vote"
 	age >= 16 -> IO.puts "You can drive"
 	age >= 14 -> IO.puts "You can wait"
 	true -> IO.puts "Default"
@@ -99,7 +101,7 @@ end
 switch
 
 ```elixir
-case 2 do 
+case 2 do
 	1 -> IO.puts "Entered 1"
 	2 -> IO.puts "Entered 2"
 	_ -> IO.puts "Default"

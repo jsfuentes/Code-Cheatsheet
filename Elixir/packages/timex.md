@@ -1,4 +1,4 @@
-# Timex
+#  Timex
 
 ```elixir
 [{:timex, "~> 3.5"}]

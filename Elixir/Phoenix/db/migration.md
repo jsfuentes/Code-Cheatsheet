@@ -24,6 +24,9 @@ defmodule ReactPhoenix.Repo.Migrations.ChangeGid do
     
     #rename is outside alter statement
     rename table(:subevents), :parent, to: :event_id
+    
+    #order matters, if another column depends should remove before dropping
+    drop table(:registration_question_options)
   end
 end
 ```

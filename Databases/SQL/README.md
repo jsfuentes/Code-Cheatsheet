@@ -14,15 +14,6 @@ LIMIT 100;
 
 ## Basic Query
 
-#### Count
-
-- `COUNT(*)` /`COUNT(1)`counts all rows
-- `COUNT(column)` counts non-NULLs only
-
-```sql
-SELECT COUNT(*) FROM orders GROUP BY ds;
-```
-
 #### ORDER BY / SORT
 
 ```sql

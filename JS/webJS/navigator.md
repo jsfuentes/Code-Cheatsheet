@@ -49,3 +49,6 @@ navigator.permissions.query({ name: "microphone" }).then(p => {
 navigator.permissions.query({ name: "microphone" }).then(console.log);
 ```
 
+## Advanced
+
+Mobile native app sharing -> https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share

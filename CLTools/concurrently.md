@@ -13,6 +13,3 @@ npm i concurrently --save-dev
     "dev": "concurrently \"cd moderator-dashboard && npm run dev\" \"cd main-server && npm run dev\""
   },
 ```
-
-
-

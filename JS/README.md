@@ -53,6 +53,7 @@ undefined == null //true
 let x = 132;
 x.toString(); //="132"
 //Noted 132.toString() doesn't work
+//toLocaleString better for data and stuff or something
 
 parseInt('42', 10) //42
 parseInt('42px', 10) //42
@@ -60,6 +61,14 @@ parseInt('10a,a22') //10
 ```
 
 Find type with `typeof(var)`
+
+### Random Integer
+
+Math.random gives number between 0(inclusive) and 1(exclusive). 
+
+```js
+Math.floor(Math.random() * 3) 
+```
 
 ### Why Javascript Sucks
 
