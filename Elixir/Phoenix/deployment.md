@@ -20,6 +20,37 @@ PORT=4001 MIX_ENV=prod mix phx.server
 PORT=4001 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server
 ```
 
+### [Releases](https://hexdocs.pm/phoenix/releases.html)
+
+Can make a bundle with Elixir, Erlang VM, and code that you can drop on a prod machine/docker container and run.
+
+```elixir
+# Initial setup
+mix deps.get --only prod
+MIX_ENV=prod mix compile
+
+# Compile assets
+npm install --prefix ./assets
+npm run deploy --prefix ./assets
+mix phx.digest
+
+# Build the release and overwrite the existing release directory
+MIX_ENV=prod mix release --overwrite
+```
+
+*render.com build script*
+
+```bash
+# Running
+_build/prod/rel/react_phoenix/bin/react_phoenix start
+
+# All commands
+_build/prod/rel/react_phoenix/bin/react_phoenix
+
+# Accessing while running(after ssh?)
+_build/prod/rel/react_phoenix/bin/react_phoenix remote
+```
+
 ### [Heroku](https://hexdocs.pm/phoenix/heroku.html)
 
 Need 2 buildpacks, config the version of elixir and erlang, configure config.exs
@@ -81,8 +112,4 @@ Limitations:
 - Firewalls dynos so distributed channels/tasks need to backup on Redis instead of Elixir
 - Inmemory states will be lost every 24 hours
 - No observer
-
-### [Releases](https://hexdocs.pm/phoenix/releases.html)
-
-Can make a bundle with Elixir, Erlang VM, and code that you can drop on a prod machine/docker container and run.
 

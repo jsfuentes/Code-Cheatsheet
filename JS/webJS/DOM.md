@@ -42,6 +42,7 @@ container.parentNode.removeChild(container);
 
 ```js
 window.location.href //full url
+window.location.reload()
 ```
 
 #### Scrolling 

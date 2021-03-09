@@ -101,10 +101,17 @@ end
 switch
 
 ```elixir
-case 2 do
-	1 -> IO.puts "Entered 1"
-	2 -> IO.puts "Entered 2"
-	_ -> IO.puts "Default"
+case x do
+	1 -> :one
+	2 -> :two
+	n when is_integer(n) and n > 2 -> :larger_than_two
+end
+  
+case Chat.get_chat_message(message_id) do
+  %ChatMessage{} = chat_message ->				  
+  	Chat.delete_chat_message(chat_message)
+
+  nil -> nil
 end
 ```
 

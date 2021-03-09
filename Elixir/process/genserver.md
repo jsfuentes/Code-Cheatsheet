@@ -1,39 +1,65 @@
 # GenServer (Generic Server)
 
-- Great for scheduled/cron jobs, best to have it create a new process for doing work and just handling scheduling
+- Great for scheduled/cron jobs
 - Start seperate process that holds some state, changes its state based on **calls**(sync expecting response) or **casts**(async, no resp) 
 - Can recieve other/more messages than agent with handle_info
+- GenServer is a single process, so best to minimize server work and only handle scheduling, use Task delegation, or offload most work to client caller
+
+react_phoenix_web/simplegen.ex
 
 ```elixir
-defmodule SimpleGen do
+defmodule ReactPhoenixWeb.SimpleGen do
   use GenServer
   @interval 1_000
-  def start_link() do
-    # runs in the caller context 🐌Alice
-    GenServer.start_link(__MODULE__, [])
+
+	# Runs in Caller Context 🐌Alice
+  def start_link(arg1) do
+    GenServer.start_link(__MODULE__, arg1)
   end
-  def init(_) do
-    # runs in the server context 🐨Bob
-    Process.send_after(self(), :increment, @interval)
-    {:ok, 1}
+  
+  def increment(count) do
+    GenServer.cast(__MODULE__, {:increment, count})
   end
+  
+  # Runs in Single Server Context 🐨Bob
+  def init(arg1) do 
+    # start_link calls this
+    Process.send_after(self(), :work, @interval)
+    {:ok, arg1}
+  end
+  
   def handle_info(:work, state) do
-  	#some scheduled work
+  	# send/send_after within the server calls this
     Process.send_after(self(), :increment, @interval)
     {:noreply, state}
   end
+  
   def handle_call(:get_data, _from, state) do
-    # runs in the server context 🐨Bob
-    {:reply, state, state}
+  	resp = state
+    {:reply, resp, state}
   end
-  def handle_cast(:increment, state) do
-    # runs in the server context 🐨Bob
-    {:noreply, state+1}
+  
+  def handle_cast({:increment, count}, state) do
+    {:noreply, state+count}
   end
 end
 ```
 
-### Usage
+Add to *application.ex* to supervise and init on startup
+
+```elixir
+	def start(_type, _args) do
+    # List all child processes to be supervised
+    children = [
+    	#....
+      {ReactPhoenixWeb.SimpleGen, 1}
+    ]
+		#....
+```
+
+Then just call with `ReactPhoenixWeb.SimpleGen.increment(5)`
+
+### Raw Examples
 
 `start_link(module, init_arg, options \\ [])` calls init of the module with the init_args
 

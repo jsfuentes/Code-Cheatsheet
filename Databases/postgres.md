@@ -11,14 +11,6 @@ SQL DB with:
 - Several unusual data types, like Money, Geometry, IP addresses, JSON, and data ranges.
 - Can execute stored procedures in over a dozen programming languages, including Java, Perl, Python, Ruby, and C/C++.
 
-## Setup
-
-Can install with brew `brew install postgresql`, follow instructions onscreen(`brew services start postgresql` & `initdb  /usr/local/var/postgres` )
-
-`postgres -V`
-
-`psql` to enter cml
-
 ## Types
 
 | **Character Types**                  | **Description**            |

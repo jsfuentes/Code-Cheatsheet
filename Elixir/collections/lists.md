@@ -40,3 +40,13 @@ end
 def display_list([]), do: nil
 ```
 
+With Index
+
+```elixir
+items
+|> Enum.with_index
+|> Enum.each(fn({x, i}) ->
+  IO.puts("#{i} => #{x}")
+end)
+```
+

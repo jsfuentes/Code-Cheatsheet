@@ -14,3 +14,12 @@ yarn build #builds prod app in .next folder
 yarn start #after building this starts the node.js server
 ```
 
+## [Static HTML](https://nextjs.org/docs/advanced-features/static-html-export)
+
+If you use no server side generation, you can just export to static html like you would for react build
+
+```bash
+next build && next export
+```
+
+Check /out

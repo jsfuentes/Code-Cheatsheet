@@ -4,11 +4,7 @@ Think about how to auto make the foreign keys cascade
 
 mix phx.gen.context Calls Group groups title description type_data:map call_info:map type subevent_id:references:subevents active:boolean moderators:array:string 
 
-mix phx.gen.context Subevents SubeventBreakoutGroup subevent_breakout_groups subevent_id:references:subevent group_id email
-
-mix phx.gen.context Registration RegistrationQuestion registration_questions type text default:boolean
-
-mix phx.gen.context Accounts MagicToken magic_tokens value user_id:references:usersç
+mix phx.gen.context Chat Chat_Channel chat_channels type user:
 
 Used as learning tools
 

@@ -35,6 +35,11 @@ words.filter(word => word.length > 6);
 words.map((element, index) => element+index);
 arr.reduce((acc, x) => acc + x, 0) //sum
 j.reduce((acc, a) => acc + (a/j.length), 0) //average
+
+//when you want to find a specific entry
+[1,2,3].filter(x => x === 3).reduce((arr, cur) => cur, null); //3
+[1,2,3].filter(x => x === 4).reduce((arr, cur) => cur, null); //null
+[1,2,3].reduce((arr, cur) => arr || cur, null) //first nonnull value so 1
 ```
 
 Can do async fts in map and then wrap it in a promise.all

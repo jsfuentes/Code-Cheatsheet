@@ -38,6 +38,8 @@ Sentry.captureMessage('Something went wrong');
 
 Can add id, username, email, or ip_address
 
+*Don't add extra objects of arbitary size as they [will be rejected](https://github.com/getsentry/sentry-javascript/issues/339) if over 100KB*
+
 ```js
 Sentry.configureScope((scope) => {
   scope.setUser({"email": "john.doe@example.com"});

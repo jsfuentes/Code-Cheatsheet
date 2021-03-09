@@ -26,6 +26,8 @@ const selectedData = useSelector(selectorReturningObject, shallowEqual)
 
 ## CreateSelector()
 
+Great for when you need to return an object as can shortcircuit better
+
 [`createSelector` utility](https://redux-toolkit.js.org/api/createSelector) from the [Reselect](https://github.com/reduxjs/reselect) library, re-exported for ease of use.
 
 ```jsx

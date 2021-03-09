@@ -76,3 +76,11 @@ x = %{a: 1, b: 2}
 %{x | c: 5} #** (KeyError) key :c not found
 ```
 
+### Advanced
+
+```Elixir
+map = %{a: %{b: 1}}} #uses Kernel.get_in
+get_in(map, [:a, :b]) #1
+get_in(map, [:c, "dajflk"]) # nil
+```
+
