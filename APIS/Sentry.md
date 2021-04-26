@@ -34,7 +34,7 @@ try {
 Sentry.captureMessage('Something went wrong');
 ```
 
-#### Adding Context
+#### Adding Context in General
 
 Can add id, username, email, or ip_address
 
@@ -43,9 +43,19 @@ Can add id, username, email, or ip_address
 ```js
 Sentry.configureScope((scope) => {
   scope.setUser({"email": "john.doe@example.com"});
-});
+}); //will be for all messages
 
-Sentry.setExtra("profile", { name: "Jorge", time: 1 }); //will be under additional info at bottom
+Sentry.setContext("profile", { name: "Jorge", time: 1 });
+```
+
+#### Adding Context for a Message
+
+```elixir
+Sentry.captureException(new Error("something went wrong"), {
+  extra: {
+    section: "articles",
+  },
+});
 ```
 
 #### Creating Error Popup

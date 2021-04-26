@@ -2,7 +2,11 @@
 
 ## OOP, Functional, Declaritive
 
-### Declarative 
+### OOP(Object Oriented Programming) 
+
+Encapsulate and inherit data and functions in objects/classes, mutable (C++, Java, Javascript)
+
+### Declarative
 
 Express logic in code, and control flow is deduced
 
@@ -10,7 +14,7 @@ E.g SQL, Prolog
 
 ### Functional
 
-Immutable, functions are first class 
+functions are first class, immutable (Elixir, Haskell)
 
 Pros
 

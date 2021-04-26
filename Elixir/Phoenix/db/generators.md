@@ -2,9 +2,15 @@
 
 Think about how to auto make the foreign keys cascade
 
+mix phx.gen.schema 
+
 mix phx.gen.context Calls Group groups title description type_data:map call_info:map type subevent_id:references:subevents active:boolean moderators:array:string 
 
-mix phx.gen.context Chat Chat_Channel chat_channels type user:
+mix phx.gen.context Activities Reaction reactions user_id:references:users emoji
+
+mix phx.gen.context Organizations Organization organizations host_logo host_name host_description color social_links:array:string api_key
+
+mix phx.gen.context Activities ActionAnalytics action_analytics user_id:references:users action_id:references:actions
 
 Used as learning tools
 
@@ -35,7 +41,7 @@ Only difference is the conversion to elixir, same DB type
 No :type means it is a :string
 
 ```bash
-mix phx.gen.context Accounts User users name email:unique bio number_of_pets:integer post_id:references:posts
+mix phx.gen.context Accounts User users name email:unique age:integer post_id:references:posts social_links:array:string
 
 mix phx.gen.context Accounts Credential credentials email:unique password_hash user_id:references:users
 

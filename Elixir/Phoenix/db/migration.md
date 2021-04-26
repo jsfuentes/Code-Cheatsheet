@@ -1,6 +1,6 @@
 # [Migration](https://hexdocs.pm/ecto_sql/Ecto.Migration.html)
 
-DB schema_migration table used to know which migrations have yet to run 
+DB schema_migration table used to know which migrations have yet to run
 
 ### Usage
 

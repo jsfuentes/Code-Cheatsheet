@@ -57,7 +57,13 @@ return (<BrowserRouter>
 <Link to="{match.url+"/email"}"> Email </Link>
 ```
 
-**Navlinks** add style when active, classes, and on actived event
+**[Navlinks](https://reactrouter.com/web/api/NavLink)** add style when active, classes, and on actived event
+
+```react
+<NavLink to="/dash" activeClassName="text-purple-500">
+  My Events
+</NavLink>
+```
 
 #### Redirect
 

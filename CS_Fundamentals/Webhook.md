@@ -10,5 +10,5 @@ Authentication
 
 - Stripe signs requests
 - Pass secrets or tokens like GitHub
-- 
+- Api Key stored by provider
 

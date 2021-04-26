@@ -125,9 +125,10 @@ I think both do two queries: [in query](https://hexdocs.pm/ecto/Ecto.Query.html#
 #### Update
 
 ```elixir
-call
-|> Call.changeset(attrs)
+user
+|> User.changeset(attrs)
 |> Repo.update()
+# {:ok, %User{} = user}
     
 MyRepo.update_all(Post, set: [title: "New title"])
 

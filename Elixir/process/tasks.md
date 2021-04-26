@@ -7,8 +7,16 @@
 
 -  `Task.start/1`
 -  `Task.start_link/1`
--  `Task.async/1`
+-  `Task.async/1` - expects reply that is always sent (will crash if caller crashes)
 -  `Task.await/1`
+
+## Sequential => Concurrent Code
+
+```elixir
+task = Task.async(fn -> do_some_work() end)
+res = do_some_other_work()
+res + Task.await(task)
+```
 
 ## Adhoc Tasks
 

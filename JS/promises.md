@@ -47,7 +47,27 @@ Promise.all([promise1, promise2, promise3]).then(function(values) {
 // expected output: Array [3, 42, "foo"]
 ```
 
+### Error Handling
+
+```javascript
+function f() {
+	return new Promise((resolve, reject) => reject(new Error("Err")))
+}
+
+async function g() {
+	throw new Error("Err")
+}
+
+try {
+	await f()
+	await g()
+} catch(err) {
+	//both throw same errors
+}
+```
+
 ### RETURNING IN then
+
 When you return something from a then() callback, it's a bit magic. If you return a value, the next then() is called with that value. However, if you return something promise-like, the next then() waits on it, and is only called when that promise settles (succeeds/fails).
 
 ```ts
