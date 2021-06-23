@@ -17,6 +17,13 @@ Prob a better way to do it
     @media screen and (min-width: 768px) {
         display: none !important;
     }
+}
+
+@media all and (max-width: 699px) and (min-width: 520px), (min-width: 1151px) {
+  body {
+    background: #ccc;
+  }
+}
 ```
 
 ## General

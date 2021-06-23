@@ -4,6 +4,8 @@ Think about how to auto make the foreign keys cascade
 
 mix phx.gen.schema 
 
+mix phx.gen.context Events EventFolder event_folders base_id:references:events repeat_month_interval:integer repeat_week_interval:integer repeat_end:date repeat_weekdays
+
 mix phx.gen.context Calls Group groups title description type_data:map call_info:map type subevent_id:references:subevents active:boolean moderators:array:string 
 
 mix phx.gen.context Activities Reaction reactions user_id:references:users emoji

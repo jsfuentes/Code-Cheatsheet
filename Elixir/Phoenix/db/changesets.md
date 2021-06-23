@@ -1,4 +1,4 @@
-### [ChangeSets](https://hexdocs.pm/ecto/Ecto.Changeset.html) and validations
+# [ChangeSets](https://hexdocs.pm/ecto/Ecto.Changeset.html) and validations
 
 Changesets define data transformations(type casting, filtering, validation)
 

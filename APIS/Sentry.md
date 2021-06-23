@@ -75,6 +75,23 @@ Sentry.captureException(new Error("something went wrong"), {
 
 ## Server-Side
 
+#### Elixir
+
+```elixir
+    {:sentry, "8.0.0"},
+    {:jason, "~> 1.1"},
+    {:hackney, "~> 1.8"},
+    # if you are using plug_cowboy
+    {:plug_cowboy, "~> 2.3"},
+```
+
+Usage
+
+```
+```
+
+
+
 #### Node Specific
 
 ```js

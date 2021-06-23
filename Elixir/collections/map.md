@@ -21,7 +21,7 @@ Map.get(“key”) || Map.get(:key) #Atom and String
 
 #Use the atom or string
 Map.get(map, :c) #nil
-Map.get(map, :c, 3) #3
+Map.get(map, :c, 3) #3 *note if %{c: nil} then this can return nil
 Map.fetch(map, :a) #:error
 Map.fetch(map, :c) #{:ok, 1}
 

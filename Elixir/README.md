@@ -15,6 +15,7 @@ Elixir uses **supervisers** and processes fail fast. If there is an error, resta
   - no class with internal state, but modules that init or transform an input state and return new state
   - Not indexable list, but recursive head rest pattern matching
 - To dealing with state across processes, use Erlang Term Storage([ETS](http://www.erlang.org/doc/man/ets.html)) or processes like **Agents, Genserver**  
+- Opinated(variables **must** be camelcase and modules CamelCase)
 
 ## Basic
 
@@ -153,5 +154,8 @@ We can omit `else` so `with` will return either `do` block result or the first f
 
 ```elixir
 Integer.to_string(123) #"123"
+String.to_integer("123") #123
+String.to_integer("abc") #(Argument Error)
+Integer.parse("123") #{123, ""}
 ```
 

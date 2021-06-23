@@ -144,3 +144,33 @@ Running | paused
 
 Can add and remove class of animation at animation end to restart event(put slight delay on regiving class)
 
+## Advanced
+
+#### On Unmount Animation
+
+```react
+function OrgOnboarding() {
+  const [step, setStep] = useState(1);
+  const debouncedStep = useDebounce(step, 5000);
+
+  return (
+    <div className="h-screen w-screen bg-gray-100 flex flex-col">
+      <div className="flex-1 flex items-center justify-center">
+        {(step === 1 || debouncedStep === 1) && (
+          <OnboardingPart1
+            className={step === 1 ? "animateSlideRight" : "animateSlideLeft"}
+            onSubmit={() => setStep(2)}
+          />
+        )}
+        {(step === 2 || debouncedStep === 2) && (
+          <OnboardingPart2
+            className={step === 2 ? "animateSlideRight" : "animateSlideLeft"}
+            onSubmit={() => setStep(1)}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+```
+

@@ -12,3 +12,9 @@ import Foo
 use Foo
 ```
 
+## Attributes
+
+Like `@impl`
+
+https://hexdocs.pm/elixir/master/Module.html
+

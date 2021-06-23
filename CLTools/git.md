@@ -6,8 +6,6 @@ Git stores everything in a directory, `rm -rf .git` to delete the git project
 
 ## Changing History
 
-
-
 #### Reflog
 
 Saves every instance of head changes

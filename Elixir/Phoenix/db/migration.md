@@ -35,7 +35,18 @@ end
 
 *Can undo with `mix ecto.rollback`*
 
-## UUID 
+### On delete
+
+```elixir
+add :user_id, references(:users, on_delete: :nothing)
+```
+
+- `:nothing` - if any referencing rows still exist when the constraint is checked, an error is raised; this is the default behavior if you do not specify anything.
+- `:delete_all` - specifies that when a referenced row is deleted, row(s) referencing it should be automatically deleted as well
+- `:nilify_all` - causes the referencing column(s) in the referencing row(s) to be set to `nil` when the referenced row is deleted
+- `:restrict` - prevents deletion of a referenced row. It will fail if there is a referenced object.
+
+#### UUID 
 
 Creating (will be uuid in table)
 
@@ -60,17 +71,6 @@ defmodule ReactPhoenix.Repo.Migrations.CreateEvents do
 ```
 
 Then you have to generate it when you create it, `Ecto.UUID.generate()`
-
-### On delete
-
-```elixir
-add :user_id, references(:users, on_delete: :nothing)
-```
-
-- `:nothing` - if any referencing rows still exist when the constraint is checked, an error is raised; this is the default behavior if you do not specify anything.
-- `:delete_all` - specifies that when a referenced row is deleted, row(s) referencing it should be automatically deleted as well
-- `:nilify_all` - causes the referencing column(s) in the referencing row(s) to be set to `nil` when the referenced row is deleted
-- `:restrict` - prevents deletion of a referenced row. It will fail if there is a referenced object.
 
 ### More Example File
 

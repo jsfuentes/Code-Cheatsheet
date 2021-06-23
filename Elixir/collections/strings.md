@@ -1,24 +1,15 @@
-# String
+# [String](https://hexdocs.pm/elixir/String.html#summary)
 
-```Elixir
-defmodule M do
-  def main do
-	  do_stuff()
-  end
+```elixir
+"hello"
+"string" <> "concat"
 
-  def do_stuff do
-    my_str = "My Sentence"
-    IO.puts "Length: #{String.length(my_str)}"
-    longer_str = my_str <> " " <> "is longer"
-    has_my = String.contains?(my_str, "My")
-    first = String.first(my_str)
-    index4 = String.at(my_str, 4)
-    sub_slice = String.slice(my_str, 3, 8)
-    String.split("foo bar", ",") #["foo", "bar"]
-    4 * 10 |> IO.puts
-  end
-end
+x = 123
+x <> "hi" #error
+"#{x}hi" #123hi
 ```
+
+
 
 String.reverse(str)
 
@@ -27,6 +18,18 @@ String.upcase(str)
 String.downcase(str)
 
 String.capitalize(str)
+
+String.starts_with?(str)
+
+String.contains?(str, "search_str")
+
+String.first(str)
+
+String.at(str, index)
+
+String.slice(str, start_index, end_index)
+
+String.split("foo bar", "")
 
 ### Atoms
 

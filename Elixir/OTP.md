@@ -4,6 +4,12 @@
 
 Horrible error messaging
 
+## Observer
+
+```
+iex(1)> observer.start()
+```
+
 # [Erlang Term Storage (ETS)](https://elixirschool.com/en/lessons/specifics/ets/)
 
 - [Docs](http://erlang.org/doc/man/ets.html)

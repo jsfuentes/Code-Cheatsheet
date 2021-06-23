@@ -58,6 +58,7 @@ x.toString(); //="132"
 parseInt('42', 10) //42
 parseInt('42px', 10) //42
 parseInt('10a,a22') //10
+parseInt("a") //NaN - Boolean(NaN) => False
 ```
 
 Find type with `typeof(var)`

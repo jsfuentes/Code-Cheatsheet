@@ -1,4 +1,4 @@
-# Lists(linked)
+# [Lists(linked)](https://hexdocs.pm/elixir/List.html#summary)
 
 ```elixir
 list1 = [1,2,3]

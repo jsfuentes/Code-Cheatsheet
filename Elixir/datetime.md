@@ -7,6 +7,9 @@ Many functions in this module require a time zone database. By default, it uses 
 ```elixir
 dt = ~U[2020-05-29 02:15:00Z] #Only UTC Timezone
 
+# Change to first of month
+%{DateTime.utc_now() | day: 1, hour: 0, minute: 0, second: 0}
+
 dt |> DateTime.add(60, :second) #Expected :second, :millisecond, :microsecond, :nanosecond
 ```
 
