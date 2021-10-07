@@ -13,9 +13,25 @@ x.toLocaleDateString(); //=> "1/21/2020"
 
 _Parsing dates with `new Date()` varies across browsers, [recommended against](https://stackoverflow.com/questions/33908299/javascript-parse-a-string-to-date-as-local-time-zone)_
 
-## DateFns
+## [DateFns](https://date-fns.org/docs/Getting-Started)
 
 Better than moment b/c selective importing and uses normal js date object
+
+`<` and `>` works on Date objects but **not** `==` or `===`
+
+```js
+// Add any duration to 1 September 2014, 10:19:50
+const result = add(new Date(2014, 8, 1, 10, 19, 50), {
+  years: 2,
+  months: 24,
+  days: 7,
+  hours: 5,
+  minutes: 9,
+  seconds: 30,
+})
+```
+
+### Formatting
 
 ```js
 import { format, formatDistance, formatRelative, subDays } from 'date-fns'
@@ -28,19 +44,9 @@ formatDistance(subDays(new Date(), 3), new Date())
 
 formatRelative(subDays(new Date(), 3), new Date())
 //=> "last Friday at 7:26 p.m."
-
-// Add the following duration to 1 September 2014, 10:19:50
-var result = add(new Date(2014, 8, 1, 10, 19, 50), {
-  years: 2,
-  months: 24,
-  days: 7,
-  hours: 5,
-  minutes: 9,
-  seconds: 30,
-})
 ```
 
-#### Formatting
+#### Formatting Strings
 
 | Unit                            | Pattern  | Result examples                   | Notes |
 | :------------------------------ | :------- | :-------------------------------- | :---- |

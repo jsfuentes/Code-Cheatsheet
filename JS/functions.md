@@ -14,7 +14,7 @@ Different ways to call ft change how it interacts with the local scope
 
 Use the this of the scope that defined it: `.bind(this)` or store the context `var self = this` or use arrow its
 
-### 6 Ways to Define Ft
+### 7 Ways to Define Ft
 
 ##### Ft Declaration
 

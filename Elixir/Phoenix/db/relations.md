@@ -1,9 +1,38 @@
 # [Relations](https://hexdocs.pm/ecto/Ecto.Changeset.html#module-associations-embeds-and-on-replace)
 
 - Has_many
-- Belongs_to
 
-### Usage
+## One to One
+
+ `belongs_to`  indicates a one-to-one or many-to-one association with another schema.  Defines a foreign key that is the primary key of the listed table. 
+
+- `belongs_to` (has the id in its table) => `has_one` has their id in their belongs_to table
+- The other schema often has a `has_one` or a `has_many` field with same fields, but reverse association. (Both the has macros don't change DB, just allow access)
+
+```elixir
+  schema "organization_subscriptions" do
+		belongs_to :organization, ReactPhoenix.Organizations.Organization, type: :string
+		# subscriptions has organization_id
+```
+
+```elixir
+  schema "organizations" do
+    has_one :subscription, ReactPhoenix.Organizations.Subscription 
+    #nothing in table organizations
+```
+
+#### Usage
+
+```elixir
+# Can Preload the belongs_to post on the comment 
+[comment] = Repo.all(from(c in Comment, where: c.id == 42, preload: :post))
+comment.post #=> %Post{...}
+#Or the post
+[post] = Repo.all(from(p in Post, where: p.id == 42, preload: :comments))
+post.comments #=> [%Comment{...}, ...]
+```
+
+## Create/Update Relations
 
 - [`cast_assoc`](https://hexdocs.pm/ecto/Ecto.Changeset.html#cast_assoc/3)
 
@@ -42,8 +71,6 @@ with: &RegistrationEventQuestion.changeset/2
 )
 |> Repo.update()
 ```
-
-
 
 ## Example Schema
 

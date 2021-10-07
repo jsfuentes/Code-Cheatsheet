@@ -124,3 +124,22 @@ console.log(output);
 // That Mike is a youngster
 ```
 
+## EMCA 2020
+
+#### Optional Chaining
+
+For use when you are accessing an `object` deeply and arent sure about key existence
+
+```js
+const customerCity = invoice?.customer?.address?.city;
+```
+
+#### Nullish Coalescing Operator
+
+```javascript
+# Replace
+const size = settings.size || 42;
+# With as this checks for null or undefined not false/0
+const size = settings.size ?? 42; 
+```
+

@@ -1,4 +1,4 @@
-#  Timex
+#  [Timex](https://hexdocs.pm/timex/getting-started.html)
 
 ```elixir
 [{:timex, "~> 3.5"}]

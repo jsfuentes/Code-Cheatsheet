@@ -28,7 +28,7 @@ Enum.map(%{1 => 2, 3 => 4}, fn {k, _} -> k === 3 end) #[false, true]
 
 Enum.reduce(1..3, 0, fn (new, acc) -> new + acc end)
 
-Enum.filter([1,2,3], fn a -> a in [1,3] end)
+Enum.filter([1,2,3], fn a -> a in [1,3] end) #[1,3]
 Enum.filter([1,2,3], fn a -> a not in [1,3] end)
 Enum.filter(%{a: 1, b: 4}, fn {x, y} -> y === 1 end)
 #[a: 1]

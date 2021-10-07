@@ -43,6 +43,12 @@ Application.ex
     ]
 ```
 
+Somewhere in app
+
+```
+{:ok, pid} = Task.Supervisor.start_child(ExampleApp.TaskSupervisor, fn -> background_work end)
+```
+
 account_setup.ex
 
 Tasks will be run with when that ft

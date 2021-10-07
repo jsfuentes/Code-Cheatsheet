@@ -11,7 +11,7 @@ All actions take two args:
 - `conn`: a struct which holds data about requests
 - `params`: request params(seems to everything like post body, query params, and more), Map with **string keys** 
 
-Return values with `json/2`,  `text/2`, , and `html/2` 
+Return values with `json/2`,  `text/2`,  and `html/2` 
 
 To let Phoenix views build resp, use `render/3`
 
@@ -45,28 +45,42 @@ defmodule HelloWeb.HelloController do
     conn
     |> put_status(401)
     |> json(%{user: 1})
+    # |> text("") #is empty 200 resp
   end
 end
 ```
 
-### Fallback
+## Flashes
 
-Use [action_fallback](https://hexdocs.pm/phoenix/Phoenix.Controller.html#action_fallback/1) to specify a plug to translate common domain data structures into valid Conn response
+Add server messages
 
 ```elixir
-defmodule MyController do
-  use Phoenix.Controller
-
-  action_fallback MyFallbackController
-  
-  def show(conn, %{"id" => id}, current_user) do
-    with {:ok, post} <- Blog.fetch_post(id),
-         :ok <- Authorizer.authorize(current_user, :view, post) do
-
-      render(conn, "show.json", post: post)
-    end
-  end
-end
+conn
+|> put_flash(:info, "Welcome to Phoenix, from flash info!")
+|> put_flash(:error, "Let's pretend we have an error.")
+|> render("index.html")
 ```
 
-If with fails, it just returns the unmatched value which probably has` {:error, ....}` in it
+Instead of adding it to the html directly
+
+templates/layout/app.html.eex
+
+```eex
+<meta name="flash-info" content="<%= get_flash(@conn, :info) %>" />
+<meta name="flash-danger" content="<%= get_flash(@conn, :error) %>" />
+```
+
+App.js
+
+```react
+useEffect(() => {
+  const metaFlashInfo = document.querySelector("meta[name='flash-info']");
+  const metaFlashDanger = document.querySelector("meta[name='flash-danger']");
+
+  const toastIfContent = (message) => message && toast(message);
+
+  toastIfContent(metaFlashInfo.content);
+  toastIfContent(metaFlashDanger.content);
+}, []);
+```
+

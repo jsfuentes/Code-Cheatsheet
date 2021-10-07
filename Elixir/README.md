@@ -88,6 +88,13 @@ else
 end
 ```
 
+Trenary op
+
+```elixir
+canvote = if age > 18, do: "Can Vote", else: "Can't Vote"
+if 0, do: "printed", else: "not printed" #if checks for nil or false, anything else is true
+```
+
 Conditional Matching, goes to first match
 
 ```elixir
@@ -114,12 +121,6 @@ case Chat.get_chat_message(message_id) do
 
   nil -> nil
 end
-```
-
-Trenary op
-
-```elixir
-canvote = if age > 18, do: "Can Vote", else: "Can't Vote"
 ```
 
 #### With

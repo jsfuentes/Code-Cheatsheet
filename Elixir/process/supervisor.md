@@ -8,6 +8,8 @@ So yes fail if there are issues, but [the known state should actually work](http
 
 ## Dynamic Supervisors
 
+Works well with Registry to limit to one per or something
+
 ### Init
 
 ```elixir
@@ -27,6 +29,17 @@ end
 - `:max_seconds` - the time frame in which `:max_restarts` applies. Defaults  `5`.
 - `:max_children` - the maximum amount of children to be running under this supervisor at the same time. When `:max_children` is exceeded, [`start_child/2`](https://hexdocs.pm/elixir/1.12/DynamicSupervisor.html#start_child/2) returns `{:error, :max_children}`. Defaults to `:infinity`.
 - `:extra_arguments` - arguments prepended to the child spec given to [`start_child/2`](https://hexdocs.pm/elixir/1.12/DynamicSupervisor.html#start_child/2)
+
+application.ex
+
+```elixir
+      children=[
+      ....,
+      {Registry, keys: :unique, name: Registry.EventFolderGenServer},
+      ReactPhoenix.Dynamic.EventFolderSupervisor,
+```
+
+
 
 ### Start Child
 

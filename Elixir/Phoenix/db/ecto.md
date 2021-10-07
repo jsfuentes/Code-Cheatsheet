@@ -39,30 +39,6 @@ end
 user = %User{name: "jane"}
 ```
 
-##### Associations
-
- `belongs_to`  indicates a one-to-one or many-to-one association with another schema. Defines a foreign key that is the primary key of the listed table. The other schema often has a `has_one` or a `has_many` field with same fields, but reverse association. (Both the has macros don't change DB, just allow access)
-
-```elixir
-# Can Preload the belongs_to post on the comment 
-[comment] = Repo.all(from(c in Comment, where: c.id == 42, preload: :post))
-comment.post #=> %Post{...}
-#Or the post
-[post] = Repo.all(from(p in Post, where: p.id == 42, preload: :comments))
-post.comments #=> [%Comment{...}, ...]
-```
-
-`many_to_many` [association](https://elixirschool.com/en/lessons/ecto/associations/#many-to-many) happens through a join schema or source, containing foreign keys to the associated schemas. For example, the association below:
-
-```elixir
-# from MyApp.Post
-many_to_many :tags, MyApp.Tag, join_through: "posts_tags"
-#is backed by relational databases through a join table as follows:
-[Post] <-> [posts_tags] <-> [Tag]
-  id   <--   post_id
-              tag_id    -->  id
-```
-
 Finally, schemas can also have virtual fields by passing the `virtual: true` option.
 
 ### Example

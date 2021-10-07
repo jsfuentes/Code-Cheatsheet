@@ -27,13 +27,6 @@ See query for more complex stuff
 
 *If variable is nil, don't just compare use is_nil*
 
-##### Insert
-
-```elixir
-Repo.insert(%User{email: "user1@example.com"}) 
-#{:ok, [new User object...]}
-```
-
 ### [Query](https://hexdocs.pm/ecto/Ecto.Query.html#content)
 
 Supports literal Integers, Floats, Bools, Binary(<<1, 2 >>), Strings, and arrays, other external variables must be pinned`^`. Using with Schema(`User` instead of `"users"`) lets it know what type to cast to and automatically retrieves all fields
@@ -122,7 +115,16 @@ Repo.all(from req in RegistrationEventQuestion,
 
 I think both do two queries: [in query](https://hexdocs.pm/ecto/Ecto.Query.html#preload/3)
 
+#### Insert
+
+```elixir
+Repo.insert(%User{email: "user1@example.com"}) 
+#{:ok, [new User object...]}
+```
+
 #### Update
+
+Unlike insert, get, or delete, update NEEDS a changeset
 
 ```elixir
 user

@@ -2,7 +2,7 @@
 
 Render templates and are presentation layer processing raw data for use
 
-Must match name of controller
+Must match name of controller for auto usage
 
 lib/react_phoenix_web/views/event_view.ex
 
@@ -20,6 +20,11 @@ defmodule ReactPhoenixWeb.EventView do
   end
 
   def render("event.json", %{event: event}) do
+    sortedSubEvents =
+      if Ecto.assoc_loaded?(event.subevents),
+        do: Enum.sort_by(event.subevents, & &1.start_time),
+        else: []
+        
     %{
       id: event.id,
       title: event.title,
@@ -28,7 +33,7 @@ defmodule ReactPhoenixWeb.EventView do
       host_name: event.host_name,
       host_description: event.host_description,
 #event has_many :subevents, ReactPhoenix.Events.Subevent
-      subevents: render_many(event.subevents, EventView, "subevent.json", as: :subevent)
+      subevents: render_many(sortedSubEvents, EventView, "subevent.json", as: :subevent)
     }
   end
 
@@ -42,7 +47,17 @@ defmodule ReactPhoenixWeb.EventView do
     }
   end
 end
+```
 
+#### Usage
+
+```elixir
+render(conn, "show.json", event: event)
+
+public_subevent = Phoenix.View.render_one(subevent, ReactPhoenixWeb.EventView, "subevent.json")
+
+Chat.list_chat_messages(socket.assigns.user_id, cc.id, last_time_seen)
+|>Phoenix.View.render_many(ReactPhoenixWeb.ChatMessageView, "preloaded_message.json")
 ```
 
 ## Templates

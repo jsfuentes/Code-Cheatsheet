@@ -66,7 +66,7 @@ end
 myloop(5,1) #=> 5,4,3,2,1
 ```
 
-Guards
+#### Guards
 
 ```elixir
 def drive(%User{age: age}) when age >= 16 do
@@ -87,6 +87,14 @@ def print_multiple_times(msg, n) do
   print_multiple_times(msg, n - 1)
 end
 ```
+
+Guards that would throw an error, just fail the guard like length
+
+```elixir
+def foo(term) when length(something) or is_float(term) or is_nil(term)
+```
+
+
 
 Capture
 

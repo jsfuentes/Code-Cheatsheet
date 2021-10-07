@@ -1,4 +1,4 @@
-# Array
+#  Array
 
 ## Basics
 
@@ -50,12 +50,14 @@ Can do async fts in map and then wrap it in a promise.all
 
 `.slice` for subarrs (start, end not included)
 
-`.splice([start index], [number beyond start])` for removing&saving section
+`.splice([start index], [number beyond start], [item to insert opt])` for removing&saving section
 
 `.concat` combine two arrays
 
 ```javascript
-var removedItem = fruits.splice(pos, 1); // this is how to remove a single item at pos
+const removedItem = fruits.splice(pos, 1); // this is how to remove a single item at pos
+
+fruit.splice(3, 0, "apple"); //insert at index 3
 
 fruits.splice(fruits.indexOf("banana"), 1);
 

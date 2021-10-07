@@ -2,17 +2,19 @@
 
 Think about how to auto make the foreign keys cascade
 
-mix phx.gen.schema 
+mix phx.gen.context Templates Template templates event_id:references:events description preview
+
+mix phx.gen.context Templates TemplateXTag templates_x_tags template_id:references:templates template_tag_id:references:template_tags
+
+mix phx.gen.context Templates TemplateTag template_tags name
+
+mix phx.gen.context Events EventFolder event_folders base_id:references:events repeat_month_interval:integer repeat_week_interval:integer repeat_end:date repeat_weekdays
 
 mix phx.gen.context Events EventFolder event_folders base_id:references:events repeat_month_interval:integer repeat_week_interval:integer repeat_end:date repeat_weekdays
 
 mix phx.gen.context Calls Group groups title description type_data:map call_info:map type subevent_id:references:subevents active:boolean moderators:array:string 
 
-mix phx.gen.context Activities Reaction reactions user_id:references:users emoji
-
 mix phx.gen.context Organizations Organization organizations host_logo host_name host_description color social_links:array:string api_key
-
-mix phx.gen.context Activities ActionAnalytics action_analytics user_id:references:users action_id:references:actions
 
 Used as learning tools
 

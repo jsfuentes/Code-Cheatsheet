@@ -26,7 +26,7 @@ user = Repo.insert!(changeset)
 
 Most validations(expect ones marked unsafe) don't require the db
 
-COnstraints rely on the db and are always safe
+Constraints rely on the db and are always safe
 
 ## Advanced
 

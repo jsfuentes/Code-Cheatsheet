@@ -69,6 +69,7 @@ Expands out to
 
 ```elixir
 resources "/posts", PostController, only: [:index, :show]
+resources "/actions", ActionController, except: [:new, :edit, :show]
 ```
 
 ### More

@@ -15,5 +15,5 @@
 - `.toUpperCase()`
 - `.join([seperatar ,])`
 
-## To String
+
 

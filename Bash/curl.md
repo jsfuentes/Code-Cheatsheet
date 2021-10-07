@@ -22,6 +22,10 @@ curl https://api.mux.com/video/v1/assets \
 
 `json_pp` takes json and outputs pretty printed json
 
+```bash
+curl -I http://google.com #print headers returned
+```
+
 ##### Authorization Header
 
 ```bash

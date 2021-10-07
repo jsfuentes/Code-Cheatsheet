@@ -9,8 +9,6 @@ x <> "hi" #error
 "#{x}hi" #123hi
 ```
 
-
-
 String.reverse(str)
 
 String.upcase(str)
