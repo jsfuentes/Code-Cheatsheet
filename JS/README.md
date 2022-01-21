@@ -80,3 +80,12 @@ Boolean([]) //true
 Boolean({}) //true
 ```
 
+Additionally, some array methods cannot find `NaN`, while others can.
+
+```javascript
+let arr = [2, 4, NaN, 12];
+arr.indexOf(NaN);                      // -1 (false)
+arr.includes(NaN);                     // true
+arr.findIndex(n => Number.isNaN(n));   // 2
+```
+

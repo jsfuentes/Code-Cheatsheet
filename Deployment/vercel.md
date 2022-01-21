@@ -1,15 +1,15 @@
-# Zeit Now
+# Vercel
 
 ```bash
-npm i -g now
+npm i -g vercel
 ```
 
 Zeit ez, first deploy is prod else dev
 
 ```bash
-now #will link autolink to zeit/github project
-now -e KEY=value #include env variables
-now --prod #prod deployment
+vercel #will link autolink to zeit/github project
+vercel -e KEY=value #include env variables
+vercel --prod #prod deployment
 ```
 
 Use to include environment variables

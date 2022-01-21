@@ -49,7 +49,7 @@ defmodule MyApp.TodoList do
   end
 end
 
-defmodule MyApp.TodoListItem do
+defmodule MyApp.TodoListXItem do
   use Ecto.Schema
 
   schema "todo_list_items" do
@@ -100,4 +100,3 @@ def changeset(struct, params \\ %{}) do
 end
 ```
 
-## 

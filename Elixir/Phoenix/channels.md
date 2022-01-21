@@ -63,7 +63,10 @@ defmodule SsWeb.RoomChannel do
   
   #eChannel.push("new_msg", {body: "hi"});
   def handle_in("new_msg", %{"body" => body}, socket) do
+  user_id = socket.assigns.user_id
     broadcast!(socket, "new_msg", %{body: body})
+    # Must use Endpoint to broadcast to external channel
+    ReactPhoenixWeb.Endpoint.broadcast("user:#{user_id}", "new_msg", %{body: body})
     {:reply, :ok, socket}
     {:reply, {:error, %{errors: changeset}}, socket)
     #best practice to respond with error or ok so client can properly deal 
@@ -89,7 +92,6 @@ defmodule SsWeb.RoomChannel do
     {:noreply, socket}
   end
 end
-
 ```
 
 `broadcast` will notify all clients on socket's topic and invoke their handle_out callback if defined for filtering/customization

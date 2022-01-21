@@ -24,6 +24,5 @@ export async function storeVideo(blob, filepath) {
   await write(filePath, buf);
   console.log(`Blob stored at ${filePath}`);
 }
-
 ```
 

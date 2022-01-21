@@ -16,3 +16,7 @@ MediaStreams
 
 P2P Connections
 
+### Debugging
+
+chrome://media-internals
+

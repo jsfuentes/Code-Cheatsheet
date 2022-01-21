@@ -64,10 +64,10 @@ fruits.splice(fruits.indexOf("banana"), 1);
 fruits.concat(["other", "mango"])
 ```
 
-### copy
+##### copy
 
 ```javascript
-var fruitCopy = fruits.slice(); 
+const fruitCopy = fruits.slice(); 
 ```
 
 ### For each
@@ -91,3 +91,10 @@ array1.forEach(function(element) {
 - `.pop()`
 - `.shift(e)` => pop from beginning
 - `.unshift()` => add to beginning
+
+#### Is Array
+
+```javascript
+Array.isArray([1,2]);// true;
+```
+

@@ -9,8 +9,6 @@ npx ts-migrate migrate .
 npx ts-migrate reignore .
 ```
 
-
-
 1) Create tsconfig
 
 2) Rename files to .js => .ts

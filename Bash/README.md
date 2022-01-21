@@ -36,6 +36,8 @@ export name=value
 
 #### String Interpolation
 
+Single quotes won't interpolate anything, but double quotes will. 
+
 ```bash
 "$var1".txt #basically $(echo $var1).txt
 ```

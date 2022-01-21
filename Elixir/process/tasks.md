@@ -33,7 +33,15 @@ Task.start(fn -> send_email_to_user(user) end) # 🎉
 #[{:ok, %{..}}, {:ok, %{..}}]
 ```
 
-## Task Supervisor Setup
+## Task Supervisor 
+
+Summary:
+
+- Use [`Task.Supervisor.start_child/2`](https://hexdocs.pm/elixir/1.12/Task.Supervisor.html#start_child/2) to start a fire-and-forget task and you don't care about its results nor about if it completes successfully
+- Use [`Task.Supervisor.async/2`](https://hexdocs.pm/elixir/1.12/Task.Supervisor.html#async/2) + [`Task.await/2`](https://hexdocs.pm/elixir/1.12/Task.html#await/2) allows you to execute tasks concurrently and retrieve its result. If the task fails, the caller will also fail
+- Use [`Task.Supervisor.async_nolink/2`](https://hexdocs.pm/elixir/1.12/Task.Supervisor.html#async_nolink/2) + [`Task.yield/2`](https://hexdocs.pm/elixir/1.12/Task.html#yield/2) + [`Task.shutdown/2`](https://hexdocs.pm/elixir/1.12/Task.html#shutdown/2) allows you to execute tasks concurrently and retrieve their results or the reason they failed within a given time frame. If the task fails, the caller won't fail: you will receive the error reason either on `yield` or `shutdown`
+
+#### Setup
 
 Application.ex
 

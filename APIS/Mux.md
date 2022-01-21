@@ -6,38 +6,6 @@ Throw video at an endpoint and get a url that will allow a great viewing experie
 
 [Upload Chunks](https://github.com/muxinc/upchunk)
 
-## Node
-
-waiting => asset_created
-
-Server
-
-```js
-  let upload = await MuxVideo.Uploads.create({
-    cors_origin: conf.get("CLIENT_URL"),
-    new_asset_settings: { playback_policy: "public" }
-  });
-
-//Send upload.url to client
-//....
-
-  let updatedUpload;
-  while (!updatedUpload || !updatedUpload.asset_id) {
-    updatedUpload = await MuxVideo.Uploads.get(upload.id);
-    await snooze(500);
-  }
-  debug("Asset_id:", updatedUpload.asset_id);
-  let asset;
-  while (!asset || asset.status !== "ready") {
-    asset = await MuxVideo.Assets.get(updatedUpload["asset_id"]);
-    debug({
-      status: asset.status,
-      playback_url: `https://stream.mux.com/${asset.playback_ids[0].id}.m3u8`
-    });
-    await snooze(750);
-  }
-```
-
 ## Bash
 
 1) Get API Token and Secret
@@ -102,3 +70,42 @@ Then
 https://stream.mux.com/EsxKJmzkfLvGV01cbThYHDcEz7TKcbR31/medium.mp4
 ```
 
+## Languages
+
+#### [Elixir](https://mux.com/for/elixir)
+
+
+
+#### Node
+
+waiting => asset_created
+
+Server
+
+```js
+  let upload = await MuxVideo.Uploads.create({
+    cors_origin: conf.get("CLIENT_URL"),
+    new_asset_settings: { playback_policy: "public" }
+  });
+
+//Send upload.url to client
+//....
+
+  let updatedUpload;
+  while (!updatedUpload || !updatedUpload.asset_id) {
+    updatedUpload = await MuxVideo.Uploads.get(upload.id);
+    await snooze(500);
+  }
+  debug("Asset_id:", updatedUpload.asset_id);
+  let asset;
+  while (!asset || asset.status !== "ready") {
+    asset = await MuxVideo.Assets.get(updatedUpload["asset_id"]);
+    debug({
+      status: asset.status,
+      playback_url: `https://stream.mux.com/${asset.playback_ids[0].id}.m3u8`
+    });
+    await snooze(750);
+  }
+```
+
+## 

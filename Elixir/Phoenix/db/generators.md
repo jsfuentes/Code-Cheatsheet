@@ -8,13 +8,11 @@ mix phx.gen.context Templates TemplateXTag templates_x_tags template_id:referenc
 
 mix phx.gen.context Templates TemplateTag template_tags name
 
-mix phx.gen.context Events EventFolder event_folders base_id:references:events repeat_month_interval:integer repeat_week_interval:integer repeat_end:date repeat_weekdays
+mix phx.gen.context Subevents Cohort cohorts title can_move:boolean auto_assign:boolean expected_size:integer min_size:integer 
 
-mix phx.gen.context Events EventFolder event_folders base_id:references:events repeat_month_interval:integer repeat_week_interval:integer repeat_end:date repeat_weekdays
+mix phx.gen.context Subevents CohortXUser cohorts_x_tags  user_id:references:users cohorts _id:references:cohorts
 
-mix phx.gen.context Calls Group groups title description type_data:map call_info:map type subevent_id:references:subevents active:boolean moderators:array:string 
-
-mix phx.gen.context Organizations Organization organizations host_logo host_name host_description color social_links:array:string api_key
+mix phx.gen.context Activites PollAnswers poll_answers subevent_id:references:subevents user_id:references:users text
 
 Used as learning tools
 

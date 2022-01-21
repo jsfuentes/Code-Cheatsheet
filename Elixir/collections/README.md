@@ -47,9 +47,6 @@ Enums are eager so a pipe means an intermediate list is always created
 Other
 
 ```elixir
-Enum.sort_by(events, & &1.start_time)
-Enum.sort_by(events, & &1.start_time, :desc)
-Enum.sort_by(iterable, mapper, sort_ft // Kernel.<=)
 Enum.uniq([1,2,2]) #[1,2]
 Enum.all?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #false
 Enum.any?([1,2,3], fn(n) -> rem(n, 2) == 0 end) #true
@@ -62,11 +59,30 @@ Enum.join(["StringA", "StringB"], " ")
 - .member(enum, el)
 - .split(enum, count) => returns tuple of two enums with count in first one
 
+#### Sort
+
+```elixir
+Enum.sort([2, 3, 1], :asc) # <=/2 sorting, [1,2,3]
+Enum.sort([2, 3, 1], :desc) #>=/2 sorting, [3,2,1]
+Enum.sort_by(iterable, mapper, sort_ft // Kernel.<=)
+```
+
+##### Sorting Dates
+
+Do not use <= or >= when using structs/dates
+
+Passing a module, uses that module's `compare/2` 
+
+```elixir
+Enum.sort(dates, Date)
+Enum.sort(dates, {:asc, Date})
+```
+
 ### Comprehension
 
 ```elixir
 for n <- [1, 2, 3, 4], do: n * n
-for n <- 1..4, do: n * n
+for n <- 1..4, do: n * n # inclusive of both sides
 values = [good: 1, good: 2, bad: 3, good: 4]
 for {:good, n} <- values, do: n * n #[1, 4, 16]
 ```

@@ -142,7 +142,57 @@ from(p in Post, where: p.id < 10, select: p.visits)
 
 ### Advanced
 
-Composing queries
+#### Insert or Update, [Upsert](https://hexdocs.pm/ecto/constraints-and-upserts.html)
+
+Works most of the time:
+
+```elixir
+result =
+  case MyRepo.get(Post, id) do
+    nil  -> %Post{id: id}
+    post -> post
+  end
+  |> Post.changeset(changes)
+  |> MyRepo.insert_or_update
+
+# {:ok, struct} or {:error, changeset}
+```
+
+##### Race condition immune
+
+Method 1:
+
+*note a unique index must be on daily_recording_id
+
+```elixir
+    %Recording{}
+    |> Recording.changeset(attrs)
+    |> Repo.insert(on_conflict: :nothing, conflict_target: :daily_recording_id)
+```
+
+Method 2, reget on changeset error:
+
+```elixir
+case get_chat_channel(attrs) do
+  %ChatChannel{} = cc -> cc
+
+  nil ->
+  	case create_chat_channel(attrs) do
+  		{:ok, cc} -> cc
+
+  		{:error,
+  			%Ecto.Changeset{
+  				errors: [
+  					unique_constraint:
+  					{"has already been taken",
+  						[constraint: :unique, constraint_name: "chat_channels_unique_index"]}
+  				]
+  			}} ->
+  			%ChatChannel{} = cc = get_chat_channel(attrs)
+end
+```
+
+#### Composing queries
 
 ```elixir
 # Create a query

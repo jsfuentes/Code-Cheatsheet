@@ -45,7 +45,6 @@ export default function Done() {
   const num = useSelector(selectNumOfDoneTodos);
   return <div> DID {num} </div>;
 }
-
 ```
 
 If selector is used in multiple component instances and depends on the props, must make unique selector instance per component instance (see [here](https://github.com/reduxjs/reselect#accessing-react-props-in-selectors))

@@ -15,6 +15,15 @@ yarn upgrade #upgrade all packages to latest version of specified range
 yarn upgrade --latest #upgrade across major versions too, potentially changing package.json
 ```
 
+#### Upgrading packages
+
+```bash
+yarn upgrade #upgrade all minor version
+yarn outdated #to see all major version outdates
+# For each major version update, check the update to see what the breaking changes are and make sure you fix any issues
+yarn add * * #to upgrade in package.json
+```
+
 # Npm
 
 ```bash

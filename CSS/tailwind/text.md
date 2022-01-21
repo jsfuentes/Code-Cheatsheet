@@ -29,5 +29,8 @@ No-wrap, prevents any overflow from happening in text
 | ----------------- | --------------------------- |
 | whitespace-nowrap | white-space: nowrap;        |
 | underline         | text-decoration: underline; |
+| select-none       | user-select: none;          |
+|                   |                             |
+|                   |                             |
 |                   |                             |
 

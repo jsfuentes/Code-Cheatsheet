@@ -169,3 +169,6 @@ client.on("private", function(data) {
 Authentication can be done by appending user token to query string 
 
 Or socketio-auth
+
+
+

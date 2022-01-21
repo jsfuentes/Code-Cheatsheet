@@ -48,3 +48,4 @@ def changeset(chat_channel, attrs) do
 end
 ```
 
+Can have multiple changes

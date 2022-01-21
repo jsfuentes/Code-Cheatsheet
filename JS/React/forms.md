@@ -27,6 +27,16 @@ export default function App() {
 
 List of validation rules supported: required | min | max | minLength | maxLength | pattern | validate (custom function)
 
+##### Arrays
+
+```react
+  const { fields, append, prepend, remove, swap, move, insert, replace } =
+    useFieldArray({
+      name: name,
+      control,
+    });
+```
+
 ## TextInput
 
 ```react

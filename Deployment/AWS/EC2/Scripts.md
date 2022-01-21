@@ -57,10 +57,7 @@ Wget link must be updated with proper [link for region](https://docs.aws.amazon.
 
 ```bash
 sudo yum update -y
-sudo yum install -y docker
 sudo yum install -y git
-sudo service docker start
-sudo usermod -a -G docker ec2-user #need to relog, to use docker without sudo
 ```
 
 Install dependencies with yum find name with` sudo yum list | grep python` seems anything after dash is dep idk
@@ -74,6 +71,31 @@ Use public ip address to access in browser: 18.223.158.210
 ```bash
 sudo yum install python3
 sudo yum install nginx
+```
+
+##### Node
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash #nvm
+. ~/.nvm/nvm.sh #activate
+nvm install node
+node -e "console.log('Running Node.js ' + process.version)" #test
+```
+
+##### Puppeteer
+
+```bash
+sudo amazon-linux-extras install epel -y
+sudo yum install -y chromium
+# npm i package.json with puppeteer, sftp scripts, then run 
+```
+
+##### Docker
+
+```bash
+sudo yum install -y docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user #need to relog, to use docker without sudo
 ```
 
 ##### CodeDeploy Agent

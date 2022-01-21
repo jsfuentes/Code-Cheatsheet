@@ -3,6 +3,8 @@
 ```elixir
 list1 = [1,2,3]
 list2= [4,5,6]
+[0 | list1]   # fast b/c linked list
+list1 ++ [0]  # slow 
 list3 = list1 ++ list2
 list4 = list3 -- list1
 

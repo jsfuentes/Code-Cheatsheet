@@ -17,10 +17,6 @@ set1.size;
 
 ```js
 let union = new Set([...a, ...b]);
-let intersection = new Set(
-    [...a].filter(x => b.has(x)));
- let difference = new Set(
-    [...a].filter(x => !b.has(x)));
+let intersection = new Set([...a].filter((x) => b.has(x)));
+let difference = new Set([...a].filter((x) => !b.has(x)));
 ```
-
- 

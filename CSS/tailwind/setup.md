@@ -6,8 +6,17 @@ Can use `npx tailwind build styles.css -o output.css`, but builtin cli doesn't i
 
 ```bash
 yarn add -D tailwindcss
-npx tailwind init tailwind.config.js --full
+npx tailwind init tailwind.config.js
 yarn add -D postcss-cli autoprefixer
+```
+
+Add all the files names to content
+
+```
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
 ```
 
 postcss.config.js
@@ -80,4 +89,10 @@ Tailwind >1.4 does purging if NODE_ENV=production
           },
 ```
 
-### 
+### Next
+
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
