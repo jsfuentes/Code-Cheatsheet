@@ -16,18 +16,6 @@ Can put it right in HTML or use custom classes
 }
 ```
 
-#### Media Queries
-
-no prefix means mobile
-
-```
-sm:inline
-md:
-lg:
-```
-
-100% is default
-
 ## Parts
 
 ```css

@@ -103,6 +103,19 @@ git push <remote> <local branch name>:<remote branch to push into>
 `git clean -fdx` //remove all untracked files including those ignored by .gitignore
 `git clean -fdX` //only remove files ignored by .gitignore
 
+### Find commit that broke it
+
+```bash
+git bisect start
+git bisect bad #current version is bad
+git bisect good v2.6.13
+#Starts wizard and checks out midpoint
+git bisect bad #depending on if good or bad
+git bisect good
+```
+
+#### [Did you just change the case in Mac OSX? That will cause git issues](https://stackoverflow.com/questions/13805750/git-fails-to-detect-renaming)
+
 ## Git grep
 
 `git grep [string]` find all lines tracked by the git repo with the given string

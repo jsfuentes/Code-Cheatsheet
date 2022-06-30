@@ -131,6 +131,8 @@ default value is 0, depending on given values organizes in ascending order -1 0 
 
 Grow shrink and be the right size
 
+Make `overflow-hidden` to stop the contents from affecting the min size
+
 Flex is shorthand, but made up of
 
 - **flex-grow**: how to divide extra space, given to anything with value greater than 0 proportionally on this value(default: 1)

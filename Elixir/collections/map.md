@@ -66,6 +66,9 @@ Map.pop(%{a: 1}, :b, 3) #default 3: {3, %{a: 1}}
 Map.delete(map, key)
 
 Map.merge(map1, map2) #map2 wins on collision
+
+ %{age: "30ish", gender: "Female", name: "Izzy"}
+|> Enum.each(fn ({key, value}) -> IO.puts value end)
 ```
 
 Pipe Merging

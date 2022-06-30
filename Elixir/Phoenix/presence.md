@@ -69,6 +69,8 @@ lib/channels/room_channel.ex
 defmodule HelloWeb.RoomChannel do
   use Phoenix.Channel
   alias HelloWeb.Presence
+  
+  # intercept ["presence_diff"]
 
   def join("room:lobby", _message, socket) do
     send(self(), :after_join)
@@ -83,6 +85,11 @@ defmodule HelloWeb.RoomChannel do
     })
     {:noreply, socket}
   end
+  
+    # To alter or stop presence updates
+  # def handle_out("presence_diff", msg, socket) do
+  #   {:noreply, socket}
+  # end
 end
 ```
 

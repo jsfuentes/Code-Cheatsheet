@@ -27,6 +27,7 @@ Enum.map(%{1 => 2, 3 => 4}, fn {k, _} -> k === 3 end) #[false, true]
 |> Enum.into(%{})
 
 Enum.reduce(1..3, 0, fn (new, acc) -> new + acc end)
+Enum.reduce([%{a: 1}, %{b: 2}], %{}, &Map.merge/2)
 
 Enum.filter([1,2,3], fn a -> a in [1,3] end) #[1,3]
 Enum.filter([1,2,3], fn a -> a not in [1,3] end)
@@ -62,7 +63,7 @@ Enum.join(["StringA", "StringB"], " ")
 #### Sort
 
 ```elixir
-Enum.sort([2, 3, 1], :asc) # <=/2 sorting, [1,2,3]
+Enum.sort([2, 3, 1], :asc) #<=/2 sorting, [1,2,3]
 Enum.sort([2, 3, 1], :desc) #>=/2 sorting, [3,2,1]
 Enum.sort_by(iterable, mapper, sort_ft // Kernel.<=)
 ```
@@ -85,6 +86,15 @@ for n <- [1, 2, 3, 4], do: n * n
 for n <- 1..4, do: n * n # inclusive of both sides
 values = [good: 1, good: 2, bad: 3, good: 4]
 for {:good, n} <- values, do: n * n #[1, 4, 16]
+```
+
+## Parallelize
+
+#### Tasks
+
+```elixir
+1..2 |> Task.async_stream(fn(_) -> DailyHelper.createDailyRoom() end) |> Enum.to_list()
+#[{:ok, %{..}}, {:ok, %{..}}]
 ```
 
 ### Streams

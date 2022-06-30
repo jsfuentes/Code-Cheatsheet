@@ -1,0 +1,90 @@
+{
+  "main": {
+    "id": "7c3bc5d031bed187",
+    "type": "split",
+    "children": [
+      {
+        "id": "565bb9307811b34e",
+        "type": "leaf",
+        "state": {
+          "type": "graph",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2f6b147d515f3d7e",
+    "type": "split",
+    "children": [
+      {
+        "id": "df3970f1fbc4bc92",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4fad86abe237c66c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "075f58525c6e9628",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "07e6ead895fc1dd6",
+    "type": "split",
+    "children": [
+      {
+        "id": "9e0cb9b20fc67915",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "61aad22df6011f32",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "565bb9307811b34e",
+  "lastOpenFiles": [
+    "elm.md",
+    "APIS/Daily.md"
+  ]
+}

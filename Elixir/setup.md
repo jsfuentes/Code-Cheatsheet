@@ -1,10 +1,20 @@
 # Setup
 
+#### Simplest
+
 ```bash
 brew install elixir
 ```
 
 When you install Elixir, you will have three new executables: `iex`, `elixir` and `elixirc`
+
+### Asdf
+
+```
+
+```
+
+### Basic Usage
 
 ##### Simplest
 
@@ -29,9 +39,19 @@ mix compile
 ```bash
  iex -S mix
  iex> recompile()
+ iex > IEx.configure(inspect: [limit: :infinity])
 ```
 
 Can use the interactive prompt to test all the modules
+
+##### Tricks
+
+```elixir
+iex(1) > 4
+# 4, v accessing previous line
+iex(2) > v() + 4
+# 8
+```
 
 *Must restart server when you move/rename files or err*
 

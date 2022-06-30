@@ -16,6 +16,10 @@ Note the arguments given to [`info/2`](https://hexdocs.pm/logger/Logger.html#inf
 ```elixir
   require Logger
   
+  # Every log call in this process will have this metadata
+  Logger.metadata(request_id: request_id)
+  # 2nd arg is metadata
+  Logger.info("Successfully processed payment", confirmation_code: c)
   #......
 	Logger.info("Deleting user from the system: #{inspect(user)}")
 ```

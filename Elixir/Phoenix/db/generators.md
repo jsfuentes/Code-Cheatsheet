@@ -14,6 +14,8 @@ mix phx.gen.context Subevents CohortXUser cohorts_x_tags  user_id:references:use
 
 mix phx.gen.context Activites PollAnswers poll_answers subevent_id:references:subevents user_id:references:users text
 
+mix phx.gen.context Recordings FinalRecording final_recordings session_id:references:sessions playable_url downloadable_url
+
 Used as learning tools
 
 Generating a schema in increasing complexity

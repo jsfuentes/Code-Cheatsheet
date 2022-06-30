@@ -49,6 +49,7 @@ if you scroll within section, what happens
 ```css
 background-position: 90% 90%;
 background-position: bottom 90% right 90%; 
+background-position: center;
 /*can do px too; 90% from bottom and right*/
 ```
 

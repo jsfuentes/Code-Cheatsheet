@@ -38,7 +38,7 @@ name = {:via, Registry, {Registry.ViaTest, "agent"}}
 #### Lookup
 
 ```elixir
-Registry.lookup(GreeterRegistry, "agent")
+Registery.lookup(Registry.ScheduleGenServer, "Mr86aJ1K")
 ```
 
 #### Dispatch

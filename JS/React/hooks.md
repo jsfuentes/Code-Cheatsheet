@@ -16,6 +16,7 @@
 ## All Hooks
 
 - useState => See state.md
+
 - useEffect => See effect.md
 
 - useContext
@@ -86,6 +87,21 @@
     Can also be equivalent to instance variables in class components. Mutating the `.current` property won’t cause a re-render.
 
     Updating a ref is a side effect so it should be done only inside an `useEffect` (or `useLayoutEffect`) or inside an event handler.
+
+- useTransition
+
+  New in v18
+
+  ```react
+  const [isPending, startTransition] = useTransition();
+  
+  setInputValue(input);
+  startTransition(() => {
+    setSearchQuery(input);
+  });
+  ```
+
+  For large UI transitions to mark them as interruptable so typing and stuff doesnt freeze it
 
 - [`useImperativeHandle`](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)
 

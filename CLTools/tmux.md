@@ -1,4 +1,4 @@
-#  Tmux
+# Tmux
 
 tmux is a terminal multiplexer that keeps your session running even when your computer loses its connection to the devserver.
 

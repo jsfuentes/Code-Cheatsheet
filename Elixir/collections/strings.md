@@ -29,6 +29,8 @@ String.slice(str, start_index, end_index)
 
 String.split("foo bar", "")
 
+String.length("foo bar")
+
 ### Atoms
 
 An atom is a constant whose value is its own name

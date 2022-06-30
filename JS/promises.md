@@ -5,9 +5,10 @@ let promiseToClean = new Promise(function(resolve, reject) {
     let isClean = true;
     if(isClean){
       resolve('Clean');
-    } else {
-      reject('Not Clean');
+      return; //resolve/reject don't stop execution
     }
+  
+     reject('Not Clean');
   });
 
 //when promise is resolved

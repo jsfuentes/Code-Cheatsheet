@@ -1,5 +1,7 @@
 # Waypoint
 
+Use `https://github.com/thebuilder/react-intersection-observer` instead its faster cuz new browser api
+
 Run a function when a waypoint is reached
 
 ```bash

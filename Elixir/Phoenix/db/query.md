@@ -1,4 +1,4 @@
-# Repo
+# Query With Repo
 
 Interact with DB/schemas usually in public context like Accounts
 
@@ -38,11 +38,7 @@ query = from u in User, where: u.age == ^age and u.height > ^(height_ft * 3.28),
 query = from u in "users", where: u.age > type(^age, :integer), select: u.name
 
 #List of map from id to email
-query = from u in User, select: %{u.id => u.email}), where: not is_nil(u.birthday) 
-
-query = "users"
-|> where([u], u.age > 18)
-|> select([u], u.name)
+query = from u in User, select: %{u.id => u.email}, where: not is_nil(u.birthday) 
 
 #Complex child query stuff idk
 child_query = from c in Comment, where: parent_as(:posts).id == c.post_id
@@ -50,6 +46,14 @@ query = from p in Post, as: :posts, join: c in subquery(child_query)
 
 Repo.all(query)
 Repo.one(query) #will error if >1 response
+```
+
+Alt syntax
+
+```elixir
+query = "users"
+|> where([u], u.age > 18)
+|> select([u], u.name)
 ```
 
 Testing in IEX
@@ -71,7 +75,7 @@ counts_and_events =
   on: ea.event_id == e.id,
   where: e.user_id == ^user_id,
   order_by: [desc: e.start_time], 
-  #order_by: e.start_time would be asc
+  # order_by: e.start_time would be asc
   select: %{
     id: ea.event_id,
     title: e.title,
@@ -115,122 +119,73 @@ Repo.all(from req in RegistrationEventQuestion,
 
 I think both do two queries: [in query](https://hexdocs.pm/ecto/Ecto.Query.html#preload/3)
 
-#### Insert
+## Aggregate
 
-```elixir
-Repo.insert(%User{email: "user1@example.com"}) 
-#{:ok, [new User object...]}
+```
+from cm in ChatMessages,
+group_by: [cm.to],
+select: %{}
 ```
 
-#### Update
 
-Unlike insert, get, or delete, update NEEDS a changeset
 
 ```elixir
-user
-|> User.changeset(attrs)
-|> Repo.update()
-# {:ok, %User{} = user}
-    
-MyRepo.update_all(Post, set: [title: "New title"])
+anon_activity =
+  from ea in EventAnalytics,
+    where: ea.event_id == ^event_id and not is_nil(ea.email),
+    where:
+      ea.type == "RSVP" or ea.type == "IMPORT" or ea.type == "PREADMIT" or ea.type == "BLOCK",
+    group_by: [ea.email],
+    select: %{
+      email: ea.email,
+      name: max(ea.name),
+      rsvp: type_count(ea.user_id, ea.type == "RSVP"),
+      impt: type_count(ea.user_id, ea.type == "IMPORT"),
+      preadmit: type_count(ea.user_id, ea.type == "PREADMIT"),
+      block: type_count(ea.user_id, ea.type == "BLOCK"),
+      inserted_at: min(ea.inserted_at),
+      location: min(ea.location),
+      timezone: max(ea.timezone)
+    }
 
-MyRepo.update_all(Post, inc: [visits: 1])
+user_activity =
+  from ea in EventAnalytics,
+    where: ea.event_id == ^event_id and not is_nil(ea.email),
+    where: ea.type == "JOIN",
+    join: u in User,
+    on: u.id == ea.user_id,
+    group_by: [u.email],
+    select: %{
+      email: u.email,
+      name: max(u.name),
+      picture: max(u.picture),
+      join: type_count(ea.user_id, ea.type == "JOIN"),
+      inserted_at: min(ea.inserted_at),
+      location: max(ea.location),
+      timezone: max(ea.timezone),
+      social_links: max(u.social_links)
+    }
 
-from(p in Post, where: p.id < 10, select: p.visits)
-|> MyRepo.update_all(set: [title: "New title"])
+query =
+  from ua in subquery(user_activity),
+    full_join: aa in subquery(anon_activity),
+    on: ua.email == aa.email,
+    order_by: [asc: ua.join, desc: coalesce(aa.inserted_at, ua.inserted_at)],
+    select: %{
+      email: coalesce(ua.email, aa.email),
+      name: coalesce(ua.name, aa.name),
+      social_links: ua.social_links,
+      RSVP: aa.rsvp,
+      IMPORT: aa.impt,
+      PREADMIT: aa.preadmit,
+      BLOCK: aa.block,
+      JOIN: ua.join,
+      location: coalesce(ua.location, aa.location),
+      timezone: coalesce(ua.timezone, aa.timezone)
+    }
+
+event_users = Repo.all(query)
 ```
 
-### Advanced
 
-#### Insert or Update, [Upsert](https://hexdocs.pm/ecto/constraints-and-upserts.html)
-
-Works most of the time:
-
-```elixir
-result =
-  case MyRepo.get(Post, id) do
-    nil  -> %Post{id: id}
-    post -> post
-  end
-  |> Post.changeset(changes)
-  |> MyRepo.insert_or_update
-
-# {:ok, struct} or {:error, changeset}
-```
-
-##### Race condition immune
-
-Method 1:
-
-*note a unique index must be on daily_recording_id
-
-```elixir
-    %Recording{}
-    |> Recording.changeset(attrs)
-    |> Repo.insert(on_conflict: :nothing, conflict_target: :daily_recording_id)
-```
-
-Method 2, reget on changeset error:
-
-```elixir
-case get_chat_channel(attrs) do
-  %ChatChannel{} = cc -> cc
-
-  nil ->
-  	case create_chat_channel(attrs) do
-  		{:ok, cc} -> cc
-
-  		{:error,
-  			%Ecto.Changeset{
-  				errors: [
-  					unique_constraint:
-  					{"has already been taken",
-  						[constraint: :unique, constraint_name: "chat_channels_unique_index"]}
-  				]
-  			}} ->
-  			%ChatChannel{} = cc = get_chat_channel(attrs)
-end
-```
-
-#### Composing queries
-
-```elixir
-# Create a query
-query = from u in User, where: u.age > 18
-
-# Extend the query
-query = from u in query, select: u.name
-```
-
-##### Fragments
-
-Allow you to define raw SQL
-
-```elixir
-  from p in Post,
-    where: is_nil(p.published_at) and
-           fragment("lower(?)", p.title) == ^title
-```
-
-##### Custom Macros
-
-```elixir
-defmodule ReactPhoenix.Helpers.QueryMacros do
-  defmacro filter(agg, condition) do
-    quote do
-      fragment("? FILTER(WHERE ?)", unquote(agg), unquote(condition))
-    end
-  end
-
-  defmacro type_count(id, condition) do
-    quote do
-      filter(count(unquote(id)), unquote(condition))
-    end
-  end
-end
-```
-
-```elixir
-  import ReactPhoenix.Helpers.QueryMacros
-```
 
