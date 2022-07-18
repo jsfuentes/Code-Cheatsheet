@@ -15,3 +15,7 @@
 - Read 1 MB sequentially from network 10,000,000 ns
 - Read 1 MB sequentially from disk 30,000,000 ns
 - Send packet CA->Netherlands->CA 150,000,000 ns 
+
+## Server
+
+https://code.tubitv.com/how-we-discovered-a-7-year-old-performance-issue-in-elixir-99080bdce9a1

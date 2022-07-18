@@ -1,3 +1,5 @@
+# Comparisons
+
 ## Monorepo vs Manyrepo
 
 Mono is better for atomic changes and is the more popular choice
@@ -18,7 +20,7 @@ Yarn:
 - Uses package.json, so super super easy to switch; can use both at once
 - Emojis 
 
-### Server-Side Vs Client-Side Rendering
+## Server-Side Vs Client-Side Rendering
 
 ServerSide Rendering means the server will generate the initial html of the React element that can then be rehydrated. Default lib in node.
 
@@ -35,3 +37,21 @@ Client-Side
 
 - Easier/Standard
 - Better for Apps that are mostly behind a login because it doesnt need SEO right
+
+## Server Vs Clientside ID Generation
+
+Server-side/Autoincrementing ID
+
+- Need to access DB before you can propogate ID
+- Less space - int8 is 8 bytes
+- Simple and auto for dbs
+- Leaks usage stats to people looking at ids number
+
+**Client-side/Nanoid**
+
+- Allows storing/using ids before saving in the DB
+- Allows you to put id in urls without them being guessable by users 
+- Should add prefix to ids like stripe b/c easier for debugging and more
+- Globally unique unless theres a bad/malicious actor
+  - Have to enforce uniqueness in the DB/catch id conflict errors
+- More space - varchar(255) is up to 255 bytes and one byte per char so nanoid is 21 chars/bytes

@@ -46,7 +46,7 @@ add :user_id, references(:users, on_delete: :nothing)
 - `:nilify_all` - causes the referencing column(s) in the referencing row(s) to be set to `nil` when the referenced row is deleted
 - `:restrict` - prevents deletion of a referenced row. It will fail if there is a referenced object.
 
-#### UUID 
+#### UUID or Nanoid
 
 Creating (will be uuid in table)
 
@@ -56,7 +56,8 @@ defmodule ReactPhoenix.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users, primary_key: false) do
-      add :id, :binary_id, primary_key: true
+          add :id, :string, primary_key: true
+      # UUID add :id, :binary_id, primary_key: true
 ```
 
 Referencing

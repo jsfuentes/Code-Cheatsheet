@@ -1,22 +1,24 @@
 # Generators
 
-Think about how to auto make the foreign keys cascade
+Used as learning tools for both db as well as channel/migrations
+
+#### Examples
+
+```bash
+mix phx.gen.json Boards Board boards owner_id:references:users title description
 
 mix phx.gen.context Templates Template templates event_id:references:events description preview
 
 mix phx.gen.context Templates TemplateXTag templates_x_tags template_id:references:templates template_tag_id:references:template_tags
 
 mix phx.gen.context Templates TemplateTag template_tags name
+```
 
-mix phx.gen.context Subevents Cohort cohorts title can_move:boolean auto_assign:boolean expected_size:integer min_size:integer 
+- No :type means it is a :string, but use :text if >256 chars
+- Often need to modify schema to have belong_to/has_many/has_one
+- Need to change migration if id type is string or 
 
-mix phx.gen.context Subevents CohortXUser cohorts_x_tags  user_id:references:users cohorts _id:references:cohorts
-
-mix phx.gen.context Activites PollAnswers poll_answers subevent_id:references:subevents user_id:references:users text
-
-mix phx.gen.context Recordings FinalRecording final_recordings session_id:references:sessions playable_url downloadable_url
-
-Used as learning tools
+## General Usage
 
 Generating a schema in increasing complexity
 
@@ -39,18 +41,6 @@ Only difference is the conversion to elixir, same DB type
 | naive_datetime_usec | microsec  | [`NaiveDateTime`](https://hexdocs.pm/elixir/NaiveDateTime.html) | None     |
 | utc_datetime        | sec       | [`DateTime`](https://hexdocs.pm/elixir/DateTime.html)        | UTC      |
 | utc_datetime_usec   | microsec  | [`DateTime`](https://hexdocs.pm/elixir/DateTime.html)        | UTC      |
-
-#### Examples
-
-No :type means it is a :string
-
-```bash
-mix phx.gen.context Accounts User users name email:unique age:integer post_id:references:posts social_links:array:string
-
-mix phx.gen.context Accounts Credential credentials email:unique password_hash user_id:references:users
-
-mix phx.gen.html Chat Room rooms name:unique description:text user_id:references:users
-```
 
 Finalize in db
 

@@ -29,6 +29,8 @@ class Bplate {
 ```
 
 ## Functions as parameters...
+
+```swift
 func exterminateRat(rat: Rat) {
     print("rip Remy")
     rat.health = 0
@@ -37,15 +39,16 @@ func exterminateRat(rat: Rat) {
 let myBplate = Bplate()
 myBplate.m_rat = Rat()
 myBplate.checkForRat(exterminationInstruction: exterminateRat)
+```
 
 ## Closure
+```swift
 myBplate.checkForRat(exterminationInstruction: {
     (rat: Rat) in //could specifiy return type too (rat: Rat) -> Void
     print("this is why USC is the lamer school")
     rat.health = 0
 })
-
-
+```
 
 ## Typing
 ```swift

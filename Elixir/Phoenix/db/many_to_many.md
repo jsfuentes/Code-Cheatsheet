@@ -45,13 +45,14 @@ defmodule MyApp.TodoList do
     field :title
     many_to_many :todo_items, MyApp.TodoItem,
       join_through: MyApp.TodoListItem
-    timestamps()
+    # timestamps()
   end
 end
 
 defmodule MyApp.TodoListXItem do
   use Ecto.Schema
 
+  @primary_key false
   schema "todo_list_items" do
     belongs_to :todo_list, MyApp.TodoList
     belongs_to :todo_item, MyApp.TodoItem

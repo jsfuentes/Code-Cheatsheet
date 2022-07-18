@@ -35,26 +35,29 @@ Open the **Command Palette** (⇧⌘P) and type 'shell command'
 Use them Cmd-Shift-P snippets to configure something like below:
 
 ```json
-	"React Hooks Component Boilerplate": {
-		"prefix": "myre",
-		"body": [
-			"import React, { useEffect, useState } from \"react\";",
-			"import PropTypes from \"prop-types\";",
-			"",
-			"function $1(props) {",
-			"\t$2",
-			"\treturn ()",
-			"}",
-			"",
-			"$1.propTypes = {",
-			"\t",
-			"}",
-			"export default $1;"
-		]
-	}
+  "My API Service Function": {
+    "prefix": "myapi",
+    "body": [
+      "interface ${1/(^.)/${1:/upcase}/}Response {",
+      "  data: Board;",
+      "}",
+      "",
+      "async function $1($2) {",
+      "  try {",
+      "    const resp = await axios.post<${1/(^.)/${1:/upcase}/}Response>(\"/api/boards\", { $2 });",
+      "    return resp.data;",
+      "  } catch (err) {",
+      "    store.dispatch(logAxiosError(err, $3));",
+      "    throw err;",
+      "  }",
+      "}"
+    ]
+  }
 ```
 
 - \$1, \$2 to specify cursor locations. The number is the order in which tabstops will be visited, whereas \$0 
+- also has variables like time, date, filename, etc
+- Can transform variables like `${1/(^.)/${1:/upcase}/` to uppercase first letter so capture then specific what to do to it
 
 #### Code to Snippets Script
 

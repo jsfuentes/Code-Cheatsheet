@@ -1,4 +1,4 @@
-## useEffect
+# useEffect
 
 For data fetching, subscriptions, or manually changing the DOM because they can affect other components and can’t be done during rendering.
 

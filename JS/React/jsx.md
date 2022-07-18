@@ -1,4 +1,4 @@
-## JSX
+# JSX
 
 Need to import react to use
 

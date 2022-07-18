@@ -1,4 +1,4 @@
-#  React Router
+#  React Router v6
 
 #### Setup
 
@@ -7,7 +7,7 @@ React doesn't come with changing component rendered based on url out of the box,
 `npm install react-router-dom`
 
 ```js
-import { BrowserRouter, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 ```
 
 *Use HashRouter for within filesystems(electron)*
@@ -18,33 +18,23 @@ import { BrowserRouter, Route, Link, Redirect } from 'react-router-dom';
 - Will render **any number of regex matches** of child Routes
   - Basically conditional rendering based on path
 
-#### Switch
+#### Routes
 
-`<Switch>`  groups Route components, and will **choose the first to match** if any
-
-```jsx
-return (<BrowserRouter>
-  <Switch>
-    <Route exact path="/" component={Home} />
-    <Route path="/about" component={About} />
-    <Route path="/contact" component={Contact} />
-    {/* when none of the above match, <NoMatch> will be rendered */}
-    <Route component={NoMatch} />
-  </Switch>
-</BrowserRouter>);
-```
-
-- exact doesnt do regex matching, but exact matching
-- strict means the ending / mattersss 
-
-#### 3 Render Options
+`<Routes>`  groups Route components, and will choose the most specific route so /event/login matches /event/login over /event/:id
 
 ```jsx
 <BrowserRouter>
-  <Route path="/home" component={Home} />
-  <Route path="/about" render{ () =>  <About {...props} extra={someVariable} /> } />
-  <Route children={() => <div> Always Renders </div>} /> 
-</BrowserRouter>
+  <Routes>
+    <Route path="/" element={<MyRedirect url="/login" />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/" element={<UserRoute requiredOrganizer />}>
+      <Route path="/create-event" element={<CreateEvent />} />
+      <Route
+        path="/dashboard/*"
+        element={<DashboardRouter />}
+      />
+    </Route>
+	</Routes>)
 ```
 
 ### Navigation
@@ -60,28 +50,41 @@ return (<BrowserRouter>
 **[Navlinks](https://reactrouter.com/web/api/NavLink)** add style when active, classes, and on actived event
 
 ```react
-<NavLink to="/dash" activeClassName="text-purple-500">
-  My Events
-</NavLink>
+<ul>
+  <li>
+    <NavLink
+      to="messages"
+      style={({ isActive }) =>
+  isActive ? activeStyle : undefined
+            }
+      >
+      Messages
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="tasks"
+      className={({ isActive }) =>
+  isActive ? activeClassName : undefined
+                }
+      >
+      Tasks
+    </NavLink>
+  </li>
+</ul>
 ```
 
 #### Redirect
 
-1) Return Redirect Object
-
-```jsx
-<Redirect to='/error'/>
-
-//Inside switches
-<Redirect path="/home" to "/" />
-```
-
-2) 
+1) 
 
 ```js
-import { useHistory } from 'react-router-dom';
-const history = useHistory();
-history.push("/");
+import { useNavigate } from "react-router-dom";
+
+function Dashboard() {
+  let navigate = useNavigate(); 
+  //usage somewhere 
+  navigate(`/invoices`)
 ```
 
 3)   HTML5 way
@@ -93,38 +96,33 @@ window.location.replace("www.example.com"); //replaces current page in history
 
 ## Accessing Router Info
 
-Default passed to Route child, but can also access from anywher with 
+### Route with parameter
 
-1) Hooks which are more effective b/c less renders?
-
-```javascript
-import { useParams, useLocation, useHistory, useRouteMatch } from 'react-router-dom';
-  
-const params = useParams();
-const location = useLocation(); //query string at search
-const history = useHistory();
-const match = useRouteMatch();
+```jsx
+<Route path="/e/:event_id/*" element={<EventRouter />} />
 ```
 
-2) Higher Order Components
+Access Data
 
 ```js
-import { withRouter } from 'react-router-dom';
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 
-export default withRouter(SomeComponent);
+//Access /:event_id 
+const params = useParams<{ event_id: string }>();
+//Access queryString ?=
+const location = useLocation();
+const qs = queryString.parse(location.search);
+const qs_eid = qs.eid && typeof qs.eid === "object" ? qs.eid[0] : qs.eid;
+const event_id = qs_eid || params.event_id;
 ```
 
-#### Info Example
 
-```js
-history: {length: 8, action: "POP", location: {…}, 	createHref: ƒ, push: ƒ, …}
-
-location: {pathname: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", search: "", hash: "", state: undefined, key: "pmanoj"}
-
-match: {path: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", url: "/getting-some-closure-with-javascript-closures-3f3aa88ecf8c", isExact: true, params: {…}}
-
-staticContext: undefined
-```
 
 #### Query Parameters
 
@@ -142,18 +140,42 @@ console.log(vals.origin); // "im"
 
 #### URL Path
 
-App.js
+### Redirect to Route
 
 ```jsx
-<Route path="/:handle" component={Editor} />
+<Route
+  path="*"
+  element={<Navigate to={`/e/${event_id}`} replace={true} />}
+/>
 ```
 
-Editor.js
+### Redirect to External Route
+
+MyRedirect.tsx
+
+```react
+const debug = require("debug")("app:MyRedirect");
+
+interface MyRedirectProps {
+  url: string;
+}
+
+export default function MyRedirect(props: MyRedirectProps) {
+  window.location.href = props.url;
+  return null;
+}
+```
+
+Usage
 
 ```jsx
-const { handle } = props.match.params;
+<Route
+  path="/careers"
+  element={
+  <MyRedirect url="https://clayboard.com" />
+  }
+/>
 ```
 
-#### Other
 
-`Prompt` will alert when you navigate away from page like for form
+

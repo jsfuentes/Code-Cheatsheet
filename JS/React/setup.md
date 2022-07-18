@@ -1,3 +1,5 @@
+# Setting up React
+
 ## Installation
 
 ```bash

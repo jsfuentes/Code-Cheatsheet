@@ -1,5 +1,17 @@
 # Editors Comparison
 
+##  Visual Studio Code
+
+Dominating with Microsoft and Copilot
+
+Official packages
+
+Great package management, snippets, configurability and release cycle
+
+## Repl/CodeSandbox
+
+Probably the future with inbrowser editing and sharing
+
 ## Vim/Emacs
 
 ### Vi vs emacs
@@ -22,6 +34,8 @@ Vi
 
 ## Atom
 
+Sunset by Github so RIP
+
 Electron so considered slow
 
 Great package management, snippets, configurability
@@ -29,12 +43,4 @@ Great package management, snippets, configurability
 Shortcuts and stuff, nuclide usage
 
 Packages can be unmaintained
-
-##  Visual Studio Code
-
-Rapidly gaining market share
-
-Professional packages
-
-Great package management, snippets, configurability
 

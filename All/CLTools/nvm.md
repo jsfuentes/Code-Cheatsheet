@@ -1,5 +1,7 @@
 # Node Version Manager
 
+**Use asdf instead cuz its more general**
+
 ### Setup 
 
 ```

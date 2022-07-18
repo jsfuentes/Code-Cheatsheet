@@ -22,6 +22,11 @@ Either update the given object or return a new object
 
 ```js
 state = {jklkjl: 1}  //won't work, need to edit underlying obj
+
+return {jklkjl: 1} // return entirely new object
+
+//BEST IMMER WAY
+state.jklkjl = 1
 ```
 
 

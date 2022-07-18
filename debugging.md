@@ -2,19 +2,18 @@
 
 ## Project Planning
 
-Are you sure the project will work? Is there a better way to do it?  
+What is the core problem you are solving? What are the MVP features to solve that?
 
-1) Input and Output
+## Function/Algorithm Planning
 
-2) Theorize edge cases
-
-3) Pseudocode
-
-4) Mentally test
-
-5) Explore technologies so you can be sure of interactions
-
-6) Actually write code and adapt
+1) Write down Input and Output
+2) Theorize all edge cases
+3) Think of simplest way to do it
+4) Think of all the possible ways to do it
+5) Mentally test and calculate Big-O to choose alg
+6) Pseudocode
+7) Write Code
+8) Manually/Progamatically test on all your edge cases
 
 ## My common errors
 

@@ -20,9 +20,13 @@ PORT=4001 MIX_ENV=prod mix phx.server
 PORT=4001 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server
 ```
 
-### [Releases](https://hexdocs.pm/phoenix/releases.html)
+## [Releases](https://hexdocs.pm/phoenix/releases.html)
 
 Can make a bundle with Elixir, Erlang VM, and code that you can drop on a prod machine/docker container and run.
+
+### Gen
+
+`mix phx.gen.release` apparently needed for something like running migrations in the release idk its in the guide
 
 ```elixir
 # Initial setup
@@ -38,7 +42,7 @@ mix phx.digest
 MIX_ENV=prod mix release --overwrite
 ```
 
-*render.com build script*
+Then using this built release
 
 ```bash
 # Running

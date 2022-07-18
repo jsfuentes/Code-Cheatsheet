@@ -1,5 +1,7 @@
 # Regular Expression
 
+https://regexr.com/
+
 Is case sensitive
 
 [j-q] matches single character between j-q
@@ -13,6 +15,9 @@ j+ matches one or more j's
 | *      | 0-any of last char | ba* => baaaaa & b  |
 | +      | 1-any of last char | ba+ => baaaaa & ba |
 | ^      | not                | [^0-9] => a        |
+| ^      | Start of word      | ^abc$              |
+| $      | End of word        | ^abc$              |
+|        |                    |                    |
 
 ## Examples
 

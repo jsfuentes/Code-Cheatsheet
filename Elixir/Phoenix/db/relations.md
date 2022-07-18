@@ -32,6 +32,17 @@ comment.post #=> %Post{...}
 post.comments #=> [%Comment{...}, ...]
 ```
 
+### Updating from parent
+
+You could pass in %{id: 1, child: [1]}
+
+- `:on_replace` - The action taken on associations when the record is replaced when casting or manipulating parent changeset. May be `:raise` (default), `:mark_as_invalid`, `:nilify`, `:update`, or `:delete`. See [`Ecto.Changeset`](https://hexdocs.pm/ecto/Ecto.Changeset.html)'s section on related data for more info.
+
+```
+    has_many :subevent_breakout_groups, ReactPhoenix.Subevents.SubeventBreakoutGroup,
+      on_replace: :delete
+```
+
 ## Create/Update Relations
 
 - [`cast_assoc`](https://hexdocs.pm/ecto/Ecto.Changeset.html#cast_assoc/3)
@@ -44,23 +55,20 @@ It compares each of param to preloaded
 - if id and in db => update
 - If no id, but id in db => delete/on_replace
 
-In changes
+In Creation
 
 ```elixir
-def changeset(subevent, attrs) do
-  subevent
-    |> cast(attrs, [
-    :event_id,
-    :start_time
-    ])
-    |> cast_assoc(:subevent_breakout_groups,
-    with: &ReactPhoenix.Subevents.SubeventBreakoutGroup.changeset/2
-    )
-    |> validate_required([:title, :type, :start_time, :end_time])
+def create_board(attrs \\ %{}) do
+  %Board{}
+  |> Board.changeset(attrs)
+  |> Ecto.Changeset.cast_assoc(:activities,
+  with: &ReactPhoenix.Activities.Activity.changeset/2
+  )
+  |> Repo.insert()
 end
 ```
 
-In Repo
+In Update
 
 ```elixir
 event
@@ -70,6 +78,14 @@ event
 with: &RegistrationEventQuestion.changeset/2
 )
 |> Repo.update()
+```
+
+In Get
+
+```elixir
+Repo.get(Event, id)
+|> Repo.preload(registration_event_questions: :registration_question)
+|> Repo.preload(event_folder: :events)
 ```
 
 ## Example Schema

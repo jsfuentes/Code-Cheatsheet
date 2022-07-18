@@ -4,8 +4,8 @@ Phoenix built-in generate and verify signed tokens(not encrypted, so can verify 
 
 ```elixir
 user_id = 1
-token = Phoenix.Token.sign(MyApp.Endpoint, "user auth", user_id)
-Phoenix.Token.verify(MyApp.Endpoint, "user auth", token, max_age: 86400) #{:ok, 1}
+token = Phoenix.Token.sign(ReactPhoenixWeb.Endpoint, "user auth", user_id)
+Phoenix.Token.verify(ReactPhoenixWeb.Endpoint, "user auth", token, max_age: 86400) #{:ok, 1}
 ```
 
 Arg 1: Uses the secret key base configured in the endpoint

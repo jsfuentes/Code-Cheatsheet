@@ -21,8 +21,7 @@ Server:
 - More accurate as can't be blocked by adblockers/etc
 - No automatic userID, must be explicitly set
 
-
-### Client Usage
+## Client Usage
 
 Every event automatically grabs page info and user agent
 
@@ -47,11 +46,17 @@ analytics.identify(id,{
   }
 );
 
+analytics.group(user.organization_id);
+
 analytics.track(event, [properties], [options], [callback]);
 analytics.track("Demo Recorded", {video_id});
 ```
 
 Don't bother calling identify for anonymous client users, let Segment do its random id thing stored in local storage
+
+```bash
+npm i -D @types/segment-analytics
+```
 
 ### Server Usage
 

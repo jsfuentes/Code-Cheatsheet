@@ -14,9 +14,9 @@ Valuable Because:
 
 ## Type Files
 
-Types files should just be in [devDependencies](https://stackoverflow.com/questions/45176661/how-do-i-decide-whether-types-goes-into-dependencies-or-devdependencies)
+Types packages should just be in [devDependencies](https://stackoverflow.com/questions/45176661/how-do-i-decide-whether-types-goes-into-dependencies-or-devdependencies)
 
-
+Should have `.d.ts` extension as recommended
 
 ### Modules
 Export keyword make this a module that can be imported
