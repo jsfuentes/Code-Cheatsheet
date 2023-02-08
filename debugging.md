@@ -19,4 +19,9 @@ What is the core problem you are solving? What are the MVP features to solve tha
 
 - Getting the opposite boolean expression from what I want
 - Type errors in untyped langauges
-- Don't actually think about what to do upon errors 
+- Don't actually think about what to do upon errors
+
+## Debugging Tips
+
+- Remove complexity until it start working then slowly add thing back
+- Change some variables/factors and see if it still breaks, local vs prod or extremely simple cases

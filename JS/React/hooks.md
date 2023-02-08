@@ -157,3 +157,15 @@ function useDebounce(value, delay = 500) {
 export default useDebounce;
 ```
 
+##### useRandomId
+
+```js
+export function useRandomId() {
+  const randomId = useMemo(() => {
+    return "_" + Math.random().toString(36).slice(2, 9);
+  }, []);
+
+  return randomId;
+}
+```
+

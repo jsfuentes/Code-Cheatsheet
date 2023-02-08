@@ -74,3 +74,9 @@ class Point{
 ```
 
 Everything after the first optional parameter should be optional too
+
+
+
+url = "https://poptake-videos.s3.us-west-2.amazonaws.com/test_jorge/2022-09-16T18%3A25%3A23.890Z-video.webm"
+
+ReactPhoenixWeb.Helpers.AWSHelper.presign_s3_url(url)

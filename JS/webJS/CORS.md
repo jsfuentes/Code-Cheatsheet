@@ -10,3 +10,6 @@ All non idempotent(besides GET and some POSTS with specific meme) will be first 
 
 Express => https://expressjs.com/en/resources/middleware/cors.html
 
+Flask => https://flask-cors.readthedocs.io/en/latest/#using-json-with-cors
+
+*Sometimes you can get CORS errors because of having/not having a trailing slash (something about redirects not being allowed idk)* 

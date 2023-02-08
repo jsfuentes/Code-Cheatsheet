@@ -1,8 +1,6 @@
 # Segment
 
-A single library to include that then loads other analytics tools
-
-Can also add integration sources with no code to sync to downstream data warehouses
+- A single library to include that then loads other analytics tools with easy/no code switching adding new tools
 
 Best naming convention is **OBJECT ACTION** like "Event Created" and only track the flows you want not everything
 
@@ -58,9 +56,9 @@ Don't bother calling identify for anonymous client users, let Segment do its ran
 npm i -D @types/segment-analytics
 ```
 
-### Server Usage
+## Server Usage
 
-#### Elixir/Phoenix
+### Elixir/Phoenix
 
 [Unoffical support](https://github.com/stueccles/analytics-elixir)
 
@@ -90,7 +88,7 @@ Segment.Analytics.track(user_id, event, %{property1: "", property2: ""})
 Segment.Analytics.identify(user_id, %{trait1: "", trait2: ""})
 ```
 
-#### Node Init
+### Node
 
 ```js
 const Analytics = require("analytics-node");
@@ -99,5 +97,3 @@ const analytics = new Analytics(conf.get("SEGMENT_KEY"));
 analytics.track({userId: id, event: "Demo Recorded"})
 analytics.identify({userId: id, traits: {email, username}})
 ```
-
-#### 

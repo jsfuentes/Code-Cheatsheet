@@ -14,13 +14,14 @@ https://openai.gitbook.io/
 ## Structure
 
 - `All` folders will have the notes and languages, but the main level should be for my favorite languages because I use it soooo often and it can get annoying to navigate otherwise. It does mean some  stuff can be in two places, but easier to use
-- 
-
 - Each folder can have
   - README.md for the most general/basic concepts and examples/syntax
   - setup.md to describe how to install and get boilerplate working
   - packages folders for nonstandard packages, but general/standard packages often used can be left in the main folder 
-- If two folder concepts overlap, it will be in the lower level closer to hardware/general folder(still pretty vague) e.g Docker in AWS will be in AWS folder not the Docker folder
+- If two folder concepts overlap, then it will be it seems most useful/what folder you will already be in when you need it (still pretty vague) 
+  - e.g Docker in AWS will be in AWS folder not the Docker folder
+  - e.g Python AWS SDK will be in the Python folder not the AWS folder
+
 
 ## Usage
 

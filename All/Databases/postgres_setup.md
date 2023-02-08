@@ -2,7 +2,11 @@
 
 ## Local Setup
 
-Can install with brew `brew install postgresql`, follow instructions onscreen(`brew services start postgresql` & `initdb /usr/local/var/postgres` )
+```bash
+brew install postgresql
+```
+
+Follow instructions onscreen(`brew services start postgresql` & `initdb /usr/local/var/postgres` )
 
 `postgres -V`
 

@@ -20,7 +20,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 #### Routes
 
-`<Routes>`  groups Route components, and will choose the most specific route so /event/login matches /event/login over /event/:id
+`<Routes>` groups Route components, and will choose the most specific route so /event/login matches /event/login over /event/:id
 
 ```jsx
 <BrowserRouter>
@@ -106,34 +106,17 @@ Access Data
 
 ```js
 import {
-  Navigate,
-  Route,
-  Routes,
   useLocation,
   useParams,
 } from "react-router-dom";
 
 //Access /:event_id 
 const params = useParams<{ event_id: string }>();
-//Access queryString ?=
+
+//Access query string ?prompt=Whats%20up?
 const location = useLocation();
-const qs = queryString.parse(location.search);
-const qs_eid = qs.eid && typeof qs.eid === "object" ? qs.eid[0] : qs.eid;
-const event_id = qs_eid || params.event_id;
-```
-
-
-
-#### Query Parameters
-
-```jsx
-import queryString from 'query-string'
-
-//.......(props) {
-const vals = queryString.parse(props.location.search); 
-// "?filter=top&origin=im"
-console.log(vals.filter); // "top"
-console.log(vals.origin); // "im"
+const params = new URLSearchParams(location.search);
+const prompt = params.get("prompt") || undefined; //Whats up?
 ```
 
 ## Advanced
@@ -176,6 +159,3 @@ Usage
   }
 />
 ```
-
-
-
