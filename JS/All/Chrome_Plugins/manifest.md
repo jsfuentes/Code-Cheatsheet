@@ -21,6 +21,8 @@
 
   "background": {
     "scripts": ["build/background.js"]
+    "type": "module"
+    //type module means import as ES module, remove line so regular script
   },
   "browser_action": {
     "default_popup": "popup.html"
@@ -98,7 +100,7 @@ Make sure all the files you want are imported in the one file you build
 
 #### Content Security Policy
 
-TO allow loading of external scripts:
+Not allowed to load external scripts in manifest V3
 
 ```json
 "content_security_policy": "script-src 'self' https://example.com; object-src 'self'"

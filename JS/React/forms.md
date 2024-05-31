@@ -7,19 +7,18 @@
 Inputs must have unique name
 
 ```jsx
-import React from "react";
 import { useForm } from "react-hook-form";
 
 export default function App() {
-  const { register, handleSubmit, errors } = useForm();
-  function onSubmit(data) { console.log(data); }
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input name="example" defaultValue="test" ref={register} />
-      <input name="exampleRequired" ref={register({ required: true })} />
+      <input defaultValue="test" {...register("example")} />
+      <input {...register("exampleRequired", { required: true })} />
       {errors.exampleRequired && <span>This field is required</span>}
-      <button type="submit" > Submit </button>
+      <input type="submit" />
     </form>
   );
 }

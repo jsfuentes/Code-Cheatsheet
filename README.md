@@ -1,6 +1,6 @@
 # Code Cheatsheets
 
-My personal coding notes/snippets that I always have open when I'm coding to add to or search. It is meant to be terse and for application and thus requires good background knowledge. I started this in the beginning of  2018 and so all my knowledge from before then(CS classes) are absent. 
+My personal coding notes/snippets that I always have open when I'm coding to add to or search. It is meant to be terse and for application and thus requires good background knowledge. I started this in the beginning of 2018 and so all my knowledge from before then(CS classes) are absent.
 
 https://openai.gitbook.io/
 
@@ -13,16 +13,15 @@ https://openai.gitbook.io/
 
 ## Structure
 
-- `All` folders will have the notes and languages, but the main level should be for my favorite languages because I use it soooo often and it can get annoying to navigate otherwise. It does mean some  stuff can be in two places, but easier to use
+- `All` folders will have the notes and languages, but the main level should be for my favorite languages because I use it soooo often and it can get annoying to navigate otherwise. It does mean some stuff can be in two places, but easier to use
 - Each folder can have
   - README.md for the most general/basic concepts and examples/syntax
   - setup.md to describe how to install and get boilerplate working
-  - packages folders for nonstandard packages, but general/standard packages often used can be left in the main folder 
-- If two folder concepts overlap, then it will be it seems most useful/what folder you will already be in when you need it (still pretty vague) 
+  - packages folders for nonstandard packages, but general/standard packages often used can be left in the main folder
+- If two folder concepts overlap, then it will be where it seems most useful/what folder you will already be in when you need it (still pretty vague)
   - e.g Docker in AWS will be in AWS folder not the Docker folder
   - e.g Python AWS SDK will be in the Python folder not the AWS folder
 
-
 ## Usage
 
-- My current favorite tool to access is [Typora](typora) b/c lightweight, instant markdown visualization, and quick open shortcut
+- My current favorite tool to access is [Typora](https://typora.io/) b/c lightweight, instant/inline markdown visualization, and quick open shortcut

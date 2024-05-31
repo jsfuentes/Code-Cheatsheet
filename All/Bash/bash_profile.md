@@ -97,9 +97,9 @@ alias estb='cd ~/Projects/ecstatic-botpress'
 ## My Bash_Profile
 
 ```bash
+# All these are added by .zshrc oh my zsh
 alias fin='find . -iname'
 alias ga='git add'
-alias gs='git status'
 alias gl='git log'
 alias gb='git branch'
 alias gbv='git branch -v -a'
@@ -113,8 +113,11 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+# My extras
+alias gs='git status'
+
 alias note='cd ~/Documents/CodeCheatsheet'
-alias pyrun='pipenv run python'
+alias pyrun='poetry run python'
 
 LSCOLORS='GxFxcxdxxxegedaxagacad'
 export LSCOLORS
@@ -131,35 +134,35 @@ SKY_BLUE="\[\033[3;94m\]"
 YELLOW="\[\033[0;93m\]"
 PS1="$SKY_BLUE[ \u@\h \W/ $YELLOW\$(parse_git_branch)$SKY_BLUE ]$NO_COLOUR ~ "
 
-# added by Anaconda2 5.0.0 installer
-export PATH="/anaconda2/bin:$PATH"
-
 #terraform and ngrok
 export PATH="/Users/jfuentes/MyTools/:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Setting PATH for Python 3.7
-# The original version is saved in .bash_profile.pysave
-export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
-
-# Have pipenv store the venv in the project like node_modules
-export PIPENV_VENV_IN_PROJECT=1 
-
+# Run `download_gitignore python` to create gitignore
 download_gitignore () {
     name=$1
     CapName="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}".gitignore
-    gitUrl=https://raw.githubusercontent.com/github/gitignore/master/"$CapName"
-    echo [1/2] Fetching .gitignore for $name from $gitUrl
+    gitUrl=https://raw.githubusercontent.com/github/gitignore/main/"$CapName"
+    echo "[1/2] Fetching .gitignore for $name from $gitUrl"
     curl $gitUrl > .gitignore
     printf "\n# My Additions\n.DS_STORE\n*~*" >> .gitignore
-    echo [2/2] COMPLETE!  Your new .gitignore is outputted below:
+    echo "[2/2] COMPLETE!  Your new .gitignore is outputted below:"
     echo $(cat .gitignore)
 }
 
+# Run `base_clone react_phoenix` to create templated react
+base_clone () {
+    name=$1
+    echo $1
+    CapName="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}"-Base
+    echo $CapName
+    gitUrl=https://github.com/jsfuentes/"$CapName".git
+    echo "[1/2] Cloning $CapName from $gitUrl"
+    git clone $gitUrl
+    echo "[2/2] COMPLETE!"
+}
+
+
+# not sure what this does...
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 ```

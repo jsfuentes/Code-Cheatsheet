@@ -84,7 +84,7 @@ array1.forEach(function(element) {
 });
 ```
 
-### Queue
+### Queue (works on array)
 
 - `.push(e)`
 

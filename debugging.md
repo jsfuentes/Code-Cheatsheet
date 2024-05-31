@@ -25,3 +25,4 @@ What is the core problem you are solving? What are the MVP features to solve tha
 
 - Remove complexity until it start working then slowly add thing back
 - Change some variables/factors and see if it still breaks, local vs prod or extremely simple cases
+- For package issues, if a google search/standard debugging doesn't help, check how new your release is and the github repo for issues. Consider changing versions

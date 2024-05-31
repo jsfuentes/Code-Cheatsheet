@@ -10,7 +10,7 @@
 | Cmd-Shift-E | Explorer Open               |
 | Cmd-K Cmd-W | Close all open files        |
 | Cmd-B       | Toggle SidePanel            |
-|             |                             |
+| Shift-Alt-O | Delete Unused Imports       |
 |             |                             |
 |             |                             |
 

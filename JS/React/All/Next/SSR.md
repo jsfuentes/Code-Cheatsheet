@@ -31,10 +31,32 @@ export async function getStaticProps() {
   // The value of the `props` key will be
   //  passed to the `Home` component
   return {
-    props: ...
+    props: { data },
+    revalidate: 60, // Optional: Changes to incremental static regeneration(after build) where it will background(stale data will be shown) regenerate on request at most every 60 seconds
   }
 }
 ```
+
+If you have *dynamic routes*([...slug].ts), then you need to `getStaticPaths` so it knows what to pregenerate
+
+```ts
+export const getStaticPaths = (async () => {
+  return {
+    paths: [
+      {
+        params: {
+          name: 'next.js',
+        },
+      }, // See the "paths" section below
+    ],
+    fallback: true, // false or "blocking"
+  }
+}) satisfies GetStaticPaths
+```
+
+
+
+
 
 ## Server-side Rendering
 

@@ -12,7 +12,9 @@
 
 2) Create/Select a Project
 
-3) In Credientals tab, create an OAuth 
+3) In Credientals tab, create an OAuth
+
+4) Add `localhost:<port>` and `localhost` to get it to work 
 
 #### Usage
 

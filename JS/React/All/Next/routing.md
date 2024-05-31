@@ -1,4 +1,13 @@
-# Pages
+# App Router
+
+Recommended instead of pages approach in v13
+
+- `/index.js` is associated with the `/` route.
+- `pages/posts/first-post.js` is associated with the `/posts/first-post` route.
+- `pages/event/[id].js` for dynamic routes(see below)
+- `pages/404.js` for custom 404 and [other errors]([Error Pages](https://nextjs.org/docs/advanced-features/custom-error-page#404-page))
+
+# [Pages](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts)
 
 Pages are associated with a route based on their **file name**. For example, in development:
 
@@ -6,6 +15,8 @@ Pages are associated with a route based on their **file name**. For example, in 
 - `pages/posts/first-post.js` is associated with the `/posts/first-post` route.
 - `pages/event/[id].js` for dynamic routes(see below)
 - `pages/404.js` for custom 404 and [other errors]([Error Pages](https://nextjs.org/docs/advanced-features/custom-error-page#404-page))
+
+### [Link](https://nextjs.org/docs/api-reference/next/link)
 
 ```jsx
 import Link from 'next/link'; //must have a tag inside
@@ -15,8 +26,24 @@ export default function FirstPost() {
     <>
       <h1>First Post</h1>
       <h2>
-        <Link href="/"> 
-          <a>Back to home</a> /
+        <Link
+          href={{
+            pathname: '/about',
+            query: { name: 'test' },
+          }}
+        >
+          About us
+        </Link>
+        <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
+           {post.title}
+        </Link>
+        <Link
+          href={{
+            pathname: '/about',
+            query: { name: 'test' },
+          }}
+        >
+          About us
         </Link>
       </h2>
     </>
@@ -140,6 +167,24 @@ export async function getStaticProps({ params }) {
 ## Router
 
 If you want to access the Next.js router, you can do so by importing the `useRouter` hook from `next/router`. Take a look at our [router documentation](https://nextjs.org/docs/routing/dynamic-routes) to learn more.
+
+## Redirecting Link permantely
+
+In `next.config.js`
+
+```js
+module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/about',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
+}
+```
 
 ### Redirecting in JS
 

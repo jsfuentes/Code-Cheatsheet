@@ -1,7 +1,9 @@
 # Browser Action
 
+*Untested in Manifest V3*
+
 ```js
-await browser.browserAction.setBadgeBackgroundColor({
+await browser.action.setBadgeBackgroundColor({
   color: "#000000"
 });
 

@@ -6,7 +6,7 @@ npm install passport
 
 Easily integrate different logins with an authentication middleware
 
-```
+```js
 app.post('/login', passport.authenticate('local', { successRedirect: '/',
                                                     failureRedirect: '/login' }));
 ```

@@ -43,6 +43,8 @@ ReactDOM.render(<Popup />, document.getElementById("root"));
 
 Then you need to build the popup.js using parcel/webpack which it is then built in `build/popup.js`
 
+- popup.js is basically like a background/service_worker script
+
 ### Size
 
 To set size, or can expand for content

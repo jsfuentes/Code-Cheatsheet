@@ -97,3 +97,15 @@ export {default} from '...';
 export {default as name1} from '...';
 ```
 
+### Typescript
+
+TypeScript 3.8 adds a new syntax for type-only imports and exports.
+
+```ts
+import type { SomeThing } from "./some-module.js";
+
+export type { SomeThing };
+```
+
+`import type` only imports declarations to be used for type annotations and declarations. It *always* gets fully erased, so there’s no remnant of it at runtime. Similarly, `export type` only provides an export that can be used for type contexts, and is also erased from TypeScript’s output.
+

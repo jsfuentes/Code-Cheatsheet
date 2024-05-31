@@ -15,11 +15,17 @@ _Parsing dates with `new Date()` varies across browsers, [recommended against](h
 
 ## [DateFns](https://date-fns.org/docs/Getting-Started)
 
+```
+npm install date-fns
+```
+
 Better than moment b/c selective importing and uses normal js date object
 
 `<` and `>` works on Date objects but **not** `==` or `===`
 
 ```js
+import { format, compareAsc } from 'date-fns'
+
 // Add any duration to 1 September 2014, 10:19:50
 const result = add(new Date(2014, 8, 1, 10, 19, 50), {
   years: 2,

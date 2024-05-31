@@ -13,7 +13,10 @@ assert(5 > 7);
 
 ## Versions
 
-- Even numbered releases are LongTerm Support(LTS); they generally receive 30 months of support once they become LTS.
+- Even numbered releases are LongTerm Support(LTS); they generally receive 30 months of support once they become LTS. Given codename
+  - V20 is iron and ends support in April 2026
+  - V18 is hydrogen and ends support in April 2025
+
 - Odd numbered releases are current releases and are supported for six months.
 
 # Express(4.16)

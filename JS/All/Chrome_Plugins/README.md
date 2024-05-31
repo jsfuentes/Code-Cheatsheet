@@ -1,23 +1,18 @@
 # [Chrome Plugins](https://developer.chrome.com/extensions/devguide)
 
-Chrome.runtime is available on any webpage
-
-Use `browser` from [webextension-polyfill](](https://github.com/mozilla/webextension-polyfill )) for promise-based, cross browser support
-
-```bash
-npm install --save-dev webextension-polyfill
-```
+- Chrome.runtime is available on any webpage
+- Since Manifest V3, can't use any remote code including any CDNs or packages that load code remotely
 
 To get file from built folder,
 
 ```js
-browser.runtime.getURL("../myfile.html"); //relative path
+chrome.runtime.getURL("../myfile.html"); //relative path
 ```
 
 Catch errors
 
 ```js
-browser.runtime.lastError.message
+chrome.runtime.lastError.message
 ```
 
 ## Keep constant Chrome-ID

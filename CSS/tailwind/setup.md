@@ -5,9 +5,8 @@ Can use `npx tailwind build styles.css -o output.css`, but builtin cli doesn't i
 ### Setup
 
 ```bash
-yarn add -D tailwindcss
+yarn add -D tailwindcss postcss-cli autoprefixer
 npx tailwind init tailwind.config.js
-yarn add -D postcss-cli autoprefixer
 ```
 
 Add all the files names to content
@@ -18,18 +17,6 @@ Add all the files names to content
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
 ```
-
-postcss.config.js
-
-```js
-const tailwindcss = require("tailwindcss");
-
-module.exports = {
-  plugins: [tailwindcss("./tailwind.config.js"), require("autoprefixer")]
-};
-```
-
-Autoprefixer is not required, but automatically tracks caniuse.com and properly prefixes(or unprefixes) css props
 
 Tailwind replaces @tailwind directives with css
 
@@ -44,6 +31,22 @@ index.css
 
 Preflight is opinionated and makes things like lists, h1, h2, etc unstyled by default
 
+If you're using Next.js you're done, if you using webpack or react-scripts see below
+
+#### More For React-Scripts
+
+postcss.config.js
+
+```js
+const tailwindcss = require("tailwindcss");
+
+module.exports = {
+  plugins: [tailwindcss("./tailwind.config.js"), require("autoprefixer")]
+};
+```
+
+Autoprefixer is not required, but automatically tracks caniuse.com and properly prefixes(or unprefixes) css props
+
 package.json
 
 ```json
@@ -55,7 +58,7 @@ package.json
 }
 ```
 
-### Webpack
+#### More for Webpack
 
 Tailwind >1.4 does purging if NODE_ENV=production
 
@@ -89,10 +92,40 @@ Tailwind >1.4 does purging if NODE_ENV=production
           },
 ```
 
-### Next
+### React Native
 
+Need to use [nativewind](https://www.nativewind.dev/quick-starts/expo)
+
+```bash
+npm i nativewind
+npm i -D tailwindcss
+npx tailwindcss init
 ```
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+
+tailwind.config.js
+
+```ts
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./App.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+babel.config.js
+
+```ts
++   plugins: ["nativewind/babel"]
+```
+
+Now adding className to something will transform it into a styled tailwindcss component
+
+Add the below to an app.d.ts to avoid type errors
+
+```ts
+/// <reference types="nativewind/types" />
 ```
 

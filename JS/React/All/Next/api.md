@@ -6,10 +6,18 @@ Just create a **function** inside the `pages/api` directory that has the followi
 
 /pages/api/hello.js
 
-```js
-// req = request data, res = response data
-export default (req, res) => {
-  res.status(200).json({ text: 'Hello' })
+```ts
+import type { NextApiRequest, NextApiResponse } from 'next'
+ 
+type ResponseData = {
+  message: string
+}
+ 
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<ResponseData>
+) {
+  res.status(200).json({ message: 'Hello from Next.js!' })
 }
 ```
 
