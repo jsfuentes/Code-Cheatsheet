@@ -19,19 +19,19 @@ for root, dirs, files in os.walk(PATH_TO_NOTES):
 os.environ.get('SECRET_KEY')
 ```
 
-# Files
+## Files
 
 Underlying open is from `io` library
 
 ```python
 #f is file object
- f = open('workfile', 'w')
- f.write("Now the file has one more line!")
- f.close()
+f = open('workfile', 'w')
+f.write("Now the file has one more line!")
+f.close()
   
-  #To write bytes
-  with open(filename, 'wb') as f: 
-    f.write(filebytes)
+#To write bytes
+with open(filename, 'wb') as f: 
+  f.write(filebytes)
 ```
 
 Modes
@@ -74,6 +74,24 @@ with open(r"categorizationModel.pickle", "r") as model:
 - just doesn't support subclassing of the Pickler() and Unpickler() classes
 - usually better
 - same interface
+
+#### Advanced OS*
+
+- could bypass system caches, more metadata/permissions access
+
+```python
+import os, fcntl
+
+
+fd = os.open("file.txt", os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644) #This creates a new file with specific permissions, failing if the file already exists
+
+#Lock file
+fd = os.open("file.txt", os.O_RDWR)
+fcntl.flock(fd, fcntl.LOCK_EX)
+# Perform operations...
+fcntl.flock(fd, fcntl.LOCK_UN)
+os.close(fd)
+```
 
 ## Play Audio Files
 

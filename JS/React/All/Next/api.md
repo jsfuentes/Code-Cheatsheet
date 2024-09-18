@@ -1,33 +1,67 @@
-# [Api Routes](https://nextjs.org/docs/api-routes/dynamic-api-routes)
+# [Route Handlers]()
 
-Simple API routes inside Next.js app like for form input 
+Route Handlers can be nested anywhere inside the `app` directory, with similar `[slug]/` for dynamic routes. But must only be   `route.js` or `page.js` at each level.
 
-Just create a **function** inside the `pages/api` directory that has the following format:
+Next.js browser Web [Request](https://developer.mozilla.org/docs/Web/API/Request) and [Response](https://developer.mozilla.org/docs/Web/API/Response) APIs with [`NextRequest`](https://nextjs.org/docs/app/api-reference/functions/next-request) and [`NextResponse`](https://nextjs.org/docs/app/api-reference/functions/next-response) 
 
-/pages/api/hello.js
+app/api/route.ts
 
 ```ts
-import type { NextApiRequest, NextApiResponse } from 'next'
+export const dynamic = 'force-static' //cache get
  
-type ResponseData = {
-  message: string
-}
+export async function GET() {
+  const res = await fetch('https://data.mongodb-api.com/...', {
+    headers: {
+      'Content-Type': 'application/json',
+      'API-Key': process.env.DATA_API_KEY,
+    },
+  })
+  const data = await res.json()
  
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) {
-  res.status(200).json({ message: 'Hello from Next.js!' })
+  return Response.json({ data })
 }
 ```
 
-http://localhost:3000/api/hello
+### Dynamic
 
-They can be deployed as Serverless Functions (also known as Lambdas).
+```tsx
+import { type NextRequest } from 'next/server'
 
-- `req` is an instance of [http.IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage), plus some pre-built middlewares you can see [here](https://nextjs.org/docs/api-routes/api-middlewares).
-- `res` is an instance of [http.ServerResponse](https://nodejs.org/api/http.html#http_class_http_serverresponse), plus some helper functions you can see [here](https://nextjs.org/docs/api-routes/response-helpers).
+export function GET(
+  request: NextRequest,
+  { params }: { params: { slug: string } }
+) {
+  const searchParams = request.nextUrl.searchParams
+  const query = searchParams.get('query')
+  
+  const slug = params.slug // 'a', 'b', or 'c'
+}
+```
 
-**Do Not Fetch an API Route from `getStaticProps` or `getStaticPaths`**, instead just run the code in them since it runs serverside anyway
+## Advanced
 
-[Dynamic Api Routes](https://nextjs.org/docs/api-routes/dynamic-api-routes)
+- Can [stream](https://nextjs.org/docs/app/building-your-application/routing/route-handlers#streaming)
+- [Middleware](https://nextjs.org/docs/app/building-your-application/routing/middleware)
+  - intercept routes for logging or auth
+
+### Cookies/Headers
+
+```ts
+import { cookies } from 'next/headers'
+import { headers } from 'next/headers'
+
+export async function GET(request: Request) {
+  const cookieStore = cookies()
+  const token = cookieStore.get('token')
+  
+  const headersList = headers()
+  const referer = headersList.get('referer')
+ 
+  return new Response('Hello, Next.js!', {
+    status: 200,
+    headers: { 'Set-Cookie': `token=${token.value}` },
+  })
+}
+```
+
+## 

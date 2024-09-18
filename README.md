@@ -10,6 +10,8 @@ https://openai.gitbook.io/
 - This isn't not meant to be everything or very advanced/complex usage, just things used often
 - The more often used ideas should be near the top of docs
 - Accuracy of information is super essential, but incomplete information/ideas/questions/sentences will be put down
+  - Put a `*` on the section or piece if the code/idea is AI generated and unconfirmed
+
 
 ## Structure
 

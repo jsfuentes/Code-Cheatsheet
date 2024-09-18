@@ -74,4 +74,5 @@ SOLUTION:
 - Try `asdf reshim nodejs`
 - Try `asdf current nodejs` to see where its getting the version from
 - After reshimming/installing/changing, may need to refresh terminal
-- Perhaps the tool you are trying to run is installed under the wrong version, `npm install -g @aws-amplify/cli` in the current node version fixed it for me
+- Perhaps the tool you are trying to run is installed under the wrong version, `npm install -g @aws-amplify/cli` in the current node version fixed it for me or `npm install -g yarn`
+- 

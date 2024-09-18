@@ -4,15 +4,9 @@ Server Components for Working Devs
 
 Two questions: Oh there's a new thing. Should I switch and why? And how is it different then existing SSR like Next.js get Static Props? And the meta question, should I just learn it now if its the future or is it experimental like other React stuff `useTransaction` or `useAction` that is more usecase specific/a curiosity?
 
-Now that we know how it works? Are there problems with adoption rn? Will I run into weird errors? 
+- Unclear, 
 
-- Next.js update
-  - need to update image tags, not much benefit
-  - get static props rewritten as async
-  - use client
-  - instead of [..slug].ts its [...slug]/page.ts
-  - **generateStaticParams** => [`generateStaticParams`](https://nextjs.org/docs/app/api-reference/functions/generate-static-params)
-  - change metadata
+Now that we know how it works? Are there problems with adoption rn? Will I run into weird errors? 
 
 ## Real
 
@@ -25,7 +19,7 @@ Stable in v19
   - Simpler colocated api requests
   - auth can be done earlier, failed requests can handled/redirected sooner
   - seo benefits
-- But different implementation with more React support that makes it more efficient,  **Selective Hydration**
+- But different implementation with more React support that makes it more efficient, **Selective Hydration**
   - Combining with [Suspense and the new Streaming SSR architecture](https://github.com/reactwg/react-18/discussions/37), note this stuff can be used seperately from Server Components but work well together:
     - ![Screenshot 2024-08-10 at 10.58.54 PM](/Users/jfuentes/Library/Containers/at.EternalStorms.Yoink/Data/Documents/YoinkPromisedFiles.noIndex/yoinkFilePromiseCreationFolder8FCEB93D-1E61-490C-9A0D-101305B141E6/add8FCEB93D-1E61-490C-9A0D-101305B141E6/Screenshot 2024-08-10 at 10.58.54 PM.png)
     - Basically historically it was full “waterfall”: fetch data (server) → render to HTML (server) → load code (client) → hydrate (client), now you can do this for each part of the tree
@@ -34,7 +28,6 @@ Stable in v19
   - Less bundle size = less bandwidth usage, server components aren't included in build so while first paint/content painted same, the time to interactive is faster
     - Means we can use huge libraries([syntax highlighting?](https://bright.codehike.org/)) serverside with no performance impact, so changes way to think about tradeoffs
 - Server Components can be used [without SSR](https://github.com/reactjs/server-components-demo?tab=readme-ov-file#should-i-use-this-demo-for-benchmarks)
-
 - “Server Side Rendering” is an umbrella term meaning initial render (ie the HTML) sent to client happens on the server
   - Static site generation(SSG) is at build time, but you could do runtime. Both are distinct from Server Components
     - Traditional SSR hydrates a dom passed as string, but server components pass react elements(JSON) that React runs on client - [Source](https://stackoverflow.com/questions/76325862/what-is-the-difference-between-react-server-components-rsc-and-server-side-ren#:~:text=Server%20components%20return%20react%20elements,and%20put%20into%20the%20DOM.&text=SSR%20is%20to%20run%20code%20on%20the%20server.)
