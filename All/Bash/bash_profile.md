@@ -26,6 +26,54 @@ to bashprofile and then use .bashrc and don't worry about it
 - Make your own commands with `alias ll='ls -lAG'`
 - Load in current shell with `source ~/.bash_profile`
 
+## 12/2024 
+
+- For adding to Warp
+
+```bash
+# Simple Shortcuts
+alias fin='find . -iname'
+alias ga='git add'
+alias gl='git log'
+alias gb='git branch'
+alias gbv='git branch -v -a'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gc='git commit'
+alias gp='git push'
+alias gss='git show --stat --oneline'
+alias gs='git status'
+alias ll='ls -lAG'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# To Dirs
+alias note='cd ~/Documents/CodeCheatsheet'
+
+download_gitignore () {
+    name=$1
+    CapName="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}".gitignore
+    gitUrl=https://raw.githubusercontent.com/github/gitignore/master/"$CapName"
+    echo [1/2] Fetching .gitignore for $name from $gitUrl
+    curl $gitUrl > .gitignore
+    printf "\n# My Additions\n.DS_STORE\n*~*" >> .gitignore
+    echo [2/2] COMPLETE!  Your new .gitignore is outputted below:
+    echo $(cat .gitignore)
+}
+
+base_clone () {
+    lang=$1
+    CapName="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})$name:1}"-Base
+    gitUrl=https://github.com/jsfuentes/"$CapName".git
+    echo [1/2] Cloning $CapName from $gitUrl
+    git clone $gitUrl
+    echo [2/2] COMPLETE!
+}
+```
+
+
+
 ## Zprofile
 
 Assuming you installed oh my zsh
@@ -115,7 +163,6 @@ alias ....='cd ../../..'
 
 # My extras
 alias gs='git status'
-
 alias note='cd ~/Documents/CodeCheatsheet'
 alias pyrun='poetry run python'
 
