@@ -7,9 +7,11 @@
 
 ## V3
 
-- Better than V2 cuz allows selective importing and typescript and async is first class
+- Better than V2(aws-sdk) cuz allows selective importing and typescript and async is first class
 
-`npm i @aws-sdk/lib-dynamodb @aws-sdk/client-dynamodb`
+```bash
+npm i @aws-sdk/lib-dynamodb @aws-sdk/client-dynamodb
+```
 
 ##### Setup
 

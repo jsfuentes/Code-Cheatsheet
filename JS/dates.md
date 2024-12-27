@@ -208,7 +208,7 @@ formatRelative(subDays(new Date(), 3), new Date())
 |                                 | PPPppp   | April 29th, 1453 at ...           | 7     |
 |                                 | PPPPpppp | Friday, April 29th, 1453 at ...   | 2,7   |
 
-## Moment.js
+## Moment.js (Similar to Dayjs)
 
 ### Creation
 

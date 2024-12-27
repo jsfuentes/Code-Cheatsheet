@@ -2,6 +2,8 @@
 
 # React-Toastify
 
+  react-hot-toast is smaller alternative
+
 ```
 yarn add react-toastify
 ```

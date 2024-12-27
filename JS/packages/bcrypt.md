@@ -1,6 +1,6 @@
 # Bcrypt
 
-Cryptography/hashing lib
+Cryptography/hashing lib, @node-rs/argon2 might be better
 
 ```bash
 npm install bcrypt

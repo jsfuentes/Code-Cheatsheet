@@ -4,13 +4,13 @@
 - Auto retries up to default of 3 times with backoff
 
 ```bash
-npm install react-query
+npm install @tanstack/react-query
 ```
 
 ## Basic
 
 ```tsx
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
 

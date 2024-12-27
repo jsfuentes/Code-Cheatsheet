@@ -2,8 +2,6 @@
 
 Instead of Headless CMS, transform content into structured JSON data for your code to use. Lets you define the data type
 
-- 
-
 ## [Setup](https://contentlayer.dev/docs/getting-started-cddd76b7)
 
 ## Usage
@@ -16,7 +14,15 @@ const Post = defineDocumentType(() => ({
   filePathPattern: `posts/**/*.md`,
   // ...
 }))
+
+export default makeSource({
+  contentDirPath: 'data',
+  documentTypes: [Blog, Authors, Book, Post],
 ```
+
+1. Add new defineDocumentType
+2. Add to makeSource
+3. Then can just run server which generates content to import, `import { allQuotes } from 'contentlayer/generated'`
 
 #### Advanced
 
@@ -107,3 +113,4 @@ export default makeSource({
 
 ```
 
+​    
