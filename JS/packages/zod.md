@@ -38,16 +38,6 @@ type User = z.infer<typeof User>;
 // { username: string }
 ```
 
-```
-{
-    NODE_ENV: 
-
-    DATABASE_URL: z.string().url(),
-    PRISMA_LOG_LEVEL: z.string().optional(),
-```
-
-
-
 ### Types
 
 #### Primitatives
@@ -77,6 +67,24 @@ z.never(); // allows no values
 z.enum([`development`, `test`, `production`])
  .default(`development`),
 ```
+
+##### Optional
+
+```ts
+z.object({
+    optional: z.string().optional(),
+    nullable: z.string().nullable(),
+    nullish: z.string().nullish(),
+});
+
+{
+    optional?: string | undefined;
+    nullable: string | null;
+    nullish?: string | null | undefined;
+}
+```
+
+
 
 ##### String Validation
 

@@ -12,7 +12,6 @@
   - google and cloud should be namespace because they are shared by multiple things
 
 ```python
-# Code to be verified
 # Same directory
 from .config import config
 from .routes import user as user_blueprint

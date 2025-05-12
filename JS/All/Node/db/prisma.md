@@ -11,7 +11,7 @@ npx prisma init #create a `schema.prisma` file
 #edit schema
 npx prisma generate
 npx prisma migrate dev --name init #for dev, generates migrations and client
-npx prisma deploy #for prod wont reset stuff
+npx prisma deploy #for prod wont reset stuff, w/o protection
 ```
 
 ## Usage
@@ -97,6 +97,8 @@ const caseData = await prisma.case.findUnique({
 });
 ```
 
+- .findUniqueOrThrow
+
 Create
 
 ```ts
@@ -156,10 +158,83 @@ const updatedCase = await prisma.case.update({
 
 ## Advanced
 
+##### pg_vector?
+
 ````ts
 await prisma.$executeRaw`
   ALTER TABLE "VectorizedItem"
   ADD COLUMN "embedding_512" vector(512);
 `;
 ````
+
+##### Transactions
+
+Ensure all or none of operations succeed, commited when end of transaction reached
+
+```ts
+// sequential operations
+const [posts, totalPosts] = await prisma.$transaction([
+  prisma.post.findMany({ where: { title: { contains: 'prisma' } } }),
+  prisma.post.count(),
+])
+
+//interactive transactions
+function transfer(from: string, to: string, amount: number) {
+  return prisma.$transaction(async (tx) => {
+    // 1. Decrement amount from the sender.
+    const sender = await tx.account.update({
+      data: {
+        balance: {
+          decrement: amount,
+        },
+      },
+      where: {
+        email: from,
+      },
+    })
+
+    // 2. Verify that the sender's balance didn't go below zero.
+    if (sender.balance < 0) {
+      throw new Error(`${from} doesn't have enough to send ${amount}`)
+    }
+
+    // 3. Increment the recipient's balance by amount
+    const recipient = await tx.account.update({
+      data: {
+        balance: {
+          increment: amount,
+        },
+      },
+      where: {
+        email: to,
+      },
+    })
+
+    return recipient
+  })
+}
+```
+
+### Gotchas
+
+hidden: {not: true} doesn't return null values, https://github.com/prisma/prisma/issues/24252, instead do below
+
+```ts
+return await prisma.priorAuth.findMany({
+    where: {
+       OR: [
+         {
+           hidden: {
+              not: true,
+           },
+         },
+         {
+           hidden: null,
+         },
+      ],
+   }
+}
+```
+
+
 

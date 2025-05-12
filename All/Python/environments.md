@@ -1,12 +1,67 @@
 # Environments
 
-Recommended is venv because rest don't really work, but maybe should try mamba.
+Recommended is venv because rest don't really work, but uv is on the scene
 
 ### Update Outdated Packages
 
 ```
 pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U 
 ```
+
+# UV
+
+- Package manager written in Rust combining pip, venv, penv
+- 10-100x faster then pip
+- Uses `pyproject.toml`  to manage dependencies, `.python-version` to manage py version, 
+- First time you run `uv run`, `uv sync`, or `uv lock`, creates venv and `uv.lock` which has exact dependencies
+
+```bash
+# Initialized project in current dir with pyproject
+uv init
+# To migrate from requirements.txt
+uv add -r requirements.txt -c constraints.txt
+# To sync environment with listed dependencies
+uv sync
+
+uv add 'requests==2.31.0'
+uv add ruff
+uv run ruff check
+
+uv remove requests
+```
+
+### Creating Specific Envs
+
+```bash
+uv python install 3.10 3.11 3.12
+uv venv --python 3.12.0
+```
+
+#### Groups
+
+```bash
+uv add --group dev ruff #Dev dependencies
+# Once groups are defined, the --all-groups, --no-default-groups, --group, --only-group, and --no-group options can be used to include or exclude their dependencies.
+
+uv sync --all-groups
+uv sync --dev #equivalent to --group dev
+```
+
+### Other
+
+```bash
+uv run -- flask run -p 3000 # runs flask or arbitrary commands
+
+# Can do many pip commands thought its an implementation not pass through
+uv pip install
+uv pip freeze:
+
+uvx pycowsay 'hello world!' #runs pip packages like pipx
+```
+
+
+
+
 
 # Venv
 

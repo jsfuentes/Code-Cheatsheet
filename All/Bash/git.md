@@ -1,4 +1,4 @@
-# Git
+# gGit
 
 Git stores everything in a directory, `rm -rf .git` to delete the git project
 
@@ -11,8 +11,11 @@ Git stores everything in a directory, `rm -rf .git` to delete the git project
 Saves every instance of head changes
 
 ```bash
-git reflog
+git reflog #see list of head changes
+
+#Alternate ways to jump to reflog HEADS
 git checkout -b after-commit HEAD@{1}
+git reset HEAD@{1}
 ```
 
 #### Get specific file from past

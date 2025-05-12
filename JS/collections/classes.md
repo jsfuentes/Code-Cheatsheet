@@ -2,6 +2,8 @@
 
 ES6, Syntacical sugar actually just doing object prototyping
 
+Extended by typescript, see that section
+
 ```js
 class Rectangle {
   constructor(height, width) {

@@ -44,6 +44,8 @@ function Example() {
 }
 ```
 
+- Could also just check if data exists instead of isLoading, error especially if you are setting enabled
+
 #### UseQuery
 
 - unique key is used for caching and deduping, can be string or array of serializable data

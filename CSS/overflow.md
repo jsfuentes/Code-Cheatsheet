@@ -7,7 +7,7 @@ Control what happens when content too big either scroll/clip
 - `scroll` - The overflow is clippgit ed, and a scrollbar is added to see the rest of the content
 - `auto` - Similar to `scroll`, but it adds scrollbars only when necessary
 
-Only happens if block display with height
+Only happens if block display with height, or rather if some parent has a defined height that is not based on contents (max-height doesn't count?)
 
 The scrollbar actually takes up space in the div
 
